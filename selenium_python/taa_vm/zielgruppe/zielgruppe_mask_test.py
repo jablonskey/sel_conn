@@ -312,17 +312,17 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
         WebDriverWait(driver, 4).until(
             EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
         self.assertEqual("Berechnungshilfe", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
-        driver.find_element_by_xpath("(//input[@type='text'])[5]").clear()
-        driver.find_element_by_xpath("(//input[@type='text'])[5]").send_keys("4")
-        self.assertEqual("4", driver.find_element_by_xpath("(//input[@type='text'])[13]").get_attribute("value"))
-        driver.find_element_by_xpath("(//input[@type='text'])[6]").clear()
+        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[1]/div/input)").clear()
+        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[1]/div/input)").send_keys("4")
+        self.assertEqual("4", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
+        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[2]/div/input)").clear()
 
         # CONNECT-720
-        self.assertNotEqual("", driver.find_element_by_xpath("(//input[@type='text'])[13]").get_attribute("value"))
-        self.assertEqual("4", driver.find_element_by_xpath("(//input[@type='text'])[13]").get_attribute("value"))
+        self.assertNotEqual("", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
+        self.assertEqual("4", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
 
-        driver.find_element_by_xpath("(//input[@type='text'])[6]").send_keys("2")
-        self.assertEqual("5", driver.find_element_by_xpath("(//input[@type='text'])[13]").get_attribute("value"))
+        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[2]/div/input)").send_keys("2")
+        self.assertEqual("5", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
 
 
 
@@ -336,15 +336,15 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
         WebDriverWait(driver, 4).until(
             EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
         self.assertEqual("Berechnungshilfe", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
-        self.assertEqual("0", driver.find_element_by_xpath("(//input[@type='text'])[13]").get_attribute("value"))
-        self.assertEqual("0", driver.find_element_by_xpath("(//input[@type='text'])[5]").get_attribute("value"))
-        self.assertEqual("0", driver.find_element_by_xpath("(//input[@type='text'])[6]").get_attribute("value"))
-        driver.find_element_by_xpath("(//input[@type='text'])[5]").clear()
-        driver.find_element_by_xpath("(//input[@type='text'])[5]").send_keys("4")
-        self.assertEqual("4", driver.find_element_by_xpath("(//input[@type='text'])[13]").get_attribute("value"))
-        driver.find_element_by_xpath("(//input[@type='text'])[6]").clear()
-        driver.find_element_by_xpath("(//input[@type='text'])[6]").send_keys("2")
-        self.assertEqual("5", driver.find_element_by_xpath("(//input[@type='text'])[13]").get_attribute("value"))
+        self.assertEqual("0", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
+        self.assertEqual("0", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[1]/div/input)").get_attribute("value"))
+        self.assertEqual("0", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[2]/div/input)").get_attribute("value"))
+        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[1]/div/input)").clear()
+        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[1]/div/input)").send_keys("4")
+        self.assertEqual("4", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
+        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[2]/div/input)").clear()
+        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[2]/div/input)").send_keys("2")
+        self.assertEqual("5", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
 
         # -- Ubernamen
         self.check_and_click_element_by_xpath(Helper.ERGANZUNGEN_POPUP_OK_BUTTON_XPATH)
@@ -357,12 +357,12 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
         WebDriverWait(driver, 4).until(
             EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
         self.assertEqual("Berechnungshilfe", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
-        driver.find_element_by_xpath("(//input[@type='text'])[5]").clear()
-        driver.find_element_by_xpath("(//input[@type='text'])[5]").send_keys("6")
-        self.assertEqual("6", driver.find_element_by_xpath("(//input[@type='text'])[13]").get_attribute("value"))
-        driver.find_element_by_xpath("(//input[@type='text'])[6]").clear()
-        driver.find_element_by_xpath("(//input[@type='text'])[6]").send_keys("2")
-        self.assertEqual("7", driver.find_element_by_xpath("(//input[@type='text'])[13]").get_attribute("value"))
+        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[1]/div/input)").clear()
+        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[1]/div/input)").send_keys("6")
+        self.assertEqual("6", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
+        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[2]/div/input)").clear()
+        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[2]/div/input)").send_keys("2")
+        self.assertEqual("7", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
 
         # -- Abbrechen
         self.check_and_click_element_by_xpath("//div[3]/div/div/button")
