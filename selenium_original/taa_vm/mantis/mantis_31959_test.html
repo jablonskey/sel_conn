@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>mantis_31959_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">mantis_31959_test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/vermittler/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>test@ks</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Aa111111</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/form/button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<!---- Landwirte-->
+<tr>
+	<td>click</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=mitgliedschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[2])</td>
+	<td>Privat</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[3])</td>
+	<td>Vorsorge</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[4])</td>
+	<td>Beruf</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[5])</td>
+	<td>Verkehr</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[6])</td>
+	<td>SSR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[7])</td>
+	<td>Wohnen</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[8])</td>
+	<td>SB</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[9])</td>
+	<td>Jahres-beitrag</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Zurück</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[1])</td>
+	<td>Privatkunden</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='zielgruppe'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=mitgliedschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[2])</td>
+	<td>Privat</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[3])</td>
+	<td>Vorsorge</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[4])</td>
+	<td>Beruf</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[5])</td>
+	<td>Verkehr</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[6])</td>
+	<td>SSR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[7])</td>
+	<td>Wohnen</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[8])</td>
+	<td>SB</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[9])</td>
+	<td>Jahres-beitrag</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Zurück</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[1])</td>
+	<td>Privatkunden</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='zielgruppe'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=mitgliedschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[2])</td>
+	<td>Privat</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[3])</td>
+	<td>Vorsorge</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[4])</td>
+	<td>Beruf</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[5])</td>
+	<td>Verkehr</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[6])</td>
+	<td>SSR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[7])</td>
+	<td>Wohnen</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[8])</td>
+	<td>SB</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[9])</td>
+	<td>Jahres-beitrag</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Zurück</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[1])</td>
+	<td>Privatkunden</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='zielgruppe'])[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=mitgliedschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[2])</td>
+	<td>Privat</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[3])</td>
+	<td>Vorsorge</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[4])</td>
+	<td>Beruf</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[5])</td>
+	<td>Verkehr</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[6])</td>
+	<td>SSR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[7])</td>
+	<td>Wohnen</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[8])</td>
+	<td>SB</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[9])</td>
+	<td>Jahres-beitrag</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Zurück</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[1])</td>
+	<td>Privatkunden</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='zielgruppe'])[5]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=mitgliedschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[2])</td>
+	<td>Privat</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[3])</td>
+	<td>Versicherungen</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[4])</td>
+	<td>Vorsorge</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[5])</td>
+	<td>Firma</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[6])</td>
+	<td>Beruf</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[7])</td>
+	<td>Verkehr</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[8])</td>
+	<td>SSR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[9])</td>
+	<td>Wohnen/Gewerbe</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[10])</td>
+	<td>Hilfsgeschäfte</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[11])</td>
+	<td>SB</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[12])</td>
+	<td>Jahres-beitrag</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Zurück</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[1])</td>
+	<td>Privatkunden</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='zielgruppe'])[6]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=mitgliedschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[2])</td>
+	<td>Privat</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[3])</td>
+	<td>Versicherungen</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[4])</td>
+	<td>Vorsorge</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[5])</td>
+	<td>Beruf</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[6])</td>
+	<td>Verkehr</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[7])</td>
+	<td>SSR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[8])</td>
+	<td>Wohnen/Gewerbe</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[9])</td>
+	<td>Praxis</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[10])</td>
+	<td>Regress</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[11])</td>
+	<td>Hilfsgeschäfte</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[12])</td>
+	<td>SB</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[13])</td>
+	<td>Jahres-beitrag</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Zurück</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[1])</td>
+	<td>Privatkunden</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='zielgruppe'])[7]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=mitgliedschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[2])</td>
+	<td>Privat</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[3])</td>
+	<td>Versicherungen</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[4])</td>
+	<td>Vorsorge</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[5])</td>
+	<td>Kanzlei</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[6])</td>
+	<td>Beruf</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[7])</td>
+	<td>Verkehr</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[8])</td>
+	<td>SSR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[9])</td>
+	<td>Wohnen/Gewerbe</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[10])</td>
+	<td>Regress</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[11])</td>
+	<td>Hilfsgeschäfte</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[12])</td>
+	<td>SB</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[13])</td>
+	<td>Jahres-beitrag</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Zurück</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div[1]/div/div[1])</td>
+	<td>Privatkunden</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='zielgruppe'])[8]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=mitgliedschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[2])</td>
+	<td>Privat</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[3])</td>
+	<td>Vorsorge</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[4])</td>
+	<td>Betrieb</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[5])</td>
+	<td>Immobilien</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[6])</td>
+	<td>Beruf</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[7])</td>
+	<td>Verkehr</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[8])</td>
+	<td>SSR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[9])</td>
+	<td>Wohnen/Gewerbe</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[10])</td>
+	<td>SB</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/thead/tr/th[11])</td>
+	<td>Jahres-beitrag</td>
+</tr>
+</tbody></table>
+</body>
+</html>

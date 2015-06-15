@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>tarifdaten_radios_checkboxes</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tarifdaten_radios_checkboxes</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/vermittler/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>test@ks</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Aa111111</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/form/button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>assertLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//tarifdaten</td>
+	<td></td>
+</tr>
+<!---- mitgliedschaft radio-->
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=mitgliedschaft</td>
+	<td></td>
+</tr>
+<!---- rechtschutz radio-->
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<!---- rechtschutz checkbox-->
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<!---- schtuzbrief radio-->
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=schutzbrief</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>name=schutzbrief</td>
+	<td></td>
+</tr>
+<!---- schutzbrief checkbox-->
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=schutzbrief</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<!---- no Ergänzungen section-->
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1])</td>
+	<td>Ergänzungen </td>
+</tr>
+<!---- zahlweise jahrlich radio-->
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=zahlweise</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>name=zahlweise</td>
+	<td></td>
+</tr>
+<!---- click 1st Schutzbrief-->
+<tr>
+	<td>click</td>
+	<td>name=schutzbrief</td>
+	<td></td>
+</tr>
+<!---- schtuzbrief radio-->
+<tr>
+	<td>verifyChecked</td>
+	<td>name=schutzbrief</td>
+	<td></td>
+</tr>
+<!---- schtuzbrief checkbox-->
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>name=zahlweise</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>name=schutzbrief</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>name=zahlweise</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>name=schutzbrief</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>name=schutzbrief</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<!---- click JURPRIVAT-->
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[1]/td[8]/select)</td>
+	<td>400 EUR fallend</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td>Ermittlung der Selbstbeteiligung (Start-SB) für den JURPRIVAT</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label)</td>
+	<td>4 und mehr schadenfreie Jahre = Start-SB 0,- EUR</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[8]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[8]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[8]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementNotPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<!---- schtuzbrief checkbox-->
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/div/div[2]/table/tbody/tr[1]/td[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/div/div[1])</td>
+	<td>Schutzbrief</td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/div/div[2]/table/tbody/tr[1]/td[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<!---- schtuzbrief radio-->
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=schutzbrief</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>name=schutzbrief</td>
+	<td></td>
+</tr>
+<!---- Erganzungen radio-->
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[1]/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1])</td>
+	<td>Ergänzungen</td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[1]/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<!---- click 1st Erganzungen-->
+<tr>
+	<td>click</td>
+	<td>link=Daten erfassen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td>Produktdaten</td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[1]/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[1]/div/div[1]/div/label)</td>
+	<td>erganzungenLabel</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[1]/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[1]/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementNotPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextNotPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td>Produktdaten</td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[1]/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[2]/div/div)</td>
+	<td>${erganzungenLabel}</td>
+</tr>
+<!---- UNclick 1st Erganzungen-->
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[1]/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[1]/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<!---- UNclick JURPRIVAT-->
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1])</td>
+	<td>Schutzbrief</td>
+</tr>
+</tbody></table>
+</body>
+</html>

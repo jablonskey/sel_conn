@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>mantis_31990_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">mantis_31990_test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/vermittler/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>test@ks</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Aa111111</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/form/button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=zahlweise</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>name=zahlweise</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])</td>
+	<td>Antragstellerdaten</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@name='eheLebensPartner'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(//input[@name='eheLebensPartner'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/form[1]/div/div/div[1]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/form[1]/div/div/div[1]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=vorversicherung</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>name=vorversicherung</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=anrede</td>
+	<td>index=1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>NameTEST</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=vorname</td>
+	<td>VornameTEST</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=strasse</td>
+	<td>StrasseTEST</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plz</td>
+	<td>12345</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ort</td>
+	<td>OrtTEST</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=taetigkeit</td>
+	<td>index=1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=berufsgruppe</td>
+	<td>index=1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=iban</td>
+	<td>1111111111111111111111</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=bic</td>
+	<td>11111111</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='vorversicherung'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

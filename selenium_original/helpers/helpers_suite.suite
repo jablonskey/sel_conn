@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>helpers_suite</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">helpers_suite</td></tr>
+</thead><tbody>
+<tr>
+	<td>select</td>
+	<td>id=anrede</td>
+	<td>Herr</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=titel</td>
+	<td>Dr.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>TESTName</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=vorname</td>
+	<td>TESTVorname</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=strasse</td>
+	<td>TESTStrasse</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=hausnummer</td>
+	<td>12a</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plz</td>
+	<td>12345</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ort</td>
+	<td>TESTOrt</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=geburtsdatum</td>
+	<td>22.01.1970</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=taetigkeit</td>
+	<td>nichtselbstständig</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=berufsgruppe</td>
+	<td>Berufs-/Lizenzsportler / -trainer</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

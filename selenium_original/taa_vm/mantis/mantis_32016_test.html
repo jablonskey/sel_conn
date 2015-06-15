@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>mantis_32016_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">mantis_32016_test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/vermittler/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>test@ks</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Aa111111</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/form/button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<!---- Landwirte-->
+<tr>
+	<td>click</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=mitgliedschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[1]/td[1]/div/label)</td>
+	<td>JURPRIVAT</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[1]/td[8]/select)</td>
+	<td>ohne SB</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[1])</td>
+	<td>Ergänzungen</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@type='checkbox'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@type='checkbox'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@type='checkbox'])[9]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@type='checkbox'])[9]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementNotPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[1]/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(//input[@type='checkbox'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[1]/div/div[1]/div/label)</td>
+	<td>Kleinunternehmer-RS</td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[1]/div/div[1]/div/label)</td>
+	<td>erganz1</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[3]/div/div/select)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>xpath=(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[3]/div/div/select)</td>
+	<td>250 EUR</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[4]/div/div)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[4]/div/div)</td>
+	<td>25,00 €</td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[4]/div/div)</td>
+	<td>erganz1btr</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@type='checkbox'])[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@type='checkbox'])[9]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@type='checkbox'])[9]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementNotPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[1]/div/div[1]/div/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(//input[@type='checkbox'])[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[2]/td[2]/div/div)</td>
+	<td>Kleinunternehmer-Inkasso-RS</td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[2]/td[2]/div/div)</td>
+	<td>erganz2</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[3]/div/div/select)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>xpath=(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[1]/td[3]/div/div/select)</td>
+	<td>250 EUR</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[2]/td[4]/div/div)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[2]/td[4]/div/div)</td>
+	<td>73,00 €</td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table/tbody/tr[2]/td[4]/div/div)</td>
+	<td>erganz2btr</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])</td>
+	<td>Produktauswahl</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[2]/div/div[2]/div[1])</td>
+	<td>KS-Mitgliedschaft</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[2]/div/div[3]/div[1])</td>
+	<td>JURPRIVAT</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[2]/div/div[4]/div[1])</td>
+	<td>${erganz1}</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[2]/div/div[5]/div[1])</td>
+	<td>${erganz2}</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[2]/div/div[2]/div[3])</td>
+	<td>27,00 €</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[2]/div/div[3]/div[3])</td>
+	<td>404,00 €</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[2]/div/div[4]/div[3])</td>
+	<td>${erganz1btr}</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[2]/div/div[5]/div[3])</td>
+	<td>${erganz2btr}</td>
+</tr>
+</tbody></table>
+</body>
+</html>

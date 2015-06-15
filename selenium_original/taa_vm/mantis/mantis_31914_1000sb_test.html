@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>mantis_31914_1000sb_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">mantis_31914_1000sb_test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/vermittler/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>test@ks</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Aa111111</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/form/button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<!---- Landwirte-->
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[2]/div/div[2]/div/div/label</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[2]/div/div[2]/div/div/label</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=mitgliedschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>1.000 EUR fallend</td>
+</tr>
+<tr>
+	<td>verifySelectOptions</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>250 EUR,1.000 EUR fallend</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//tr[5]/td/div/label</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td>Ermittlung der Selbstbeteiligung (Start-SB)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[2])</td>
+	<td>Anrechnung der schadenfreien Jahre bei der Vorversicherung bis zum unmittelbaren Wechsel zu KS/AUXILIA (Mindestumfang der Vorversicherung mindestens § 28 ARB Spezial-Rechtsschutz (oder vergleichbar) / §27 ARB Landwirtschafts- und Verkehrs-Rechtsschutz</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label)</td>
+	<td>5 und mehr schadenfreie Jahre = Start-SB 250,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[5]/label)</td>
+	<td>bis 4 schadenfreie Jahre = Start-SB 400,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[6]/label)</td>
+	<td>bis 3 schadenfreie Jahre = Start-SB 550,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[7]/label)</td>
+	<td>bis 2 schadenfreie Jahre = Start-SB 700,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[8]/label)</td>
+	<td>keine schadenfreien Jahre / keine Vorversicherung = Start-SB 1.000,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label)</td>
+	<td>Hiermit bestätige ich (wir), dass während der oben angegebenen Zeit vor dem beantragten Versicherungsbeginn weder vom Versicherungsnehmer, einer mitversicherten Person oder eines Bevollmächtigten ein Schaden gemeldet wurde und keine Schadenzahlungen zugunsten der genannten Personen von den Vorversicherern geleistet wurden.</td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotVisible</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotSelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>1.000 EUR fallend</td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>250 EUR fallend</td>
+</tr>
+<tr>
+	<td>verifySelectOptions</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>250 EUR,250 EUR fallend</td>
+</tr>
+<!--###-->
+<tr>
+	<td>click</td>
+	<td>//tr[5]/td/div/label</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td>Ermittlung der Selbstbeteiligung (Start-SB)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[2])</td>
+	<td>Anrechnung der schadenfreien Jahre bei der Vorversicherung bis zum unmittelbaren Wechsel zu KS/AUXILIA (Mindestumfang der Vorversicherung mindestens § 28 ARB Spezial-Rechtsschutz (oder vergleichbar) / §27 ARB Landwirtschafts- und Verkehrs-Rechtsschutz</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label)</td>
+	<td>5 und mehr schadenfreie Jahre = Start-SB 250,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[5]/label)</td>
+	<td>bis 4 schadenfreie Jahre = Start-SB 400,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[6]/label)</td>
+	<td>bis 3 schadenfreie Jahre = Start-SB 550,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[7]/label)</td>
+	<td>bis 2 schadenfreie Jahre = Start-SB 700,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[8]/label)</td>
+	<td>keine schadenfreien Jahre / keine Vorversicherung = Start-SB 1.000,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label)</td>
+	<td>Hiermit bestätige ich (wir), dass während der oben angegebenen Zeit vor dem beantragten Versicherungsbeginn weder vom Versicherungsnehmer, einer mitversicherten Person oder eines Bevollmächtigten ein Schaden gemeldet wurde und keine Schadenzahlungen zugunsten der genannten Personen von den Vorversicherern geleistet wurden.</td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[5]/label)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[5]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotVisible</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotSelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>250 EUR fallend</td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>400 EUR fallend</td>
+</tr>
+<tr>
+	<td>verifySelectOptions</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>250 EUR,400 EUR fallend</td>
+</tr>
+<!--###-->
+<tr>
+	<td>click</td>
+	<td>//tr[5]/td/div/label</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td>Ermittlung der Selbstbeteiligung (Start-SB)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[2])</td>
+	<td>Anrechnung der schadenfreien Jahre bei der Vorversicherung bis zum unmittelbaren Wechsel zu KS/AUXILIA (Mindestumfang der Vorversicherung mindestens § 28 ARB Spezial-Rechtsschutz (oder vergleichbar) / §27 ARB Landwirtschafts- und Verkehrs-Rechtsschutz</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label)</td>
+	<td>5 und mehr schadenfreie Jahre = Start-SB 250,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[5]/label)</td>
+	<td>bis 4 schadenfreie Jahre = Start-SB 400,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[6]/label)</td>
+	<td>bis 3 schadenfreie Jahre = Start-SB 550,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[7]/label)</td>
+	<td>bis 2 schadenfreie Jahre = Start-SB 700,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[8]/label)</td>
+	<td>keine schadenfreien Jahre / keine Vorversicherung = Start-SB 1.000,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label)</td>
+	<td>Hiermit bestätige ich (wir), dass während der oben angegebenen Zeit vor dem beantragten Versicherungsbeginn weder vom Versicherungsnehmer, einer mitversicherten Person oder eines Bevollmächtigten ein Schaden gemeldet wurde und keine Schadenzahlungen zugunsten der genannten Personen von den Vorversicherern geleistet wurden.</td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[5]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[6]/label)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[6]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotVisible</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotSelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>400 EUR fallend</td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>550 EUR fallend</td>
+</tr>
+<tr>
+	<td>verifySelectOptions</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>250 EUR,550 EUR fallend</td>
+</tr>
+<!--###-->
+<tr>
+	<td>click</td>
+	<td>//tr[5]/td/div/label</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td>Ermittlung der Selbstbeteiligung (Start-SB)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[2])</td>
+	<td>Anrechnung der schadenfreien Jahre bei der Vorversicherung bis zum unmittelbaren Wechsel zu KS/AUXILIA (Mindestumfang der Vorversicherung mindestens § 28 ARB Spezial-Rechtsschutz (oder vergleichbar) / §27 ARB Landwirtschafts- und Verkehrs-Rechtsschutz</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label)</td>
+	<td>5 und mehr schadenfreie Jahre = Start-SB 250,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[5]/label)</td>
+	<td>bis 4 schadenfreie Jahre = Start-SB 400,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[6]/label)</td>
+	<td>bis 3 schadenfreie Jahre = Start-SB 550,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[7]/label)</td>
+	<td>bis 2 schadenfreie Jahre = Start-SB 700,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[8]/label)</td>
+	<td>keine schadenfreien Jahre / keine Vorversicherung = Start-SB 1.000,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label)</td>
+	<td>Hiermit bestätige ich (wir), dass während der oben angegebenen Zeit vor dem beantragten Versicherungsbeginn weder vom Versicherungsnehmer, einer mitversicherten Person oder eines Bevollmächtigten ein Schaden gemeldet wurde und keine Schadenzahlungen zugunsten der genannten Personen von den Vorversicherern geleistet wurden.</td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[6]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[7]/label)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[7]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotVisible</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotSelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>550 EUR fallend</td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>700 EUR fallend</td>
+</tr>
+<tr>
+	<td>verifySelectOptions</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>250 EUR,700 EUR fallend</td>
+</tr>
+<!--###-->
+<tr>
+	<td>click</td>
+	<td>//tr[5]/td/div/label</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td>Ermittlung der Selbstbeteiligung (Start-SB)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[2])</td>
+	<td>Anrechnung der schadenfreien Jahre bei der Vorversicherung bis zum unmittelbaren Wechsel zu KS/AUXILIA (Mindestumfang der Vorversicherung mindestens § 28 ARB Spezial-Rechtsschutz (oder vergleichbar) / §27 ARB Landwirtschafts- und Verkehrs-Rechtsschutz</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[4]/label)</td>
+	<td>5 und mehr schadenfreie Jahre = Start-SB 250,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[5]/label)</td>
+	<td>bis 4 schadenfreie Jahre = Start-SB 400,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[6]/label)</td>
+	<td>bis 3 schadenfreie Jahre = Start-SB 550,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[7]/label)</td>
+	<td>bis 2 schadenfreie Jahre = Start-SB 700,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[8]/label)</td>
+	<td>keine schadenfreien Jahre / keine Vorversicherung = Start-SB 1.000,- EUR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label)</td>
+	<td>Hiermit bestätige ich (wir), dass während der oben angegebenen Zeit vor dem beantragten Versicherungsbeginn weder vom Versicherungsnehmer, einer mitversicherten Person oder eines Bevollmächtigten ein Schaden gemeldet wurde und keine Schadenzahlungen zugunsten der genannten Personen von den Vorversicherern geleistet wurden.</td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[7]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[8]/label)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[8]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[2]/div[9]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotVisible</td>
+	<td>xpath=(/html/body/div[3]/div/div/div[1]/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotSelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>700 EUR fallend</td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>1.000 EUR fallend</td>
+</tr>
+<tr>
+	<td>verifySelectOptions</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[5]/td[11]/select)</td>
+	<td>250 EUR,1.000 EUR fallend</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

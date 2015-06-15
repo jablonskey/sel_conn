@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>antragsteller_validation_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">antragsteller_validation_test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>ng/#/vermittler/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>test@ks</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Aa111111</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/form/button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>assertLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//tarifdaten</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])</td>
+	<td>Antragstellerdaten</td>
+</tr>
+<!--### Lebensdaten ###-->
+<tr>
+	<td>click</td>
+	<td>name=eheLebensPartner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>id=lebenspartner-anrede</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=abwAnschrift</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>id=lebenspartner-strasse</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form/div[1]/div[1]/select)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifySelectOptions</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form/div[1]/div[1]/select)</td>
+	<td>,Herr,Frau</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-anrede@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form/div[1]/div[1]/select)</td>
+	<td>Herr</td>
+</tr>
+<tr>
+	<td>verifySelectOptions</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form/div[1]/div[1]/select)</td>
+	<td>Herr,Frau</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-anrede@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>id=lebenspartner-titel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifySelectOptions</td>
+	<td>id=lebenspartner-titel</td>
+	<td>,Dr.,Prof.,Prof. Dr.</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=lebenspartner-titel</td>
+	<td>Dr.</td>
+</tr>
+<tr>
+	<td>verifySelectOptions</td>
+	<td>id=lebenspartner-titel</td>
+	<td>,Dr.,Prof.,Prof. Dr.</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=lebenspartner-titel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifySelectOptions</td>
+	<td>id=lebenspartner-titel</td>
+	<td>,Dr.,Prof.,Prof. Dr.</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-titel@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Name INVALID-->
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-name@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-name</td>
+	<td>.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-name@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-name</td>
+	<td>a</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-name@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-name</td>
+	<td>-</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-name@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-name</td>
+	<td>ab123</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-name@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-name</td>
+	<td>ab-.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-name@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Name VALID-->
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-name</td>
+	<td>a-</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-name@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-name</td>
+	<td>A-</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-name@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-name</td>
+	<td>a b</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-name@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-name</td>
+	<td>Bü</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-name@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-name</td>
+	<td>bü</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-name@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Vorname INVALID-->
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-vorname@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-vorname</td>
+	<td>.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-vorname@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-vorname</td>
+	<td>a</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-vorname@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-vorname</td>
+	<td>-</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-vorname@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-vorname</td>
+	<td>bü</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-vorname@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-vorname</td>
+	<td>ab123</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-vorname@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-vorname</td>
+	<td>Ab123</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-vorname@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-vorname</td>
+	<td>ab-</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-vorname@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-vorname</td>
+	<td>a b</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-vorname@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Vorname VALID-->
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-vorname</td>
+	<td>Bü</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-vorname@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-vorname</td>
+	<td>A-</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-vorname@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Geburts INVALID-->
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-geburtsdatum@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Geburts VALID-->
+<!-- #TODO-->
+<!---- Taetigkeit INVALID-->
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-taetigkeit@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Taetigkeit VALID-->
+<tr>
+	<td>verifySelectOptions</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form/div[2]/div[2]/select)</td>
+	<td>,nichtselbstständig,selbstständig / freiberuflich,nicht berufstätig</td>
+</tr>
+<!-- #TODO-->
+<!---- Berufsgruppe INVALID-->
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-berufsgruppe@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>verifySelectOptions</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form/div[2]/div[3]/select)</td>
+	<td>,Berufs-/Lizenzsportler / -trainer,Schauspieler/Moderator (Film\, TV),Wertpapierhändler\, Börsenmakler,Investmentbanker,Vorstand / Aufsichtsrat börsennotierter AG,Sonstige Berufsgruppe</td>
+</tr>
+<!---- Berufsgruppe VALID-->
+<!-- #TODO-->
+<!---- Strasse INVALID-->
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>a</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>-</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>bü</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>ab123</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>Ab123</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>ab-</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>a b</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>B*b</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Strasse VALID-->
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>Bü</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>B-</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>B.</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>B a</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>B/</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-strasse</td>
+	<td>B/-.</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-strasse@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Hausnr INVALID-->
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-hausnummer@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-hausnummer</td>
+	<td>.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-hausnummer@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-hausnummer</td>
+	<td>12.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-hausnummer@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-hausnummer</td>
+	<td>.12a</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-hausnummer@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Hausnr VALID-->
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-hausnummer</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-hausnummer@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-hausnummer</td>
+	<td>B-</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-hausnummer@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-hausnummer</td>
+	<td>12a</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-hausnummer@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-hausnummer</td>
+	<td>12 a</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-hausnummer@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-hausnummer</td>
+	<td>12A</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-hausnummer@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-hausnummer</td>
+	<td>12-A</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-hausnummer@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- PLZ INVALID-->
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-plz@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-plz</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-plz@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-plz</td>
+	<td>1234a</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-plz@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-plz</td>
+	<td>1234*</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-plz@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-plz</td>
+	<td>aaaaa</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-plz@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-plz</td>
+	<td>123456</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-plz@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- PLZ VALID-->
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-plz</td>
+	<td>12345</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-plz@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Ort INVALID-->
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>a</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>-</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>bü</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>ab123</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>Ab123</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>ab-</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>a b</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>B*b</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Ort VALID-->
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>Bü</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>B-</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>B.</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>B a</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>B/</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lebenspartner-ort</td>
+	<td>B/-.</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=lebenspartner-ort@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+</tbody></table>
+</body>
+</html>

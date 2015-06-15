@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>default_antragsteller_daten</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">default_antragsteller_daten</td></tr>
+</thead><tbody>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[2]/div/div/div/h4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[2]/div/div/div/h4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=anrede</td>
+	<td>Herr</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=titel</td>
+	<td>Dr.</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>TestName_</td>
+	<td>name</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;.split(&quot;&quot;).filter(function(e, i, a) { return Math.random() &gt; 0.8 }).join(&quot;&quot;)}</td>
+	<td>random</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>${random}</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;.split(&quot;&quot;).filter(function(e, i, a) { return Math.random() &gt; 0.8 }).join(&quot;&quot;)}</td>
+	<td>random</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=vorname</td>
+	<td>${random}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=strasse</td>
+	<td>Hagenstr.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=hausnummer</td>
+	<td>13</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plz</td>
+	<td>30161</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ort</td>
+	<td>Hannover</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=geburtsdatum</td>
+	<td>22.01.1970</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=taetigkeit</td>
+	<td>nichtselbstständig</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=berufsgruppe</td>
+	<td>Berufs-/Lizenzsportler / -trainer</td>
+</tr>
+</tbody></table>
+</body>
+</html>

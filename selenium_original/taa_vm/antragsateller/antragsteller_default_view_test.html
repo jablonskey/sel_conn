@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>antragsteller_default_view_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">antragsteller_default_view_test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>ng/#/vermittler/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>test@ks</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Aa111111</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/form/button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>assertLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//tarifdaten</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])</td>
+	<td>Antragstellerdaten</td>
+</tr>
+<!---- Antragstellerdaten-->
+<tr>
+	<td>verifyVisible</td>
+	<td>id=anrede</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=titel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=vorname</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=strasse</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=hausnummer</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=plz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=ort</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=geburtsdatum</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=taetigkeit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=berufsgruppe</td>
+	<td></td>
+</tr>
+<!----Kontaktdaten-->
+<tr>
+	<td>verifyVisible</td>
+	<td>id=telefon</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=mobil</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=fax</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=email</td>
+	<td></td>
+</tr>
+<!---- Ehe-oder Lebenspartner-->
+<tr>
+	<td>assertChecked</td>
+	<td>xpath=(//input[@name='eheLebensPartner'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotVisible</td>
+	<td>id=lebenspartner-anrede</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form/div[3]/div/div[2]/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotVisible</td>
+	<td>id=lebenspartner-strasse</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=eheLebensPartner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>id=lebenspartner-anrede</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=lebenspartner-titel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=lebenspartner-name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=lebenspartner-vorname</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=lebenspartner-geburtsdatum</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=lebenspartner-taetigkeit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=lebenspartner-berufsgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form/div[3]/div/div[2]/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=abwAnschrift</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>id=lebenspartner-strasse</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=lebenspartner-hausnummer</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=lebenspartner-plz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=lebenspartner-ort</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form/div[3]/div/div[2]/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotVisible</td>
+	<td>id=lebenspartner-strasse</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='eheLebensPartner'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotVisible</td>
+	<td>id=lebenspartner-anrede</td>
+	<td></td>
+</tr>
+<!---- Zahlungsdaten-->
+<tr>
+	<td>verifyNotChecked</td>
+	<td>name=zahlungsart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div/div/div[2]/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotChecked</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/form[1]/div/div/div[2]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/form[1]/div/div/div[2]/label/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotVisible</td>
+	<td>id=iban</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotVisible</td>
+	<td>id=bic</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/form[2]/div[1]/div[3]/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=zahlungsart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>name=zahlungsart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=iban</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=bic</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/form[2]/div[1]/div[3]/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotEditable</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/form[1]/div[1]/div[3]/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>name=sonstigeKontoinhaber</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotVisible</td>
+	<td>id=kontoinhaber-anrede</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/form[2]/div[2]/div/div[2]/input)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>id=kontoinhaber-anrede</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=kontoinhaber-titel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=kontoinhaber-name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=kontoinhaber-vorname</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=kontoinhaber-strasse</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=kontoinhaber-hausnummer</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=kontoinhaber-ort</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=sonstigeKontoinhaber</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotVisible</td>
+	<td>id=kontoinhaber-anrede</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='zahlungsart'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotVisible</td>
+	<td>id=iban</td>
+	<td></td>
+</tr>
+<!---- Vorversicherung-->
+<tr>
+	<td>verifyChecked</td>
+	<td>name=vorversicherung</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=gesellschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=versicherungsscheinnummer</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=gekundig</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=beginn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=ende</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=versicherungsnehmer</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=versicherungsumfang</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='vorversicherung'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotVisible</td>
+	<td>id=gesellschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[1]/ng-include/div/div/span)</td>
+	<td>Bitte ergänzen bzw. korrigieren Sie die fehlenden Angaben.</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td></td>
+	<td>* = Pflichtfeld</td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>mantis_32043_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">mantis_32043_test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/vermittler/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>test@ks</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Aa111111</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/form/button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/table/tbody/tr[1]/td[1]/span[1]/a)</td>
+	<td>regexp:*</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/table/tbody/tr[1]/td[1]/span[1]/a)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div/div[1]/ul/li[1]/a)</td>
+	<td>regexp:*</td>
+</tr>
+<tr>
+	<td>waitForElementNotPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div/div[1]/ul/li[5]/a)</td>
+	<td>regexp:*</td>
+</tr>
+<tr>
+	<td>waitForElementNotPresent</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div/div[3]/div[5]/button)</td>
+	<td>regexp:*</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

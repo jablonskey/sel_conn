@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>zielgruppe_no_forward_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">zielgruppe_no_forward_test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/vermittler/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>test@ks</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Aa111111</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/form/button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Tarifdaten</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//tarifdaten</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Antragsteller</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//antragsteller</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Zusatzdaten</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//zusatzdaten</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Antrag</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//antrag</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Bestätigung</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//tarifdaten</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Tarifdaten</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//tarifdaten</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//zielgruppe</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

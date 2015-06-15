@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>antragsteller_validation_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">antragsteller_validation_test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/ng/#/vermittler/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>test@ks</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Aa111111</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/form/button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>assertLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//tarifdaten</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])</td>
+	<td>Antragstellerdaten</td>
+</tr>
+<!--### Kontaktdaten ###-->
+<!---- Telefon INVALID-->
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=telefon@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefon</td>
+	<td>.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=telefon@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefon</td>
+	<td>*</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=telefon@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Telefon VALID-->
+<tr>
+	<td>type</td>
+	<td>id=telefon</td>
+	<td>-</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=telefon@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefon</td>
+	<td>/</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=telefon@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefon</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=telefon@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefon</td>
+	<td>123/-</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=telefon@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefon</td>
+	<td>123-123</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=telefon@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefon</td>
+	<td>123 123</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=telefon@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Mobil INVALID-->
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=mobil@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=mobil</td>
+	<td>.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=mobil@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=mobil</td>
+	<td>*</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=mobil@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Mobil VALID-->
+<tr>
+	<td>type</td>
+	<td>id=mobil</td>
+	<td>-</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=mobil@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=mobil</td>
+	<td>/</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=mobil@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=mobil</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=mobil@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=mobil</td>
+	<td>123/-</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=mobil@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=mobil</td>
+	<td>123-123</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=mobil@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=mobil</td>
+	<td>123 123</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=mobil@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Fax INVALID-->
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=fax@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fax</td>
+	<td>.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=fax@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fax</td>
+	<td>*</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=fax@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Fax VALID-->
+<tr>
+	<td>type</td>
+	<td>id=fax</td>
+	<td>-</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=fax@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fax</td>
+	<td>/</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=fax@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fax</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=fax@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fax</td>
+	<td>123/-</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=fax@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fax</td>
+	<td>123-123</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=fax@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fax</td>
+	<td>123 123</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=fax@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Email INVALID-->
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>*</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>add@</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>für@de</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>@</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>\@de</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>_sth_@domain_</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<!---- Email VALID-->
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>sth@de</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>_sth@de</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>_sth@domain.de</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>sth@domain.de</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>.@de</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>_@de</td>
+</tr>
+<tr>
+	<td>verifyNotAttribute</td>
+	<td>id=email@class</td>
+	<td>regexp:ng-invalid</td>
+</tr>
+</tbody></table>
+</body>
+</html>

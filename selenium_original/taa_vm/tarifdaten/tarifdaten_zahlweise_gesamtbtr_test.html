@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://ctest.lodz.ks-software.com/" />
+<title>tarifdaten_zahlweise_gesamtbtr_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tarifdaten_zahlweise_gesamtbtr_test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/vermittler/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>test@ks</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Aa111111</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/form/button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Rechner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>name=zielgruppe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Weiter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)</td>
+	<td>Bitte machen Sie die Angaben zu Ihrem Kunden.</td>
+</tr>
+<tr>
+	<td>assertLocation</td>
+	<td>https://ctest.lodz.ks-software.com/ng/#/taa//tarifdaten</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=mitgliedschaft</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=rechtschutz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>name=schutzbrief</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//td[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotText</td>
+	<td>//td[3]</td>
+	<td>regexp:0,00?</td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>//td[3]</td>
+	<td>ksmPrice</td>
+</tr>
+<tr>
+	<td>verifyChecked</td>
+	<td>name=zahlweise</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div/div/div[2]/div/div[2]/div/div/div/div/label</td>
+	<td>jährlich: ${ksmPrice}</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${ksmPrice}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>//div/div/div[2]/div/div[2]/div/div/div/div/label</td>
+	<td>jahrZahl</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${jahrZahl}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>//div[2]/div/label</td>
+	<td>halbZahl</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${halbZahl}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>//div[3]/div/label</td>
+	<td>vierZahl</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${vierZahl}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>//div[4]/div/label</td>
+	<td>monatZahl</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${monatZahl}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div/div/div[2]/div/div[3]/div/div</td>
+	<td>${jahrZahl}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='zahlweise'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div/div/div[2]/div/div[3]/div/div</td>
+	<td>${halbZahl}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='zahlweise'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div/div/div[2]/div/div[3]/div/div</td>
+	<td>${vierZahl}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='zahlweise'])[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div/div/div[2]/div/div[3]/div/div</td>
+	<td>${monatZahl}</td>
+</tr>
+</tbody></table>
+</body>
+</html>
