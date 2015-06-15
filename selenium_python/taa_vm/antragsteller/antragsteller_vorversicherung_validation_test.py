@@ -312,7 +312,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
         self.validate_element_by_id("beginn", "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
-            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "valid")
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "invalid")
 
         self.validate_element_by_id("ende", "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
@@ -435,7 +435,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
         self.validate_element_by_xpath(beginn2_xpath, "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
-            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "valid")
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "invalid")
         self.validate_element_by_xpath(ende2_xpath, "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
