@@ -14,6 +14,17 @@ from service.common_tasks import CommonTasks
 
 
 class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks):
+    VERSICHERUNG_1_MINUS_XPATH = (
+        "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[2]/div/div/div/a)")
+    VERSICHERUNG_2_PLUS_XPATH = (
+        "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[3]/div/a)")
+    VERSICHERUNG_2_MINUS_XPATH = (
+        "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[3]/div/div/div/a)")
+    VERSICHERUNG_3_PLUS_XPATH = (
+        "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/div/a)")
+    VERSICHERUNG_3_MINUS_XPATH = (
+        "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/div/div/div/a)")
+
     def setUp(self):
         profile = webdriver.FirefoxProfile()
         profile.native_events_enabled = False
@@ -26,6 +37,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
 
 
     def test_antragsteller_vorversicherung_validation(self):
+
         driver = self.driver
 
         self.login_to_connect_vermittler(self.base_url)
@@ -363,8 +375,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
         # region vorversicherung plusminus
 
         # add vers2
-        self.check_and_click_element_by_xpath(
-            "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[3]/a)")
+        self.check_and_click_element_by_xpath(self.VERSICHERUNG_2_PLUS_XPATH)
 
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
             (By.XPATH,
@@ -456,13 +467,12 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
         # endregion
 
         # WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
-        #     (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/a)")))
+        # (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/a)")))
         # self.highlight(driver.find_element_by_xpath(
-        #     "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/a)"))
+        # "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/a)"))
 
         # plus vers3
-        self.check_and_click_element_by_xpath(
-            "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/a)")
+        self.check_and_click_element_by_xpath(self.VERSICHERUNG_3_PLUS_XPATH)
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
             (By.XPATH,
              "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/div/form/div[2]/div[2]/input)")))
@@ -471,8 +481,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
             "vers3_umfang")
 
         # minus vers3
-        self.check_and_click_element_by_xpath(
-            "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/div/div/div/a)")
+        self.check_and_click_element_by_xpath(self.VERSICHERUNG_3_MINUS_XPATH)
 
         try:
             self.assertEqual(driver.find_element_by_xpath(
@@ -485,8 +494,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
                 "value") + "\nexpected:" + vers2_umfang)
 
         # plus vers3
-        self.check_and_click_element_by_xpath(
-            "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/a)")
+        self.check_and_click_element_by_xpath(self.VERSICHERUNG_3_PLUS_XPATH)
 
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
             (By.XPATH,
@@ -506,8 +514,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
             "vers3_umfang")
 
         # minus vers2 / vers3 goes to 2nd place
-        self.check_and_click_element_by_xpath(
-            "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[3]/div/div/div/a)")
+        self.check_and_click_element_by_xpath(self.VERSICHERUNG_2_MINUS_XPATH)
         WebDriverWait(driver, 10).until(EC.invisibility_of_element_located(
             (By.XPATH,
              "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/div/form/div[2]/div[2]/input)")))
@@ -522,8 +529,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
                 "value") + "\nexpected:" + "vers3_umfang")
 
         # minus vers1 / vers3 goes to 1st place
-        self.check_and_click_element_by_xpath(
-            "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[2]/div/div/div/a)")
+        self.check_and_click_element_by_xpath(self.VERSICHERUNG_1_MINUS_XPATH)
         WebDriverWait(driver, 10).until(EC.invisibility_of_element_located(
             (By.XPATH,
              "(html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[4]/div/form/div[2]/div[2]/input)")))
