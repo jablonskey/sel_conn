@@ -9,6 +9,7 @@ from taa_vm.zielgruppe.zielgruppe_landwirte_weiter_test import ZielgruppeLandwir
 from taa_vm.zielgruppe.zielgruppe_selbstandige_weiter_test import ZielgruppeSelbstandigeWeiterTest
 from taa_vm.zielgruppe.zielgruppe_arzte_weiter_test import ZielgruppeArzteWeiterTest
 from taa_vm.zielgruppe.zielgruppe_validation_test import ZielgruppeValidationTest
+from taa_vm.zielgruppe.zielgruppe_vmnr_combo_test import ZielgruppeVmnrComboTest
 
 
 if __name__ == "__main__":
