@@ -150,7 +150,6 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.zusatzdaten_weiter_antrag()
         self.login_to_connect_vermittler(self.base_url, main_page_after_login=False)
         self.antrag_zuruck_zusatzdaten()
-        self.antragsteller_weiter_zusatzdaten()
         self.zusatzdaten_zuruck_antrastellerdaten()
         self.antragsteller_zuruck_tarifdaten()
         self.tarifdaten_zuruck_zielgruppe()
