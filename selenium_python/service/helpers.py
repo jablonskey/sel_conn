@@ -73,27 +73,38 @@ class Helper(object):
             "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[1]/label)",
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[1]/label/input)",
             "header_text": u"Selbständige / Firmen / Freiberufler",
-            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/form/div/div[1]/h4)",
-
-            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/form/div/div[2]/div[2]/div[2]/input)"},
+            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/form/div/div[1]/h4)",
+            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/form/div/div[2]/div[2]/div[2]/input)"},
         "arzte": {
             "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[2]/label)",
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[2]/label/input)",
             "header_text": u"Ärzte / Heilwesenberufe",
-            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div/form/div/div[1]/h4)",
-            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div/form/div/div[2]/div[2]/div[2]/input)"},
+            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/form/div/div[1]/h4)",
+            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/form/div/div[2]/div[2]/div[2]/input)"},
         "steuerberater": {
             "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[3]/label)",
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[3]/label/input)",
             "header_text": u"Steuerberater / Wirtschaftsprüfer",
-            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/form/div/div[1]/h4)",
-            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/form/div/div[2]/div[2]/div[2]/input)"},
+            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/form/div/div[1]/h4)",
+            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/form/div/div[2]/div[2]/div[2]/input)"},
         "landwirte": {
             "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[4]/label)",
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[4]/label/input)",
             "header_text": u"Landwirte",
-            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/form/div/div[1]/h4)",
-            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/form/div/div[2]/div[2]/div/input)"}
+            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[6]/div/form/div/div[1]/h4)",
+            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[6]/div/form/div/div[2]/div[2]/div/input)"}
+    }
+
+    ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER = {
+        "vollzeitmitarbeiter": {"form_xpath": "(/html/body/div[3]/div/div/div[2]/form/div[1]/div/input)"},
+        "teilzeitmitarbeiter": {"form_xpath": "(/html/body/div[3]/div/div/div[2]/form/div[2]/div/input)"},
+        "auszubildende": {"form_xpath": "(/html/body/div[3]/div/div/div[2]/form/div[3]/div/input)"},
+        "geringfugig": {"form_xpath": "(/html/body/div[3]/div/div/div[2]/form/div[4]/div/input)"},
+        "saisonmitarbeiter": {"form_xpath": "(/html/body/div[3]/div/div/div[2]/form/div[5]/div/input)"},
+        "heimarbeiter": {"form_xpath": "(/html/body/div[3]/div/div/div[2]/form/div[6]/div/input)"},
+        "leiharbeiter ": {"form_xpath": "(/html/body/div[3]/div/div/div[2]/form/div[7]/div/input)"},
+        "inhaber": {"form_xpath": "(/html/body/div[3]/div/div/div[2]/form/div[8]/div/input)"},
+        "anzahl": {"form_xpath": "(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)"}
     }
 
     PAGES_TABS_ELEMENTS_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/span/ul/li[*]/a)"
@@ -171,8 +182,6 @@ class Helper(object):
             "xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[2]/form/div[3]/div[3]/select)"}
     }
 
-
-
     ANTRAGSTELLER_LEBENSPARTNER_J_N_HELPER = {
         "ja": {
             "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[2]/form/div/div/div[2]/div[1]/div/label[1])",
@@ -210,14 +219,13 @@ class Helper(object):
     }
 
     ANTRAGSTELLER_VORVERSICHERUNG_J_N_HELPER = {
-         "ja": {
+        "ja": {
             "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[1]/div/label[1])",
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[1]/div/label[1]/input)"},
         "nein": {
             "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[1]/div/label[2])",
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[1]/div/label[2]/input)"}
     }
-
 
     ANTRAGSTELLER_ZAHLUNGSDATEN_INSTITUT_FORM_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form[2]/div[1]/div[3]/input)"
     ANTRAGSTELLER_ZAHLUNGSDATEN_ANDERER_INHABER_ANREDE_COMBO_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form[3]/div[1]/div[1]/select)"

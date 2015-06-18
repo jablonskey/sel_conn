@@ -59,7 +59,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.verificationErrors.append(
                 "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
 
-        self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANZAHL_BESCHAEFTIGEN_SELBSTAENDIGE_FORM_XPATH)
+        self.check_and_click_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST['selbstandige']["header_xpath"])
         try:
             self.assertRegexpMatches(
                 driver.find_element_by_id("anzahl-beschaeftigen-selbstaendige").get_attribute("class"),
@@ -319,7 +319,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.verificationErrors.append(
                 "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
 
-        self.check_and_click_element_by_xpath(self.ZIELGRUPPE_BETRIEBSFLAECHE_FORM_XPATH)
+        self.check_and_click_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST['landwirte']["form_xpath"])
         try:
             self.assertRegexpMatches(
                 driver.find_element_by_id("betriebsflaeche").get_attribute("class"),
