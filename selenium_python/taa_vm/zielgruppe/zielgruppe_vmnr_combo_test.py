@@ -29,7 +29,7 @@ class ZielgruppeVmnrComboTest(unittest.TestCase, common_tasks.CommonTasks):
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
-            self.assertTrue(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, vmnr_number)
+            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, vmnr_number)
         except AssertionError as e:
             self.verificationErrors.append("VMNR combo empty")
 
@@ -37,7 +37,7 @@ class ZielgruppeVmnrComboTest(unittest.TestCase, common_tasks.CommonTasks):
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
-            self.assertTrue(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, vmnr_number)
+            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, vmnr_number)
         except AssertionError as e:
             self.verificationErrors.append("VMNR combo empty")
 
