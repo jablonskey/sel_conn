@@ -48,6 +48,7 @@ class Helper(object):
     ZIELGRUPPE_ELEMENTS_INPUTS_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/form[1]/div/div[*]/div/div[2]/div/div[*]/label/input)"
 
     ZIELGRUPPE_VMNR_COMBO_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div/div[1]/div/select)"
+    ZIELGRUPPE_VMNR_COMBO_WARNING_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div/div[2]/div/p)"
     ZIELGRUPPE_ANON_VMNR_FORM_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div/div/div/form/div/div/input)"
 
     ZIELGRUPPE_BETRIEBSFLAECHE_FORM_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/form/div/div[2]/div[2]/div/input)"

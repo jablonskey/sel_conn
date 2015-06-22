@@ -223,6 +223,72 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
 
         self.login_to_connect_vermittler(self.base_url, user="test2@ks", user_with_taa_rights=False)
 
+    def test_vermittler_login_with_no_rights_to_vmnr_after_tarifdaten(self):
+        driver = self.driver
+        vmnr_number = "102313"
+        self.go_to_vermittler_portal_page(self.base_url)
+        self.open_taa_vm()
+        self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
+        self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
+        self.zielgruppe_btrklasse_select_by_name("familien")
+        self.zielgruppe_weiter_tarifdaten()
+
+        self.login_to_connect_vermittler(self.base_url, main_page_after_login=False)
+        self.check_if_on_zielgruppe_page()
+
+        try:
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_WARNING_XPATH).text, "Die von Ihnen erfasste Vermittler-Nummer ist nicht korrekt.")
+        except AssertionError as e:
+            self.verificationErrors.append("NO or WRONG warning under VMNR combo")
+
+        try:
+            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, "")
+        except AssertionError as e:
+            self.verificationErrors.append("VMNR combo box not empty")
+
+        Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).select_by_visible_text("100065")
+
+        self.zielgruppe_btrklasse_select_by_name("singles")
+
+        try:
+            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, "100065")
+        except AssertionError as e:
+            self.verificationErrors.append("VMNR not selected")
+
+    def test_mitarbeiter_login_with_no_rights_to_vmnr_after_tarifdaten(self):
+        driver = self.driver
+        vmnr_number = "100063"
+        self.go_to_vermittler_portal_page(self.base_url)
+        self.open_taa_vm()
+        self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
+        self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
+        self.zielgruppe_btrklasse_select_by_name("familien")
+        self.zielgruppe_weiter_tarifdaten()
+
+        self.login_to_connect_vermittler(self.base_url, user="test3@ks", main_page_after_login=False)
+        self.check_if_on_zielgruppe_page()
+
+        try:
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_WARNING_XPATH).text, "Die von Ihnen erfasste Vermittler-Nummer ist nicht korrekt.")
+        except AssertionError as e:
+            self.verificationErrors.append("NO or WRONG warning under VMNR combo")
+
+        try:
+            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, "")
+        except AssertionError as e:
+            self.verificationErrors.append("VMNR combo box not empty")
+
+        Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).select_by_visible_text("100065")
+
+        self.zielgruppe_btrklasse_select_by_name("singles")
+
+        try:
+            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, "100065")
+        except AssertionError as e:
+            self.verificationErrors.append("VMNR not selected")
+
+
+
 
     def tearDown(self):
         self.driver.quit()
