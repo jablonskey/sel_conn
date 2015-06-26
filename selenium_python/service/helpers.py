@@ -48,6 +48,8 @@ class Helper(object):
     ZIELGRUPPE_ELEMENTS_INPUTS_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/form[1]/div/div[*]/div/div[2]/div/div[*]/label/input)"
 
     ZIELGRUPPE_VMNR_COMBO_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div/div[1]/div/select)"
+    ZIELGRUPPE_VMNR_COMBO_WARNING_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div/div[2]/div/p)"
+    ZIELGRUPPE_ANON_VMNR_FORM_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div/div/div/form/div/div/input)"
 
     ZIELGRUPPE_BETRIEBSFLAECHE_FORM_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/form/div/div[2]/div[2]/div/input)"
     ZIELGRUPPE_ANZAHL_BESCHAEFTIGEN_SELBSTAENDIGE_FORM_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/form/div/div[2]/div[2]/div[2]/input)"
@@ -256,14 +258,14 @@ class Helper(object):
         WebDriverWait(self.driver, 60).until(EC.visibility_of_element_located(
             (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
 
-    def check_if_on_vermittler_main_page(self):
+    def check_if_on_vermittler_main_page(self, user_with_taa_rights=True):
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
             (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
             (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
-        self.check_vermittler_menu_links()
+        self.check_vermittler_menu_links(user_with_taa_rights=user_with_taa_rights)
 
-    def check_vermittler_menu_links(self):
+    def check_vermittler_menu_links(self, user_with_taa_rights=True):
         WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[2]/a[1])")))
         WebDriverWait(self.driver, 20).until(
@@ -298,11 +300,15 @@ class Helper(object):
 
         WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[6]/a[1])")))
-        WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[6]/a[1])")))
-        WebDriverWait(self.driver, 20).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[6]/a[1])"),
-                                             u"Rechner"))
+        if (user_with_taa_rights):
+            WebDriverWait(self.driver, 20).until(
+                EC.visibility_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[6]/a[1])")))
+            WebDriverWait(self.driver, 20).until(
+                EC.text_to_be_present_in_element((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[6]/a[1])"),
+                                                 u"Rechner"))
+        else:
+            WebDriverWait(self.driver, 20).until_not(
+                EC.visibility_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[6]/a[1])")))
 
         WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[7]/a[1])")))

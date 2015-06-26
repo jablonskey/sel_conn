@@ -39,16 +39,16 @@ class CommonTasks(Helper):
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
 
-    def login_to_admin_panel(self, base_url):
+    def login_to_admin_panel(self, base_url, user=Helper.ADMIN_USER_LOGIN, password=Helper.ADMIN_USER_PASSWORD):
         self.go_to_admin_panel_page(base_url)
         WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.ID, "username")))
         WebDriverWait(self.driver, 20).until(
             EC.visibility_of_element_located((By.ID, "username")))
         self.driver.find_element_by_id("username").clear()
-        self.driver.find_element_by_id("username").send_keys(Helper.ADMIN_USER_LOGIN)
+        self.driver.find_element_by_id("username").send_keys(user)
         self.driver.find_element_by_id("password").clear()
-        self.driver.find_element_by_id("password").send_keys(Helper.ADMIN_USER_PASSWORD)
+        self.driver.find_element_by_id("password").send_keys(password)
 
         self.check_and_click_element_by_xpath(Helper.ADMIN_LOGIN_BUTTON_XPATH)
 
@@ -63,22 +63,24 @@ class CommonTasks(Helper):
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
 
-    def login_to_connect_vermittler(self, base_url):
+    def login_to_connect_vermittler(self, base_url, user=Helper.VERMITTLER_USER_LOGIN,
+                                    password=Helper.VERMITTLER_USER_PASSWORD, main_page_after_login=True, user_with_taa_rights=True):
         self.go_to_vermittler_portal_page(base_url)
         WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.ID, "username")))
         WebDriverWait(self.driver, 20).until(
             EC.visibility_of_element_located((By.ID, "username")))
         self.driver.find_element_by_id("username").clear()
-        self.driver.find_element_by_id("username").send_keys(Helper.VERMITTLER_USER_LOGIN)
+        self.driver.find_element_by_id("username").send_keys(user)
         self.driver.find_element_by_id("password").clear()
-        self.driver.find_element_by_id("password").send_keys(Helper.VERMITTLER_USER_PASSWORD)
+        self.driver.find_element_by_id("password").send_keys(password)
 
         self.check_and_click_element_by_xpath(Helper.VERMITTLER_LOGIN_BUTTON_XPATH)
 
         WebDriverWait(self.driver, 20).until_not(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
-        self.check_if_on_vermittler_main_page()
+        if (main_page_after_login):
+            self.check_if_on_vermittler_main_page(user_with_taa_rights=user_with_taa_rights)
         self.driver.implicitly_wait(2)
 
     def logout_vermittler(self):
@@ -226,7 +228,7 @@ class CommonTasks(Helper):
         # "Beamte"),
         # 'senioren': (
         # "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[1]/div/div[2]/div/div[4]/label",
-        #         "Senioren"),
+        # "Senioren"),
         #     'selbstandige': (
         #         "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[1]/label",
         #         u"Selbständige / Firmen / Freiberufler",
@@ -255,7 +257,7 @@ class CommonTasks(Helper):
             self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["radio_xpath"]).is_selected())
 
         if btrklasse_name in ("familien", "singles", "beamte", "senioren"):
-            for el in gescahftskunden_headers:
+            for el in self.driver.find_elements_by_xpath("(/html/body/div/div/div/section/div/div[2]/div/div[*]/div/form/div/div[1]/h4)"):
                 try:
                     self.assertFalse(el.is_displayed())
                 except AssertionError:
@@ -570,7 +572,7 @@ class CommonTasks(Helper):
         self.check_and_click_element_by_link_text("Weiter")
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])")),
-                                             "Antragstellerdaten page not reached")
+            "Antragstellerdaten page not reached")
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])")))
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
@@ -638,7 +640,7 @@ class CommonTasks(Helper):
 
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])")),
-                                             "Zusatzdaten page not reached")
+            "Zusatzdaten page not reached")
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])")))
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
@@ -646,7 +648,7 @@ class CommonTasks(Helper):
             u"Produktauswahl"))
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/h4)")),
-                                             "Zusatzdaten page not reached")
+            "Zusatzdaten page not reached")
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/h4)")))
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
@@ -659,7 +661,7 @@ class CommonTasks(Helper):
 
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
             (By.XPATH, self.ANTRAG_ZUSATZDATEN_HEADER)),
-                                             "Antrag page not reached")
+            "Antrag page not reached")
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
             (By.XPATH, self.ANTRAG_ZUSATZDATEN_HEADER)))
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
@@ -733,7 +735,7 @@ class CommonTasks(Helper):
             self.check_and_click_element_by_xpath(self.ANTRAGSTELLER_LEBENSPARTNER_J_N_HELPER["ja"]["label_xpath"])
             WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "lebenspartner-anrede")))
             WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, "lebenspartner-anrede")))
-            #self.driver.find_element_by_id("lebenspartner-anrede").click()
+            # self.driver.find_element_by_id("lebenspartner-anrede").click()
             Select(self.driver.find_element_by_id("lebenspartner-anrede")).select_by_visible_text("Herr")
             Select(self.driver.find_element_by_id("lebenspartner-titel")).select_by_visible_text("Dr.")
             self.driver.find_element_by_id("lebenspartner-name").clear()
