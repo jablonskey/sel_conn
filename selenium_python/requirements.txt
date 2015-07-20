@@ -1,0 +1,14 @@
+argparse
+distribute
+linecache2
+nose
+nose-parameterized
+nose-selenium
+pip
+requests
+selenium
+setuptools
+six
+traceback2
+unittest2
+webdriverplus
