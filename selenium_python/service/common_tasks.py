@@ -70,6 +70,10 @@ class CommonTasks(Helper):
             EC.presence_of_element_located((By.ID, "username")))
         WebDriverWait(self.driver, 20).until(
             EC.visibility_of_element_located((By.ID, "username")))
+        WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.ID, "password")))
+        WebDriverWait(self.driver, 20).until(
+            EC.visibility_of_element_located((By.ID, "password")))
         self.driver.find_element_by_id("username").clear()
         self.driver.find_element_by_id("username").send_keys(user)
         self.driver.find_element_by_id("password").clear()
