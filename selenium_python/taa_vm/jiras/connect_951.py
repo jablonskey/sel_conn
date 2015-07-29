@@ -21,6 +21,7 @@ class Connect951Test(unittest.TestCase, common_tasks.CommonTasks):
 
         self.driver.implicitly_wait(2)
         self.base_url = "https://ctest.lodz.ks-software.com/"
+        self.links_base_url = "https://vermittler.ks-auxilia.de/"
         self.verificationErrors = []
         self.accept_next_alert = True
 
@@ -33,7 +34,7 @@ class Connect951Test(unittest.TestCase, common_tasks.CommonTasks):
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, "(/html/body/div/div/h1)"), u"Ihr direkter Draht"))
         try:
-            self.assertEqual("https://www.vermittler.ksa.qsws.de/service/ihr-direkter-Draht/", driver.current_url)
+            self.assertEqual("%sservice/ihr-direkter-Draht/" % (self.links_base_url), driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
@@ -46,13 +47,10 @@ class Connect951Test(unittest.TestCase, common_tasks.CommonTasks):
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, "(/html/body/div/div/h1)"), u"Bezirksdirektionen"))
         try:
-            self.assertEqual("https://www.vermittler.ksa.qsws.de/service/ihr-kontakt-zu-uns/bezirksdirektionen/", driver.current_url)
+            self.assertEqual("%sservice/ihr-kontakt-zu-uns/bezirksdirektionen/" % (self.links_base_url),
+                             driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(str(e))
-
-
-
-
 
     def tearDown(self):
         self.driver.quit()
