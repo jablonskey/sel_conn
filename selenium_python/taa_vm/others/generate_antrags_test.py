@@ -38,7 +38,6 @@ class GenerateAntrags(unittest.TestCase, CommonTasks):
             self.antragsteller_fill_data()
             self.antragsteller_weiter_zusatzdaten()
 
-            driver.find_element_by_xpath("//input[@placeholder=\"Kennzeichen\"]").send_keys("kenn123")
             self.check_and_click_element_by_xpath("(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div[2]/form/div/div[1]/div[2]/label/input)")
             self.zusatzdaten_weiter_antrag()
             self.check_and_click_element_by_link_text("Antrag senden")
