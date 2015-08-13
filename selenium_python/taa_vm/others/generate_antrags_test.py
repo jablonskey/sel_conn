@@ -31,7 +31,7 @@ class GenerateAntrags(unittest.TestCase, CommonTasks):
         self.open_taa_vm()
         self.driver.implicitly_wait(2)
 
-        for x in range(2):
+        for x in range(10000):
             self.zielgruppe_btrklasse_select_by_name("familien")
             self.zielgruppe_weiter_tarifdaten()
             self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="ohne SB")
