@@ -34,8 +34,6 @@ class GenerateAntrags(unittest.TestCase, CommonTasks):
         for x in range(10000):
             self.zielgruppe_btrklasse_select_by_name("familien")
             self.zielgruppe_weiter_tarifdaten()
-            self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="ohne SB")
-            self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
             self.tarifdaten_weiter_antrastellerdaten()
             self.antragsteller_fill_data()
             self.antragsteller_weiter_zusatzdaten()
