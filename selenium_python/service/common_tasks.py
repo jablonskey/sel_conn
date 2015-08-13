@@ -695,6 +695,17 @@ class CommonTasks(Helper):
             u"Produktauswahl"))
         self.assertEqual(self.base_url + "ng/#/taa//zusatzdaten", self.driver.current_url)
 
+    def check_if_on_bestatigung_page(self):
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
+            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1]/h4)")))
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
+            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1]/h4)")))
+        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1]/h4)"),
+            u"Sendebestätigung"))
+        self.assertEqual(self.base_url + "ng/#/taa//bestaetigung", self.driver.current_url)
+
+
     def antragsteller_fill_data(self):
         self.antragsteller_fill_data_antragstellerdaten()
         self.antragsteller_fill_data_zahlungsdaten("lastschrift")
