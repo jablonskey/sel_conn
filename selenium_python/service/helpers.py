@@ -349,7 +349,7 @@ class Helper(object):
                 EC.text_to_be_present_in_element((By.XPATH, price_xpath), u"0,00 €"))
 
         if table_name == "rechtschutz":
-            price_xpath = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table[1]/tbody/tr[%s]/td[9])" % (
+            price_xpath = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table[1]/tbody/tr[%s]/td[last()])" % (
                 str(row_no))
 
             WebDriverWait(self.driver, 10).until_not(

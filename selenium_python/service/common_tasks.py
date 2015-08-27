@@ -478,7 +478,7 @@ class CommonTasks(Helper):
             if i.text == produkt_name:
                 Select(self.driver.find_element_by_xpath(
                     "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table[1]/tbody/tr[" + str(
-                        produkt_label_list.index(i) + 1) + "]/td[8]/select)")).select_by_visible_text(
+                        produkt_label_list.index(i) + 1) + "]/td[last()-1]/select)")).select_by_visible_text(
                     sb)
 
     def tarifdaten_ermittlung_alert_handler(self, button_to_click=None, ermittlung_type="400", selected_radio_no=None,
@@ -550,7 +550,7 @@ class CommonTasks(Helper):
                         try:
                             self.assertEqual(self.TARIFDATEN_SB_POPUP_SB_400[selected_radio_no - 1],
                                              Select(self.driver.find_element_by_xpath(
-                                                 "(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table[1]/tbody/tr[%d]/td[8]/select)" % (
+                                                 "(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table[1]/tbody/tr[%d]/td[last()-1]/select)" % (
                                                      produkt_radios.index(i) + 1))).first_selected_option.text)
                         except AssertionError as e:
                             self.verificationErrors.append(
