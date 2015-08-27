@@ -30,6 +30,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         driver = self.driver
 
         self.login_to_connect_vermittler(self.base_url)
+        main_window = driver.current_window_handle
         self.open_taa_vm()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -44,7 +45,9 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.documents_popup_generate_document((u"Kurzangebot", ))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
-        driver.switch_to.window(driver.window_handles[-1])
+
+        document_tab = driver.window_handles[-1]
+        driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
             EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[2])")))
@@ -52,12 +55,16 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
             EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[2])"),
 
                                              u"Vorschlag für Ihre KS/AUXILIA Rechtsschutz-Versicherung"))
+        driver.close()
+        driver.switch_to.window(main_window)
+        driver.close()
 
     def test_docs_kurzangebot_on_antragsteller(self):
 
         driver = self.driver
 
         self.login_to_connect_vermittler(self.base_url)
+        main_window = driver.current_window_handle
         self.open_taa_vm()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -74,7 +81,8 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.documents_popup_generate_document((u"Kurzangebot", ))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
-        driver.switch_to.window(driver.window_handles[-1])
+        document_tab = driver.window_handles[-1]
+        driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
             EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[2])")))
@@ -82,12 +90,16 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
             EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[2])"),
 
                                              u"Vorschlag für Ihre KS/AUXILIA Rechtsschutz-Versicherung"))
+        driver.close()
+        driver.switch_to.window(main_window)
+        driver.close()
 
     def test_docs_kurzangebot_on_zusatzdaten(self):
 
         driver = self.driver
 
         self.login_to_connect_vermittler(self.base_url)
+        main_window = driver.current_window_handle
         self.open_taa_vm()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -113,14 +125,16 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         WebDriverWait(driver, 60).until(
             EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[3])"),
                                              u"Vorschlag für Ihre KS/AUXILIA Rechtsschutz-Versicherung"))
-
-        #endregion
+        driver.close()
+        driver.switch_to.window(main_window)
+        driver.close()
 
     def test_docs_kurzangebot_on_antrag(self):
 
         driver = self.driver
 
         self.login_to_connect_vermittler(self.base_url)
+        main_window = driver.current_window_handle
         self.open_taa_vm()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -138,7 +152,8 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.documents_popup_generate_document((u"Kurzangebot", ))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
-        driver.switch_to.window(driver.window_handles[-1])
+        document_tab = driver.window_handles[-1]
+        driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
             EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[3])")))
@@ -146,6 +161,9 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
             EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[3])"),
 
                                              u"Vorschlag für Ihre KS/AUXILIA Rechtsschutz-Versicherung"))
+        driver.close()
+        driver.switch_to.window(main_window)
+        driver.close()
 
     def tearDown(self):
         self.driver.quit()

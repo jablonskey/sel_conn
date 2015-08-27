@@ -30,6 +30,7 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
         driver = self.driver
 
         self.login_to_connect_vermittler(self.base_url)
+        main_window = driver.current_window_handle
         self.open_taa_vm()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -40,7 +41,9 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
         self.documents_popup_generate_document((u"fehlende Angaben für Antrag", ))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
-        driver.switch_to.window(driver.window_handles[-1])
+
+        document_tab = driver.window_handles[-1]
+        driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
             EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[1])")))
@@ -49,11 +52,16 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
 
                                              u"Fehlende Angaben zur Antragstellung"))
 
+        driver.close()
+        driver.switch_to.window(main_window)
+        driver.close()
+
     def test_docs_fehlende_angaben_on_antragsteller(self):
 
         driver = self.driver
 
         self.login_to_connect_vermittler(self.base_url)
+        main_window = driver.current_window_handle
         self.open_taa_vm()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -65,7 +73,8 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
         self.documents_popup_generate_document((u"fehlende Angaben für Antrag", ))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
-        driver.switch_to.window(driver.window_handles[-1])
+        document_tab = driver.window_handles[-1]
+        driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
             EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[1])")))
@@ -74,11 +83,16 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
 
                                              u"Fehlende Angaben zur Antragstellung"))
 
+        driver.close()
+        driver.switch_to.window(main_window)
+        driver.close()
+
     def test_docs_fehlende_angaben_on_zusatzdaten(self):
 
         driver = self.driver
 
         self.login_to_connect_vermittler(self.base_url)
+        main_window = driver.current_window_handle
         self.open_taa_vm()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -93,7 +107,8 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
         self.documents_popup_generate_document((u"fehlende Angaben für Antrag", ))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
-        driver.switch_to.window(driver.window_handles[-1])
+        document_tab = driver.window_handles[-1]
+        driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
             EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[1])")))
@@ -101,6 +116,10 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
             EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[1])"),
 
                                              u"Fehlende Angaben zur Antragstellung"))
+
+        driver.close()
+        driver.switch_to.window(main_window)
+        driver.close()
 
     def tearDown(self):
         self.driver.quit()

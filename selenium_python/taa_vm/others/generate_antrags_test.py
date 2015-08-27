@@ -28,6 +28,7 @@ class GenerateAntrags(unittest.TestCase, CommonTasks):
 
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
+        main_window = driver.current_window_handle
         self.open_taa_vm()
         self.driver.implicitly_wait(2)
 
