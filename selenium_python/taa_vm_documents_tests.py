@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import unittest, time, re
-from taa_vm.documents.docs_kurzangebot_on_tarifdaten_test import DocsKurzangebotOnTarifdaten
 from taa_vm.documents.docs_kurzangebot_test import DocsKurzangebotTests
 from taa_vm.documents.docs_fehlende_angaben_test import DocsFehlendeAngabenTests
 from taa_vm.documents.docs_club_test import DocsClubTests
