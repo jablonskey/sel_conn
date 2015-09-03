@@ -319,6 +319,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
 
         # CONNECT-720
         self.assertNotEqual("", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
+        self.assertNotEqual("0", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
         self.assertEqual("4", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
 
         driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[2]/div/input)").send_keys("2")
@@ -357,11 +358,10 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
         WebDriverWait(driver, 4).until(
             EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
         self.assertEqual("Berechnungshilfe", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
+        self.assertEqual("4", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[1]/div/input)").get_attribute("value"))
+        self.assertEqual("2", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[2]/div/input)").get_attribute("value"))
         driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[1]/div/input)").clear()
         driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[1]/div/input)").send_keys("6")
-        self.assertEqual("6", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
-        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[2]/div/input)").clear()
-        driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[2]/div/input)").send_keys("2")
         self.assertEqual("7", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)").get_attribute("value"))
 
         # -- Abbrechen

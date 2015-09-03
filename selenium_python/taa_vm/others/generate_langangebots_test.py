@@ -12,8 +12,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from service.common_tasks import CommonTasks
 
 
-class DocsDeckungsauftragTests(unittest.TestCase, CommonTasks):
-
+class GenerateLangangebots(unittest.TestCase, CommonTasks):
 
     def setUp(self):
 
@@ -25,12 +24,14 @@ class DocsDeckungsauftragTests(unittest.TestCase, CommonTasks):
         self.verificationErrors = []
         self.accept_next_alert = True
 
-    def test_docs_deckungsauftrag_on_antrag(self):
+    def test_generate_langangebots(self):
 
         driver = self.driver
 
         self.login_to_connect_vermittler(self.base_url)
+
         main_window = driver.current_window_handle
+
         self.open_taa_vm()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -45,23 +46,27 @@ class DocsDeckungsauftragTests(unittest.TestCase, CommonTasks):
         self.check_and_click_element_by_xpath("(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div[2]/form/div/div[1]/div[2]/label/input)")
         self.zusatzdaten_weiter_antrag()
 
-        self.documents_popup_generate_document((u"Deckungsauftrag", ))
+        for x in range(100000):
+            self.documents_popup_generate_document((u"Langangebot", ))
 
-        WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
+            WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
 
-        document_tab = driver.window_handles[-1]
-        driver.switch_to.window(document_tab)
+            document_tab = driver.window_handles[-1]
+            driver.switch_to.window(document_tab)
 
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])"),
+            WebDriverWait(driver, 60).until(
+                EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])")))
+            WebDriverWait(driver, 60).until(
+                EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])"),
 
-                                             u"Deckungsauftrag"))
+                                                 u"Angebot"))
+            driver.close()
+            print ('loop %d') % (x)
+            driver.switch_to.window(main_window)
 
         driver.close()
-        driver.switch_to.window(main_window)
-        driver.close()
+
+
 
     def tearDown(self):
         self.driver.quit()
