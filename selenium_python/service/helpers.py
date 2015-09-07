@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 import time, sys, re
 
@@ -13,12 +14,20 @@ class Helper(object):
 
     VERMITTLER_LOGIN_PAGE_ADDRESS_COMPLETION = "ng/#/vermittler/login"
     ADMIN_LOGIN_PAGE_ADDRESS_COMPLETION = "ng/#/admin/login"
+    AKTSERVICE_LOGIN_PAGE_ADDRES_COMPLETION = "ng/#/aktualisierung/login"
+    SECURE_EMAIL_LOGIN_PAGE_ADDRES_COMPLETION = "ng/#/dokumente/login"
 
     ADMIN_USER_LOGIN = "admin@ks"
     ADMIN_USER_PASSWORD = "dupa"
 
     VERMITTLER_USER_LOGIN = "test@ks"
     VERMITTLER_USER_PASSWORD = "Aa111111"
+
+    AKTSERVICE_USER_LOGIN = "3092998800"
+    AKTSERVICE_USER_PASSWORD = "85622"
+
+    SECURE_EMAIL_USER_LOGIN = "ses_test@ks"
+    SECURE_EMAIL_USER_PASSWORD = "Aa111111"
 
     ERGEBNIS_OPTIONEN_SPEICHERN_UNTER_LINK_XPATH = "(//ergebnis-optionen/div/a[2])"
 
@@ -29,8 +38,13 @@ class Helper(object):
     ADMIN_LOGIN_BUTTON_XPATH = "(/html/body/div/div/div/section/div/div[2]/form/button)"
     ADMIN_LOGOUT_LINK_XPATH = "(/html/body/header/div/div/div[2]/ul/li/a)"
 
+    AKTSERVICE_LOGIN_BUTTON_XPATH = "(/html/body/div/div/div/section/div/div[2]/form/button)"
+    AKTSERVICE_LOGOUT_LINK_XPATH = "(/html/body/header/div/div/div[2]/ul/li/a)"
+
     ADMIN_IFRAME_LOGIN_XPATH = "(/html/body/div/div[1]/ul[2]/li/a)"
     ADMIN_IFRAME_LOGOUT_XPATH = "(/html/body/div[1]/div[1]/ul[1]/li[2]/a)"
+
+    SECURE_EMAIL_LOGIN_BUTTON_XPATH = "(/html/body/div/div/div/section/div/div[2]/form/button)"
 
     ADMIN_BENUTZER_ANLEGEN_BUTTON_XPATH = "(/html/body/div/div/div/section/div/div[2]/div[1]/a)"
     BENUTZER_ANLEGEN_BENUTZERROLLE_COMBO_XPATH = "(/html/body/div/div/div/section/div/div[2]/form/div[1]/div/div/table/tbody/tr/td[2]/select"
@@ -234,6 +248,13 @@ class Helper(object):
 
     ANTRAG_ZUSATZDATEN_HEADER = "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[2]/div[1]/h4)"
 
+    AKTSERVICE_COMPARE_HEADER = "(/html/body/div/div/div/section/div/div[2]/div[1]/div/div/div[1]/h4)"
+
+    def is_element_present(self, how, what):
+        try: self.driver.find_element(by=how, value=what)
+        except NoSuchElementException as e: return False
+        return True
+
     def check_if_on_admin_main_page(self):
         WebDriverWait(self.driver, 60).until(
             EC.visibility_of_element_located((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER)))
@@ -264,6 +285,26 @@ class Helper(object):
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
             (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
         self.check_vermittler_menu_links(user_with_taa_rights=user_with_taa_rights)
+
+    def check_if_on_aktservice_page(self):
+        WebDriverWait(self.driver, 60).until(
+            EC.visibility_of_element_located((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER)))
+        WebDriverWait(self.driver, 60).until(
+            EC.text_to_be_present_in_element((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER),
+                                             "Vergleich"))
+
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
+            (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
+            (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
+
+        WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.XPATH, self.AKTSERVICE_COMPARE_HEADER)))
+        WebDriverWait(self.driver, 20).until(
+            EC.visibility_of_element_located((By.XPATH, self.AKTSERVICE_COMPARE_HEADER)))
+        WebDriverWait(self.driver, 20).until(
+            EC.text_to_be_present_in_element((By.XPATH, self.AKTSERVICE_COMPARE_HEADER),
+                                             u"Folgende Verträge können auf den Leistungsumfang des aktuellen Tarifs 2016 umgestellt werden:"))
 
     def check_vermittler_menu_links(self, user_with_taa_rights=True):
         WebDriverWait(self.driver, 20).until(
@@ -333,6 +374,13 @@ class Helper(object):
         WebDriverWait(self.driver, 20).until(
             EC.text_to_be_present_in_element((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[9]/a[1])"),
                                              u"Mein Profil"))
+
+    def check_if_on_secure_email_page(self):
+        WebDriverWait(self.driver, 60).until(
+            EC.visibility_of_element_located((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER)))
+        WebDriverWait(self.driver, 60).until(
+            EC.text_to_be_present_in_element((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER),
+                                             "Dokumente"))
 
     def get_tarifdaten_erganzungen_label_xpath(self, erganzungen_no):
         if erganzungen_no in range(1, len(
@@ -449,6 +497,11 @@ class Helper(object):
         return self.driver.find_elements_by_xpath(
             "(/html/body/div[1]/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/descendant::*[normalize-space(text())='%s'])" % (
                 text))
+
+    def is_element_present(self, how, what):
+        try: self.driver.find_element(by=how, value=what)
+        except NoSuchElementException as e: return False
+        return True
 
     def check_and_click_element_by_xpath(self, xpath, scroll_to_footer="no"):
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(

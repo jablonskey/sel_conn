@@ -28,7 +28,7 @@ class Connect951Test(unittest.TestCase, common_tasks.CommonTasks):
     def test_connect951_logged_off(self):
         driver = self.driver
 
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         driver.switch_to.frame(driver.find_element_by_tag_name("iframe"))
         self.check_and_click_element_by_xpath("(/html/body/div/div[3]/a)")
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(

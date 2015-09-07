@@ -25,10 +25,44 @@ class CommonTasks(Helper):
     def reset_zoom(self):
         self.driver.find_element_by_tag_name("html").send_keys(Keys.CONTROL, Keys.NUMPAD0)
 
-    def go_to_vermittler_portal_page(self, base_url):
+    def go_to_vermittler_login_page(self, base_url):
         self.driver.implicitly_wait(2)
         self.driver.maximize_window()
         self.driver.get(base_url + Helper.VERMITTLER_LOGIN_PAGE_ADDRESS_COMPLETION)
+        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+            (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
+
+    def go_to_aktservice_login_page(self, base_url):
+        self.driver.implicitly_wait(2)
+        self.driver.maximize_window()
+        self.driver.get(base_url + Helper.AKTSERVICE_LOGIN_PAGE_ADDRES_COMPLETION)
+        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+            (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
+
+    def login_to_aktservice(self, base_url, user=Helper.AKTSERVICE_USER_LOGIN, password=Helper.AKTSERVICE_USER_PASSWORD):
+        self.go_to_aktservice_login_page(base_url)
+        WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.ID, "mnr")))
+        WebDriverWait(self.driver, 20).until(
+            EC.visibility_of_element_located((By.ID, "mnr")))
+        self.driver.find_element_by_id("mnr").clear()
+        self.driver.find_element_by_id("mnr").send_keys(user)
+        self.driver.find_element_by_id("plz").clear()
+        self.driver.find_element_by_id("plz").send_keys(password)
+
+        self.check_and_click_element_by_xpath(Helper.AKTSERVICE_LOGIN_BUTTON_XPATH)
+
+        WebDriverWait(self.driver, 20).until_not(EC.text_to_be_present_in_element(
+            (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
+
+        self.check_if_on_aktservice_page()
+        self.driver.implicitly_wait(2)
+
+
+    def go_to_secure_email_login_page(self, base_url):
+        self.driver.implicitly_wait(2)
+        self.driver.maximize_window()
+        self.driver.get(base_url + Helper.SECURE_EMAIL_LOGIN_PAGE_ADDRES_COMPLETION)
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
 
@@ -58,6 +92,25 @@ class CommonTasks(Helper):
         self.check_if_on_admin_main_page()
         self.driver.implicitly_wait(2)
 
+    def login_to_secure_email(self, base_url, user=Helper.SECURE_EMAIL_USER_LOGIN, password=Helper.SECURE_EMAIL_USER_PASSWORD):
+        self.go_to_secure_email_login_page(base_url)
+        WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.ID, "username")))
+        WebDriverWait(self.driver, 20).until(
+            EC.visibility_of_element_located((By.ID, "username")))
+        self.driver.find_element_by_id("username").clear()
+        self.driver.find_element_by_id("username").send_keys(user)
+        self.driver.find_element_by_id("password").clear()
+        self.driver.find_element_by_id("password").send_keys(password)
+
+        self.check_and_click_element_by_xpath(Helper.SECURE_EMAIL_LOGIN_BUTTON_XPATH)
+
+        WebDriverWait(self.driver, 20).until_not(EC.text_to_be_present_in_element(
+            (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
+
+        self.check_if_on_secure_email_page()
+        self.driver.implicitly_wait(2)
+
     def logout_admin(self):
         self.check_and_click_element_by_xpath(self.ADMIN_LOGOUT_LINK_XPATH)
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
@@ -65,7 +118,7 @@ class CommonTasks(Helper):
 
     def login_to_connect_vermittler(self, base_url, user=Helper.VERMITTLER_USER_LOGIN,
                                     password=Helper.VERMITTLER_USER_PASSWORD, main_page_after_login=True, user_with_taa_rights=True):
-        self.go_to_vermittler_portal_page(base_url)
+        self.go_to_vermittler_login_page(base_url)
         WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.ID, "username")))
         WebDriverWait(self.driver, 20).until(

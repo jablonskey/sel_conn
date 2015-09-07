@@ -16,7 +16,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_vmnr_remebered_after_weiter_zuruck(self):
         driver = self.driver
         vmnr_number = "100065"
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         self.open_taa_vm()
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
@@ -71,7 +71,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_vmnr_remebered_after_login_on_tarifdaten(self):
         driver = self.driver
         vmnr_number = "100063"
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         self.open_taa_vm()
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
@@ -90,7 +90,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_vmnr_remebered_after_login_on_antragstellerdaten(self):
         driver = self.driver
         vmnr_number = "100063"
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         self.open_taa_vm()
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
@@ -111,7 +111,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_vmnr_remebered_after_login_on_zusatzdaten(self):
         driver = self.driver
         vmnr_number = "100063"
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         self.open_taa_vm()
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
@@ -135,7 +135,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_vmnr_remebered_after_login_on_antrag(self):
         driver = self.driver
         vmnr_number = "100063"
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         self.open_taa_vm()
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
@@ -161,7 +161,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_login_with_no_rights_to_taa_after_zielgruppe(self):
         driver = self.driver
         vmnr_number = "100063"
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         self.open_taa_vm()
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
@@ -170,7 +170,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_login_with_no_rights_to_taa_after_tarifdaten(self):
         driver = self.driver
         vmnr_number = "100063"
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         self.open_taa_vm()
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
@@ -182,7 +182,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_login_with_no_rights_to_taa_after_antragstellerdaten(self):
         driver = self.driver
         vmnr_number = "100063"
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         self.open_taa_vm()
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
@@ -195,7 +195,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_login_with_no_rights_to_taa_after_zusatzdaten(self):
         driver = self.driver
         vmnr_number = "100063"
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         self.open_taa_vm()
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
@@ -210,7 +210,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_login_with_no_rights_to_taa_after_antrag(self):
         driver = self.driver
         vmnr_number = "100063"
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         self.open_taa_vm()
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
@@ -226,7 +226,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_vermittler_login_with_no_rights_to_vmnr_after_tarifdaten(self):
         driver = self.driver
         vmnr_number = "102313"
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         self.open_taa_vm()
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
@@ -258,7 +258,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_mitarbeiter_login_with_no_rights_to_vmnr_after_tarifdaten(self):
         driver = self.driver
         vmnr_number = "100063"
-        self.go_to_vermittler_portal_page(self.base_url)
+        self.go_to_vermittler_login_page(self.base_url)
         self.open_taa_vm()
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
