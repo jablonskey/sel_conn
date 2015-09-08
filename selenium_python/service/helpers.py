@@ -681,7 +681,7 @@ class Helper(object):
 
         original_style = element.get_attribute('style')
         apply_style("background: yellow; ")
-        time.sleep(.2)
+        #time.sleep(.2)
         apply_style(original_style)
 
     def scroll_to_element(self, element, y_pos=300, x_pos=0):
