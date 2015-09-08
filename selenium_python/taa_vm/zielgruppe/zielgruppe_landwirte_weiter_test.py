@@ -33,46 +33,51 @@ class ZielgruppeLandwirteTest(unittest.TestCase, common_tasks.CommonTasks, Helpe
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("landwirte")
 
-        self.assertFalse(driver.find_element_by_name("isLandwirteMitglied").is_selected())
-        self.assertFalse(driver.find_element_by_xpath("(//input[@name='isLandwirteMitglied'])[2]").is_selected())
-        self.assertFalse(driver.find_element_by_name("isLandwirteGewerbe").is_selected())
-        self.assertFalse(driver.find_element_by_xpath("(//input[@name='isLandwirteGewerbe'])[2]").is_selected())
+        mitglied_ja = driver.find_element_by_name("isLandwirteMitglied")
+        mitglied_nein = driver.find_element_by_xpath("(//input[@name='isLandwirteMitglied'])[2]")
+        gewerbe_ja = driver.find_element_by_name("isLandwirteGewerbe")
+        gewerbe_nein = driver.find_element_by_xpath("(//input[@name='isLandwirteGewerbe'])[2]")
+        
+        self.assertFalse(mitglied_ja.is_selected())
+        self.assertFalse(mitglied_nein.is_selected())
+        self.assertFalse(gewerbe_ja.is_selected())
+        self.assertFalse(gewerbe_nein.is_selected())
 
         # -- JA JA
-        driver.find_element_by_name("isLandwirteMitglied").click()
-        self.assertTrue(driver.find_element_by_name("isLandwirteMitglied").is_selected())
-        driver.find_element_by_name("isLandwirteGewerbe").click()
-        self.assertTrue(driver.find_element_by_name("isLandwirteGewerbe").is_selected())
+        mitglied_ja.click()
+        self.assertTrue(mitglied_ja.is_selected())
+        gewerbe_ja.click()
+        self.assertTrue(gewerbe_ja.is_selected())
         WebDriverWait(driver, 4).until(EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div)")))
         self.assertEqual("Hinweis zu den Tarifierungsdaten",
                          driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
         driver.find_element_by_xpath("//div[3]/div/div/button").click()
 
         # -- Nein Ja
-        driver.find_element_by_xpath("(//input[@name='isLandwirteMitglied'])[2]").click()
-        self.assertTrue(driver.find_element_by_xpath("(//input[@name='isLandwirteMitglied'])[2]").is_selected())
-        driver.find_element_by_name("isLandwirteGewerbe").click()
-        self.assertTrue(driver.find_element_by_name("isLandwirteGewerbe").is_selected())
+        mitglied_nein.click()
+        self.assertTrue(mitglied_nein.is_selected())
+        gewerbe_ja.click()
+        self.assertTrue(gewerbe_ja.is_selected())
         WebDriverWait(driver, 4).until(EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div)")))
         self.assertEqual("Hinweis zu den Tarifierungsdaten",
                          driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
         driver.find_element_by_xpath("//div[3]/div/div/button").click()
 
         # -- Nein Nein
-        driver.find_element_by_xpath("(//input[@name='isLandwirteMitglied'])[2]").click()
-        self.assertTrue(driver.find_element_by_xpath("(//input[@name='isLandwirteMitglied'])[2]").is_selected())
-        driver.find_element_by_xpath("(//input[@name='isLandwirteGewerbe'])[2]").click()
-        self.assertTrue(driver.find_element_by_xpath("(//input[@name='isLandwirteGewerbe'])[2]").is_selected())
+        mitglied_nein.click()
+        self.assertTrue(mitglied_nein.is_selected())
+        gewerbe_nein.click()
+        self.assertTrue(gewerbe_nein.is_selected())
         WebDriverWait(driver, 4).until(EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div)")))
         self.assertEqual("Hinweis zu den Tarifierungsdaten",
                          driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
         driver.find_element_by_xpath("//div[3]/div/div/button").click()
 
         # -- Nein Ja
-        driver.find_element_by_xpath("(//input[@name='isLandwirteMitglied'])[2]").click()
-        self.assertTrue(driver.find_element_by_xpath("(//input[@name='isLandwirteMitglied'])[2]").is_selected())
-        driver.find_element_by_name("isLandwirteGewerbe").click()
-        self.assertTrue(driver.find_element_by_name("isLandwirteGewerbe").is_selected())
+        mitglied_nein.click()
+        self.assertTrue(mitglied_nein.is_selected())
+        gewerbe_ja.click()
+        self.assertTrue(gewerbe_ja.is_selected())
         WebDriverWait(driver, 4).until(EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div)")))
         self.assertEqual("Hinweis zu den Tarifierungsdaten",
                          driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
@@ -101,20 +106,20 @@ class ZielgruppeLandwirteTest(unittest.TestCase, common_tasks.CommonTasks, Helpe
         #     "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/form/div/div[1]/h4)").text)
 
         # -- Ja Ja
-        driver.find_element_by_name("isLandwirteMitglied").click()
-        self.assertTrue(driver.find_element_by_name("isLandwirteMitglied").is_selected())
-        driver.find_element_by_name("isLandwirteGewerbe").click()
-        self.assertTrue(driver.find_element_by_name("isLandwirteGewerbe").is_selected())
+        mitglied_ja.click()
+        self.assertTrue(mitglied_ja.is_selected())
+        gewerbe_ja.click()
+        self.assertTrue(gewerbe_ja.is_selected())
         WebDriverWait(driver, 4).until(EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div)")))
         self.assertEqual("Hinweis zu den Tarifierungsdaten",
                          driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
         driver.find_element_by_xpath("//div[3]/div/div/button").click()
 
         # -- Ja Nein
-        driver.find_element_by_name("isLandwirteMitglied").click()
-        self.assertTrue(driver.find_element_by_name("isLandwirteMitglied").is_selected())
-        driver.find_element_by_xpath("(//input[@name='isLandwirteGewerbe'])[2]").click()
-        self.assertTrue(driver.find_element_by_xpath("(//input[@name='isLandwirteGewerbe'])[2]").is_selected())
+        mitglied_ja.click()
+        self.assertTrue(mitglied_ja.is_selected())
+        gewerbe_nein.click()
+        self.assertTrue(gewerbe_nein.is_selected())
         WebDriverWait(driver, 4).until(EC.presence_of_element_located((By.ID, "betriebsflaeche")))
         WebDriverWait(driver, 4).until(EC.visibility_of_element_located((By.ID, "betriebsflaeche")))
         # endregion
@@ -124,8 +129,8 @@ class ZielgruppeLandwirteTest(unittest.TestCase, common_tasks.CommonTasks, Helpe
 
         # -- Landwirte
         self.zielgruppe_btrklasse_select_by_name("landwirte", landwirte_anzahl)
-        self.assertTrue(driver.find_element_by_name("isLandwirteMitglied").is_selected())
-        self.assertTrue(driver.find_element_by_xpath("(//input[@name='isLandwirteGewerbe'])[2]").is_selected())
+        self.assertTrue(mitglied_ja.is_selected())
+        self.assertTrue(gewerbe_nein.is_selected())
         WebDriverWait(driver, 4).until(EC.presence_of_element_located((By.ID, "betriebsflaeche")), "Field betriebsflaeche not present")
         WebDriverWait(driver, 4).until(EC.visibility_of_element_located((By.ID, "betriebsflaeche")), "Field betriebsflaeche not visible")
 
