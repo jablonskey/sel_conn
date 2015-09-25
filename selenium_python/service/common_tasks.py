@@ -29,8 +29,8 @@ class CommonTasks(Helper):
         self.driver.implicitly_wait(2)
         self.driver.maximize_window()
         self.driver.get(base_url + Helper.VERMITTLER_LOGIN_PAGE_ADDRESS_COMPLETION)
-        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
-            (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
+        self.check_if_on_vermittler_login_page()
+
 
     def go_to_aktservice_login_page(self, base_url):
         self.driver.implicitly_wait(2)
@@ -119,14 +119,7 @@ class CommonTasks(Helper):
     def login_to_connect_vermittler(self, base_url, user=Helper.VERMITTLER_USER_LOGIN,
                                     password=Helper.VERMITTLER_USER_PASSWORD, main_page_after_login=True, user_with_taa_rights=True):
         self.go_to_vermittler_login_page(base_url)
-        WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.ID, "username")))
-        WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located((By.ID, "username")))
-        WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.ID, "password")))
-        WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located((By.ID, "password")))
+
         self.driver.find_element_by_id("username").clear()
         self.driver.find_element_by_id("username").send_keys(user)
         self.driver.find_element_by_id("password").clear()
@@ -158,27 +151,27 @@ class CommonTasks(Helper):
 
         self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
 
-        WebDriverWait(self.driver, 20).until(
+        WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER)))
-        WebDriverWait(self.driver, 20).until(
+        WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER)))
-        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+        WebDriverWait(self.driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER),
             u"Berechnen & beantragen"))
 
-        WebDriverWait(self.driver, 20).until(
+        WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Helper.ZIELGRUPPE_PRIVATKUNDEN_HEADER_XPATH)))
-        WebDriverWait(self.driver, 20).until(
+        WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, Helper.ZIELGRUPPE_PRIVATKUNDEN_HEADER_XPATH)))
-        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+        WebDriverWait(self.driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.ZIELGRUPPE_PRIVATKUNDEN_HEADER_XPATH),
             u"Privatkunden"))
 
-        WebDriverWait(self.driver, 20).until(
+        WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Helper.ZIELGRUPPE_GESCHAFTSKUNDEN_XPATH)))
-        WebDriverWait(self.driver, 20).until(
+        WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, Helper.ZIELGRUPPE_GESCHAFTSKUNDEN_XPATH)))
-        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+        WebDriverWait(self.driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.ZIELGRUPPE_GESCHAFTSKUNDEN_XPATH),
             u"Geschäftskunden"))
 

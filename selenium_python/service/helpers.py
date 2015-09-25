@@ -17,6 +17,13 @@ class Helper(object):
     AKTSERVICE_LOGIN_PAGE_ADDRES_COMPLETION = "ng/#/aktualisierung/login"
     SECURE_EMAIL_LOGIN_PAGE_ADDRES_COMPLETION = "ng/#/dokumente/login"
 
+    #for deep links
+    STARTSEITE_ADDRES_COMPLETION = "ng/#/vermittler/startseite"
+    ZIELGRUPPE_ADDRES_COMPLETION = "ng/#/taa//zielgruppe"
+    KUNDENSUCHE_ADDRES_COMPLETION = "ng/#/vermittler/kundensuche"
+    MITGLIEDSCHAFT_ADDRES_COMPLETION = "ng/#/vermittler/mitgliedschaft/"
+
+
     ADMIN_USER_LOGIN = "admin@ks"
     ADMIN_USER_PASSWORD = "dupa"
 
@@ -279,12 +286,29 @@ class Helper(object):
         WebDriverWait(self.driver, 60).until(EC.visibility_of_element_located(
             (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
 
+    def check_if_on_vermittler_login_page(self, user_with_taa_rights=True):
+        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+            (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
+        WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.ID, "username")))
+        WebDriverWait(self.driver, 20).until(
+            EC.visibility_of_element_located((By.ID, "username")))
+        WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.ID, "password")))
+        WebDriverWait(self.driver, 20).until(
+            EC.visibility_of_element_located((By.ID, "password")))
+
     def check_if_on_vermittler_main_page(self, user_with_taa_rights=True):
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
             (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
             (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
         self.check_vermittler_menu_links(user_with_taa_rights=user_with_taa_rights)
+
+    def check_if_on_kundensuche_page(self):
+        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+            (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Kundensuche Ergebnisse"))
+
 
     def check_if_on_aktservice_page(self):
         WebDriverWait(self.driver, 60).until(
