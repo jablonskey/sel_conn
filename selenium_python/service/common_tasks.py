@@ -31,7 +31,6 @@ class CommonTasks(Helper):
         self.driver.get(base_url + Helper.VERMITTLER_LOGIN_PAGE_ADDRESS_COMPLETION)
         self.check_if_on_vermittler_login_page()
 
-
     def go_to_aktservice_login_page(self, base_url):
         self.driver.implicitly_wait(2)
         self.driver.maximize_window()
@@ -39,7 +38,8 @@ class CommonTasks(Helper):
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
 
-    def login_to_aktservice(self, base_url, user=Helper.AKTSERVICE_USER_LOGIN, password=Helper.AKTSERVICE_USER_PASSWORD):
+    def login_to_aktservice(self, base_url, user=Helper.AKTSERVICE_USER_LOGIN,
+                            password=Helper.AKTSERVICE_USER_PASSWORD):
         self.go_to_aktservice_login_page(base_url)
         WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.ID, "mnr")))
@@ -57,7 +57,6 @@ class CommonTasks(Helper):
 
         self.check_if_on_aktservice_page()
         self.driver.implicitly_wait(2)
-
 
     def go_to_secure_email_login_page(self, base_url):
         self.driver.implicitly_wait(2)
@@ -92,7 +91,8 @@ class CommonTasks(Helper):
         self.check_if_on_admin_main_page()
         self.driver.implicitly_wait(2)
 
-    def login_to_secure_email(self, base_url, user=Helper.SECURE_EMAIL_USER_LOGIN, password=Helper.SECURE_EMAIL_USER_PASSWORD):
+    def login_to_secure_email(self, base_url, user=Helper.SECURE_EMAIL_USER_LOGIN,
+                              password=Helper.SECURE_EMAIL_USER_PASSWORD):
         self.go_to_secure_email_login_page(base_url)
         WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.ID, "username")))
@@ -117,7 +117,8 @@ class CommonTasks(Helper):
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
 
     def login_to_connect_vermittler(self, base_url, user=Helper.VERMITTLER_USER_LOGIN,
-                                    password=Helper.VERMITTLER_USER_PASSWORD, main_page_after_login=True, user_with_taa_rights=True):
+                                    password=Helper.VERMITTLER_USER_PASSWORD, main_page_after_login=True,
+                                    user_with_taa_rights=True):
         self.go_to_vermittler_login_page(base_url)
 
         self.driver.find_element_by_id("username").clear()
@@ -146,11 +147,6 @@ class CommonTasks(Helper):
                          "Number of links on links_tab:%d; expected:%d" % (len(links_tab_elements), 6))
 
     def check_if_on_zielgruppe_page(self):
-
-        self.check_if_links_tab_visible()
-
-        self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
-
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER)))
         WebDriverWait(self.driver, 10).until(
@@ -158,6 +154,9 @@ class CommonTasks(Helper):
         WebDriverWait(self.driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER),
             u"Berechnen & beantragen"))
+        self.check_if_links_tab_visible()
+
+        self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
 
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Helper.ZIELGRUPPE_PRIVATKUNDEN_HEADER_XPATH)))
@@ -248,6 +247,7 @@ class CommonTasks(Helper):
     def open_taa_vm(self):
         self.driver.implicitly_wait(2)
         self.check_and_click_element_by_link_text("Rechner")
+
         self.check_if_on_zielgruppe_page()
 
         zielgruppe_labels = self.driver.find_elements_by_xpath(
@@ -307,7 +307,8 @@ class CommonTasks(Helper):
             self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["radio_xpath"]).is_selected())
 
         if btrklasse_name in ("familien", "singles", "beamte", "senioren"):
-            for el in self.driver.find_elements_by_xpath("(/html/body/div/div/div/section/div/div[2]/div/div[*]/div/form/div/div[1]/h4)"):
+            for el in self.driver.find_elements_by_xpath(
+                    "(/html/body/div/div/div/section/div/div[2]/div/div[*]/div/form/div/div[1]/h4)"):
                 try:
                     self.assertFalse(el.is_displayed())
                 except AssertionError:
@@ -750,7 +751,6 @@ class CommonTasks(Helper):
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1]/h4)"),
             u"Sendebestätigung"))
         self.assertEqual(self.base_url + "ng/#/taa//bestaetigung", self.driver.current_url)
-
 
     def antragsteller_fill_data(self):
         self.antragsteller_fill_data_antragstellerdaten()
@@ -1398,6 +1398,3 @@ class CommonTasks(Helper):
             return True
         else:
             return False
-
-
-

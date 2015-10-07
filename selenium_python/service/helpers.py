@@ -58,7 +58,7 @@ class Helper(object):
 
     FOOTER_SPAN_XPATH = "(/html/body/span)"
 
-    CURRENT_PAGE_MAIN_HEADER = "(/html/body/div/div/div/div[2]/div[1]/ng-include/h1)"
+    CURRENT_PAGE_MAIN_HEADER = "(/html/body/div/div/div/div[2]/div[1]/ng-include/h1|html/body/div/div/div/div/div/ng-include/h1)"
 
     NEUE_DOKUMENTE_PAGINATION_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/ul)"
 
