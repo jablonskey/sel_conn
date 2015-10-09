@@ -54,7 +54,8 @@ class DeepLinksTests(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         self.driver.get(self.base_url + self.MITGLIEDSCHAFT_ADDRES_COMPLETION + "%s?username=%s&password=%s" % (
         "3137873000", self.VERMITTLER_USER_LOGIN, self.VERMITTLER_USER_PASSWORD))
-        self.check_if_on_kundensuche_page()
+        self.check_if_on_mitgliedschaft_page(u"3137873000")
+
 
     def tearDown(self):
         self.driver.quit()

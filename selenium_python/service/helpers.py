@@ -309,6 +309,10 @@ class Helper(object):
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Kundensuche Ergebnisse"))
 
+    def check_if_on_mitgliedschaft_page(self, mnr_number):
+        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+            (By.XPATH, "(/html/body/div/div/div/div[2]/div[1]/ng-include/h3)"), mnr_number))
+
 
     def check_if_on_aktservice_page(self):
         WebDriverWait(self.driver, 60).until(
