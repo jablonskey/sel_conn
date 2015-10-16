@@ -74,7 +74,7 @@ class Connect462Test(unittest.TestCase, CommonTasks):
 
         self.antragsteller_zuruck_tarifdaten()
 
-        self.tarifdaten_select_produkt_from_rechtschutz("Privat- und Berufs-RS")
+        self.tarifdaten_select_produkt_from_rechtschutz("Privat- und Verkehrs-RS")
 
         self.tarifdaten_weiter_antrastellerdaten()
 

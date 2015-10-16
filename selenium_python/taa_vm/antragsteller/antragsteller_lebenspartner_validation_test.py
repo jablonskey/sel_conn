@@ -270,10 +270,12 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
                          Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[3].text)
         self.assertEqual(u"Investmentbanker",
                          Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[4].text)
-        self.assertEqual(u"Vorstand / Aufsichtsrat börsennotierter AG",
+        self.assertEqual(u"Rechtsanwalt",
                          Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[5].text)
-        self.assertEqual(u"Sonstige Berufsgruppe",
+        self.assertEqual(u"Vorstand / Aufsichtsrat börsennotierter AG",
                          Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[6].text)
+        self.assertEqual(u"Sonstige Berufsgruppe",
+                         Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[7].text)
 
         Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).select_by_index(1)
         try:
@@ -291,10 +293,12 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
                          Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[2].text)
         self.assertEqual(u"Investmentbanker",
                          Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[3].text)
-        self.assertEqual(u"Vorstand / Aufsichtsrat börsennotierter AG",
+        self.assertEqual(u"Rechtsanwalt",
                          Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[4].text)
-        self.assertEqual(u"Sonstige Berufsgruppe",
+        self.assertEqual(u"Vorstand / Aufsichtsrat börsennotierter AG",
                          Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[5].text)
+        self.assertEqual(u"Sonstige Berufsgruppe",
+                         Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[6].text)
         # endregion
         # region lebenspartner-strasse
         # -- Strasse INVALID
