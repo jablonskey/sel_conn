@@ -37,7 +37,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.zielgruppe_weiter_tarifdaten()
 
         self.check_and_click_element_by_name("mitgliedschaft")
-        self.tarifdaten_select_sb_for_produkt_from_rechtschutz("JURPRIVAT", "ohne SB")
+        self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.check_and_click_element_by_name("rechtschutz")
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/div/div[1]/h4)"), u"Ergänzungen"))
@@ -71,7 +71,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.zielgruppe_weiter_tarifdaten()
 
         self.check_and_click_element_by_name("mitgliedschaft")
-        self.tarifdaten_select_sb_for_produkt_from_rechtschutz("JURPRIVAT", "ohne SB")
+        self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.check_and_click_element_by_name("rechtschutz")
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/div/div[1]/h4)"), u"Ergänzungen"))
@@ -106,7 +106,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.zielgruppe_weiter_tarifdaten()
 
         self.check_and_click_element_by_name("mitgliedschaft")
-        self.tarifdaten_select_sb_for_produkt_from_rechtschutz("JURPRIVAT", "ohne SB")
+        self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.check_and_click_element_by_name("rechtschutz")
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/div/div[1]/h4)"), u"Ergänzungen"))
@@ -139,7 +139,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
-        self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="ohne SB")
+        self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
         self.tarifdaten_weiter_antrastellerdaten()
         self.antragsteller_fill_data()

@@ -32,7 +32,7 @@ class Connect462Test(unittest.TestCase, CommonTasks):
         self.zielgruppe_btrklasse_select_by_name('familien')
         self.zielgruppe_weiter_tarifdaten()
 
-        self.tarifdaten_select_sb_for_produkt_from_rechtschutz("JURPRIVAT", "ohne SB")
+        self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
 
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
