@@ -76,7 +76,7 @@ class Connect415Test(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_on_daten_erfassen_popup_by_list_position(1)
         self.check_and_click_element_by_xpath(self.ERGANZUNGEN_POPUP_OK_BUTTON_XPATH)
 
-        self.tarifdaten_select_produkt_from_rechtschutz("Privat- und Berufs-RS")
+        self.tarifdaten_select_produkt_from_rechtschutz("Privat- und Verkehrs-RS")
 
         WebDriverWait(driver, 10).until_not(EC.text_to_be_present_in_element((By.XPATH, self.get_tarifdaten_erganzungen_label_xpath(3)), third_selected_erganz))
 

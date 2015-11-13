@@ -51,13 +51,13 @@ class Connect534Test(unittest.TestCase, common_tasks.CommonTasks):
 
         try:
             self.assertEqual(Select(driver.find_element_by_id("berufsgruppe")).options[
-                                 int(driver.find_element_by_id("berufsgruppe").get_attribute("value"))-1].text,
+                                 int(driver.find_element_by_id("berufsgruppe").get_attribute("value"))].text,
                              "Sonstige Berufsgruppe")
         except AssertionError as e:
             self.verificationErrors.append(
-                "Field berufsgruppe \ \"" + Select(driver.find_element_by_id("berfusgruppe")).options[
+                "Field berufsgruppe \ \"" + Select(driver.find_element_by_id("berufsgruppe")).options[
                     int(driver.find_element_by_id("berufsgruppe").get_attribute(
-                        "value"))-1].text + "\" instead of \"Sonstige Berufsgruppe\"")
+                        "value"))].text + "\" instead of \"Sonstige Berufsgruppe\"")
 
         self.antragsteller_fill_data_lebenspartner(taetigkeit="nicht berufstätig")
 
@@ -68,13 +68,13 @@ class Connect534Test(unittest.TestCase, common_tasks.CommonTasks):
 
         try:
             self.assertEqual(Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[
-                                 int(driver.find_element_by_id("lebenspartner-berufsgruppe").get_attribute("value"))-1].text,
+                                 int(driver.find_element_by_id("lebenspartner-berufsgruppe").get_attribute("value"))].text,
                              "Sonstige Berufsgruppe")
         except AssertionError as e:
             self.verificationErrors.append(
-                "Field berufsgruppe \ \"" + Select(driver.find_element_by_id("lebenspartner-berfusgruppe")).options[
+                "Field berufsgruppe \ \"" + Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[
                     int(driver.find_element_by_id("lebenspartner-berufsgruppe").get_attribute(
-                        "value"))-1].text + "\" instead of \"Sonstige Berufsgruppe\"")
+                        "value"))].text + "\" instead of \"Sonstige Berufsgruppe\"")
 
     def tearDown(self):
         self.driver.quit()

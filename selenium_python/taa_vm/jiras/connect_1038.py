@@ -40,16 +40,10 @@ class Connect1038Test(unittest.TestCase, common_tasks.CommonTasks):
 
         self.zielgruppe_weiter_tarifdaten()
         self.tarifdaten_zuruck_zielgruppe()
-        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
-            (By.XPATH, self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["header_xpath"])))
-        WebDriverWait(self.driver, 20).until_not(EC.visibility_of_element_located(
-            (By.XPATH, self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["landwirte"]["header_xpath"])))
-        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
-            (By.XPATH, self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["header_xpath"])))
         try:
             self.assertNotEqual(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["landwirte"]["header_text"],
                              self.driver.find_element_by_xpath(
-                                 self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["landwirte"]["header_xpath"]).text)
+                                 self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["header_xpath"]).text)
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
