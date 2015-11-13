@@ -97,7 +97,8 @@ class Helper(object):
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[1]/label/input)",
             "header_text": u"Selbständige / Firmen / Freiberufler",
             "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[1]/h4)",
-            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span[1]/data-ng-form/div[1]/div/input)"},
+            "anzahl_form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span[1]/data-ng-form/div[1]/div/input)",
+            "jahresbrutto_form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span[2]/data-ng-form/div[1]/div/input)"},
         "arzte": {
             "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[2]/label)",
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[2]/label/input)",
@@ -169,10 +170,12 @@ class Helper(object):
                                   "100 EUR (fallende SB)",
                                   "200 EUR (fallende SB)",
                                   "400 EUR (fallende SB)")
-    TARIFDATEN_SB_POPUP_SB_1000 = ("250 EUR (fallende SB)",
+    TARIFDATEN_SB_POPUP_SB_1000 = ("300 EUR (fallende SB)",
                                    "400 EUR (fallende SB)",
-                                   "550 EUR (fallende SB)",
+                                   "500 EUR (fallende SB)",
+                                   "600 EUR (fallende SB)",
                                    "700 EUR (fallende SB)",
+                                   "800 EUR (fallende SB)",
                                    "1.000 EUR (fallende SB)")
     TARIFDATEN_SB_POPUP_ABBRECHEN_BUTTON_XPATH = "(/html/body/div[3]/div/div/div[3]/div/div[1]/button)"
     TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH = "(/html/body/div[3]/div/div/div[3]/div/div[3]/button)"

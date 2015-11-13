@@ -265,7 +265,7 @@ class CommonTasks(Helper):
         self.driver.implicitly_wait(2)
 
     # region zielgruppe common tasks
-    def zielgruppe_btrklasse_select_by_name(self, btrklasse_name, anzahl=None):
+    def zielgruppe_btrklasse_select_by_name(self, btrklasse_name, anzahl=None, jahresbrutto=None):
         # Helper.ZIELGRUPPE_BTRKLASSES_HELPER_LIST = {
         # 'familien': (
         # "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[1]/div/div[2]/div/div[1]/label",
@@ -328,11 +328,18 @@ class CommonTasks(Helper):
                 self.verificationErrors.append(str(e))
             if anzahl != None:
                 self.check_and_click_element_by_xpath(
-                    self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["form_xpath"])
+                    self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["anzahl_form_xpath"])
                 self.driver.find_element_by_xpath(
-                    self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["form_xpath"]).clear()
+                    self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["anzahl_form_xpath"]).clear()
                 self.driver.find_element_by_xpath(
-                    self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["form_xpath"]).send_keys(anzahl)
+                    self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["anzahl_form_xpath"]).send_keys(anzahl)
+            if jahresbrutto != None:
+                self.check_and_click_element_by_xpath(
+                    self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["jahresbrutto_form_xpath"])
+                self.driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["jahresbrutto_form_xpath"]).clear()
+                self.driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["jahresbrutto_form_xpath"]).send_keys(jahresbrutto)
 
         elif btrklasse_name == 'arzte':
             WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
@@ -539,7 +546,7 @@ class CommonTasks(Helper):
         if ermittlung_type == "400":
             WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
                 (By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)"),
-                u"Ermittlung der Selbstbeteiligung (Start-SB) für den JURPRIVAT"))
+                u"Ermittlung der Selbstbeteiligung (Start-SB)"))
             WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
                 (By.XPATH, "(/html/body/div[3]/div/div/div[2]/div[8]/label/input)")))
             WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
@@ -571,7 +578,7 @@ class CommonTasks(Helper):
             if ermittlung_type == "400":
                 self.check_and_click_element_by_xpath("(/html/body/div[3]/div/div/div[2]/div[8]/label)")
             elif ermittlung_type == "1000":
-                self.check_and_click_element_by_xpath("(/html/body/div[3]/div/div/div[2]/div[9]/label)")
+                self.check_and_click_element_by_xpath("(/html/body/div[3]/div/div/div[2]/div[11]/label/input)")
 
         if button_to_click == "abbrechen":
             self.check_and_click_element_by_xpath(self.TARIFDATEN_SB_POPUP_ABBRECHEN_BUTTON_XPATH)
