@@ -397,10 +397,12 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
                          Select(driver.find_element_by_id("berufsgruppe")).options[3].text)
         self.assertEqual(u"Investmentbanker",
                          Select(driver.find_element_by_id("berufsgruppe")).options[4].text)
-        self.assertEqual(u"Vorstand / Aufsichtsrat börsennotierter AG",
+        self.assertEqual(u"Rechtsanwalt",
                          Select(driver.find_element_by_id("berufsgruppe")).options[5].text)
-        self.assertEqual(u"Sonstige Berufsgruppe",
+        self.assertEqual(u"Vorstand / Aufsichtsrat börsennotierter AG",
                          Select(driver.find_element_by_id("berufsgruppe")).options[6].text)
+        self.assertEqual(u"Sonstige Berufsgruppe",
+                         Select(driver.find_element_by_id("berufsgruppe")).options[7].text)
 
         Select(driver.find_element_by_id("berufsgruppe")).select_by_index(1)
         try:
@@ -417,11 +419,13 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
                          Select(driver.find_element_by_id("berufsgruppe")).options[2].text)
         self.assertEqual(u"Investmentbanker",
                          Select(driver.find_element_by_id("berufsgruppe")).options[3].text)
-        self.assertEqual(u"Vorstand / Aufsichtsrat börsennotierter AG",
+        self.assertEqual(u"Rechtsanwalt",
                          Select(driver.find_element_by_id("berufsgruppe")).options[4].text)
+        self.assertEqual(u"Vorstand / Aufsichtsrat börsennotierter AG",
+                         Select(driver.find_element_by_id("berufsgruppe")).options[5].text)
 
         self.assertEqual(u"Sonstige Berufsgruppe",
-                         Select(driver.find_element_by_id("berufsgruppe")).options[5].text)
+                         Select(driver.find_element_by_id("berufsgruppe")).options[6].text)
 
         self.antragsteller_fill_data_zahlungsdaten("uberweisung")
         self.antragsteller_fill_data_vorversicherung("nein")
