@@ -77,45 +77,51 @@ class Helper(object):
 
     ZIELGRUPPE_BTRKLASSES_HELPER_LIST = {
         "familien": {
-            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[1]/div/div[2]/div/div[1]/label)",
-            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[1]/div/div[2]/div/div[1]/label/input)",
+            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[1]/div/div[2]/div/div[1]/label)",
+            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[1]/div/div[2]/div/div[1]/label/input)",
             "header_text": "Familien"},
         "singles": {
-            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[1]/div/div[2]/div/div[2]/label)",
-            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[1]/div/div[2]/div/div[2]/label/input)",
+            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[1]/div/div[2]/div/div[2]/label)",
+            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[1]/div/div[2]/div/div[2]/label/input)",
             "header_text": "Singles"},
         "beamte": {
-            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[1]/div/div[2]/div/div[3]/label)",
-            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[1]/div/div[2]/div/div[3]/label/input)",
+            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[1]/div/div[2]/div/div[3]/label)",
+            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[1]/div/div[2]/div/div[3]/label/input)",
             "header_text": "Beamte"},
         "senioren": {
-            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[1]/div/div[2]/div/div[4]/label)",
-            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[1]/div/div[2]/div/div[4]/label/input)",
+            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[1]/div/div[2]/div/div[4]/label)",
+            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[1]/div/div[2]/div/div[4]/label/input)",
             "header_text": "Senioren"},
         "selbstandige": {
-            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[1]/label)",
-            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[1]/label/input)",
+            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[1]/label)",
+            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[1]/label/input)",
             "header_text": u"Selbständige / Firmen / Freiberufler",
-            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/form/div/div[1]/h4)",
-            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/form/div/div[2]/div[2]/div[2]/input)"},
+            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[1]/h4)",
+            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span[1]/data-ng-form/div[1]/div/input)"},
         "arzte": {
-            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[2]/label)",
-            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[2]/label/input)",
+            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[2]/label)",
+            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[2]/label/input)",
             "header_text": u"Ärzte / Heilwesenberufe",
-            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/form/div/div[1]/h4)",
-            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/form/div/div[2]/div[2]/div[2]/input)"},
+            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[1]/h4)",
+            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[1]/div/input)"},
         "steuerberater": {
-            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[3]/label)",
-            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[3]/label/input)",
+            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[3]/label)",
+            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[3]/label/input)",
             "header_text": u"Steuerberater / Wirtschaftsprüfer",
-            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/form/div/div[1]/h4)",
-            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/form/div/div[2]/div[2]/div[2]/input)"},
+            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[1]/h4)",
+            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span[1]/data-ng-form/div[1]/div/input)"},
         "landwirte": {
-            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[4]/label)",
-            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div/div[2]/div/div[4]/label/input)",
+            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[4]/label)",
+            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[4]/label/input)",
             "header_text": u"Landwirte",
-            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[6]/div/form/div/div[1]/h4)",
-            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[6]/div/form/div/div[2]/div[2]/div/input)"}
+            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[1]/h4)",
+            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[2]/div/input)"},
+        "vereine": {
+            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[5]/label)",
+            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[5]/label/input)",
+            "header_text": u"Vereine",
+            "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[1]/h4)",
+            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div/div/input)"}
     }
 
     ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER = {
