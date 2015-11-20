@@ -97,8 +97,8 @@ class Helper(object):
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[1]/label/input)",
             "header_text": u"Selbständige / Firmen / Freiberufler",
             "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[1]/h4)",
-            "anzahl_form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span[1]/data-ng-form/div[1]/div/input)",
-            "jahresbrutto_form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span[2]/data-ng-form/div[1]/div/input)"},
+            "anzahl_form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span[1]/data-ng-form/div[1]/div/table/tbody/tr/td[2]/input)",
+            "jahresbrutto_form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span[2]/data-ng-form/div[1]/div/table/tbody/tr/td[2]/input)"},
         "arzte": {
             "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[2]/label)",
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[2]/label/input)",
