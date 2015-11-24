@@ -101,7 +101,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.verificationErrors.append(
                 "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
 
-        elf.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"], "10a", "invalid")
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"], "10a", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
