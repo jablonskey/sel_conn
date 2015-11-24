@@ -382,7 +382,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_btrklasse_select_by_name("selbstandige")
         try:
-            self.assertEqual("", driver.find_element_by_id("anzahl-beschaeftigen-selbstaendige").get_attribute("value"))
+            self.assertEqual("", driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"]).get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
                 "Field anzahl-beschaeftigen-selbstaendige not empty / line %d" % (sys.exc_info()[-1].tb_lineno))
@@ -390,14 +390,14 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
         self.zielgruppe_btrklasse_select_by_name("singles")
         self.zielgruppe_btrklasse_select_by_name("arzte")
         try:
-            self.assertEqual("", driver.find_element_by_id("anzahl-beschaeftigen-aerzte").get_attribute("value"))
+            self.assertEqual("", driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"]).get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
                 "Field anzahl-beschaeftigen-aerzte not empty / line %d" % (sys.exc_info()[-1].tb_lineno))
 
         self.zielgruppe_btrklasse_select_by_name("steuerberater")
         try:
-            self.assertEqual("", driver.find_element_by_id("honorareinnahmen").get_attribute("value"))
+            self.assertEqual("", driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"]).get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
                 "Field honorareinnahmen not empty / line %d" % (sys.exc_info()[-1].tb_lineno))

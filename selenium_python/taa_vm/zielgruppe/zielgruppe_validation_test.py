@@ -62,48 +62,54 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST['selbstandige']["header_xpath"])
         try:
             self.assertRegexpMatches(
-                driver.find_element_by_id("anzahl-beschaeftigen-selbstaendige").get_attribute("class"),
+                driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"]).get_attribute("class"),
                 r"ng-invalid")
         except AssertionError:
             self.verificationErrors.append(
                 "anzahl-beschaeftigen-selbstaendige not invalid // empty but required / line %s" % (
                 sys.exc_info()[-1].tb_lineno))
-        self.validate_element_by_id("anzahl-beschaeftigen-selbstaendige", "asd", "invalid")
+
+        self.validate_element_by_xpath((self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"]), "asd", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
                 "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
-        self.validate_element_by_id("anzahl-beschaeftigen-selbstaendige", "*", "invalid")
+
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"], "*", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
                 "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
-        self.validate_element_by_id("anzahl-beschaeftigen-selbstaendige", ".", "invalid")
+
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"], ".", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
                 "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
-        self.validate_element_by_id("anzahl-beschaeftigen-selbstaendige", "-10", "invalid")
+
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"], "-10", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
                 "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
-        self.validate_element_by_id("anzahl-beschaeftigen-selbstaendige", "10a", "invalid")
+
+        elf.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"], "10a", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
                 "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
-        self.validate_element_by_id("anzahl-beschaeftigen-selbstaendige", "10", "valid")
+
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"], "10", "valid")
         self.zielgruppe_weiter_tarifdaten()
 
     def test_arzte_validation(self):
@@ -190,7 +196,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
 
         self.zielgruppe_btrklasse_select_by_name("steuerberater")
 
-        self.driver.find_element_by_id("honorareinnahmen").clear()
+        self.driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"]).clear()
 
         self.check_and_click_element_by_link_text("Weiter")
         try:
@@ -200,16 +206,16 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
                 "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
 
         WebDriverWait(self.driver, 4).until(EC.presence_of_element_located(
-            (By.ID, "honorareinnahmen")))
+            (By.XPATH, self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"])))
         WebDriverWait(self.driver, 4).until(EC.visibility_of_element_located(
-            (By.ID, "honorareinnahmen")))
+            (By.XPATH, self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"])))
 
         try:
-            self.assertRegexpMatches(driver.find_element_by_id("honorareinnahmen").get_attribute("class"),
+            self.assertRegexpMatches(driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"]).get_attribute("class"),
                                      r"ng-invalid")
         except AssertionError:
             self.verificationErrors.append("honorareinnahmen not invalid // empty but required")
-        self.validate_element_by_id("honorareinnahmen", "asd", "invalid")
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], "asd", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
@@ -217,7 +223,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             pass
         else:
             self.verificationErrors.append("Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
-        self.validate_element_by_id("honorareinnahmen", "*", "invalid")
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], "*", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
@@ -225,7 +231,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             pass
         else:
             self.verificationErrors.append("Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
-        self.validate_element_by_id("honorareinnahmen", ".", "invalid")
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], ".", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
@@ -233,7 +239,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             pass
         else:
             self.verificationErrors.append("Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
-        self.validate_element_by_id("honorareinnahmen", "10-", "invalid")
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], "10-", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
@@ -241,7 +247,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             pass
         else:
             self.verificationErrors.append("Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
-        self.validate_element_by_id("honorareinnahmen", "-10", "invalid")
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], "-10", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
@@ -249,7 +255,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             pass
         else:
             self.verificationErrors.append("Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
-        self.validate_element_by_id("honorareinnahmen", "10a", "invalid")
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], "10a", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
@@ -257,7 +263,8 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             pass
         else:
             self.verificationErrors.append("Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
-        self.validate_element_by_id("honorareinnahmen", "10", "valid")
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], "10", "valid")
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form1_xpath"], "10", "valid")
         self.zielgruppe_weiter_tarifdaten()
 
     def test_landwirte_no_radios_selected_validation(self):
@@ -487,7 +494,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
 
         self.zielgruppe_btrklasse_select_by_name("selbstandige")
 
-        self.validate_element_by_id("anzahl-beschaeftigen-selbstaendige", "asd", "invalid")
+        self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"], "asd", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
