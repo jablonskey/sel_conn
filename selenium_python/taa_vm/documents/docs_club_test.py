@@ -46,9 +46,9 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])")))
+            EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[10])")))
         WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[10])"),
 
                                              u"Club Highlights"))
 
@@ -77,9 +77,9 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])")))
+            EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[10])")))
         WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[10])"),
 
                                              u"Club Highlights"))
         driver.close()
@@ -110,9 +110,9 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])")))
+            EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[10])")))
         WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[10])"),
 
                                              u"Club Highlights"))
         driver.close()
@@ -146,9 +146,9 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])")))
+            EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[10])")))
         WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[10])"),
 
                                              u"Club Highlights"))
         driver.close()

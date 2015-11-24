@@ -104,13 +104,14 @@ class Helper(object):
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[2]/label/input)",
             "header_text": u"Ärzte / Heilwesenberufe",
             "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[1]/h4)",
-            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[1]/div/input)"},
+            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[1]/div/table/tbody/tr/td[2]/input)"},
         "steuerberater": {
             "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[3]/label)",
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[3]/label/input)",
             "header_text": u"Steuerberater / Wirtschaftsprüfer",
             "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[1]/h4)",
-            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span[1]/data-ng-form/div[1]/div/input)"},
+            "form1_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span[1]/data-ng-form/div[1]/div/table/tbody/tr/td[2]/input)",
+            "form2_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span[2]/data-ng-form/div[1]/div/table/tbody/tr/td[2]/input)"},
         "landwirte": {
             "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[4]/label)",
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[4]/label/input)",
@@ -122,7 +123,7 @@ class Helper(object):
             "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[1]/div/div[2]/div/div[2]/div/div[5]/label/input)",
             "header_text": u"Vereine",
             "header_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[1]/h4)",
-            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div/div/input)"}
+            "form_xpath": "(/html/body/div/div/div/section/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[1]/div/input)"}
     }
 
     ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER = {

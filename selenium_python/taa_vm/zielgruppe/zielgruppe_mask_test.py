@@ -33,34 +33,34 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
 
         self.zielgruppe_btrklasse_select_by_name("arzte")
         try:
-            self.assertEqual("", driver.find_element_by_id("anzahl-beschaeftigen-aerzte").get_attribute("value"))
+            self.assertEqual("", driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"]).get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
                 "Field anzahl-beschaeftigen-aerzte not refreshed / line %s" % (sys.exc_info()[-1].tb_lineno))
-        driver.find_element_by_id("anzahl-beschaeftigen-aerzte").clear()
-        driver.find_element_by_id("anzahl-beschaeftigen-aerzte").send_keys("5")
+        driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"]).clear()
+        driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"]).send_keys("5")
 
         self.zielgruppe_btrklasse_select_by_name("familien")
 
         self.zielgruppe_btrklasse_select_by_name("selbstandige")
         try:
-            self.assertEqual("", driver.find_element_by_id("anzahl-beschaeftigen-selbstaendige").get_attribute("value"))
+            self.assertEqual("", driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"]).get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
                 "Field anzahl-beschaeftigen-selbstaendige not refreshed / line %s" % (sys.exc_info()[-1].tb_lineno))
-        driver.find_element_by_id("anzahl-beschaeftigen-selbstaendige").clear()
-        driver.find_element_by_id("anzahl-beschaeftigen-selbstaendige").send_keys("5")
+        driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"]).clear()
+        driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"]).send_keys("5")
 
         self.zielgruppe_btrklasse_select_by_name("familien")
 
         self.zielgruppe_btrklasse_select_by_name("steuerberater")
         try:
-            self.assertEqual("", driver.find_element_by_id("honorareinnahmen").get_attribute("value"))
+            self.assertEqual("", driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"]).get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
                 "Field honorareinnahmen not refreshed / line %s" % (sys.exc_info()[-1].tb_lineno))
-        driver.find_element_by_id("honorareinnahmen").clear()
-        driver.find_element_by_id("honorareinnahmen").send_keys("5")
+        driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"]).clear()
+        driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"]).send_keys("5")
 
         self.zielgruppe_btrklasse_select_by_name("familien")
 
@@ -332,7 +332,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
 
         WebDriverWait(driver, 4).until(
             EC.invisibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
-        self.assertEqual("", driver.find_element_by_id("anzahl-beschaeftigen-selbstaendige").get_attribute("value"))
+        self.assertEqual("", driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"]).get_attribute("value"))
         self.check_and_click_element_by_link_text("Berechnungshilfe")
         WebDriverWait(driver, 4).until(
             EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
@@ -352,7 +352,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
 
         WebDriverWait(driver, 4).until(
             EC.invisibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
-        self.assertEqual("5", driver.find_element_by_id("anzahl-beschaeftigen-selbstaendige").get_attribute("value"))
+        self.assertEqual("5", driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"]).get_attribute("value"))
 
         self.check_and_click_element_by_link_text("Berechnungshilfe")
         WebDriverWait(driver, 4).until(
@@ -369,7 +369,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
 
         WebDriverWait(driver, 4).until(
             EC.invisibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
-        self.assertEqual("5", driver.find_element_by_id("anzahl-beschaeftigen-selbstaendige").get_attribute("value"))
+        self.assertEqual("5", driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"]).get_attribute("value"))
 
     def test_zielgruppe_mask(self):
         driver = self.driver

@@ -245,6 +245,10 @@ class CommonTasks(Helper):
                 EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div)")))
 
     def open_taa_vm(self):
+        """
+
+        :rtype: object
+        """
         self.driver.implicitly_wait(2)
         self.check_and_click_element_by_link_text("Rechner")
 
