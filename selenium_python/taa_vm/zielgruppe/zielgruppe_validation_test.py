@@ -210,11 +210,13 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
         WebDriverWait(self.driver, 4).until(EC.visibility_of_element_located(
             (By.XPATH, self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"])))
 
-        try:
-            self.assertRegexpMatches(driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"]).get_attribute("class"),
-                                     r"ng-invalid")
-        except AssertionError:
-            self.verificationErrors.append("honorareinnahmen not invalid // empty but required")
+        # Honorareinahmen required on zielgruppe page
+        # try:
+        #     self.assertRegexpMatches(driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"]).get_attribute("class"),
+        #                              r"ng-invalid")
+        # except AssertionError:
+        #     self.verificationErrors.append("honorareinnahmen not invalid // empty but required")
+
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], "asd", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
