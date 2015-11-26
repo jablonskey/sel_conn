@@ -423,7 +423,7 @@ class Helper(object):
     def get_tarifdaten_erganzungen_label_xpath(self, erganzungen_no):
         if erganzungen_no in range(1, len(
                 self.driver.find_elements_by_xpath(Helper.TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH)) + 1):
-            return "(/html/body/div[1]/div/div/section/div/div[2]/div/div[5]/div/div/div[2]/table/tbody/tr[%s]/td[1]/ng-include/div/label)" % (
+            return "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div[1]/div/div[2]/table/tbody/tr[%s]/td[1]/ng-include/div/label)" % (
                 erganzungen_no)
 
     def get_price_from_table_text(self, table_name, row_no="*"):
