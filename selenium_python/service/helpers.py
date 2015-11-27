@@ -22,6 +22,8 @@ class Helper(object):
     ZIELGRUPPE_ADDRES_COMPLETION = "ng/#/taa//zielgruppe"
     KUNDENSUCHE_ADDRES_COMPLETION = "ng/#/vermittler/kundensuche"
     MITGLIEDSCHAFT_ADDRES_COMPLETION = "ng/#/vermittler/mitgliedschaft/"
+    MEINE_ANGEBOTE_ADDRES_COMPLETION = "ng/#/vermittler/angebote"
+    MEIN_PROFIL_ADDRESS_COMPLETION = "ng/#/vermittler/nutzerprofil"
 
 
     ADMIN_USER_LOGIN = "admin@ks"
@@ -323,7 +325,6 @@ class Helper(object):
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
             (By.XPATH, "(/html/body/div/div/div/div[2]/div[1]/ng-include/h3)"), mnr_number))
 
-
     def check_if_on_aktservice_page(self):
         WebDriverWait(self.driver, 60).until(
             EC.visibility_of_element_located((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER)))
@@ -343,6 +344,21 @@ class Helper(object):
         WebDriverWait(self.driver, 20).until(
             EC.text_to_be_present_in_element((By.XPATH, self.AKTSERVICE_COMPARE_HEADER),
                                              u"Folgende Verträge können auf den Leistungsumfang des aktuellen Tarifs 2016 umgestellt werden:"))
+
+    def check_if_on_meine_angebote_page(self):
+        WebDriverWait(self.driver, 60).until(
+            EC.visibility_of_element_located((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER)))
+        WebDriverWait(self.driver, 60).until(
+            EC.text_to_be_present_in_element((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER),
+                                             "Meine Angebote"))
+
+    def check_if_on_mein_profil_page(self):
+        WebDriverWait(self.driver, 60).until(
+            EC.visibility_of_element_located((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER)))
+        WebDriverWait(self.driver, 60).until(
+            EC.text_to_be_present_in_element((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER),
+                                             "Meine Daten"))
+
 
     def check_vermittler_menu_links(self, user_with_taa_rights=True):
         WebDriverWait(self.driver, 20).until(
