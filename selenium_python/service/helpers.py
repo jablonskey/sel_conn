@@ -142,13 +142,17 @@ class Helper(object):
 
     PAGES_TABS_ELEMENTS_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/span/ul/li[*]/a)"
 
-    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_MITGLIEDSCHAFT_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table/tbody/tr[*]/td[1]/div/label)"
-    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_RECHTSCHUTZ_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table[1]/tbody/tr[*]/td/div/label)"
-    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[5]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label)"
-    TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_ERGANZUNGEN_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[5]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label/input)"
-    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_SCHUTZBRIEF_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[5]/div/div/div[2]/table/tbody/tr[*]/td[1]/div/label)"
-    TARIFDATEN_PRODUKT_ELEMENTS_SB_COMBOS_RECHTSCHUTZ_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table[1]/tbody/tr[*]/td[8]/select)"
-    TARIFDATEN_GESAMTBTR_LABEL_XPATH = "(/.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[2]/div/div/div[2]/div/div[3]/div/div)"
+    TARIFDATEN_SPINNER_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div[last()][@class=\"cg-busy cg-busy-animation ng-scope\"])"
+
+    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_MITGLIEDSCHAFT_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div/div/div[2]/table/tbody/tr[*]/td[1]/div/label)"
+    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[1]/div/label)"
+    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[1]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label)"
+    TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_ERGANZUNGEN_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[1]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label/input)"
+    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_SCHUTZBRIEF_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[2]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label)"
+    TARIFDATEN_PRODUKT_ELEMENTS_SB_COMBOS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[8]/select)"
+    TARIFDATEN_GESAMTBTR_LABEL_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[3]/div/div)"
+
+    TARIFDATEN_RECHTSCHUTZ_LABEL_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[1]/div/h4/label)"
 
     TARIFDATEN_ZAHLWEISE_INPUTS_XPATH = {
         "jahrlich": {
@@ -448,16 +452,23 @@ class Helper(object):
             return "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div[1]/div/div[2]/table/tbody/tr[%s]/td[1]/ng-include/div/label)" % (
                 erganzungen_no)
 
+    def tarifdaten_wait_for_price_reload(self):
+        # WebDriverWait(self.driver, 20).until_not(
+        #     EC.presence_of_element_located((By.XPATH, self.TARIFDATEN_SPINNER_XPATH)))
+        WebDriverWait(self.driver, 20).until_not(
+            EC.presence_of_element_located((By.XPATH, self.TARIFDATEN_SPINNER_XPATH)))
+
+
     def get_price_from_table_text(self, table_name, row_no="*"):
         if table_name == "mitgliedschaft":
-            price_xpath = "(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table/tbody/tr[%s]/td[3])" % (
+            price_xpath = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div/div/div[2]/table/tbody/tr[%s]/td[3])" % (
                 str(row_no))
 
             WebDriverWait(self.driver, 10).until_not(
                 EC.text_to_be_present_in_element((By.XPATH, price_xpath), u"0,00 €"))
 
         if table_name == "rechtschutz":
-            price_xpath = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table[1]/tbody/tr[%s]/td[last()])" % (
+            price_xpath = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[%s]/td[last()])" % (
                 str(row_no))
 
             WebDriverWait(self.driver, 10).until_not(
@@ -465,7 +476,7 @@ class Helper(object):
 
 
         elif table_name == "erganzungen":
-            price_xpath = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[5]/div/div/div[2]/table/tbody/tr[%s]/td[4]/div/div)" % (
+            price_xpath = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[1]/div/div/div[2]/table/tbody/tr[%s]/td[4]/div/div)" % (
                 str(row_no))
 
             WebDriverWait(self.driver, 10).until_not(
@@ -544,7 +555,7 @@ class Helper(object):
         return visible_anzahl_fields
 
     ERGANZUNGEN_POPUP_XPATH = "(/html/body/div[3]/div/div)"
-    ERGANZUNGEN_HEADER_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/div/div[1]/h4)"
+    ERGANZUNGEN_HEADER_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[1]/div/div/div[1]/h4)"
     ERGANZUNGEN_POPUP_PRODUKT_LABELS_XPATH = "(/html/body/div[3]/div/div/form/div[2]/div/div/div[1]/div/div[@class=\"col-lg-6\"]/div/label)"
     ERGANZUNGEN_POPUP_PRODUKT_INPUTS_XPATH = "(/html/body/div[3]/div/div/form/div[2]/div/div/div[1]/div/div[@class=\"col-lg-6\"]/div/label/input)"
     ERGANZUNGEN_CHECKBOX_XPATH = "(/html/body/div[3]/div/div/form/div[2]/div/div/div[1]/div/div/div/label/input)"

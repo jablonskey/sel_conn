@@ -32,8 +32,12 @@ class Connect415Test(unittest.TestCase, CommonTasks, Helper):
         self.zielgruppe_btrklasse_select_by_name('familien')
         self.zielgruppe_weiter_tarifdaten()
 
+
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
+
+
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
+
 
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.ERGANZUNGEN_HEADER_XPATH), u"Ergänzungen"))
@@ -62,12 +66,14 @@ class Connect415Test(unittest.TestCase, CommonTasks, Helper):
         anzahl_fields = driver.find_elements_by_name("intItem")
         anzahl_fields[0].send_keys("10")
         self.check_and_click_element_by_xpath(self.ERGANZUNGEN_POPUP_OK_BUTTON_XPATH)
+        self.tarifdaten_wait_for_price_reload()
 
         fourth_selected_erganz = self.tarifdaten_select_produkt_from_erganzungen_by_list_position(4)
-
+        self.tarifdaten_wait_for_price_reload()
         self.tarifdaten_select_produkt_from_rechtschutz("Privat- und Verkehrs-RS")
 
         WebDriverWait(driver, 10).until_not(EC.text_to_be_present_in_element((By.XPATH, self.get_tarifdaten_erganzungen_label_xpath(4)), fourth_selected_erganz))
+        self.tarifdaten_wait_for_price_reload()
 
         erganzungen_produkts_privat_berufs = driver.find_elements_by_xpath(self.TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH)
         erganzungen_labels_privat_berufs= []
@@ -77,8 +83,11 @@ class Connect415Test(unittest.TestCase, CommonTasks, Helper):
 
 
         self.tarifdaten_select_produkt_from_erganzungen_by_name("Spezial-Straf-RS")
+        self.tarifdaten_wait_for_price_reload()
+
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
         WebDriverWait(driver, 10).until_not(EC.text_to_be_present_in_element((By.XPATH, self.get_tarifdaten_erganzungen_label_xpath(4)), erganzungen_labels_privat_berufs[3]))
+        self.tarifdaten_wait_for_price_reload()
 
         erganzungen_produkts_jurprivat_2 = driver.find_elements_by_xpath(self.TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH)
 

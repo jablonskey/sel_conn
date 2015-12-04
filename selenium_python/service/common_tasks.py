@@ -427,6 +427,8 @@ class CommonTasks(Helper):
     # if table_name == "erganzungen":
 
     # region tarifdaten common tasks
+        self.tarifdaten_wait_for_price_reload()
+
 
     def tarifdaten_zuruck_zielgruppe(self):
         self.check_and_click_element_by_link_text(u"Zurück")
@@ -450,6 +452,7 @@ class CommonTasks(Helper):
         WebDriverWait(self.driver, 20).until_not(
             EC.text_to_be_present_in_element_value((By.XPATH, self.TARIFDATEN_GESAMTBTR_LABEL_XPATH), gesambtr))
         self.driver.implicitly_wait(0)
+        self.tarifdaten_wait_for_price_reload()
 
     def tarifdaten_select_produkt_from_rechtschutz(self, produkt_name):
         self.driver.implicitly_wait(2)
@@ -463,6 +466,7 @@ class CommonTasks(Helper):
         WebDriverWait(self.driver, 20).until_not(
             EC.text_to_be_present_in_element_value((By.XPATH, self.TARIFDATEN_GESAMTBTR_LABEL_XPATH), gesambtr))
         self.driver.implicitly_wait(0)
+        self.tarifdaten_wait_for_price_reload()
 
     def tarifdaten_select_produkt_from_schutzbrief(self, produkt_name):
 
@@ -472,6 +476,7 @@ class CommonTasks(Helper):
         for i in produkt_label_list:
             if i.text == produkt_name:
                 i.click()
+        self.tarifdaten_wait_for_price_reload()
 
     def tarifdaten_select_produkt_from_erganzungen_by_name(self, produkt_name):
 
@@ -497,6 +502,7 @@ class CommonTasks(Helper):
             Helper.TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_ERGANZUNGEN_XPATH)
 
         produkts_inputs_list[list_position - 1].click()
+        self.tarifdaten_wait_for_price_reload()
 
         return produkts_labels_list[list_position - 1].text
 
@@ -535,9 +541,11 @@ class CommonTasks(Helper):
         for i in produkt_label_list:
             if i.text == produkt_name:
                 Select(self.driver.find_element_by_xpath(
-                    "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table[1]/tbody/tr[" + str(
+                    "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[" + str(
                         produkt_label_list.index(i) + 1) + "]/td[last()-1]/select)")).select_by_visible_text(
                     sb)
+
+        self.tarifdaten_wait_for_price_reload()
 
     def tarifdaten_ermittlung_alert_handler(self, button_to_click=None, ermittlung_type="400", selected_radio_no=None,
                                             is_checkbox_checked="unchecked"):
