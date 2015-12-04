@@ -17,7 +17,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         vmnr_number = "100065"
         self.go_to_vermittler_login_page(self.base_url)
-        self.open_taa_vm()
+        self.check_and_click_element_by_link_text("Rechner")
+        self.check_if_on_vermittler_login_page(anonymus_info_visible=True)
+        self.check_and_click_element_by_link_text("Rechner ohne Anmeldung")
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
 
@@ -72,7 +74,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         vmnr_number = "100063"
         self.go_to_vermittler_login_page(self.base_url)
-        self.open_taa_vm()
+        self.check_and_click_element_by_link_text("Rechner")
+        self.check_if_on_vermittler_login_page(anonymus_info_visible=True)
+        self.check_and_click_element_by_link_text("Rechner ohne Anmeldung")
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
 
@@ -91,7 +95,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         vmnr_number = "100063"
         self.go_to_vermittler_login_page(self.base_url)
-        self.open_taa_vm()
+        self.check_and_click_element_by_link_text("Rechner")
+        self.check_if_on_vermittler_login_page(anonymus_info_visible=True)
+        self.check_and_click_element_by_link_text("Rechner ohne Anmeldung")
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
 
@@ -112,7 +118,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         vmnr_number = "100063"
         self.go_to_vermittler_login_page(self.base_url)
-        self.open_taa_vm()
+        self.check_and_click_element_by_link_text("Rechner")
+        self.check_if_on_vermittler_login_page(anonymus_info_visible=True)
+        self.check_and_click_element_by_link_text("Rechner ohne Anmeldung")
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
 
@@ -136,7 +144,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         vmnr_number = "100063"
         self.go_to_vermittler_login_page(self.base_url)
-        self.open_taa_vm()
+        self.check_and_click_element_by_link_text("Rechner")
+        self.check_if_on_vermittler_login_page(anonymus_info_visible=True)
+        self.check_and_click_element_by_link_text("Rechner ohne Anmeldung")
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
 
@@ -162,7 +172,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         vmnr_number = "100063"
         self.go_to_vermittler_login_page(self.base_url)
-        self.open_taa_vm()
+        self.check_and_click_element_by_link_text("Rechner")
+        self.check_if_on_vermittler_login_page(anonymus_info_visible=True)
+        self.check_and_click_element_by_link_text("Rechner ohne Anmeldung")
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
         self.login_to_connect_vermittler(self.base_url, user="test2@ks", user_with_taa_rights=False)
@@ -171,7 +183,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         vmnr_number = "100063"
         self.go_to_vermittler_login_page(self.base_url)
-        self.open_taa_vm()
+        self.check_and_click_element_by_link_text("Rechner")
+        self.check_if_on_vermittler_login_page(anonymus_info_visible=True)
+        self.check_and_click_element_by_link_text("Rechner ohne Anmeldung")
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -183,7 +197,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         vmnr_number = "100063"
         self.go_to_vermittler_login_page(self.base_url)
-        self.open_taa_vm()
+        self.check_and_click_element_by_link_text("Rechner")
+        self.check_if_on_vermittler_login_page(anonymus_info_visible=True)
+        self.check_and_click_element_by_link_text("Rechner ohne Anmeldung")
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -196,7 +212,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         vmnr_number = "100063"
         self.go_to_vermittler_login_page(self.base_url)
-        self.open_taa_vm()
+        self.check_and_click_element_by_link_text("Rechner")
+        self.check_if_on_vermittler_login_page(anonymus_info_visible=True)
+        self.check_and_click_element_by_link_text("Rechner ohne Anmeldung")
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -211,7 +229,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         vmnr_number = "100063"
         self.go_to_vermittler_login_page(self.base_url)
-        self.open_taa_vm()
+        self.check_and_click_element_by_link_text("Rechner")
+        self.check_if_on_vermittler_login_page(anonymus_info_visible=True)
+        self.check_and_click_element_by_link_text("Rechner ohne Anmeldung")
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -227,7 +247,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         vmnr_number = "102313"
         self.go_to_vermittler_login_page(self.base_url)
-        self.open_taa_vm()
+        self.check_and_click_element_by_link_text("Rechner")
+        self.check_if_on_vermittler_login_page(anonymus_info_visible=True)
+        self.check_and_click_element_by_link_text("Rechner ohne Anmeldung")
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -259,7 +281,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         driver = self.driver
         vmnr_number = "100063"
         self.go_to_vermittler_login_page(self.base_url)
-        self.open_taa_vm()
+        self.check_and_click_element_by_link_text("Rechner")
+        self.check_if_on_vermittler_login_page(anonymus_info_visible=True)
+        self.check_and_click_element_by_link_text("Rechner ohne Anmeldung")
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
         self.zielgruppe_btrklasse_select_by_name("familien")

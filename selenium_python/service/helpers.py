@@ -148,7 +148,7 @@ class Helper(object):
     TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_ERGANZUNGEN_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[5]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label/input)"
     TARIFDATEN_PRODUKT_ELEMENTS_LABELS_SCHUTZBRIEF_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[5]/div/div/div[2]/table/tbody/tr[*]/td[1]/div/label)"
     TARIFDATEN_PRODUKT_ELEMENTS_SB_COMBOS_RECHTSCHUTZ_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table[1]/tbody/tr[*]/td[8]/select)"
-    TARIFDATEN_GESAMTBTR_LABEL_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[*]/div/div/div[2]/div/div[3]/div/div)"
+    TARIFDATEN_GESAMTBTR_LABEL_XPATH = "(/.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[2]/div/div/div[2]/div/div[3]/div/div)"
 
     TARIFDATEN_ZAHLWEISE_INPUTS_XPATH = {
         "jahrlich": {
@@ -298,7 +298,7 @@ class Helper(object):
         WebDriverWait(self.driver, 60).until(EC.visibility_of_element_located(
             (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
 
-    def check_if_on_vermittler_login_page(self, user_with_taa_rights=True):
+    def check_if_on_vermittler_login_page(self, user_with_taa_rights=True, anonymus_info_visible=False ):
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
         WebDriverWait(self.driver, 20).until(
@@ -309,6 +309,12 @@ class Helper(object):
             EC.presence_of_element_located((By.ID, "password")))
         WebDriverWait(self.driver, 20).until(
             EC.visibility_of_element_located((By.ID, "password")))
+        if anonymus_info_visible:
+            WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.LINK_TEXT, "Rechner ohne Anmeldung")))
+            WebDriverWait(self.driver, 20).until(
+                EC.visibility_of_element_located((By.LINK_TEXT, "Rechner ohne Anmeldung")))
+
 
     def check_if_on_vermittler_main_page(self, user_with_taa_rights=True):
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
