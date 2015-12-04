@@ -37,7 +37,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.check_and_click_element_by_name("rechtschutz")
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/div/div[1]/h4)"), u"Ergänzungen"))
+            (By.XPATH, self.ERGANZUNGEN_HEADER_XPATH), u"Ergänzungen"))
 
         self.documents_popup_generate_document((u"Kurzangebot", ))
 
