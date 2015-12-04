@@ -146,6 +146,7 @@ class Helper(object):
 
     TARIFDATEN_PRODUKT_ELEMENTS_LABELS_MITGLIEDSCHAFT_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div/div/div[2]/table/tbody/tr[*]/td[1]/div/label)"
     TARIFDATEN_PRODUKT_ELEMENTS_LABELS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[1]/div/label)"
+    TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[1]/div/label/input)"
     TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[1]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label)"
     TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_ERGANZUNGEN_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[1]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label/input)"
     TARIFDATEN_PRODUKT_ELEMENTS_LABELS_SCHUTZBRIEF_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[2]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label)"
@@ -156,20 +157,20 @@ class Helper(object):
 
     TARIFDATEN_ZAHLWEISE_INPUTS_XPATH = {
         "jahrlich": {
-            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[6]/div/div/div[2]/div/div[2]/div/div/div[1]/div/label/input)",
-            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[6]/div/div/div[2]/div/div[2]/div/div/div[1]/div/label)",
+            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[1]/div/label/input)",
+            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[1]/div/label)",
             "text": u"jährlich: 27,00 €"},
         "halbjahrlich": {
-            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[6]/div/div/div[2]/div/div[2]/div/div/div[2]/div/label/input)",
-            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[6]/div/div/div[2]/div/div[2]/div/div/div[2]/div/label)",
+            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[2]/div/label/input)",
+            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[2]/div/label",
             "text": u"jährlich: 27,00 €"},
         "vierteljahrlich": {
-            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[6]/div/div/div[2]/div/div[2]/div/div/div[3]/div/label/input)",
-            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[6]/div/div/div[2]/div/div[2]/div/div/div[3]/div/label)",
+            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[3]/div/label/input)",
+            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[3]/div/label)",
             "text": u"jährlich: 27,00 €"},
         "monatlich": {
-            "radio_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[6]/div/div/div[2]/div/div[2]/div/div/div[4]/div/label/input)",
-            "label_xpath": "(/html/body/div/div/div/section/div/div[2]/div/div[6]/div/div/div[2]/div/div[2]/div/div/div[4]/div/label)",
+            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[4]/div/label/input)",
+            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[4]/div/label)",
             "text": u"jährlich: 27,00 €"}
     }
 

@@ -3,12 +3,9 @@ import unittest
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
+
 from service.common_tasks import CommonTasks
 
 
@@ -74,7 +71,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.check_and_click_element_by_name("rechtschutz")
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/div/div[1]/h4)"), u"Ergänzungen"))
+            (By.XPATH, self.ERGANZUNGEN_HEADER_XPATH), u"Ergänzungen"))
 
         self.tarifdaten_weiter_antrastellerdaten()
 
@@ -109,7 +106,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.check_and_click_element_by_name("rechtschutz")
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/div/div[1]/h4)"), u"Ergänzungen"))
+            (By.XPATH, self.ERGANZUNGEN_HEADER_XPATH), u"Ergänzungen"))
 
         self.tarifdaten_weiter_antrastellerdaten()
         self.antragsteller_fill_data()

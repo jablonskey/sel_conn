@@ -608,15 +608,15 @@ class CommonTasks(Helper):
             #
             WebDriverWait(self.driver, 4).until(EC.invisibility_of_element_located(
                 (By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
-            produkt_radios = self.driver.find_elements_by_xpath(
-                "(/html/body/div[1]/div/div/section/div/div[2]/div/div[3]/div/div/div[2]/table[1]/tbody/tr[*]/td[1]/div/label/input)")
+            self.tarifdaten_wait_for_price_reload()
+            produkt_radios = self.driver.find_elements_by_xpath(self.TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_RECHTSCHUTZ_XPATH)
             for i in produkt_radios:
                 if (i.is_selected()):
                     if ermittlung_type == "400":
                         try:
                             self.assertEqual(self.TARIFDATEN_SB_POPUP_SB_400[selected_radio_no - 1],
                                              Select(self.driver.find_element_by_xpath(
-                                                 "(/html/body/div[1]/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table[1]/tbody/tr[%d]/td[last()-1]/select)" % (
+                                                 "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[%d]/td[last()-1]/select)" % (
                                                      produkt_radios.index(i) + 1))).first_selected_option.text)
                         except AssertionError as e:
                             self.verificationErrors.append(
@@ -627,7 +627,7 @@ class CommonTasks(Helper):
                         try:
                             self.assertEqual(self.TARIFDATEN_SB_POPUP_SB_1000[selected_radio_no - 1],
                                              Select(self.driver.find_element_by_xpath(
-                                                 "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div/div/div[2]/table[1]/tbody/tr[%d]/td[11]/select)" % (
+                                                 "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[%d]/td[11]/select)" % (
                                                      produkt_radios.index(i) + 1))).first_selected_option.text)
                         except AssertionError as e:
                             self.verificationErrors.append(
