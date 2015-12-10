@@ -706,6 +706,7 @@ class CommonTasks(Helper):
         self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
 
     def antragsteller_weiter_zusatzdaten(self):
+        self.zusatzdaten_fill_required_fields()
         self.check_and_click_element_by_link_text(u"Weiter")
 
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
@@ -727,6 +728,7 @@ class CommonTasks(Helper):
         self.assertEqual(self.base_url + "ng/#/taa//zusatzdaten", self.driver.current_url)
 
     def zusatzdaten_weiter_antrag(self):
+        self.zusatzdaten_fill_required_fields()
         self.check_and_click_element_by_link_text(u"Weiter")
 
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
@@ -1389,6 +1391,19 @@ class CommonTasks(Helper):
             self.assertEqual(u"", self.driver.find_element_by_id("versicherungsumfang").text)
         except AssertionError as e:
             self.verificationErrors.append(str(e))
+
+    # endregion
+    # region antrag common tasks
+    def zusatzdaten_fill_required_fields(self):
+        required_inputs = self.driver.find_elements_by_xpath(self.ZUSATZDATEN_REQUIERD_INPUTS)
+
+        for input_element in required_inputs:
+            input_element.send_keys("10")
+
+        required_selects = self.driver.find_elements_by_xpath(self.ZUSATZDATEN_REQUIERD_SELECTS)
+
+        for select_element in required_selects:
+            Select(select_element).select_by_index(1)
 
     # endregion
 

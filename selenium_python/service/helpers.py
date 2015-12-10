@@ -174,17 +174,17 @@ class Helper(object):
             "text": u"jährlich: 27,00 €"}
     }
 
-    TARIFDATEN_SB_POPUP_SB_400 = ("0 EUR (fallende SB)",
-                                  "100 EUR (fallende SB)",
-                                  "200 EUR (fallende SB)",
-                                  "400 EUR (fallende SB)")
-    TARIFDATEN_SB_POPUP_SB_1000 = ("300 EUR (fallende SB)",
-                                   "400 EUR (fallende SB)",
-                                   "500 EUR (fallende SB)",
-                                   "600 EUR (fallende SB)",
-                                   "700 EUR (fallende SB)",
-                                   "800 EUR (fallende SB)",
-                                   "1.000 EUR (fallende SB)")
+    TARIFDATEN_SB_POPUP_SB_400 = ("0 EUR fallend",
+                                  "100 EUR fallend",
+                                  "200 EUR fallend",
+                                  "400 EUR fallend")
+    TARIFDATEN_SB_POPUP_SB_1000 = ("300 EUR fallend",
+                                   "400 EUR fallend",
+                                   "500 EUR fallend",
+                                   "600 EUR fallend",
+                                   "700 EUR fallend",
+                                   "800 EUR fallend",
+                                   "1.000 EUR fallend")
     TARIFDATEN_SB_POPUP_ABBRECHEN_BUTTON_XPATH = "(/html/body/div[3]/div/div/div[3]/div/div[1]/button)"
     TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH = "(/html/body/div[3]/div/div/div[3]/div/div[3]/button)"
     TARIFDATEN_SB_POPUP_RADIOS_XPATH = "(/html/body/div[3]/div/div/div[2]/div[*]/label/input[@type='radio'])"
@@ -272,7 +272,12 @@ class Helper(object):
 
     ANTRAG_ZUSATZDATEN_HEADER = "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[2]/div[1]/h4)"
 
+    ZUSATZDATEN_REQUIERD_INPUTS = "(//*[@id='rechner-section']/div/div[2]/div/form/descendant::*/input[@required='required'])"
+    ZUSATZDATEN_REQUIERD_SELECTS = "(//*[@id='rechner-section']/div/div[2]/div/form/descendant::*/select[@required='required'])"
+
     AKTSERVICE_COMPARE_HEADER = "(/html/body/div/div/div/section/div/div[2]/div[1]/div/div/div[1]/h4)"
+
+
 
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

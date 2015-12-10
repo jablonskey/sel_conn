@@ -79,15 +79,6 @@ class Connect465Test(unittest.TestCase, CommonTasks):
 
         self.assertEqual(antragstellerdaten_produktauswahl_list, zusatzdaten_produktauswahl_list)
 
-        for el in driver.find_elements_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/form/descendant::node()[@placeholder])"):
-            if el.is_displayed() and el.is_enabled():
-                el.send_keys("testData")
-
-        Select(self.driver.find_element_by_xpath(
-            "(/html/body/div/div/div/section/div/div[2]/div/form/div[3]/div[2]/div/div/div[2]/div[2]/div[1]/data-ng-form[1]/div/select)")).select_by_visible_text(
-            "Herr")
-
         self.check_and_click_element_by_xpath(
             "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div[2]/form/div/div[1]/div[2]/label/input)")
 
