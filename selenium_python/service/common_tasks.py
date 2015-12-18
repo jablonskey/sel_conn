@@ -1397,13 +1397,17 @@ class CommonTasks(Helper):
     def zusatzdaten_fill_required_fields(self):
         required_inputs = self.driver.find_elements_by_xpath(self.ZUSATZDATEN_REQUIERD_INPUTS)
 
-        for input_element in required_inputs:
-            input_element.send_keys("10")
+        if len(required_inputs) >0:
+            for input_element in required_inputs:
+                if input_element.is_displayed() and input_element.is_enabled():
+                    input_element.send_keys("10")
 
         required_selects = self.driver.find_elements_by_xpath(self.ZUSATZDATEN_REQUIERD_SELECTS)
 
-        for select_element in required_selects:
-            Select(select_element).select_by_index(1)
+        if len(required_selects)>0:
+            for select_element in required_selects:
+                if select_element.is_displayed() and select_element.is_enabled():
+                    Select(select_element).select_by_index(1)
 
     # endregion
 

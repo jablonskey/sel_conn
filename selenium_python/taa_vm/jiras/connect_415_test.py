@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
+import unittest
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
+from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
+
 from service.common_tasks import CommonTasks
 from service.helpers import Helper
-import unittest, time, re
 
 
 class Connect415Test(unittest.TestCase, CommonTasks, Helper):
@@ -32,17 +30,15 @@ class Connect415Test(unittest.TestCase, CommonTasks, Helper):
         self.zielgruppe_btrklasse_select_by_name('familien')
         self.zielgruppe_weiter_tarifdaten()
 
-
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
 
-
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
-
 
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.ERGANZUNGEN_HEADER_XPATH), u"Ergänzungen"))
 
-        erganzungen_produkts_jurprivat = driver.find_elements_by_xpath(self.TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH)
+        erganzungen_produkts_jurprivat = driver.find_elements_by_xpath(
+            self.TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH)
 
         erganzungen_labels_jurprivat = []
         for e in erganzungen_produkts_jurprivat:
@@ -72,31 +68,35 @@ class Connect415Test(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_wait_for_price_reload()
         self.tarifdaten_select_produkt_from_rechtschutz("Privat- und Verkehrs-RS")
 
-        WebDriverWait(driver, 10).until_not(EC.text_to_be_present_in_element((By.XPATH, self.get_tarifdaten_erganzungen_label_xpath(4)), fourth_selected_erganz))
+        WebDriverWait(driver, 10).until_not(
+            EC.text_to_be_present_in_element((By.XPATH, self.get_tarifdaten_erganzungen_label_xpath(4)),
+                                             fourth_selected_erganz))
         self.tarifdaten_wait_for_price_reload()
 
-        erganzungen_produkts_privat_berufs = driver.find_elements_by_xpath(self.TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH)
-        erganzungen_labels_privat_berufs= []
+        erganzungen_produkts_privat_berufs = driver.find_elements_by_xpath(
+            self.TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH)
+        erganzungen_labels_privat_berufs = []
         for e in erganzungen_produkts_privat_berufs:
             erganzungen_labels_privat_berufs.append(e.text)
         self.assertNotEqual(erganzungen_labels_jurprivat, erganzungen_labels_privat_berufs)
-
 
         self.tarifdaten_select_produkt_from_erganzungen_by_name("Spezial-Straf-RS")
         self.tarifdaten_wait_for_price_reload()
 
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
-        WebDriverWait(driver, 10).until_not(EC.text_to_be_present_in_element((By.XPATH, self.get_tarifdaten_erganzungen_label_xpath(4)), erganzungen_labels_privat_berufs[3]))
+        WebDriverWait(driver, 10).until_not(
+            EC.text_to_be_present_in_element((By.XPATH, self.get_tarifdaten_erganzungen_label_xpath(4)),
+                                             erganzungen_labels_privat_berufs[3]))
         self.tarifdaten_wait_for_price_reload()
 
-        erganzungen_produkts_jurprivat_2 = driver.find_elements_by_xpath(self.TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH)
+        erganzungen_produkts_jurprivat_2 = driver.find_elements_by_xpath(
+            self.TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH)
 
         erganzungen_labels_jurprivat_2 = []
         for e in erganzungen_produkts_jurprivat_2:
             erganzungen_labels_jurprivat_2.append(e.text)
 
         self.assertEqual(erganzungen_labels_jurprivat, erganzungen_labels_jurprivat_2)
-
 
     def tearDown(self):
         self.driver.quit()
