@@ -778,7 +778,7 @@ class CommonTasks(Helper):
         self.antragsteller_fill_data_zahlungsdaten("lastschrift")
         self.antragsteller_fill_data_vorversicherung("nein")
 
-    def antragsteller_fill_data_antragstellerdaten(self, taetigkeit="nichtselbstständig",
+    def antragsteller_fill_data_antragstellerdaten(self, taetigkeit="nichtselbständig",
                                                    berufsgruppe="Berufs-/Lizenzsportler / -trainer"):
         Select(self.driver.find_element_by_id("anrede")).select_by_visible_text("Herr")
         self.driver.find_element_by_id("name").clear()
@@ -810,7 +810,7 @@ class CommonTasks(Helper):
         self.driver.find_element_by_id("email").send_keys(u"email@domain.de")
 
     def antragsteller_fill_data_lebenspartner(self, ja_nein="ja", anschrift="nein",
-                                              taetigkeit="nichtselbstständig",
+                                              taetigkeit="nichtselbständig",
                                               berufsgruppe="Berufs-/Lizenzsportler / -trainer"):
 
         if ja_nein == "ja":

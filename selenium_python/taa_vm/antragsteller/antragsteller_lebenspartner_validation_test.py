@@ -231,9 +231,9 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         # -- lebenspartner-taetigkeit VALID
         self.assertTrue(4, len(Select(driver.find_element_by_id("lebenspartner-taetigkeit")).options))
         self.assertEqual("", Select(driver.find_element_by_id("lebenspartner-taetigkeit")).options[0].text)
-        self.assertEqual(u"nichtselbstständig",
+        self.assertEqual(u"nichtselbständig",
                          Select(driver.find_element_by_id("lebenspartner-taetigkeit")).options[1].text)
-        self.assertEqual(u"selbstständig / freiberuflich",
+        self.assertEqual(u"selbständig / freiberuflich",
                          Select(driver.find_element_by_id("lebenspartner-taetigkeit")).options[2].text)
         self.assertEqual(u"nicht berufstätig",
                          Select(driver.find_element_by_id("lebenspartner-taetigkeit")).options[3].text)
@@ -244,9 +244,9 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError:
             self.verificationErrors.append("combo lebenspartner-taetigkeit")
         self.assertTrue(3, len(Select(driver.find_element_by_id("lebenspartner-taetigkeit")).options))
-        self.assertEqual(u"nichtselbstständig",
+        self.assertEqual(u"nichtselbständig",
                          Select(driver.find_element_by_id("lebenspartner-taetigkeit")).options[0].text)
-        self.assertEqual(u"selbstständig / freiberuflich",
+        self.assertEqual(u"selbständig / freiberuflich",
                          Select(driver.find_element_by_id("lebenspartner-taetigkeit")).options[1].text)
         self.assertEqual(u"nicht berufstätig",
                          Select(driver.find_element_by_id("lebenspartner-taetigkeit")).options[2].text)

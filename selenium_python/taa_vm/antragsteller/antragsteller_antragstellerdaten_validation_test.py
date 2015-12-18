@@ -361,8 +361,8 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         # -- Taetigkeit VALID
         self.assertTrue(4, len(Select(driver.find_element_by_id("taetigkeit")).options))
         self.assertEqual("", Select(driver.find_element_by_id("taetigkeit")).options[0].text)
-        self.assertEqual(u"nichtselbstständig", Select(driver.find_element_by_id("taetigkeit")).options[1].text)
-        self.assertEqual(u"selbstständig / freiberuflich",
+        self.assertEqual(u"nichtselbständig", Select(driver.find_element_by_id("taetigkeit")).options[1].text)
+        self.assertEqual(u"selbständig / freiberuflich",
                          Select(driver.find_element_by_id("taetigkeit")).options[2].text)
         self.assertEqual(u"nicht berufstätig", Select(driver.find_element_by_id("taetigkeit")).options[3].text)
         Select(driver.find_element_by_id("taetigkeit")).select_by_index(1)
@@ -371,9 +371,9 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         except AssertionError as e:
             self.verificationErrors.append("combo taetigkeit")
         self.assertTrue(3, len(Select(driver.find_element_by_id("taetigkeit")).options))
-        self.assertEqual(u"nichtselbstständig",
+        self.assertEqual(u"nichtselbständig",
                          Select(driver.find_element_by_id("taetigkeit")).options[0].text)
-        self.assertEqual(u"selbstständig / freiberuflich",
+        self.assertEqual(u"selbständig / freiberuflich",
                          Select(driver.find_element_by_id("taetigkeit")).options[1].text)
         self.assertEqual(u"nicht berufstätig",
                          Select(driver.find_element_by_id("taetigkeit")).options[2].text)
