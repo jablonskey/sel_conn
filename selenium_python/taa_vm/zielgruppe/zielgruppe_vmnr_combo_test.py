@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-from selenium import webdriver
 import os
-import unittest, time, re
-from service import common_tasks
+import unittest
+
+from selenium import webdriver
 from selenium.webdriver.support.ui import Select
+
+from service import common_tasks
+
 
 class ZielgruppeVmnrComboTest(unittest.TestCase, common_tasks.CommonTasks):
 

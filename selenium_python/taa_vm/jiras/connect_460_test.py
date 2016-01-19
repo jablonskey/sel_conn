@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
+import os
+import unittest
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
-from selenium.webdriver.support.ui import Select
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
-import unittest, time, re, sys
+from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
+
 from service import common_tasks
 
 
@@ -51,7 +50,7 @@ class Connect460Test(unittest.TestCase, common_tasks.CommonTasks):
         try:
             self.assertEqual(len(driver.find_elements_by_xpath(self.PRODUKTAUSWAHL_ELEMENTS_LABEL_XPATH)), 1)
         except AssertionError as e:
-            self.verificationErrors(str(e))
+            self.verificationErrors.append(str(e))
 
         self.documents_popup_generate_document((u"Kurzangebot", u"Langangebot"))
 

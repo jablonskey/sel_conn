@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
+import os
+import unittest
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import Select
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
+from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
+
 from service import common_tasks
 from service.helpers import Helper
-import unittest, time, re, sys
 
 
 class ZielgruppeLandwirteTest(unittest.TestCase, common_tasks.CommonTasks, Helper):

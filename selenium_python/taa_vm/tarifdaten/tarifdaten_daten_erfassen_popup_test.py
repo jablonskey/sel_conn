@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
+import os
+import unittest
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
-from selenium.webdriver.support.ui import Select
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
+from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
 
-from service.helpers import Helper
 from service.common_tasks import CommonTasks
-import unittest, time, re, sys
+from service.helpers import Helper
 
 
 class TarifdatenDatenErfassenSbPopupTest(unittest.TestCase, CommonTasks, Helper):

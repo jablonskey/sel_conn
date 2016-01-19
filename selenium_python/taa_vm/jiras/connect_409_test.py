@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
+import os
+import unittest
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
+from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
+
 from service.common_tasks import CommonTasks
 from service.helpers import Helper
-import unittest, time, re
 
 
 class Connect409Test(unittest.TestCase, CommonTasks, Helper):
@@ -47,21 +46,20 @@ class Connect409Test(unittest.TestCase, CommonTasks, Helper):
         self.zielgruppe_weiter_tarifdaten()
 
         WebDriverWait(self.driver, 10).until_not(
-            EC.text_to_be_present_in_element(
-                (By.XPATH, self.TARIFDATEN_GESAMTBTR_LABEL_XPATH),
-                u" jährlich:"))
-
+                EC.text_to_be_present_in_element(
+                        (By.XPATH, self.TARIFDATEN_GESAMTBTR_LABEL_XPATH),
+                        u" jährlich:"))
 
         WebDriverWait(self.driver, 10).until_not(
-            EC.text_to_be_present_in_element_value((By.XPATH, self.TARIFDATEN_GESAMTBTR_LABEL_XPATH), u"jährlich:"))
+                EC.text_to_be_present_in_element_value((By.XPATH, self.TARIFDATEN_GESAMTBTR_LABEL_XPATH), u"jährlich:"))
 
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
 
         try:
             self.assertEqual(self.get_tarifdaten_gesambeitrag_price(),
-                                self.get_price_from_table_num("mitgliedschaft", 1) +
-                                self.get_price_from_table_num("rechtschutz", 1))
+                             self.get_price_from_table_num("mitgliedschaft", 1) +
+                             self.get_price_from_table_num("rechtschutz", 1))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
@@ -69,17 +67,14 @@ class Connect409Test(unittest.TestCase, CommonTasks, Helper):
 
         try:
             self.assertEqual(self.get_tarifdaten_gesambeitrag_price(),
-                                self.get_price_from_table_num("mitgliedschaft", 1) +
-                                self.get_price_from_table_num("rechtschutz", 3))
+                             self.get_price_from_table_num("mitgliedschaft", 1) +
+                             self.get_price_from_table_num("rechtschutz", 3))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
-
-
-        def tearDown(self):
+    def tearDown(self):
             self.driver.quit()
             self.assertEqual([], self.verificationErrors)
-
 
     if __name__ == "__main__":
         unittest.main()

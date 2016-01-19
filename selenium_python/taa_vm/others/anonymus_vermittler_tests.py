@@ -1,7 +1,10 @@
+import os
+import unittest
+
 from selenium import webdriver
-import unittest, time, re
-from service import common_tasks
 from selenium.webdriver.support.ui import Select
+
+from service import common_tasks
 
 class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def setUp(self):
