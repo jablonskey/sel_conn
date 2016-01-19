@@ -13,9 +13,20 @@ from service import common_tasks
 
 class Connect460Test(unittest.TestCase, common_tasks.CommonTasks):
     def setUp(self):
-        profile = webdriver.FirefoxProfile()
-        profile.native_events_enabled = False
-        self.driver = webdriver.Firefox(profile)
+        print os.environ.get('SELENIUM_BROWSER')
+        if os.environ.has_key("SELENIUM_BROWSER"):
+            if os.environ['SELENIUM_BROWSER'] == "chrome":
+                self.driver = webdriver.Chrome()
+            elif os.environ['SELENIUM_BROWSER'] == "ie":
+                self.driver = webdriver.Ie()
+            elif os.environ['SELENIUM_BROWSER'] == "firefox":
+                profile = webdriver.FirefoxProfile()
+                profile.native_events_enabled = False
+                self.driver = webdriver.Firefox(profile)
+        else:
+            profile = webdriver.FirefoxProfile()
+            profile.native_events_enabled = False
+            self.driver = webdriver.Firefox(profile)
         self.driver.implicitly_wait(30)
         self.base_url = "https://ctest.lodz.ks-software.com/"
         self.verificationErrors = []

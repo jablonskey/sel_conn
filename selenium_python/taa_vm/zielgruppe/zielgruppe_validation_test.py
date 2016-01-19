@@ -21,9 +21,20 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
     Helper.VERMITTLER_LOGIN_BUTTON_XPATH
 
     def setUp(self):
-        profile = webdriver.FirefoxProfile()
-        profile.native_events_enabled = False
-        self.driver = webdriver.Firefox(profile)
+        print os.environ.get('SELENIUM_BROWSER')
+        if os.environ.has_key("SELENIUM_BROWSER"):
+            if os.environ['SELENIUM_BROWSER'] == "chrome":
+                self.driver = webdriver.Chrome()
+            elif os.environ['SELENIUM_BROWSER'] == "ie":
+                self.driver = webdriver.Ie()
+            elif os.environ['SELENIUM_BROWSER'] == "firefox":
+                profile = webdriver.FirefoxProfile()
+                profile.native_events_enabled = False
+                self.driver = webdriver.Firefox(profile)
+        else:
+            profile = webdriver.FirefoxProfile()
+            profile.native_events_enabled = False
+            self.driver = webdriver.Firefox(profile)
         self.driver.implicitly_wait(10)
         self.base_url = "https://ctest.lodz.ks-software.com/"
         self.verificationErrors = []

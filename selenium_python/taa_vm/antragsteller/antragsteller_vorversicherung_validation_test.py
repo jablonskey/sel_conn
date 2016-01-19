@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest
+import os
 import time
 import datetime
 from selenium import webdriver
@@ -26,9 +27,20 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
         "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/div/div/div/a)")
 
     def setUp(self):
-        profile = webdriver.FirefoxProfile()
-        profile.native_events_enabled = False
-        self.driver = webdriver.Firefox(profile)
+        print os.environ.get('SELENIUM_BROWSER')
+        if os.environ.has_key("SELENIUM_BROWSER"):
+            if os.environ['SELENIUM_BROWSER'] == "chrome":
+                self.driver = webdriver.Chrome()
+            elif os.environ['SELENIUM_BROWSER'] == "ie":
+                self.driver = webdriver.Ie()
+            elif os.environ['SELENIUM_BROWSER'] == "firefox":
+                profile = webdriver.FirefoxProfile()
+                profile.native_events_enabled = False
+                self.driver = webdriver.Firefox(profile)
+        else:
+            profile = webdriver.FirefoxProfile()
+            profile.native_events_enabled = False
+            self.driver = webdriver.Firefox(profile)
         self.driver.implicitly_wait(10)
         self.base_url = "https://ctest.lodz.ks-software.com/"
         self.verificationErrors = []
