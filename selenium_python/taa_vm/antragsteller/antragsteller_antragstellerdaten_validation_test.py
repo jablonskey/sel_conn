@@ -1,22 +1,35 @@
 # -*- coding: utf-8 -*-
-import unittest
 import datetime
+import os
+import unittest
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
-from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
 
 from service import common_tasks
 
 
 class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_tasks.CommonTasks):
     def setUp(self):
-        profile = webdriver.FirefoxProfile()
-        profile.native_events_enabled = False
-        self.driver = webdriver.Firefox(profile)
+
+        print os.environ.get('SELENIUM_BROWSER')
+        if os.environ.has_key("SELENIUM_BROWSER"):
+            if os.environ['SELENIUM_BROWSER'] == "chrome":
+                self.driver = webdriver.Chrome()
+            elif os.environ['SELENIUM_BROWSER'] == "ie":
+                self.driver = webdriver.Ie()
+            elif os.environ['SELENIUM_BROWSER'] == "firefox":
+                profile = webdriver.FirefoxProfile()
+                profile.native_events_enabled = False
+                self.driver = webdriver.Firefox(profile)
+        else:
+            profile = webdriver.FirefoxProfile()
+            profile.native_events_enabled = False
+            self.driver = webdriver.Firefox(profile)
+
         self.driver.maximize_window()
 
         self.Maxdiff = None
@@ -100,7 +113,7 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         self.assertEqual(u"Prof. Dr.",
                          Select(driver.find_element_by_id("titel")).options[3].text)
         # endregion
-        #region name
+        # region name
         # -- Name INVALID
         try:
             self.assertRegexpMatches(driver.find_element_by_id("name").get_attribute("class"), r"ng-invalid")
@@ -127,8 +140,8 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
 
         self.validate_element_by_id("name", u"TESTname", "valid")
 
-        #endregion
-        #region vorname
+        # endregion
+        # region vorname
         # -- Vorname INVALID
         try:
             self.assertRegexpMatches(driver.find_element_by_id("vorname").get_attribute("class"), r"ng-invalid")
@@ -156,13 +169,11 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
 
         self.validate_element_by_id("vorname", "TESTvorname", "valid")
 
-
-        #endregion
-        #region namenszusatz
+        # endregion
+        # region namenszusatz
         # -- Namenszusatz
 
         Select(driver.find_element_by_id("anrede")).select_by_visible_text("Firma o.A.")
-
 
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "namenszusatz")))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, "namenszusatz")))
@@ -189,7 +200,6 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
 
         Select(driver.find_element_by_id("anrede")).select_by_visible_text("Herr")
 
-
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "vorname")))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, "vorname")))
         WebDriverWait(driver, 10).until(EC.invisibility_of_element_located((By.ID, "namenszusatz")))
@@ -202,7 +212,6 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
             self.assertFalse(driver.find_element_by_xpath("//div[5]/label").is_displayed())
         except AssertionError as e:
             self.verificationErrors.append("field namenszusatz visibility")
-
 
         Select(driver.find_element_by_id("anrede")).select_by_visible_text("Firma")
 
@@ -239,55 +248,54 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
 
         self.validate_element_by_id("namenszusatz", u"TESTnamenszusatz", "valid")
 
-       
-        #endregion
-        #region strasse
+        # endregion
+        # region strasse
         # -- Strasse INVALID
         try:
             self.assertRegexpMatches(driver.find_element_by_id("strasse").get_attribute("class"), r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field strasse empty but not invalid")
-        
+
         self.validate_element_by_id("strasse", ".", "valid")
         self.validate_element_by_id("strasse", "1", "valid")
         self.validate_element_by_id("strasse", "a", "valid")
         self.validate_element_by_id("strasse", u"bü", "valid")
         driver.find_element_by_id("strasse").clear()
-        
+
         try:
             self.assertRegexpMatches(driver.find_element_by_id("strasse").get_attribute("class"), r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field strasse empty but not invalid")
 
         self.validate_element_by_id("strasse", u"TESTstrasse", "valid")
-        #endregion
-        #region hausnummer
+        # endregion
+        # region hausnummer
         # -- Hausnr INVALID
         try:
             self.assertNotRegexpMatches(driver.find_element_by_id("hausnummer").get_attribute("class"), r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field hausnummer empty but not invalid")
-       
+
         self.validate_element_by_id("hausnummer", ".", "valid")
         self.validate_element_by_id("hausnummer", "1", "valid")
         self.validate_element_by_id("hausnummer", "a", "valid")
         self.validate_element_by_id("hausnummer", u"bü", "valid")
         driver.find_element_by_id("hausnummer").clear()
-        
+
         try:
             self.assertNotRegexpMatches(driver.find_element_by_id("hausnummer").get_attribute("class"), r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field hausnummer empty but not invalid")
 
         self.validate_element_by_id("hausnummer", u"12TEST", "valid")
-        #endregion
-        #region plz
+        # endregion
+        # region plz
         # -- PLZ INVALID
         try:
             self.assertRegexpMatches(driver.find_element_by_id("plz").get_attribute("class"), r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field plz empty but not invalid")
-        
+
         self.validate_element_by_id("plz", ".", "invalid")
         self.validate_element_by_id("plz", "1", "invalid")
         self.validate_element_by_id("plz", "12345", "valid")
@@ -296,15 +304,15 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         self.validate_element_by_id("plz", "a", "invalid")
         self.validate_element_by_id("plz", u"bü", "invalid")
         driver.find_element_by_id("plz").clear()
-        
+
         try:
             self.assertRegexpMatches(driver.find_element_by_id("plz").get_attribute("class"), r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field plz empty but not invalid")
 
         self.validate_element_by_id("plz", "12345", "valid")
-        #endregion
-        #region ort
+        # endregion
+        # region ort
         # -- Ort INVALID
         try:
             self.assertRegexpMatches(driver.find_element_by_id("ort").get_attribute("class"), r"ng-invalid")
@@ -316,15 +324,15 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         self.validate_element_by_id("ort", "a", "valid")
         self.validate_element_by_id("ort", u"bü", "valid")
         driver.find_element_by_id("ort").clear()
-        
+
         try:
             self.assertRegexpMatches(driver.find_element_by_id("ort").get_attribute("class"), r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field ort empty but not invalid")
 
         self.validate_element_by_id("ort", u"TESTort", "valid")
-        #endregion
-        #region geburtsdatum
+        # endregion
+        # region geburtsdatum
         # -- Geburts INVALID
         try:
             self.assertNotRegexpMatches(driver.find_element_by_id("geburtsdatum").get_attribute("class"), r"ng-invalid")
@@ -334,13 +342,15 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         self.validate_element_by_id("geburtsdatum", "xxxxxxxxx", "notaccepted")
         self.validate_element_by_id("geburtsdatum", "xx.xx.xxxx", "notaccepted")
         self.validate_element_by_id("geburtsdatum", "%s.%s.%s" % (
-            str((datetime.datetime.today() + datetime.timedelta(days=1)).day).zfill(2), str((datetime.datetime.today() + datetime.timedelta(days=1)).month).zfill(2),
+            str((datetime.datetime.today() + datetime.timedelta(days=1)).day).zfill(2),
+            str((datetime.datetime.today() + datetime.timedelta(days=1)).month).zfill(2),
             str((datetime.datetime.today() + datetime.timedelta(days=1)).year).zfill(2)), "invalid")
         self.validate_element_by_id("geburtsdatum", "%s.%s.%s" % (
             str(datetime.datetime.now().day).zfill(2), str(datetime.datetime.now().month).zfill(2),
             str(datetime.datetime.now().year).zfill(2)), "valid")
         self.validate_element_by_id("geburtsdatum", "%s.%s.%s" % (
-            str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2), str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "valid")
         self.validate_element_by_id("geburtsdatum", "31.09.2013", "invalid")
         self.validate_element_by_id("geburtsdatum", "30.09.2013", "valid")
@@ -351,8 +361,8 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         self.validate_element_by_id("geburtsdatum", "28.02.2013", "valid")
         self.validate_element_by_id("geburtsdatum", "29.02.2012", "valid")
         self.validate_element_by_id("geburtsdatum", "01.01.2014", "valid")
-        #endregion
-        #region taetigkeit
+        # endregion
+        # region taetigkeit
         # -- Taetigkeit INVALID
         try:
             self.assertRegexpMatches(driver.find_element_by_id("taetigkeit").get_attribute("class"), r"ng-invalid")
@@ -377,9 +387,9 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
                          Select(driver.find_element_by_id("taetigkeit")).options[1].text)
         self.assertEqual(u"nicht berufstätig",
                          Select(driver.find_element_by_id("taetigkeit")).options[2].text)
-        #endregion
+        # endregion
 
-        #region berufsgruppe
+        # region berufsgruppe
         # -- Berufsgruppe INVALID
         try:
             self.assertRegexpMatches(driver.find_element_by_id("berufsgruppe").get_attribute("class"), r"ng-invalid")
@@ -430,7 +440,6 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         self.antragsteller_fill_data_zahlungsdaten("uberweisung")
         self.antragsteller_fill_data_vorversicherung("nein")
         self.antragsteller_weiter_zusatzdaten()
-
 
     def tearDown(self):
         self.driver.quit()
