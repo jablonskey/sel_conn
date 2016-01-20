@@ -25,7 +25,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
         "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[4]/div/div[2]/div[4]/div/div/div/a)")
 
     def setUp(self):
-        print os.environ.get('SELENIUM_BROWSER')
+
         if os.environ.has_key("SELENIUM_BROWSER"):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
                 self.driver = webdriver.Chrome()

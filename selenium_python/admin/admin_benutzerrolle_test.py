@@ -11,7 +11,7 @@ import unittest
 
 class AdminBenutzerrolleTest(unittest.TestCase, common_tasks.CommonTasks):
     def setUp(self):
-        print os.environ.get('SELENIUM_BROWSER')
+
         if os.environ.has_key("SELENIUM_BROWSER"):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
                 self.driver = webdriver.Chrome()
