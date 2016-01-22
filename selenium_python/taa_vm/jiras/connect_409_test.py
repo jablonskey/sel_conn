@@ -63,7 +63,7 @@ class Connect409Test(unittest.TestCase, CommonTasks, Helper):
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
-        self.tarifdaten_select_produkt_from_rechtschutz("Privat- und Berufs-RS")
+        self.tarifdaten_select_produkt_from_rechtschutz("Privat- und Verkehrs-RS")
 
         try:
             self.assertEqual(self.get_tarifdaten_gesambeitrag_price(),

@@ -539,7 +539,7 @@ class Helper(object):
         regex = re.compile("\d+", re.UNICODE)
         if regex.search(gesambtr_text):
             gesambtr_num = float(regex.findall(gesambtr_text)[0]) + 0.01 * float(regex.findall(gesambtr_text)[1])
-            return gesambtr_text
+            return gesambtr_num
 
     def get_tarifdaten_gesambeitrag_zahlweise(self):
         gesambtr_text = self.driver.find_element_by_xpath(self.TARIFDATEN_GESAMTBTR_LABEL_XPATH).text
