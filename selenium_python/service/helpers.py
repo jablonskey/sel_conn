@@ -562,8 +562,8 @@ class Helper(object):
 
     ERGANZUNGEN_POPUP_XPATH = "(/html/body/div[3]/div/div)"
     ERGANZUNGEN_HEADER_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[1]/div/div/div[1]/h4)"
-    ERGANZUNGEN_POPUP_PRODUKT_LABELS_XPATH = "(/html/body/div[3]/div/div/form/div[2]/div/div/div[1]/div/div[@class=\"col-lg-6\"]/div/label)"
-    ERGANZUNGEN_POPUP_PRODUKT_INPUTS_XPATH = "(/html/body/div[3]/div/div/form/div[2]/div/div/div[1]/div/div[@class=\"col-lg-6\"]/div/label/input)"
+    ERGANZUNGEN_POPUP_PRODUKT_LABELS_XPATH = "(//div[@data-ng-repeat=\"produkt in modalProdukte\"]/descendant::div[@class=\"checkbox\"]/descendant::label)"
+    ERGANZUNGEN_POPUP_PRODUKT_INPUTS_XPATH = "(//div[@data-ng-repeat=\"produkt in modalProdukte\"]/descendant::div[@class=\"checkbox\"]/descendant::label/input)"
     ERGANZUNGEN_CHECKBOX_XPATH = "(/html/body/div[3]/div/div/form/div[2]/div/div/div[1]/div/div/div/label/input)"
     ERGANZUNGEN_POPUP_OK_BUTTON_XPATH = "//div[3]/button"
     ERGANZUNGEN_POPUP_VALIDATION_ALERT = "(/html/body/div[3]/div/div/form/div[2]/div[1]/p)"
