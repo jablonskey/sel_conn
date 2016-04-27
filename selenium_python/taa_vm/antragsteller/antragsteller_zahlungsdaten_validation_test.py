@@ -66,8 +66,8 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
             self.verificationErrors.append("Required field iban empty but not invalid")
 
         self.validate_element_by_id("iban", ".", "invalid")
-        self.validate_element_by_id("iban", "111111111111111111111", "invalid")
-        self.validate_element_by_id("iban", "1a1111111111111111111", "invalid")
+        self.validate_element_by_id("iban", "1111111111111111111", "invalid")
+        self.validate_element_by_id("iban", "1 11111111111111111", "invalid")
         self.validate_element_by_id("iban", "1 111111111111111111111", "invalid")
 
         # -- IBAN VALID
