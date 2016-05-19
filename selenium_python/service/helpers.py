@@ -378,71 +378,71 @@ class Helper(object):
 
     def check_vermittler_menu_links(self, user_with_taa_rights=True):
         WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[2]/a[1])")))
+            EC.presence_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[2]/a[1])")))
         WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[2]/a[1])")))
+            EC.visibility_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[2]/a[1])")))
         WebDriverWait(self.driver, 20).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[2]/a[1])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[2]/a[1])"),
                                              u"Über uns"))
 
         WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[3]/a[1])")))
+            EC.presence_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[3]/a[1])")))
         WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[3]/a[1])")))
+            EC.visibility_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[3]/a[1])")))
         WebDriverWait(self.driver, 20).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[3]/a[1])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[3]/a[1])"),
                                              u"Unterlagen"))
 
         WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[4]/a[1])")))
+            EC.presence_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[4]/a[1])")))
         WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[4]/a[1])")))
+            EC.visibility_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[4]/a[1])")))
         WebDriverWait(self.driver, 20).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[4]/a[1])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[4]/a[1])"),
                                              u"Produkte"))
 
         WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[5]/a[1])")))
+            EC.presence_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[5]/a[1])")))
         WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[5]/a[1])")))
+            EC.visibility_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[5]/a[1])")))
         WebDriverWait(self.driver, 20).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[5]/a[1])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[5]/a[1])"),
                                              u"Service"))
 
         WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[6]/a[1])")))
+            EC.presence_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[6]/a)")))
         if (user_with_taa_rights):
             WebDriverWait(self.driver, 20).until(
-                EC.visibility_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[6]/a[1])")))
+                EC.visibility_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[6]/a)")))
             WebDriverWait(self.driver, 20).until(
-                EC.text_to_be_present_in_element((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[6]/a[1])"),
+                EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[6]/a)"),
                                                  u"Rechner"))
         else:
             WebDriverWait(self.driver, 20).until_not(
-                EC.visibility_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[6]/a[1])")))
+                EC.visibility_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[6]/a)")))
 
         WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[7]/a[1])")))
+            EC.presence_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[7]/a[1])")))
         WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[7]/a[1])")))
+            EC.visibility_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[7]/a[1])")))
         WebDriverWait(self.driver, 20).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[7]/a[1])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[7]/a[1])"),
                                              u"Mein Archiv"))
 
         WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[8]/a[1])")))
+            EC.presence_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[8]/a)")))
         WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[8]/a[1])")))
+            EC.visibility_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[8]/a)")))
         WebDriverWait(self.driver, 20).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[8]/a[1])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[8]/a)"),
                                              u"Mein Bestand"))
 
         WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[9]/a[1])")))
+            EC.presence_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[9]/a)")))
         WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[9]/a[1])")))
+            EC.visibility_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[9]/a)")))
         WebDriverWait(self.driver, 20).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(/html/body/header/div/span/div/nav/div/ul/li[9]/a[1])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[9]/a)"),
                                              u"Mein Profil"))
 
     def check_if_on_secure_email_page(self):
