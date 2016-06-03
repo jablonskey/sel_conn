@@ -65,7 +65,7 @@ class DocsLangangebotTests(unittest.TestCase, CommonTasks):
         WebDriverWait(driver, 60).until(
             EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1])"),
 
-                                             u"Angebot"))
+                                             u"Vorschlag"))
         driver.close()
         driver.switch_to.window(main_window)
         driver.close()
