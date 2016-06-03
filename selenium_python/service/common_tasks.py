@@ -153,7 +153,7 @@ class CommonTasks(Helper):
             EC.visibility_of_element_located((By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER)))
         WebDriverWait(self.driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER),
-            u"Berechnen & beantragen"))
+            u"Online-Rechner"))
         self.check_if_links_tab_visible()
 
         self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
