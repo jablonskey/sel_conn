@@ -84,6 +84,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         except AssertionError as e:
             self.verificationErrors.append("VMNR number not correct after zuruck")
 
+    @unittest.skip("temporary skipped due to changes in UNIT-1981")
     def test_vmnr_remebered_after_login_on_tarifdaten(self):
         driver = self.driver
         vmnr_number = "100063"
@@ -105,6 +106,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         except AssertionError as e:
             self.verificationErrors.append("Wrong VMNR in combo box")
 
+    @unittest.skip("temporary skipped due to changes in UNIT-1981")
     def test_vmnr_remebered_after_login_on_antragstellerdaten(self):
         driver = self.driver
         vmnr_number = "100063"
@@ -128,6 +130,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         except AssertionError as e:
             self.verificationErrors.append("Wrong VMNR in combo box")
 
+    @unittest.skip("temporary skipped due to changes in UNIT-1981")
     def test_vmnr_remebered_after_login_on_zusatzdaten(self):
         driver = self.driver
         vmnr_number = "100063"
@@ -154,6 +157,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         except AssertionError as e:
             self.verificationErrors.append("Wrong VMNR in combo box")
 
+    @unittest.skip("temporary skipped due to changes in UNIT-1981")
     def test_vmnr_remebered_after_login_on_antrag(self):
         driver = self.driver
         vmnr_number = "100063"
@@ -257,6 +261,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
 
         self.login_to_connect_vermittler(self.base_url, user="test2@ks", user_with_taa_rights=False)
 
+    @unittest.skip("temporary skipped due to changes in UNIT-1981")
     def test_vermittler_login_with_no_rights_to_vmnr_after_tarifdaten(self):
         driver = self.driver
         vmnr_number = "102313"
@@ -291,6 +296,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         except AssertionError as e:
             self.verificationErrors.append("VMNR not selected")
 
+    @unittest.skip("temporary skipped due to changes in UNIT-1981")
     def test_mitarbeiter_login_with_no_rights_to_vmnr_after_tarifdaten(self):
         driver = self.driver
         vmnr_number = "100063"

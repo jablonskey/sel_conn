@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import Select
 
 from service import common_tasks
 
-
+@unittest.skip("temporary skipped due to changes in UNIT-1981")
 class ZielgruppeVmnrComboTest(unittest.TestCase, common_tasks.CommonTasks):
 
     def setUp(self):
