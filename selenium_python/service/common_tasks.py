@@ -133,6 +133,10 @@ class CommonTasks(Helper):
         if (main_page_after_login):
             self.check_if_on_vermittler_main_page(user_with_taa_rights=user_with_taa_rights)
         self.driver.implicitly_wait(2)
+    def zielgruppe_enter_vmnr(self, vmnr):
+        self.check_and_click_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_BEFORE_CLICK_XPATH)
+        self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_FORM_CLICK_XPATH).send_keys(vmnr, Keys.ENTER)
+
 
     def logout_vermittler(self):
         self.driver.switch_to.frame(self.driver.find_element_by_tag_name("iframe"))

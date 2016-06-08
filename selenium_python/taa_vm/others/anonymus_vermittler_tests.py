@@ -2,9 +2,9 @@ import os
 import unittest
 
 from selenium import webdriver
-from selenium.webdriver.support.ui import Select
 
 from service import common_tasks
+
 
 class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
     def setUp(self):
@@ -43,7 +43,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
-            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).get_attribute("value"), vmnr_number)
+            self.assertEqual(
+                self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).get_attribute("value"),
+                vmnr_number)
         except AssertionError as e:
             self.verificationErrors.append("VMNR number not correct after zuruck")
 
@@ -53,7 +55,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
-            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).get_attribute("value"), vmnr_number)
+            self.assertEqual(
+                self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).get_attribute("value"),
+                vmnr_number)
         except AssertionError as e:
             self.verificationErrors.append("VMNR number not correct after zuruck")
 
@@ -66,7 +70,9 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
-            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).get_attribute("value"), vmnr_number)
+            self.assertEqual(
+                self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).get_attribute("value"),
+                vmnr_number)
         except AssertionError as e:
             self.verificationErrors.append("VMNR number not correct after zuruck")
 
@@ -80,11 +86,12 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
-            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).get_attribute("value"), vmnr_number)
+            self.assertEqual(
+                self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).get_attribute("value"),
+                vmnr_number)
         except AssertionError as e:
             self.verificationErrors.append("VMNR number not correct after zuruck")
 
-    @unittest.skip("temporary skipped due to changes in UNIT-1981")
     def test_vmnr_remebered_after_login_on_tarifdaten(self):
         driver = self.driver
         vmnr_number = "100063"
@@ -102,11 +109,11 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
-            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, vmnr_number)
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_BEFORE_CLICK_XPATH).text,
+                             vmnr_number)
         except AssertionError as e:
             self.verificationErrors.append("Wrong VMNR in combo box")
 
-    @unittest.skip("temporary skipped due to changes in UNIT-1981")
     def test_vmnr_remebered_after_login_on_antragstellerdaten(self):
         driver = self.driver
         vmnr_number = "100063"
@@ -126,11 +133,11 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
-            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, vmnr_number)
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_BEFORE_CLICK_XPATH).text,
+                             vmnr_number)
         except AssertionError as e:
             self.verificationErrors.append("Wrong VMNR in combo box")
 
-    @unittest.skip("temporary skipped due to changes in UNIT-1981")
     def test_vmnr_remebered_after_login_on_zusatzdaten(self):
         driver = self.driver
         vmnr_number = "100063"
@@ -153,11 +160,11 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
-            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, vmnr_number)
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_BEFORE_CLICK_XPATH).text,
+                             vmnr_number)
         except AssertionError as e:
             self.verificationErrors.append("Wrong VMNR in combo box")
 
-    @unittest.skip("temporary skipped due to changes in UNIT-1981")
     def test_vmnr_remebered_after_login_on_antrag(self):
         driver = self.driver
         vmnr_number = "100063"
@@ -182,7 +189,8 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
-            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, vmnr_number)
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_BEFORE_CLICK_XPATH).text,
+                             vmnr_number)
         except AssertionError as e:
             self.verificationErrors.append("Wrong VMNR in combo box")
 
@@ -261,7 +269,6 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
 
         self.login_to_connect_vermittler(self.base_url, user="test2@ks", user_with_taa_rights=False)
 
-    @unittest.skip("temporary skipped due to changes in UNIT-1981")
     def test_vermittler_login_with_no_rights_to_vmnr_after_tarifdaten(self):
         driver = self.driver
         vmnr_number = "102313"
@@ -278,25 +285,26 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.check_if_on_zielgruppe_page()
 
         try:
-            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_WARNING_XPATH).text, "Die von Ihnen erfasste Vermittler-Nummer ist nicht korrekt.")
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_WARNING_XPATH).text,
+                             "Die von Ihnen erfasste Vermittler-Nummer ist nicht korrekt.")
         except AssertionError as e:
             self.verificationErrors.append("NO or WRONG warning under VMNR combo")
 
         try:
-            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, "")
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_BEFORE_CLICK_XPATH).text, "")
         except AssertionError as e:
             self.verificationErrors.append("VMNR combo box not empty")
 
-        Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).select_by_visible_text("100065")
+        self.zielgruppe_enter_vmnr("100065")
 
         self.zielgruppe_btrklasse_select_by_name("singles")
 
         try:
-            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, "100065")
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_BEFORE_CLICK_XPATH).text,
+                             "100065")
         except AssertionError as e:
             self.verificationErrors.append("VMNR not selected")
 
-    @unittest.skip("temporary skipped due to changes in UNIT-1981")
     def test_mitarbeiter_login_with_no_rights_to_vmnr_after_tarifdaten(self):
         driver = self.driver
         vmnr_number = "100063"
@@ -313,26 +321,25 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.check_if_on_zielgruppe_page()
 
         try:
-            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_WARNING_XPATH).text, "Die von Ihnen erfasste Vermittler-Nummer ist nicht korrekt.")
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_WARNING_XPATH).text,
+                             "Die von Ihnen erfasste Vermittler-Nummer ist nicht korrekt.")
         except AssertionError as e:
             self.verificationErrors.append("NO or WRONG warning under VMNR combo")
 
         try:
-            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, "")
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_BEFORE_CLICK_XPATH).text, "")
         except AssertionError as e:
             self.verificationErrors.append("VMNR combo box not empty")
 
-        Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).select_by_visible_text("100065")
+        self.zielgruppe_enter_vmnr("100065")
 
         self.zielgruppe_btrklasse_select_by_name("singles")
 
         try:
-            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, "100065")
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_BEFORE_CLICK_XPATH).text,
+                             "100065")
         except AssertionError as e:
             self.verificationErrors.append("VMNR not selected")
-
-
-
 
     def tearDown(self):
         self.driver.quit()

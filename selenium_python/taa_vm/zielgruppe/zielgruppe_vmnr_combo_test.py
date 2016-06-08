@@ -3,13 +3,11 @@ import os
 import unittest
 
 from selenium import webdriver
-from selenium.webdriver.support.ui import Select
 
 from service import common_tasks
 
-@unittest.skip("temporary skipped due to changes in UNIT-1981")
-class ZielgruppeVmnrComboTest(unittest.TestCase, common_tasks.CommonTasks):
 
+class ZielgruppeVmnrComboTest(unittest.TestCase, common_tasks.CommonTasks):
     def setUp(self):
 
         if os.environ.has_key("SELENIUM_BROWSER"):
@@ -39,12 +37,13 @@ class ZielgruppeVmnrComboTest(unittest.TestCase, common_tasks.CommonTasks):
 
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("familien")
-        Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).select_by_visible_text(vmnr_number)
+        self.zielgruppe_enter_vmnr(vmnr_number)
         self.zielgruppe_weiter_tarifdaten()
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
-            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, vmnr_number)
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_FORM_AFTER_CLICK_XPATH).text,
+                             vmnr_number)
         except AssertionError as e:
             self.verificationErrors.append("VMNR combo empty")
 
@@ -52,12 +51,12 @@ class ZielgruppeVmnrComboTest(unittest.TestCase, common_tasks.CommonTasks):
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
-            self.assertEqual(Select(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_XPATH)).first_selected_option.text, vmnr_number)
+            self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_FORM_AFTER_CLICK_XPATH).text,
+                             vmnr_number)
         except AssertionError as e:
             self.verificationErrors.append("VMNR combo empty")
 
         self.zielgruppe_weiter_tarifdaten()
-
 
     def tearDown(self):
         self.driver.quit()
