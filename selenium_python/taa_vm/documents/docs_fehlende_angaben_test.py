@@ -59,7 +59,7 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
         WebDriverWait(driver, 60).until(
             EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[1])"),
 
-                                             u"Fehlende Angaben zur Antragstellung"))
+                                             u"Fehlende Angaben"))
 
         driver.close()
         driver.switch_to.window(main_window)
@@ -90,7 +90,7 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
         WebDriverWait(driver, 60).until(
             EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[1])"),
 
-                                             u"Fehlende Angaben zur Antragstellung"))
+                                             u"Fehlende Angaben"))
 
         driver.close()
         driver.switch_to.window(main_window)
@@ -124,7 +124,7 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
         WebDriverWait(driver, 60).until(
             EC.text_to_be_present_in_element((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div/div[2]/div[1])"),
 
-                                             u"Fehlende Angaben zur Antragstellung"))
+                                             u"Fehlende Angaben"))
 
         driver.close()
         driver.switch_to.window(main_window)
