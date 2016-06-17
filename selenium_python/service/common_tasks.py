@@ -31,6 +31,11 @@ class CommonTasks(Helper):
         self.driver.get(base_url + Helper.VERMITTLER_LOGIN_PAGE_ADDRESS_COMPLETION)
         self.check_if_on_vermittler_login_page()
 
+    def go_to_external_page(self):
+        self.driver.get("ks-software.com")
+        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+            (By.XPATH, "(html/body/div/div/div/section/div/div[2]/div/div[1]/ng-include/h1)"), "Witaj!"))
+
     def go_to_aktservice_login_page(self, base_url):
         self.driver.implicitly_wait(2)
         self.driver.maximize_window()
