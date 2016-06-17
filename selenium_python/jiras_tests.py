@@ -15,6 +15,8 @@ from taa_vm.jiras.connect_951_test import Connect951Test
 from taa_vm.jiras.connect_1038_test import Connect1038Test
 from taa_vm.jiras.connect_1152_test import Connect11522Test
 from taa_vm.jiras.connect_1503_test import Connect1503Test
+from taa_vm.jiras.connect_1716_test import Connect1716Test
+from taa_vm.jiras.connect_2058_test import Connect2508Test
 
 
 if __name__ == "__main__":
