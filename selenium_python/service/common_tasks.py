@@ -418,10 +418,10 @@ class CommonTasks(Helper):
         self.check_and_click_element_by_link_text("Weiter")
 
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)")), "Tarifdaten not reached")
+            (By.XPATH, "(.//*[@id='rechner-section']/div/div[2]/div/div[1]/div/div/div[1]/h4)")), "Tarifdaten not reached")
 
-        self.assertEqual("Bitte machen Sie die Angaben zu Ihrem Kunden.", self.driver.find_element_by_xpath(
-            "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)").text)
+        self.assertEqual("Zielgruppe", self.driver.find_element_by_xpath(
+            "(.//*[@id='rechner-section']/div/div[2]/div/div[1]/div/div/div[1]/h4)").text)
         self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
 
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.NAME, "rechtschutz")))
@@ -703,9 +703,9 @@ class CommonTasks(Helper):
         self.check_and_click_element_by_link_text(u"Zurück")
 
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)")))
-        self.assertEqual("Bitte machen Sie die Angaben zu Ihrem Kunden.", self.driver.find_element_by_xpath(
-            "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/h3)").text)
+            (By.XPATH, "(.//*[@id='rechner-section']/div/div[2]/div/div[1]/div/div/div[1]/h4)")))
+        self.assertEqual("Zielgruppe", self.driver.find_element_by_xpath(
+            "(.//*[@id='rechner-section']/div/div[2]/div/div[1]/div/div/div[1]/h4)").text)
         self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
 
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.NAME, "rechtschutz")))
