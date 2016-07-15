@@ -174,6 +174,7 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         # -- Namenszusatz
 
         Select(driver.find_element_by_id("anrede")).select_by_visible_text("Firma o.A.")
+        self.scroll_to_element(driver.find_element_by_id("anrede"))
 
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "namenszusatz")))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, "namenszusatz")))
@@ -247,6 +248,8 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
             self.verificationErrors.append("NOT Required field namenszusatz empty but invalid")
 
         self.validate_element_by_id("namenszusatz", u"TESTnamenszusatz", "valid")
+
+        Select(driver.find_element_by_id("anrede")).select_by_visible_text("Herr")
 
         # endregion
         # region strasse
