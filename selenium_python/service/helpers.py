@@ -591,6 +591,7 @@ class Helper(object):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(
             (By.XPATH, xpath)))
         self.highlight(self.driver.find_element_by_xpath(xpath))
+        self.scroll_to_element(self.driver.find_element_by_xpath(xpath))
         self.driver.find_element_by_xpath(xpath).click()
 
 
@@ -613,6 +614,7 @@ class Helper(object):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(
             (By.ID, id)))
         self.highlight(self.driver.find_element_by_id(element_id))
+        self.scroll_to_element(self.driver.find_element_by_id(element_id))
         self.driver.find_element_by_id(id).click()
 
     def check_and_click_element_by_name(self, name):
@@ -706,6 +708,8 @@ class Helper(object):
     def validate_date_field_by_id_not_refreshing(self, id):
         self.validate_element_by_id(id, "31.09.2013", "invalid")
 
+        # self.check_and_click_element_by_id(id)
+
         self.driver.find_element_by_id(id).send_keys(Keys.ARROW_LEFT)
         self.driver.find_element_by_id(id).send_keys(Keys.ARROW_LEFT)
         self.driver.find_element_by_id(id).send_keys(Keys.ARROW_LEFT)
@@ -764,6 +768,6 @@ class Helper(object):
         #time.sleep(.2)
         apply_style(original_style)
 
-    def scroll_to_element(self, element, y_pos=300, x_pos=0):
+    def scroll_to_element(self, element, y_pos=400, x_pos=0):
         self.driver.execute_script(
-            "window.scrollTo(%d, %d);" % (element.location["x"] + x_pos, element.location["y"] + y_pos ))
+            "window.scrollTo(%d, %d);" % (element.location["x"] + x_pos, element.location["y"] - y_pos ))
