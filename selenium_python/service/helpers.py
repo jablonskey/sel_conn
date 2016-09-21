@@ -148,13 +148,13 @@ class Helper(object):
     TARIFDATEN_SPINNER_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div[last()][@class=\"cg-busy cg-busy-animation ng-scope\"])"
 
     TARIFDATEN_PRODUKT_ELEMENTS_LABELS_MITGLIEDSCHAFT_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div/div/div[2]/table/tbody/tr[*]/td[1]/div/label)"
-    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[1]/div/label)"
-    TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[1]/div/label/input)"
-    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[1]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label)"
-    TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_ERGANZUNGEN_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[1]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label/input)"
-    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_SCHUTZBRIEF_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[2]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label)"
+    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[1]/div/label)"
+    TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[1]/div/label/input)"
+    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label)"
+    TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_ERGANZUNGEN_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label/input)"
+    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_SCHUTZBRIEF_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[2]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label)"
     TARIFDATEN_PRODUKT_ELEMENTS_SB_COMBOS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[8]/select)"
-    TARIFDATEN_GESAMTBTR_LABEL_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[3]/div/div)"
+    TARIFDATEN_GESAMTBTR_LABEL_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[*]/div/div/div[2]/div/div[3]/div/div)"
 
     TARIFDATEN_RECHTSCHUTZ_LABEL_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[1]/div/h4/label)"
 
@@ -591,7 +591,6 @@ class Helper(object):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(
             (By.XPATH, xpath)))
         self.highlight(self.driver.find_element_by_xpath(xpath))
-        self.scroll_to_element(self.driver.find_element_by_xpath(xpath))
         self.driver.find_element_by_xpath(xpath).click()
 
     def check_and_click_element_by_link_text(self, linktext):
@@ -613,7 +612,6 @@ class Helper(object):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(
             (By.ID, id)))
         self.highlight(self.driver.find_element_by_id(element_id))
-        self.scroll_to_element(self.driver.find_element_by_id(element_id))
         self.driver.find_element_by_id(id).click()
 
     def check_and_click_element_by_name(self, name):
@@ -624,7 +622,6 @@ class Helper(object):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(
             (By.NAME, name)))
         self.highlight(self.driver.find_element_by_name(name))
-        self.scroll_to_element(self.driver.find_element_by_name(name))
         self.driver.find_element_by_name(name).click()
 
     def validate_element_by_id(self, id, entered_text, validation):

@@ -606,9 +606,12 @@ class CommonTasks(Helper):
 
         if button_to_click == "abbrechen":
             self.check_and_click_element_by_xpath(self.TARIFDATEN_SB_POPUP_ABBRECHEN_BUTTON_XPATH)
+            WebDriverWait(self.driver, 4).until(EC.invisibility_of_element_located(
+                (By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
 
         elif button_to_click == "ubernahmen":
             self.check_and_click_element_by_xpath("(/html/body/div[3]/div/div/div[3]/div/div[3]/button)")
+
 
             # if selected_radio_no == None or is_checkbox_checked == "unchecked":
             # try:
@@ -628,7 +631,7 @@ class CommonTasks(Helper):
                         try:
                             self.assertEqual(self.TARIFDATEN_SB_POPUP_SB_400[selected_radio_no - 1],
                                              Select(self.driver.find_element_by_xpath(
-                                                 "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[%d]/td[last()-1]/select)" % (
+                                                 "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div[1]/div/div/div[2]/table[1]/tbody/tr[%d]/td[last()-1]/select)" % (
                                                      produkt_radios.index(i) + 1))).first_selected_option.text)
                         except AssertionError as e:
                             self.verificationErrors.append(
@@ -639,7 +642,7 @@ class CommonTasks(Helper):
                         try:
                             self.assertEqual(self.TARIFDATEN_SB_POPUP_SB_1000[selected_radio_no - 1],
                                              Select(self.driver.find_element_by_xpath(
-                                                 "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[%d]/td[11]/select)" % (
+                                                 "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div[1]/div/div/div[2]/table[1]/tbody/tr[%d]/td[11]/select)" % (
                                                      produkt_radios.index(i) + 1))).first_selected_option.text)
                         except AssertionError as e:
                             self.verificationErrors.append(
@@ -649,6 +652,14 @@ class CommonTasks(Helper):
                             #
                             # if button_to_click == "abbrechen":
                             # self.check_and_click_element_by_xpath(self.TARIFDATEN_SB_POPUP_ABBRECHEN_BUTTON_XPATH)
+
+    def tarifdaten_ermittlung_popup_abbrechen_click(self):
+        self.check_and_click_element_by_xpath(self.TARIFDATEN_SB_POPUP_ABBRECHEN_BUTTON_XPATH)
+        WebDriverWait(self.driver, 4).until(EC.invisibility_of_element_located(
+            (By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
+        self.tarifdaten_wait_for_price_reload()
+
+
 
     def tarifdaten_weiter_antrastellerdaten(self):
         self.check_and_click_element_by_link_text("Weiter")
