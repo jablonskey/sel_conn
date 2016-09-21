@@ -416,7 +416,7 @@ class CommonTasks(Helper):
                 self.driver.find_element_by_xpath(
                     self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["form_xpath"]).send_keys(anzahl)
 
-    def zielgruppe_weiter_tarifdaten(self):
+    def zielgruppe_weiter_tarifdaten(self, hide_menu=True):
         self.check_and_click_element_by_link_text("Weiter")
 
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
@@ -439,16 +439,21 @@ class CommonTasks(Helper):
 
     # region tarifdaten common tasks
         self.tarifdaten_wait_for_price_reload()
-        self.hide_drop_down_menu()
+        if hide_menu:
+            self.hide_drop_down_menu()
 
 
-    def tarifdaten_zuruck_zielgruppe(self):
+    def tarifdaten_zuruck_zielgruppe(self, hide_menu=True):
         self.check_and_click_element_by_link_text(u"Zurück")
         self.check_if_on_zielgruppe_page()
+        if hide_menu:
+            self.hide_drop_down_menu()
 
-    def tarifdaten_zuruck_by_link_zielgruppe(self):
+    def tarifdaten_zuruck_by_link_zielgruppe(self, hide_menu=True):
         self.check_and_click_element_by_link_text("Zielgruppe")
         self.check_if_on_zielgruppe_page()
+        if hide_menu:
+            self.hide_drop_down_menu()
 
     def tarifdaten_select_produkt_from_mitgliedschaft(self, produkt_name):
         self.driver.implicitly_wait(2)
@@ -553,7 +558,7 @@ class CommonTasks(Helper):
         for i in produkt_label_list:
             if i.text == produkt_name:
                 Select(self.driver.find_element_by_xpath(
-                    "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[" + str(
+                    "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div[1]/div/div/div[2]/table[1]/tbody/tr[" + str(
                         produkt_label_list.index(i) + 1) + "]/td[last()-1]/select)")).select_by_visible_text(
                     sb)
 
@@ -652,16 +657,13 @@ class CommonTasks(Helper):
                             #
                             # if button_to_click == "abbrechen":
                             # self.check_and_click_element_by_xpath(self.TARIFDATEN_SB_POPUP_ABBRECHEN_BUTTON_XPATH)
-
     def tarifdaten_ermittlung_popup_abbrechen_click(self):
         self.check_and_click_element_by_xpath(self.TARIFDATEN_SB_POPUP_ABBRECHEN_BUTTON_XPATH)
         WebDriverWait(self.driver, 4).until(EC.invisibility_of_element_located(
             (By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
         self.tarifdaten_wait_for_price_reload()
 
-
-
-    def tarifdaten_weiter_antrastellerdaten(self):
+    def tarifdaten_weiter_antrastellerdaten(self, hide_menu=True):
         self.check_and_click_element_by_link_text("Weiter")
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])")),
@@ -677,7 +679,8 @@ class CommonTasks(Helper):
             (By.XPATH, self.ANTRAGSTELLERDATEN_SECTION_HEADER_XPATH)))
         self.assertEqual("Antragstellerdaten", self.driver.find_element_by_xpath(
             self.ANTRAGSTELLERDATEN_SECTION_HEADER_XPATH).text)
-        self.hide_drop_down_menu()
+        if hide_menu:
+            self.hide_drop_down_menu()
 
     def tarifdaten_check_text_in_produkt_table(self, text, table_name, row_no):
         if table_name == "erganzungen":
@@ -714,7 +717,7 @@ class CommonTasks(Helper):
     # endregion
     # region antragstellerdaten common tasks
 
-    def antragsteller_zuruck_tarifdaten(self):
+    def antragsteller_zuruck_tarifdaten(self, hide_menu=True):
         self.check_and_click_element_by_link_text(u"Zurück")
 
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
@@ -728,9 +731,10 @@ class CommonTasks(Helper):
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.NAME, "schutzbrief")))
         WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.NAME, "schutzbrief")))
         self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
-        self.hide_drop_down_menu()
+        if hide_menu:
+            self.hide_drop_down_menu()
 
-    def antragsteller_weiter_zusatzdaten(self):
+    def antragsteller_weiter_zusatzdaten(self, hide_menu=True):
         self.zusatzdaten_fill_required_fields()
         self.check_and_click_element_by_link_text(u"Weiter")
 
@@ -751,9 +755,10 @@ class CommonTasks(Helper):
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/h4)"),
             u"Vertragsbeginn"))
         self.assertEqual(self.base_url + "ng/#/taa//zusatzdaten", self.driver.current_url)
-        self.hide_drop_down_menu()
+        if hide_menu:
+            self.hide_drop_down_menu()
 
-    def zusatzdaten_weiter_antrag(self):
+    def zusatzdaten_weiter_antrag(self, hide_menu=True):
         self.zusatzdaten_fill_required_fields()
         self.check_and_click_element_by_link_text(u"Weiter")
 
@@ -766,9 +771,10 @@ class CommonTasks(Helper):
             (By.XPATH, self.ANTRAG_ZUSATZDATEN_HEADER),
             u"Zusatzdaten"))
         self.assertEqual(self.base_url + "ng/#/taa//antrag", self.driver.current_url)
-        self.hide_drop_down_menu()
+        if hide_menu:
+            self.hide_drop_down_menu()
 
-    def zusatzdaten_zuruck_antrastellerdaten(self):
+    def zusatzdaten_zuruck_antrastellerdaten(self, hide_menu=True):
         self.check_and_click_element_by_link_text(u"Zurück")
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])")))
@@ -778,9 +784,10 @@ class CommonTasks(Helper):
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])"),
             u"Produktauswahl"))
         self.assertEqual(self.base_url + "ng/#/taa//antragsteller", self.driver.current_url)
-        self.hide_drop_down_menu()
+        if hide_menu:
+            self.hide_drop_down_menu()
 
-    def antrag_zuruck_zusatzdaten(self):
+    def antrag_zuruck_zusatzdaten(self, hide_menu=True):
         self.check_and_click_element_by_link_text(u"Zurück")
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])")))
@@ -790,7 +797,8 @@ class CommonTasks(Helper):
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])"),
             u"Produktauswahl"))
         self.assertEqual(self.base_url + "ng/#/taa//zusatzdaten", self.driver.current_url)
-        self.hide_drop_down_menu()
+        if hide_menu:
+            self.hide_drop_down_menu()
 
     def check_if_on_bestatigung_page(self):
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
