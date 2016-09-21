@@ -594,7 +594,6 @@ class Helper(object):
         self.scroll_to_element(self.driver.find_element_by_xpath(xpath))
         self.driver.find_element_by_xpath(xpath).click()
 
-
     def check_and_click_element_by_link_text(self, linktext):
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(
             (By.LINK_TEXT, linktext)))
@@ -770,4 +769,9 @@ class Helper(object):
 
     def scroll_to_element(self, element, y_pos=400, x_pos=0):
         self.driver.execute_script(
-            "window.scrollTo(%d, %d);" % (element.location["x"] + x_pos, element.location["y"] - y_pos ))
+            "window.scrollTo(%d, %d);" % (element.location["x"] + x_pos, element.location["y"] + y_pos ))
+
+    def hide_drop_down_menu(self):
+        self.driver.execute_script(
+            "document.getElementById('megadropdown-main-div').style.display = 'none';")
+
