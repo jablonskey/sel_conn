@@ -54,6 +54,9 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         self.tarifdaten_weiter_antrastellerdaten()
         # ### Antragstellerdaten ###
 
+        self.antragsteller_fill_data_zahlungsdaten("uberweisung")
+        self.antragsteller_fill_data_vorversicherung("nein")
+
 
         # region anrede
         # -- Anrede
@@ -335,36 +338,7 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
 
         self.validate_element_by_id("ort", u"TESTort", "valid")
         # endregion
-        # region geburtsdatum
-        # -- Geburts INVALID
-        try:
-            self.assertNotRegexpMatches(driver.find_element_by_id("geburtsdatum").get_attribute("class"), r"ng-invalid")
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))
 
-        self.validate_element_by_id("geburtsdatum", "xxxxxxxxx", "notaccepted")
-        self.validate_element_by_id("geburtsdatum", "xx.xx.xxxx", "notaccepted")
-        self.validate_element_by_id("geburtsdatum", "%s.%s.%s" % (
-            str((datetime.datetime.today() + datetime.timedelta(days=1)).day).zfill(2),
-            str((datetime.datetime.today() + datetime.timedelta(days=1)).month).zfill(2),
-            str((datetime.datetime.today() + datetime.timedelta(days=1)).year).zfill(2)), "invalid")
-        self.validate_element_by_id("geburtsdatum", "%s.%s.%s" % (
-            str(datetime.datetime.now().day).zfill(2), str(datetime.datetime.now().month).zfill(2),
-            str(datetime.datetime.now().year).zfill(2)), "valid")
-        self.validate_element_by_id("geburtsdatum", "%s.%s.%s" % (
-            str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
-            str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
-            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "valid")
-        self.validate_element_by_id("geburtsdatum", "31.09.2013", "invalid")
-        self.validate_element_by_id("geburtsdatum", "30.09.2013", "valid")
-
-        self.validate_date_field_by_id_not_refreshing("geburtsdatum")
-
-        self.validate_element_by_id("geburtsdatum", "29.02.2013", "invalid")
-        self.validate_element_by_id("geburtsdatum", "28.02.2013", "valid")
-        self.validate_element_by_id("geburtsdatum", "29.02.2012", "valid")
-        self.validate_element_by_id("geburtsdatum", "01.01.2014", "valid")
-        # endregion
         # region taetigkeit
         # -- Taetigkeit INVALID
         try:
@@ -440,8 +414,37 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         self.assertEqual(u"Sonstige Berufsgruppe",
                          Select(driver.find_element_by_id("berufsgruppe")).options[6].text)
 
-        self.antragsteller_fill_data_zahlungsdaten("uberweisung")
-        self.antragsteller_fill_data_vorversicherung("nein")
+        # region geburtsdatum
+        # -- Geburts INVALID
+        try:
+            self.assertNotRegexpMatches(driver.find_element_by_id("geburtsdatum").get_attribute("class"), r"ng-invalid")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
+
+        self.validate_element_by_id("geburtsdatum", "xxxxxxxxx", "notaccepted")
+        self.validate_element_by_id("geburtsdatum", "xx.xx.xxxx", "notaccepted")
+        self.validate_element_by_id("geburtsdatum", "%s.%s.%s" % (
+            str((datetime.datetime.today() + datetime.timedelta(days=1)).day).zfill(2),
+            str((datetime.datetime.today() + datetime.timedelta(days=1)).month).zfill(2),
+            str((datetime.datetime.today() + datetime.timedelta(days=1)).year).zfill(2)), "invalid")
+        self.validate_element_by_id("geburtsdatum", "%s.%s.%s" % (
+            str(datetime.datetime.now().day).zfill(2), str(datetime.datetime.now().month).zfill(2),
+            str(datetime.datetime.now().year).zfill(2)), "valid")
+        self.validate_element_by_id("geburtsdatum", "%s.%s.%s" % (
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "valid")
+        self.validate_element_by_id("geburtsdatum", "31.09.2013", "invalid")
+        self.validate_element_by_id("geburtsdatum", "30.09.2013", "valid")
+
+        self.validate_date_field_by_id_not_refreshing("geburtsdatum")
+
+        self.validate_element_by_id("geburtsdatum", "29.02.2013", "invalid")
+        self.validate_element_by_id("geburtsdatum", "28.02.2013", "valid")
+        self.validate_element_by_id("geburtsdatum", "29.02.2012", "valid")
+        self.validate_element_by_id("geburtsdatum", "01.01.2014", "valid")
+        # endregion
+
         self.antragsteller_weiter_zusatzdaten()
 
     def tearDown(self):
