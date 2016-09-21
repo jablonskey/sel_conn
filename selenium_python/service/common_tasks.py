@@ -183,6 +183,8 @@ class CommonTasks(Helper):
             (By.XPATH, Helper.ZIELGRUPPE_GESCHAFTSKUNDEN_XPATH),
             u"Geschäftskunden"))
 
+        self.hide_drop_down_menu()
+
         # TODO
         # desired_zielgruppe_labels = (
         # "Familien", "Singles", "Beamte", "Senioren", u"Selbständige / Firmen / Freiberufler",
@@ -437,6 +439,7 @@ class CommonTasks(Helper):
 
     # region tarifdaten common tasks
         self.tarifdaten_wait_for_price_reload()
+        self.hide_drop_down_menu()
 
 
     def tarifdaten_zuruck_zielgruppe(self):
@@ -663,6 +666,7 @@ class CommonTasks(Helper):
             (By.XPATH, self.ANTRAGSTELLERDATEN_SECTION_HEADER_XPATH)))
         self.assertEqual("Antragstellerdaten", self.driver.find_element_by_xpath(
             self.ANTRAGSTELLERDATEN_SECTION_HEADER_XPATH).text)
+        self.hide_drop_down_menu()
 
     def tarifdaten_check_text_in_produkt_table(self, text, table_name, row_no):
         if table_name == "erganzungen":
@@ -713,6 +717,7 @@ class CommonTasks(Helper):
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.NAME, "schutzbrief")))
         WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.NAME, "schutzbrief")))
         self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
+        self.hide_drop_down_menu()
 
     def antragsteller_weiter_zusatzdaten(self):
         self.zusatzdaten_fill_required_fields()
@@ -735,6 +740,7 @@ class CommonTasks(Helper):
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/h4)"),
             u"Vertragsbeginn"))
         self.assertEqual(self.base_url + "ng/#/taa//zusatzdaten", self.driver.current_url)
+        self.hide_drop_down_menu()
 
     def zusatzdaten_weiter_antrag(self):
         self.zusatzdaten_fill_required_fields()
@@ -749,6 +755,7 @@ class CommonTasks(Helper):
             (By.XPATH, self.ANTRAG_ZUSATZDATEN_HEADER),
             u"Zusatzdaten"))
         self.assertEqual(self.base_url + "ng/#/taa//antrag", self.driver.current_url)
+        self.hide_drop_down_menu()
 
     def zusatzdaten_zuruck_antrastellerdaten(self):
         self.check_and_click_element_by_link_text(u"Zurück")
@@ -760,6 +767,7 @@ class CommonTasks(Helper):
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])"),
             u"Produktauswahl"))
         self.assertEqual(self.base_url + "ng/#/taa//antragsteller", self.driver.current_url)
+        self.hide_drop_down_menu()
 
     def antrag_zuruck_zusatzdaten(self):
         self.check_and_click_element_by_link_text(u"Zurück")
@@ -771,6 +779,7 @@ class CommonTasks(Helper):
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])"),
             u"Produktauswahl"))
         self.assertEqual(self.base_url + "ng/#/taa//zusatzdaten", self.driver.current_url)
+        self.hide_drop_down_menu()
 
     def check_if_on_bestatigung_page(self):
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
@@ -781,6 +790,7 @@ class CommonTasks(Helper):
             (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1]/h4)"),
             u"Sendebestätigung"))
         self.assertEqual(self.base_url + "ng/#/taa//bestaetigung", self.driver.current_url)
+        self.hide_drop_down_menu()
 
     def antragsteller_fill_data(self):
         self.antragsteller_fill_data_antragstellerdaten()
