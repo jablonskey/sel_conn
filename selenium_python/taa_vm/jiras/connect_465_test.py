@@ -60,10 +60,7 @@ class Connect465Test(unittest.TestCase, CommonTasks):
             EC.visibility_of_element_located((By.XPATH, Helper.ERGANZUNGEN_POPUP_PRODUKT_LABELS_XPATH)))
 
         self.check_and_click_element_by_xpath(Helper.ERGANZUNGEN_CHECKBOX_XPATH)
-        self.check_and_click_element_by_xpath(Helper.ERGANZUNGEN_POPUP_OK_BUTTON_XPATH)
-
-        WebDriverWait(driver, 10).until(EC.invisibility_of_element_located(
-            (By.XPATH, Helper.ERGANZUNGEN_POPUP_PRODUKT_LABELS_XPATH)))
+        self.tarifdaten_erganzungen_popup_ok_click()
 
         self.tarifdaten_select_produkt_from_erganzungen_by_name("Selbstgenutzte Immobilien")
         WebDriverWait(driver, 10).until(
@@ -72,10 +69,7 @@ class Connect465Test(unittest.TestCase, CommonTasks):
             EC.visibility_of_element_located((By.XPATH, Helper.ERGANZUNGEN_POPUP_XPATH)))
         self.tarifdaten_select_produkt_on_daten_erfassen_popup_by_name("Garagen als Einzelrisiko")
         driver.find_elements_by_name("intItem")[0].send_keys("10")
-        self.check_and_click_element_by_xpath(self.ERGANZUNGEN_POPUP_OK_BUTTON_XPATH)
-
-        WebDriverWait(driver, 10).until(EC.invisibility_of_element_located(
-            (By.XPATH, Helper.ERGANZUNGEN_POPUP_PRODUKT_LABELS_XPATH)))
+        self.tarifdaten_erganzungen_popup_ok_click()
 
         self.tarifdaten_weiter_antrastellerdaten()
 

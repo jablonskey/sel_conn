@@ -147,7 +147,7 @@ class Helper(object):
 
     TARIFDATEN_SPINNER_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div[last()][@class=\"cg-busy cg-busy-animation ng-scope\"])"
 
-    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_MITGLIEDSCHAFT_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div/div/div[2]/table/tbody/tr[*]/td[1]/div/label)"
+    TARIFDATEN_PRODUKT_ELEMENTS_LABELS_MITGLIEDSCHAFT_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[2]/div/div/div[2]/table/tbody/tr[*]/td[1]/div/label)"
     TARIFDATEN_PRODUKT_ELEMENTS_LABELS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[1]/div/label)"
     TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[1]/div/label/input)"
     TARIFDATEN_PRODUKT_ELEMENTS_LABELS_ERGANZUNGEN_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table/tbody/tr[*]/td[1]/ng-include/div/label)"
@@ -160,20 +160,20 @@ class Helper(object):
 
     TARIFDATEN_ZAHLWEISE_INPUTS_XPATH = {
         "jahrlich": {
-            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[1]/div/label/input)",
-            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[1]/div/label)",
+            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[*]/div/div/div[2]/div/div[2]/div/div/div[1]/div/label/input)",
+            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[*]/div/div/div[2]/div/div[2]/div/div/div[1]/div/label)",
             "text": u"jährlich: 27,00 €"},
         "halbjahrlich": {
-            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[2]/div/label/input)",
-            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[2]/div/label",
+            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[*]/div/div/div[2]/div/div[2]/div/div/div[2]/div/label/input)",
+            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[*]/div/div/div[2]/div/div[2]/div/div/div[2]/div/label",
             "text": u"jährlich: 27,00 €"},
         "vierteljahrlich": {
-            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[3]/div/label/input)",
-            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[3]/div/label)",
+            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[*]/div/div/div[2]/div/div[2]/div/div/div[3]/div/label/input)",
+            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[*]/div/div/div[2]/div/div[2]/div/div/div[3]/div/label)",
             "text": u"jährlich: 27,00 €"},
         "monatlich": {
-            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[4]/div/label/input)",
-            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[*]/div/div/div[2]/div/div[2]/div/div/div[4]/div/label)",
+            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[*]/div/div/div[2]/div/div[2]/div/div/div[4]/div/label/input)",
+            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[*]/div/div/div[2]/div/div[2]/div/div/div[4]/div/label)",
             "text": u"jährlich: 27,00 €"}
     }
 
@@ -470,14 +470,14 @@ class Helper(object):
 
     def get_price_from_table_text(self, table_name, row_no="*"):
         if table_name == "mitgliedschaft":
-            price_xpath = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div/div/div[2]/table/tbody/tr[%s]/td[3])" % (
+            price_xpath = "(.//*[@id='rechner-section']/div/div[2]/div/div[2]/div/div/div[2]/table/tbody/tr[%s]/td[3])" % (
                 str(row_no))
 
             WebDriverWait(self.driver, 10).until_not(
                 EC.text_to_be_present_in_element((By.XPATH, price_xpath), u"0,00 €"))
 
         if table_name == "rechtschutz":
-            price_xpath = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table[1]/tbody/tr[%s]/td[last()])" % (
+            price_xpath = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div[1]/div/div/div[2]/table[1]/tbody/tr[%s]/td[last()])" % (
                 str(row_no))
 
             WebDriverWait(self.driver, 10).until_not(
@@ -485,7 +485,7 @@ class Helper(object):
 
 
         elif table_name == "erganzungen":
-            price_xpath = "(.//*[@id='rechner-section']/div/div[2]/div/div[5]/div[1]/div/div/div[2]/table/tbody/tr[%s]/td[4]/div/div)" % (
+            price_xpath = "(.//*[@id='rechner-section']/div/div[2]/div/div[4]/div[1]/div/div/div[2]/table/tbody/tr[%s]/td[4]/div/div)" % (
                 str(row_no))
 
             WebDriverWait(self.driver, 10).until_not(

@@ -32,7 +32,7 @@ class CommonTasks(Helper):
         self.check_if_on_vermittler_login_page()
 
     def go_to_external_page(self):
-        self.driver.get("ks-software.com")
+        self.driver.get("http://ks-software.com")
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
             (By.XPATH, "(html/body/div/div/div/section/div/div[2]/div/div[1]/ng-include/h1)"), "Witaj!"))
 
@@ -663,6 +663,12 @@ class CommonTasks(Helper):
             (By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
         self.tarifdaten_wait_for_price_reload()
 
+    def tarifdaten_erganzungen_popup_ok_click(self):
+        self.check_and_click_element_by_xpath(Helper.ERGANZUNGEN_POPUP_OK_BUTTON_XPATH)
+        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
+            (By.XPATH, Helper.ERGANZUNGEN_POPUP_PRODUKT_LABELS_XPATH)))
+        self.tarifdaten_wait_for_price_reload()
+
     def tarifdaten_weiter_antrastellerdaten(self, hide_menu=True):
         self.check_and_click_element_by_link_text("Weiter")
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
@@ -733,6 +739,7 @@ class CommonTasks(Helper):
         self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
         if hide_menu:
             self.hide_drop_down_menu()
+        self.tarifdaten_wait_for_price_reload()
 
     def antragsteller_weiter_zusatzdaten(self, hide_menu=True):
         self.zusatzdaten_fill_required_fields()
@@ -893,6 +900,8 @@ class CommonTasks(Helper):
     def antragsteller_fill_data_zahlungsdaten(self, zahlungsart="lastschrift", iban="DE88300606010301156608", bic=None):
         if zahlungsart == "lastschrift":
             self.check_and_click_element_by_name("zahlungsart")
+            self.check_and_click_element_by_xpath(
+                self.ANTRAGSTELLER_ZAHLUNGSDATEN_ZAHLUNGSART_HELPER["lastschrift"]["radio_xpath"])
             self.driver.find_element_by_id("iban").send_keys(iban)
             if bic is not None:
                 self.driver.find_element_by_id("bic").send_keys(bic)
@@ -900,6 +909,8 @@ class CommonTasks(Helper):
         elif zahlungsart == "uberweisung":
             self.check_and_click_element_by_xpath(
                 self.ANTRAGSTELLER_ZAHLUNGSDATEN_ZAHLUNGSART_HELPER["uberweisung"]["label_xpath"])
+            self.check_and_click_element_by_xpath(
+                self.ANTRAGSTELLER_ZAHLUNGSDATEN_ZAHLUNGSART_HELPER["uberweisung"]["radio_xpath"])
 
     def antragsteller_fill_data_vorversicherung(self, ja_nein="nein"):
         if ja_nein == "ja":

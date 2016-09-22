@@ -42,9 +42,9 @@ class Connect951Test(unittest.TestCase, common_tasks.CommonTasks):
         driver.switch_to.frame(driver.find_element_by_tag_name("iframe"))
         self.check_and_click_element_by_xpath("(/html/body/div/div[2]/a)")
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
-            (By.XPATH, "(/html/body/div/div/h1)"), u"Bezirksdirektionen"))
+            (By.XPATH, "(/html/body/div/div/h1)"), u"BD Stuttgart"))
         try:
-            self.assertEqual("%sservice/ihr-kontakt-zu-uns/bezirksdirektionen/" % (self.links_base_url),
+            self.assertEqual("%sservice/ihr-kontakt-zu-uns/bezirksdirektionen/bd-stuttgart/" % (self.links_base_url),
                              driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(str(e))
