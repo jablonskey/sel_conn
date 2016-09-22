@@ -52,6 +52,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.zielgruppe_weiter_tarifdaten()
         self.tarifdaten_weiter_antrastellerdaten()
         self.antragsteller_zuruck_tarifdaten()
+        self.tarifdaten_wait_for_price_reload()
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
@@ -67,6 +68,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.antragsteller_weiter_zusatzdaten()
         self.zusatzdaten_zuruck_antrastellerdaten()
         self.antragsteller_zuruck_tarifdaten()
+        self.tarifdaten_wait_for_price_reload()
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
@@ -83,6 +85,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.antrag_zuruck_zusatzdaten()
         self.zusatzdaten_zuruck_antrastellerdaten()
         self.antragsteller_zuruck_tarifdaten()
+        self.tarifdaten_wait_for_price_reload()
         self.tarifdaten_zuruck_zielgruppe()
 
         try:
