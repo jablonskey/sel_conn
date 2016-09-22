@@ -11,10 +11,7 @@ from service.common_tasks import CommonTasks
 
 
 class DocsClubTests(unittest.TestCase, CommonTasks):
-
-
     def setUp(self):
-
 
         if os.environ.has_key("SELENIUM_BROWSER"):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
@@ -47,7 +44,7 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
 
-        self.documents_popup_generate_document((u"Club Highlights", ))
+        self.documents_popup_generate_document((u"Club Highlights",))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
 
@@ -55,29 +52,9 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[142])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[142])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[6])"),
 
-                                             u"C"))
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[143])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[143])"),
-
-                                             u"l"))
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[144])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[144])"),
-
-                                             u"u"))
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[145])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[145])"),
-
-                                             u"b"))
+                                             u"Club Highlights"))
 
         driver.close()
         driver.switch_to.window(main_window)
@@ -97,36 +74,17 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
         self.tarifdaten_weiter_antrastellerdaten()
 
-        self.documents_popup_generate_document((u"Club Highlights", ))
+        self.documents_popup_generate_document((u"Club Highlights",))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
         document_tab = driver.window_handles[-1]
         driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[142])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[142])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[6])"),
 
-                                             u"C"))
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[143])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[143])"),
+                                             u"Club Highlights"))
 
-                                             u"l"))
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[144])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[144])"),
-
-                                             u"u"))
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[145])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[145])"),
-
-                                             u"b"))
         driver.close()
         driver.switch_to.window(main_window)
         driver.close()
@@ -148,36 +106,16 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         self.antragsteller_weiter_zusatzdaten()
 
         driver.find_element_by_xpath("//input[@placeholder=\"Kennzeichen\"]").send_keys("kenn123")
-        self.documents_popup_generate_document((u"Club Highlights", ))
+        self.documents_popup_generate_document((u"Club Highlights",))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
         document_tab = driver.window_handles[-1]
         driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[142])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[142])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[6])"),
 
-                                             u"C"))
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[143])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[143])"),
-
-                                             u"l"))
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[144])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[144])"),
-
-                                             u"u"))
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[145])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[145])"),
-
-                                             u"b"))
+                                             u"Club Highlights"))
         driver.close()
         driver.switch_to.window(main_window)
         driver.close()
@@ -199,43 +137,23 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         self.antragsteller_weiter_zusatzdaten()
 
         driver.find_element_by_xpath("//input[@placeholder=\"Kennzeichen\"]").send_keys("kenn123")
-        self.check_and_click_element_by_xpath("(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div[2]/form/div/div[1]/div[2]/label/input)")
+        self.check_and_click_element_by_xpath(
+            "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div[2]/form/div/div[1]/div[2]/label/input)")
         self.zusatzdaten_weiter_antrag()
 
-        self.documents_popup_generate_document((u"Club Highlights", ))
+        self.documents_popup_generate_document((u"Club Highlights"))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
         document_tab = driver.window_handles[-1]
         driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[142])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[142])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[6])"),
 
-                                             u"C"))
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[143])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[143])"),
-
-                                             u"l"))
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[144])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[144])"),
-
-                                             u"u"))
-        WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[145])")))
-        WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[145])"),
-
-                                             u"b"))
+                                             u"Club Highlights"))
         driver.close()
         driver.switch_to.window(main_window)
         driver.close()
-
 
     def tearDown(self):
         self.driver.quit()
