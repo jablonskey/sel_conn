@@ -1463,6 +1463,7 @@ class CommonTasks(Helper):
     # region documents common tasks
     def documents_popup_generate_document(self, document_name):
         self.check_and_click_element_by_link_text("PDF erstellen")
+        self.wait_for_pdf_spinner()
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
         WebDriverWait(self.driver, 10).until(
@@ -1471,10 +1472,10 @@ class CommonTasks(Helper):
             EC.presence_of_all_elements_located((By.XPATH, "(/html/body/div[3]/div/div/div[2]/descendant::label)")))
 
         documents_label_list = self.driver.find_elements_by_xpath(
-            "(/html/body/div[3]/div/div/div[2]/descendant::label)")
+            "(/html/body/div[3]/div/div/div[2]/descendant::label[@data-ng-show=\"doc.IsVisible\"])")
 
         for i in documents_label_list:
-            if i.text in document_name:
+            if i.text == document_name:
                 i.click()
 
         self.check_and_click_element_by_xpath("(/html/body/div[3]/div/div/div[3]/div/div[3]/button)")

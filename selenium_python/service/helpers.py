@@ -147,6 +147,8 @@ class Helper(object):
 
     TARIFDATEN_SPINNER_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div[last()][@class=\"cg-busy cg-busy-animation ng-scope\"])"
 
+    PDF_ERSTELLEN_SPINNER_XPATH = "(/html/body/div[3]/div/div/div[2]/div[7][@class=\"cg-busy cg-busy-animation ng-scope\"])"
+
     TARIFDATEN_PRODUKT_ELEMENTS_LABELS_MITGLIEDSCHAFT_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[2]/div/div/div[2]/table/tbody/tr[*]/td[1]/div/label)"
     TARIFDATEN_PRODUKT_ELEMENTS_LABELS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[1]/div/label)"
     TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_RECHTSCHUTZ_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[3]/div[1]/div/div/div[2]/table[1]/tbody/tr[*]/td[1]/div/label/input)"
@@ -767,6 +769,10 @@ class Helper(object):
     def scroll_to_element(self, element, y_pos=400, x_pos=0):
         self.driver.execute_script(
             "window.scrollTo(%d, %d);" % (element.location["x"] + x_pos, element.location["y"] + y_pos ))
+
+    def wait_for_pdf_spinner(self):
+        WebDriverWait(self.driver, 20).until_not(
+            EC.presence_of_element_located((By.XPATH, self.PDF_ERSTELLEN_SPINNER_XPATH)))
 
     def hide_drop_down_menu(self):
         self.driver.execute_script(
