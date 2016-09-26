@@ -109,6 +109,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
         self.login_to_connect_vermittler(self.base_url, main_page_after_login=False)
+        self.tarifdaten_wait_for_price_reload()
         self.tarifdaten_zuruck_zielgruppe()
 
         try:

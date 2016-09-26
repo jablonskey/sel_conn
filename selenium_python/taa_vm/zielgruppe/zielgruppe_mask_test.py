@@ -190,12 +190,13 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
         self.assertEqual("Hinweis zu den Tarifierungsdaten",
                          driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
         # -- Dismiss
-        driver.find_element_by_xpath("(/html/body/div[3]/div/div)").send_keys(Keys.ESCAPE)
         try:
+            driver.find_element_by_xpath("(/html/body/div[3]/div/div)").send_keys(Keys.ESCAPE)
             WebDriverWait(driver, 4).until(
                 EC.invisibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div)")))
         except Exception:
             pass
+
         self.check_and_click_element_by_xpath("//div[3]/div/div/button")
         WebDriverWait(driver, 4).until(EC.invisibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div)")))
 
