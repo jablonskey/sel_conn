@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
-from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
-from selenium.webdriver.remote import webelement
+
 from helpers import Helper
 from overriders import SelectWithFooterSlide
-import sys
 
 
 class CommonTasks(Helper):
@@ -138,10 +134,10 @@ class CommonTasks(Helper):
         if (main_page_after_login):
             self.check_if_on_vermittler_main_page(user_with_taa_rights=user_with_taa_rights)
         self.driver.implicitly_wait(2)
+
     def zielgruppe_enter_vmnr(self, vmnr):
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_BEFORE_CLICK_XPATH)
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_FORM_CLICK_XPATH).send_keys(vmnr, Keys.ENTER)
-
 
     def logout_vermittler(self):
         self.driver.switch_to.frame(self.driver.find_element_by_tag_name("iframe"))
@@ -354,7 +350,8 @@ class CommonTasks(Helper):
                 self.driver.find_element_by_xpath(
                     self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["jahresbrutto_form_xpath"]).clear()
                 self.driver.find_element_by_xpath(
-                    self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["jahresbrutto_form_xpath"]).send_keys(jahresbrutto)
+                    self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["jahresbrutto_form_xpath"]).send_keys(
+                    jahresbrutto)
 
         elif btrklasse_name == 'arzte':
             WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
@@ -420,7 +417,8 @@ class CommonTasks(Helper):
         self.check_and_click_element_by_link_text("Weiter")
 
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
-            (By.XPATH, "(.//*[@id='rechner-section']/div/div[2]/div/div[1]/div/div/div[1]/h4)")), "Tarifdaten not reached")
+            (By.XPATH, "(.//*[@id='rechner-section']/div/div[2]/div/div[1]/div/div/div[1]/h4)")),
+            "Tarifdaten not reached")
 
         self.assertEqual("Zielgruppe", self.driver.find_element_by_xpath(
             "(.//*[@id='rechner-section']/div/div[2]/div/div[1]/div/div/div[1]/h4)").text)
@@ -431,17 +429,16 @@ class CommonTasks(Helper):
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.NAME, "schutzbrief")))
         WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.NAME, "schutzbrief")))
 
-    # endregion
+        # endregion
 
-    # TODO
-    # def get_produkt_name_from_table(self, table_name, row_no):
-    # if table_name == "erganzungen":
+        # TODO
+        # def get_produkt_name_from_table(self, table_name, row_no):
+        # if table_name == "erganzungen":
 
-    # region tarifdaten common tasks
+        # region tarifdaten common tasks
         self.tarifdaten_wait_for_price_reload()
         if hide_menu:
             self.hide_drop_down_menu()
-
 
     def tarifdaten_zuruck_zielgruppe(self, hide_menu=True):
         self.check_and_click_element_by_link_text(u"Zurück")
@@ -617,7 +614,6 @@ class CommonTasks(Helper):
         elif button_to_click == "ubernahmen":
             self.check_and_click_element_by_xpath("(/html/body/div[3]/div/div/div[3]/div/div[3]/button)")
 
-
             # if selected_radio_no == None or is_checkbox_checked == "unchecked":
             # try:
             # WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
@@ -629,7 +625,8 @@ class CommonTasks(Helper):
             WebDriverWait(self.driver, 4).until(EC.invisibility_of_element_located(
                 (By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
             self.tarifdaten_wait_for_price_reload()
-            produkt_radios = self.driver.find_elements_by_xpath(self.TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_RECHTSCHUTZ_XPATH)
+            produkt_radios = self.driver.find_elements_by_xpath(
+                self.TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_RECHTSCHUTZ_XPATH)
             for i in produkt_radios:
                 if (i.is_selected()):
                     if ermittlung_type == "400":
@@ -657,6 +654,7 @@ class CommonTasks(Helper):
                             #
                             # if button_to_click == "abbrechen":
                             # self.check_and_click_element_by_xpath(self.TARIFDATEN_SB_POPUP_ABBRECHEN_BUTTON_XPATH)
+
     def tarifdaten_ermittlung_popup_abbrechen_click(self):
         self.check_and_click_element_by_xpath(self.TARIFDATEN_SB_POPUP_ABBRECHEN_BUTTON_XPATH)
         WebDriverWait(self.driver, 4).until(EC.invisibility_of_element_located(
@@ -1446,14 +1444,14 @@ class CommonTasks(Helper):
     def zusatzdaten_fill_required_fields(self):
         required_inputs = self.driver.find_elements_by_xpath(self.ZUSATZDATEN_REQUIERD_INPUTS)
 
-        if len(required_inputs) >0:
+        if len(required_inputs) > 0:
             for input_element in required_inputs:
                 if input_element.is_displayed() and input_element.is_enabled():
                     input_element.send_keys("10")
 
         required_selects = self.driver.find_elements_by_xpath(self.ZUSATZDATEN_REQUIERD_SELECTS)
 
-        if len(required_selects)>0:
+        if len(required_selects) > 0:
             for select_element in required_selects:
                 if select_element.is_displayed() and select_element.is_enabled():
                     Select(select_element).select_by_index(1)
@@ -1463,11 +1461,12 @@ class CommonTasks(Helper):
     # region documents common tasks
     def documents_popup_generate_document(self, document_name):
         self.check_and_click_element_by_link_text("PDF erstellen")
-        self.wait_for_pdf_spinner()
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
+        self.wait_for_pdf_spinner()
+
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located((By.XPATH, "(/html/body/div[3]/div/div/div[2]/descendant::label)")))
 
@@ -1475,8 +1474,9 @@ class CommonTasks(Helper):
             "(/html/body/div[3]/div/div/div[2]/descendant::label[@data-ng-show=\"doc.IsVisible\"])")
 
         for i in documents_label_list:
-            if i.text == document_name:
+            if i.text!=u'' and i.text in document_name:
                 i.click()
+
 
         self.check_and_click_element_by_xpath("(/html/body/div[3]/div/div/div[3]/div/div[3]/button)")
         # endregion
