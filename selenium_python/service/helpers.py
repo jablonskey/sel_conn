@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+import re
+import sys
+
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.action_chains import ActionChains
-import time, sys, re
+from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
 
 
 class Helper(object):
@@ -17,14 +18,13 @@ class Helper(object):
     AKTSERVICE_LOGIN_PAGE_ADDRES_COMPLETION = "ng/#/aktualisierung/login"
     SECURE_EMAIL_LOGIN_PAGE_ADDRES_COMPLETION = "ng/#/dokumente/login"
 
-    #for deep links
+    # for deep links
     STARTSEITE_ADDRES_COMPLETION = "ng/#/vermittler/startseite"
     ZIELGRUPPE_ADDRES_COMPLETION = "ng/#/taa//zielgruppe"
     KUNDENSUCHE_ADDRES_COMPLETION = "ng/#/vermittler/kundensuche"
     MITGLIEDSCHAFT_ADDRES_COMPLETION = "ng/#/vermittler/mitgliedschaft/"
     MEINE_ANGEBOTE_ADDRES_COMPLETION = "ng/#/vermittler/angebote"
     MEIN_PROFIL_ADDRESS_COMPLETION = "ng/#/vermittler/nutzerprofil"
-
 
     ADMIN_USER_LOGIN = "admin@ks"
     ADMIN_USER_PASSWORD = "dupa"
@@ -142,6 +142,30 @@ class Helper(object):
         "inhaber": {"form_xpath": "(/html/body/div[3]/div/div/div[2]/form/div[8]/div/input)"},
         "anzahl": {"form_xpath": "(/html/body/div[3]/div/div/div[2]/form/div[9]/div/div/input)"}
     }
+
+    ZIELGRUPPE_LANDWIRTE_POPUP_LEFT_BUTTON_XPATH = "(/html/body/div[3]/div/div/div[3]/div/div[1]/button)"
+    ZIELGRUPPE_LANDWIRTE_POPUP_RIGHT_BUTTON_XPATH = "(/html/body/div[3]/div/div/div[3]/div/div[3]/button)"
+    ZIELGRUPPE_LANDWIRTE_INPUTS_XPATH = {
+        "landwirte_mitglied_ja": {
+            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[1]/div[1]/div[2]/div[1]/label/input)",
+            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[1]/div[1]/div[2]/div[1]/label)"
+        },
+        "landwirte_mitglied_nein": {
+            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[1]/div[1]/div[2]/div[2]/label/input)",
+            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[1]/div[1]/div[2]/div[2]/label)"
+        },
+        "landwirte_gewerbe_ja": {
+            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[1]/div[2]/div[2]/div[1]/label/input)",
+            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[1]/div[2]/div[2]/div[1]/label)"
+        },
+        "landwirte_gewerbe_nein": {
+            "radio_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[1]/div[2]/div[2]/div[2]/label/input)",
+            "label_xpath": "(.//*[@id='rechner-section']/div/div[2]/div/form[2]/div/div[2]/span/data-ng-form/div[1]/div[2]/div[2]/div[2]/label)"
+        }
+
+    }
+    ZIELGRUPPE_LANDWIRTE_POPUP_XPATH = "(/html/body/div[3]/div/div)"
+    ZIELGRUPPE_LANDWIRTE_BETRIEBSFLACHE_FORM_XPATH="(.//*[@id='betriebsflaeche'])"
 
     PAGES_TABS_ELEMENTS_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/span/ul/li[*]/a)"
 
@@ -282,11 +306,11 @@ class Helper(object):
 
     AKTSERVICE_COMPARE_HEADER = "(/html/body/div/div/div/section/div/div[2]/div[1]/div/div/div[1]/h4)"
 
-
-
     def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException as e: return False
+        try:
+            self.driver.find_element(by=how, value=what)
+        except NoSuchElementException as e:
+            return False
         return True
 
     def check_if_on_admin_main_page(self):
@@ -313,7 +337,7 @@ class Helper(object):
         WebDriverWait(self.driver, 60).until(EC.visibility_of_element_located(
             (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
 
-    def check_if_on_vermittler_login_page(self, user_with_taa_rights=True, anonymus_info_visible=False ):
+    def check_if_on_vermittler_login_page(self, user_with_taa_rights=True, anonymus_info_visible=False):
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
         WebDriverWait(self.driver, 20).until(
@@ -329,7 +353,6 @@ class Helper(object):
                 EC.presence_of_element_located((By.LINK_TEXT, "Rechner ohne Anmeldung")))
             WebDriverWait(self.driver, 20).until(
                 EC.visibility_of_element_located((By.LINK_TEXT, "Rechner ohne Anmeldung")))
-
 
     def check_if_on_vermittler_main_page(self, user_with_taa_rights=True):
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
@@ -379,7 +402,6 @@ class Helper(object):
         WebDriverWait(self.driver, 60).until(
             EC.text_to_be_present_in_element((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER),
                                              "Meine Daten"))
-
 
     def check_vermittler_menu_links(self, user_with_taa_rights=True):
         WebDriverWait(self.driver, 20).until(
@@ -469,7 +491,6 @@ class Helper(object):
         WebDriverWait(self.driver, 20).until_not(
             EC.presence_of_element_located((By.XPATH, self.TARIFDATEN_SPINNER_XPATH)))
 
-
     def get_price_from_table_text(self, table_name, row_no="*"):
         if table_name == "mitgliedschaft":
             price_xpath = "(.//*[@id='rechner-section']/div/div[2]/div/div[2]/div/div/div[2]/table/tbody/tr[%s]/td[3])" % (
@@ -509,7 +530,6 @@ class Helper(object):
         price = self.driver.find_element_by_xpath(price_xpath).text
 
         return price
-
 
     def get_price_from_table_num(self, table_name, row_no="*"):
         price_text = self.get_price_from_table_text(table_name, row_no)
@@ -581,8 +601,10 @@ class Helper(object):
                 text))
 
     def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException as e: return False
+        try:
+            self.driver.find_element(by=how, value=what)
+        except NoSuchElementException as e:
+            return False
         return True
 
     def check_and_click_element_by_xpath(self, xpath, scroll_to_footer="no"):
@@ -755,6 +777,7 @@ class Helper(object):
     def highlight(self, element):
         """Highlights (blinks) a Selenium Webdriver element"""
         driver = element._parent
+
         # self.scroll_to_element(element)
 
         def apply_style(s):
@@ -763,12 +786,12 @@ class Helper(object):
 
         original_style = element.get_attribute('style')
         apply_style("background: yellow; ")
-        #time.sleep(.2)
+        # time.sleep(.2)
         apply_style(original_style)
 
     def scroll_to_element(self, element, y_pos=400, x_pos=0):
         self.driver.execute_script(
-            "window.scrollTo(%d, %d);" % (element.location["x"] + x_pos, element.location["y"] + y_pos ))
+            "window.scrollTo(%d, %d);" % (element.location["x"] + x_pos, element.location["y"] + y_pos))
 
     def wait_for_pdf_spinner(self):
         WebDriverWait(self.driver, 5).until_not(
@@ -778,3 +801,13 @@ class Helper(object):
         self.driver.execute_script(
             "document.getElementById('megadropdown-main-div').style.display = 'none';")
 
+    def wait_for_landwirte_popup_show(self):
+        WebDriverWait(self.driver, 4).until(
+            EC.visibility_of_element_located((By.XPATH, self.ZIELGRUPPE_LANDWIRTE_POPUP_XPATH)))
+        WebDriverWait(self.driver, 4).until(
+            EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
+        self.assertEqual("Hinweis zu den Tarifierungsdaten",
+                         self.driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
+
+    def wait_for_landwirte_popup_hide(self):
+        WebDriverWait(self.driver, 4).until(EC.invisibility_of_element_located((By.XPATH, self.ZIELGRUPPE_LANDWIRTE_POPUP_XPATH)))
