@@ -55,34 +55,34 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
         self.zusatzdaten_weiter_antrag()
 
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[2])")))
+            (By.XPATH, self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[2])")))
+            (By.XPATH, self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.invisibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[1])")))
+            (By.XPATH, self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH)))
 
         try:
             self.assertEqual(driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[2])").text,
-                             "Ja")
+                self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH).text,
+                             "ja")
         except AssertionError:
             self.verificationErrors.append("Antrag \ Antragsteller: \"" + driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[2])").text + "\" instead of \"Ja\"")
+                self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH).text + "\" instead of \"ja\"")
 
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[2])")))
+            (By.XPATH, self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[2])")))
+            (By.XPATH, self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.invisibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[1])")))
+            (By.XPATH, self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH)))
 
         try:
             self.assertEqual(driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[2])").text,
-                             "Ja")
+                self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH).text,
+                             "ja")
         except AssertionError:
             self.verificationErrors.append("Antrag \ Lebenspartner: \"" + driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[2])").text + "\" instead of \"Ja\"")
+                self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH).text + "\" instead of \"ja\"")
 
         self.antrag_zuruck_zusatzdaten()
         self.zusatzdaten_zuruck_antrastellerdaten()
@@ -93,32 +93,32 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
 
         # Antragsteller ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[1])")))
+            (By.XPATH, self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[1])")))
+            (By.XPATH, self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.invisibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[2])")))
+            (By.XPATH, self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH)))
         try:
             self.assertEqual(driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[1])").text,
-                             "Nein")
+                self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH).text,
+                             "nein")
         except AssertionError:
             self.verificationErrors.append("Antrag \ Antragsteller: \"" + driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[1])").text + "\" instead of \"Nein\"")
+                self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH).text + "\" instead of \"nein\"")
         #Lebens ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[2])")))
+            (By.XPATH, self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[2])")))
+            (By.XPATH, self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.invisibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[1])")))
+            (By.XPATH, self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH)))
         try:
             self.assertEqual(driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[2])").text,
-                             "Ja")
+                self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH).text,
+                             "ja")
         except AssertionError:
             self.verificationErrors.append("Antrag \ Lebenspartner: \"" + driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[2])").text + "\" instead of \"Ja\"")
+                self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH).text + "\" instead of \"ja\"")
 
         self.antrag_zuruck_zusatzdaten()
         self.zusatzdaten_zuruck_antrastellerdaten()
@@ -129,32 +129,32 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
 
         #Antragsteller ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[1])")))
+            (By.XPATH, self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[1])")))
+            (By.XPATH, self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.invisibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[2])")))
+            (By.XPATH, self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH)))
         try:
             self.assertEqual(driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[1])").text,
-                             "Nein")
+                self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH).text,
+                             "nein")
         except AssertionError:
             self.verificationErrors.append("Antrag \ Antragsteller: \"" + driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[1])").text + "\" instead of \"Nein\"")
+                self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH).text + "\" instead of \"nein\"")
         #Lebens ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[1])")))
+            (By.XPATH, self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[1])")))
+            (By.XPATH, self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.invisibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[2])")))
+            (By.XPATH, self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH)))
         try:
             self.assertEqual(driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[1])").text,
-                             "Nein")
+                self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH).text,
+                             "nein")
         except AssertionError:
             self.verificationErrors.append("Antrag \ Lebenspartner: \"" + driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[1])").text + "\" instead of \"Nein\"")
+                self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH).text + "\" instead of \"nein\"")
 
         self.antrag_zuruck_zusatzdaten()
         self.zusatzdaten_zuruck_antrastellerdaten()
@@ -165,32 +165,32 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
 
         #Antragsteller ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[2])")))
+            (By.XPATH, self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[2])")))
+            (By.XPATH, self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.invisibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[1])")))
+            (By.XPATH, self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH)))
         try:
             self.assertEqual(driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[2])").text,
-                             "Ja")
+                self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH).text,
+                             "ja")
         except AssertionError:
             self.verificationErrors.append("Antrag \ Antragsteller: \"" + driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[2])").text + "\" instead of \"Ja\"")
+                self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH).text + "\" instead of \"ja\"")
         #Lebens ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[1])")))
+            (By.XPATH, self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[1])")))
+            (By.XPATH, self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.invisibility_of_element_located(
-            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[2])")))
+            (By.XPATH, self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH)))
         try:
             self.assertEqual(driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[1])").text,
-                             "Nein")
+                self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH).text,
+                             "nein")
         except AssertionError:
             self.verificationErrors.append("Antrag \ Lebenspartner: \"" + driver.find_element_by_xpath(
-                "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/ul/li[8]/span[3]/span[1])").text + "\" instead of \"Nein\"")
+                self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH).text + "\" instead of \"nein\"")
 
     def tearDown(self):
         self.driver.quit()

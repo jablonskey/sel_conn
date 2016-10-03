@@ -300,6 +300,11 @@ class Helper(object):
     ANTRAGSTELLER_ZAHLUNGSDATEN_ANDERER_INHABER_ANREDE_COMBO_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form[3]/div[1]/div[1]/select)"
 
     ANTRAG_ZUSATZDATEN_HEADER = "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div[2]/div[1]/h4)"
+    ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH = "(.//*[@id='rechner-section']/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div[1]/p[2]/span[2])"
+    ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH = "(.//*[@id='rechner-section']/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div[1]/p[2]/span[1])"
+
+    ANTRAG_LEBENSPARTNER_JA_PARAGRAPH = "(.//*[@id='rechner-section']/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div[1]/p[3]/span[2])"
+    ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH = "(.//*[@id='rechner-section']/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div[1]/p[3]/span[1])"
 
     ZUSATZDATEN_REQUIERD_INPUTS = "(//*[@id='rechner-section']/div/div[2]/div/form/descendant::*/input[@required='required'])"
     ZUSATZDATEN_REQUIERD_SELECTS = "(//*[@id='rechner-section']/div/div[2]/div/form/descendant::*/select[@required='required'])"

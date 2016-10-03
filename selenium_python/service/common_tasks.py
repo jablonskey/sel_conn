@@ -837,10 +837,10 @@ class CommonTasks(Helper):
         self.driver.find_element_by_id("ort").clear()
         self.driver.find_element_by_id("ort").send_keys(u"OrtTEST")
         self.driver.find_element_by_id("geburtsdatum").clear()
-        self.driver.find_element_by_id("geburtsdatum").send_keys("11.06.1958")
         Select(self.driver.find_element_by_id("taetigkeit")).select_by_visible_text(taetigkeit)
         if taetigkeit != "nicht berufstätig":
             Select(self.driver.find_element_by_id("berufsgruppe")).select_by_visible_text(berufsgruppe)
+        self.driver.find_element_by_id("geburtsdatum").send_keys("11.06.1958")
 
     def antragsteller_fill_data_kontaktdaten(self):
         self.driver.find_element_by_id("telefon").clear()
@@ -868,10 +868,10 @@ class CommonTasks(Helper):
             self.driver.find_element_by_id("lebenspartner-vorname").clear()
             self.driver.find_element_by_id("lebenspartner-vorname").send_keys(u"LebensVornameTEST")
             self.driver.find_element_by_id("lebenspartner-geburtsdatum").clear()
-            self.driver.find_element_by_id("lebenspartner-geburtsdatum").send_keys("22.04.1985")
 
             Select(self.driver.find_element_by_id("lebenspartner-taetigkeit")).select_by_visible_text(taetigkeit)
             Select(self.driver.find_element_by_id("lebenspartner-berufsgruppe")).select_by_visible_text(berufsgruppe)
+            self.driver.find_element_by_id("lebenspartner-geburtsdatum").send_keys("22.04.1985")
             self.antragsteller_fill_data_lebenspartner_anschrift(anschrift)
         elif ja_nein == "nein":
             self.check_and_click_element_by_xpath(
