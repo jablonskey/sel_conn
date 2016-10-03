@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
 from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
-
+from nose.plugins.attrib import attr
 from service import common_tasks
 
 
@@ -31,6 +31,7 @@ class Connect460Test(unittest.TestCase, common_tasks.CommonTasks):
         self.verificationErrors = []
         self.accept_next_alert = True
 
+    @attr('documents')
     def test_connect460(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
