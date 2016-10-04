@@ -38,12 +38,11 @@ class ZielgruppeSingelsWeiterTest(unittest.TestCase, common_tasks.CommonTasks):
         self.zielgruppe_weiter_tarifdaten()
         self.tarifdaten_zuruck_zielgruppe()
         try:
-            self.assertTrue(driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["singles"]["radio_xpath"]).is_selected())
+            self.assertTrue(driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["singles"]["radio_xpath"]).is_selected())
         except AssertionError as e:
             self.verificationErrors.append("Singles not selected")
         self.zielgruppe_weiter_tarifdaten()
-
-
 
     def tearDown(self):
         self.driver.quit()

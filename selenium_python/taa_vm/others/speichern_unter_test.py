@@ -8,10 +8,7 @@ from service.common_tasks import CommonTasks
 
 
 class SpeichernUnterTest(unittest.TestCase, CommonTasks):
-
-
     def setUp(self):
-
 
         if os.environ.has_key("SELENIUM_BROWSER"):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
@@ -46,7 +43,6 @@ class SpeichernUnterTest(unittest.TestCase, CommonTasks):
         self.speichern_unter_helper(button_to_click="abbrechen")
         self.zusatzdaten_weiter_antrag()
         self.speichern_unter_helper(button_to_click="abbrechen")
-
 
     def tearDown(self):
         self.driver.quit()

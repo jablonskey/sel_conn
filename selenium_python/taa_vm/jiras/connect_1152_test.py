@@ -53,9 +53,6 @@ class Connect11522Test(unittest.TestCase, common_tasks.CommonTasks):
         except AssertionError as e:
             self.verificationErrors.append(str(e) + "\\ uberweisung not selected")
 
-
-
-
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)

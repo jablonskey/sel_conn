@@ -11,10 +11,7 @@ from service.common_tasks import CommonTasks
 
 
 class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
-
-
     def setUp(self):
-
 
         if os.environ.has_key("SELENIUM_BROWSER"):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
@@ -47,7 +44,7 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
 
-        self.documents_popup_generate_document((u"fehlende Angaben für Antrag", ))
+        self.documents_popup_generate_document((u"fehlende Angaben für Antrag",))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
 
@@ -79,7 +76,7 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
         self.tarifdaten_weiter_antrastellerdaten()
 
-        self.documents_popup_generate_document((u"fehlende Angaben für Antrag", ))
+        self.documents_popup_generate_document((u"fehlende Angaben für Antrag",))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
         document_tab = driver.window_handles[-1]
@@ -113,7 +110,7 @@ class DocsFehlendeAngabenTests(unittest.TestCase, CommonTasks):
         self.antragsteller_weiter_zusatzdaten()
 
         driver.find_element_by_xpath("//input[@placeholder=\"Kennzeichen\"]").send_keys("kenn123")
-        self.documents_popup_generate_document((u"fehlende Angaben für Antrag", ))
+        self.documents_popup_generate_document((u"fehlende Angaben für Antrag",))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
         document_tab = driver.window_handles[-1]

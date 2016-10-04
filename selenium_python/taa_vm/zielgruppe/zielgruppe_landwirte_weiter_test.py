@@ -100,7 +100,6 @@ class ZielgruppeLandwirteTest(unittest.TestCase, common_tasks.CommonTasks, Helpe
         self.assertFalse(gewerbe_ja.is_selected())
         self.assertFalse(gewerbe_nein.is_selected())
 
-
         # -- Nein Nein
         mitglied_nein.click()
         self.assertTrue(mitglied_nein.is_selected())
@@ -127,7 +126,6 @@ class ZielgruppeLandwirteTest(unittest.TestCase, common_tasks.CommonTasks, Helpe
         self.assertFalse(gewerbe_ja.is_selected())
         self.assertFalse(gewerbe_nein.is_selected())
 
-
         # -- Ja Ja
         mitglied_ja.click()
         self.assertTrue(mitglied_ja.is_selected())
@@ -152,7 +150,8 @@ class ZielgruppeLandwirteTest(unittest.TestCase, common_tasks.CommonTasks, Helpe
         # endregion
 
         self.zielgruppe_btrklasse_select_by_name("selbstandige")
-        self.check_and_click_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"])
+        self.check_and_click_element_by_xpath(
+            self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"])
 
         # -- Landwirte
         self.zielgruppe_btrklasse_select_by_name("landwirte", landwirte_anzahl, landwirte_anzahl)

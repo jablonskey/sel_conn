@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import os
-
-from selenium import webdriver
-from service import common_tasks
 import unittest
+
+from nose.plugins.attrib import attr
+from selenium import webdriver
+
+from service import common_tasks
 
 
 class AdminLoginTest(unittest.TestCase, common_tasks.CommonTasks):
@@ -27,10 +29,10 @@ class AdminLoginTest(unittest.TestCase, common_tasks.CommonTasks):
         self.verificationErrors = []
         self.accept_next_alert = True
 
+    @attr('basic')
     def test_admin_login(self):
         driver = self.driver
         self.login_to_admin_panel(self.base_url)
-
 
     def tearDown(self):
         self.driver.quit()

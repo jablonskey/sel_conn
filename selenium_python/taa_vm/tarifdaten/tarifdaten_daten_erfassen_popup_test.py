@@ -45,7 +45,8 @@ class TarifdatenDatenErfassenSbPopupTest(unittest.TestCase, CommonTasks, Helper)
             (By.XPATH, Helper.ERGANZUNGEN_HEADER_XPATH), u"Ergänzungen"))
         self.tarifdaten_select_produkt_from_erganzungen_by_name("Vermietung & Verpachtung")
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, self.ERGANZUNGEN_POPUP_XPATH)))
-        self.tarifdaten_select_produkt_on_daten_erfassen_popup_by_name(u"Wohneinheiten bis 12.000 EUR Jahresbruttomiete")
+        self.tarifdaten_select_produkt_on_daten_erfassen_popup_by_name(
+            u"Wohneinheiten bis 12.000 EUR Jahresbruttomiete")
         self.check_and_click_element_by_xpath(self.ERGANZUNGEN_POPUP_OK_BUTTON_XPATH)
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, self.ERGANZUNGEN_POPUP_VALIDATION_ALERT)))
@@ -68,7 +69,8 @@ class TarifdatenDatenErfassenSbPopupTest(unittest.TestCase, CommonTasks, Helper)
             (By.XPATH, Helper.ERGANZUNGEN_HEADER_XPATH), u"Ergänzungen"))
         self.tarifdaten_select_produkt_from_erganzungen_by_name("Vermietung & Verpachtung")
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, self.ERGANZUNGEN_POPUP_XPATH)))
-        self.tarifdaten_select_produkt_on_daten_erfassen_popup_by_name(u"Wohneinheiten bis 12.000 EUR Jahresbruttomiete")
+        self.tarifdaten_select_produkt_on_daten_erfassen_popup_by_name(
+            u"Wohneinheiten bis 12.000 EUR Jahresbruttomiete")
         self.check_and_click_element_by_xpath(self.ERGANZUNGEN_POPUP_OK_BUTTON_XPATH)
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, self.ERGANZUNGEN_POPUP_VALIDATION_ALERT)))
@@ -85,4 +87,3 @@ class TarifdatenDatenErfassenSbPopupTest(unittest.TestCase, CommonTasks, Helper)
 
 if __name__ == "__main__":
     unittest.main()
-

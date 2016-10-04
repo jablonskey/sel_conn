@@ -12,7 +12,6 @@ from service.helpers import Helper
 
 
 class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
-
     def setUp(self):
 
         if os.environ.has_key("SELENIUM_BROWSER"):
@@ -43,7 +42,8 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURPRIVAT")
         self.tarifdaten_ermittlung_alert_handler(None, "400", 1)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
         self.tarifdaten_ermittlung_popup_abbrechen_click()
@@ -51,7 +51,8 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURPRIVAT")
         self.tarifdaten_ermittlung_alert_handler(None, "400", 2)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
         self.tarifdaten_ermittlung_popup_abbrechen_click()
@@ -59,7 +60,8 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURPRIVAT")
         self.tarifdaten_ermittlung_alert_handler(None, "400", 3)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
         self.tarifdaten_ermittlung_popup_abbrechen_click()
@@ -67,25 +69,29 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURPRIVAT")
         self.tarifdaten_ermittlung_alert_handler(None, "400", 3)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
         self.tarifdaten_ermittlung_alert_handler(None, "400", 4)
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
         self.tarifdaten_ermittlung_alert_handler(None, "400", 3)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
         self.tarifdaten_ermittlung_alert_handler(None, "400", 3, "checked")
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
@@ -94,13 +100,15 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURPRIVAT")
         self.tarifdaten_ermittlung_alert_handler(None, "400", None, "checked")
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
         self.check_and_click_element_by_xpath("(/html/body/div[3]/div/div/div[2]/div[4]/label)")
 
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
@@ -131,16 +139,17 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURAFIRM")
         self.tarifdaten_ermittlung_alert_handler(None, "1000", 1)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
         self.tarifdaten_ermittlung_popup_abbrechen_click()
 
-
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURAFIRM")
         self.tarifdaten_ermittlung_alert_handler(None, "1000", 2)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
         self.tarifdaten_ermittlung_popup_abbrechen_click()
@@ -148,7 +157,8 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURAFIRM")
         self.tarifdaten_ermittlung_alert_handler(None, "1000", 3)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
         self.tarifdaten_ermittlung_popup_abbrechen_click()
@@ -156,7 +166,8 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURAFIRM")
         self.tarifdaten_ermittlung_alert_handler(None, "1000", 4)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
         self.tarifdaten_ermittlung_popup_abbrechen_click()
@@ -164,7 +175,8 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURAFIRM")
         self.tarifdaten_ermittlung_alert_handler(None, "1000", 5)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
         self.tarifdaten_ermittlung_popup_abbrechen_click()
@@ -172,7 +184,8 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURAFIRM")
         self.tarifdaten_ermittlung_alert_handler(None, "1000", 6)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
         self.tarifdaten_ermittlung_popup_abbrechen_click()
@@ -180,25 +193,29 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURAFIRM")
         self.tarifdaten_ermittlung_alert_handler(None, "1000", 6)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
         self.tarifdaten_ermittlung_alert_handler(None, "1000", 7)
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
         self.tarifdaten_ermittlung_alert_handler(None, "1000", 6)
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
         self.tarifdaten_ermittlung_alert_handler(None, "1000", 7, "checked")
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
         self.tarifdaten_ermittlung_popup_abbrechen_click()
@@ -206,13 +223,15 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURAFIRM")
         self.tarifdaten_ermittlung_alert_handler(None, "1000", None, "checked")
         try:
-            WebDriverWait(self.driver, 10).until_not(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until_not(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
         self.check_and_click_element_by_xpath("(/html/body/div[3]/div/div/div[2]/div[4]/label)")
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
+            WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, Helper.TARIFDATEN_SB_POPUP_UBERNAHMEN_BUTTON_XPATH)))
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
@@ -245,4 +264,3 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
 
 if __name__ == "__main__":
     unittest.main()
-

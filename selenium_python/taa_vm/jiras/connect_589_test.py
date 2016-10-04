@@ -41,9 +41,7 @@ class Connect589Test(unittest.TestCase, common_tasks.CommonTasks, Helper):
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURPRIVAT")
         self.tarifdaten_select_produkt_from_erganzungen_by_name("Kleinunternehmer-Inkasso-RS")
 
-        #TODO finish the test S.O.B.
-
-
+        # TODO finish the test S.O.B.
 
     def is_element_present(self, how, what):
         try:
@@ -78,4 +76,3 @@ class Connect589Test(unittest.TestCase, common_tasks.CommonTasks, Helper):
 
 if __name__ == "__main__":
     unittest.main()
-

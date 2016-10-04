@@ -1474,9 +1474,8 @@ class CommonTasks(Helper):
             "(/html/body/div[3]/div/div/div[2]/descendant::label[@data-ng-show=\"doc.IsVisible\"])")
 
         for i in documents_label_list:
-            if i.text!=u'' and i.text in document_name:
+            if i.text != u'' and i.text in document_name:
                 i.click()
-
 
         self.check_and_click_element_by_xpath("(/html/body/div[3]/div/div/div[3]/div/div[3]/button)")
         # endregion

@@ -16,7 +16,6 @@ class Connect720Test(unittest.TestCase, common_tasks.CommonTasks):
         self.driver = webdriver.Firefox(self.profile)
         self.driver.maximize_window()
 
-
         self.driver.implicitly_wait(2)
         self.base_url = "https://ctest.lodz.ks-software.com/"
         self.verificationErrors = []
@@ -37,145 +36,208 @@ class Connect720Test(unittest.TestCase, common_tasks.CommonTasks):
         WebDriverWait(driver, 4).until(
             EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div/div[1]/h3)")))
         self.assertEqual("Berechnungshilfe", driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['vollzeitmitarbeiter']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['vollzeitmitarbeiter']["form_xpath"]).send_keys("1")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['vollzeitmitarbeiter']["form_xpath"]).clear()
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['vollzeitmitarbeiter']["form_xpath"]).send_keys("1")
         try:
-            self.assertEqual("1", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("1", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(e)
 
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['teilzeitmitarbeiter']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['teilzeitmitarbeiter']["form_xpath"]).send_keys("1")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['teilzeitmitarbeiter']["form_xpath"]).clear()
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['teilzeitmitarbeiter']["form_xpath"]).send_keys("1")
         try:
-            self.assertEqual("1", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("1", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(e)
 
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['teilzeitmitarbeiter']["form_xpath"]).clear()
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['teilzeitmitarbeiter']["form_xpath"]).clear()
         try:
-            self.assertEqual("1", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("1", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(e)
 
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['vollzeitmitarbeiter']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['vollzeitmitarbeiter']["form_xpath"]).send_keys("0")
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['teilzeitmitarbeiter']["form_xpath"]).send_keys("0")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['vollzeitmitarbeiter']["form_xpath"]).clear()
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['vollzeitmitarbeiter']["form_xpath"]).send_keys("0")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['teilzeitmitarbeiter']["form_xpath"]).send_keys("0")
 
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("4")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("4")
         try:
-            self.assertEqual("1", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("1", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
-
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("5")
-        try:
-            self.assertEqual("1", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
-        except AssertionError as e:
-            self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
 
         driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("6")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("5")
         try:
-            self.assertEqual("1", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("1", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
 
         driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("7")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("6")
         try:
-            self.assertEqual("2", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("1", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
 
         driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("8")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("7")
         try:
-            self.assertEqual("2", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("2", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
 
         driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("9")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("8")
         try:
-            self.assertEqual("2", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("2", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
 
         driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("10")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("9")
         try:
-            self.assertEqual("2", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("2", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
 
         driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("11")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("10")
         try:
-            self.assertEqual("3", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("2", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
 
         driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("12")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("11")
         try:
-            self.assertEqual("3", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("3", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
 
         driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("13")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("12")
         try:
-            self.assertEqual("3", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("3", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
 
         driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("14")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("13")
         try:
-            self.assertEqual("3", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("3", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
 
         driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("15")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("14")
         try:
-            self.assertEqual("4", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("3", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
 
         driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
-        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("16")
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("15")
         try:
-            self.assertEqual("4", driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+            self.assertEqual("4", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
         except AssertionError as e:
             self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
-                e, driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
-                driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
+
+        driver.find_element_by_xpath(self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).clear()
+        driver.find_element_by_xpath(
+            self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).send_keys("16")
+        try:
+            self.assertEqual("4", driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value"))
+        except AssertionError as e:
+            self.verificationErrors.append(u"%s; Geringfugig: %s, Anzahl %s" % (
+                e, driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['geringfugig']["form_xpath"]).get_attribute("value"),
+                driver.find_element_by_xpath(
+                    self.ZIELGRUPPE_BERECHNUNGSHILFE_POPUP_HELPER['anzahl']["form_xpath"]).get_attribute("value")))
 
     def tearDown(self):
         self.driver.quit()

@@ -23,8 +23,6 @@ class Connect1038Test(unittest.TestCase, common_tasks.CommonTasks):
         self.login_to_connect_vermittler(self.base_url)
         self.open_taa_vm()
 
-
-
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("landwirte", 7)
         self.zielgruppe_weiter_tarifdaten()
@@ -36,11 +34,10 @@ class Connect1038Test(unittest.TestCase, common_tasks.CommonTasks):
         self.tarifdaten_zuruck_zielgruppe()
         try:
             self.assertNotEqual(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["landwirte"]["header_text"],
-                             self.driver.find_element_by_xpath(
-                                 self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["header_xpath"]).text)
+                                self.driver.find_element_by_xpath(
+                                    self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["header_xpath"]).text)
         except AssertionError as e:
             self.verificationErrors.append(str(e))
-
 
     def tearDown(self):
         self.driver.quit()

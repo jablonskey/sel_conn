@@ -152,7 +152,7 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
                                      r"ng-invalid")
         except AssertionError:
             self.verificationErrors.append("Required field lebenspartner-name empty but not invalid")
-            
+
         self.validate_element_by_id("lebenspartner-name", ".", "valid")
         self.validate_element_by_id("lebenspartner-name", "a", "valid")
         self.validate_element_by_id("lebenspartner-name", "-", "valid")
@@ -165,24 +165,24 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         self.validate_element_by_id("lebenspartner-name", u"Bü", "valid")
         self.validate_element_by_id("lebenspartner-name", u"bü", "valid")
         driver.find_element_by_id("lebenspartner-name").clear()
-        
+
         try:
             self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-name").get_attribute("class"),
-                                        r"ng-invalid")
+                                     r"ng-invalid")
         except AssertionError:
             self.verificationErrors.append("Required field lebenspartner-name empty but not invalid")
-            
+
         self.validate_element_by_id("lebenspartner-name", u"TESTNameLeben", "valid")
-        
+
         # endregion
         # region lebenspartner-vorname
-                
+
         try:
             self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-vorname").get_attribute("class"),
                                      r"ng-invalid")
         except AssertionError:
             self.verificationErrors.append("Required field lebenspartner-vorname empty but not invalid")
-        
+
         self.validate_element_by_id("lebenspartner-vorname", ".", "valid")
         self.validate_element_by_id("lebenspartner-vorname", "a", "valid")
         self.validate_element_by_id("lebenspartner-vorname", "-", "valid")
@@ -194,10 +194,10 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         self.validate_element_by_id("lebenspartner-vorname", u"Bü", "valid")
         self.validate_element_by_id("lebenspartner-vorname", "A-", "valid")
         driver.find_element_by_id("lebenspartner-vorname").clear()
-        
+
         try:
             self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-vorname").get_attribute("class"),
-                                        r"ng-invalid")
+                                     r"ng-invalid")
         except AssertionError:
             self.verificationErrors.append("Required field lebenspartner-vorname empty but not invalid")
 
@@ -215,13 +215,15 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         self.validate_element_by_id("geburtsdatum", "xxxxxxxxx", "notaccepted")
         self.validate_element_by_id("geburtsdatum", "xx.xx.xxxx", "notaccepted")
         self.validate_element_by_id("lebenspartner-geburtsdatum", "%s.%s.%s" % (
-            str((datetime.datetime.today() + datetime.timedelta(days=1)).day).zfill(2), str((datetime.datetime.today() + datetime.timedelta(days=1)).month).zfill(2),
+            str((datetime.datetime.today() + datetime.timedelta(days=1)).day).zfill(2),
+            str((datetime.datetime.today() + datetime.timedelta(days=1)).month).zfill(2),
             str((datetime.datetime.today() + datetime.timedelta(days=1)).year).zfill(2)), "invalid")
         self.validate_element_by_id("lebenspartner-geburtsdatum", "%s.%s.%s" % (
             str(datetime.datetime.now().day).zfill(2), str(datetime.datetime.now().month).zfill(2),
             str(datetime.datetime.now().year).zfill(2)), "valid")
         self.validate_element_by_id("lebenspartner-geburtsdatum", "%s.%s.%s" % (
-            str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2), str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "valid")
         self.validate_element_by_id("lebenspartner-geburtsdatum", "31.09.2013", "invalid")
         self.validate_element_by_id("lebenspartner-geburtsdatum", "30.09.2013", "valid")
@@ -316,15 +318,16 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
                                      r"ng-invalid")
         except AssertionError:
             self.verificationErrors.append("Required field lebenspartner-strasse empty but not invalid")
-        
+
         self.validate_element_by_id("lebenspartner-strasse", ".", "valid")
         self.validate_element_by_id("lebenspartner-strasse", "1", "valid")
         self.validate_element_by_id("lebenspartner-strasse", "a", "valid")
         self.validate_element_by_id("lebenspartner-strasse", u"bü", "valid")
         driver.find_element_by_id("lebenspartner-strasse").clear()
-        
+
         try:
-            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-strasse").get_attribute("class"), r"ng-invalid")
+            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-strasse").get_attribute("class"),
+                                     r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field lebenspartner-strasse empty but not invalid")
 
@@ -333,18 +336,20 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         # region lebenspartner-hausnummer
         # -- Hausnr INVALID
         try:
-            self.assertNotRegexpMatches(driver.find_element_by_id("lebenspartner-hausnummer").get_attribute("class"), r"ng-invalid")
+            self.assertNotRegexpMatches(driver.find_element_by_id("lebenspartner-hausnummer").get_attribute("class"),
+                                        r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field lebenspartner-hausnummer empty but not invalid")
-       
+
         self.validate_element_by_id("lebenspartner-hausnummer", ".", "valid")
         self.validate_element_by_id("lebenspartner-hausnummer", "1", "valid")
         self.validate_element_by_id("lebenspartner-hausnummer", "a", "valid")
         self.validate_element_by_id("lebenspartner-hausnummer", u"bü", "valid")
         driver.find_element_by_id("lebenspartner-hausnummer").clear()
-        
+
         try:
-            self.assertNotRegexpMatches(driver.find_element_by_id("lebenspartner-hausnummer").get_attribute("class"), r"ng-invalid")
+            self.assertNotRegexpMatches(driver.find_element_by_id("lebenspartner-hausnummer").get_attribute("class"),
+                                        r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("field lebenspartner-hausnummer")
 
@@ -353,10 +358,11 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         # region lebenspartner-plz
         # -- PLZ INVALID
         try:
-            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-plz").get_attribute("class"), r"ng-invalid")
+            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-plz").get_attribute("class"),
+                                     r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field lebenspartner-plz empty but not invalid")
-        
+
         self.validate_element_by_id("lebenspartner-plz", ".", "invalid")
         self.validate_element_by_id("lebenspartner-plz", "1", "invalid")
         self.validate_element_by_id("lebenspartner-plz", "12345", "valid")
@@ -365,35 +371,37 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         self.validate_element_by_id("lebenspartner-plz", "a", "invalid")
         self.validate_element_by_id("lebenspartner-plz", u"bü", "invalid")
         driver.find_element_by_id("lebenspartner-plz").clear()
-        
+
         try:
-            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-plz").get_attribute("class"), r"ng-invalid")
+            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-plz").get_attribute("class"),
+                                     r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field lebenspartner-plz empty but not invalid")
 
         self.validate_element_by_id("lebenspartner-plz", "98765", "valid")
         # endregion
-        #region lebenspartner-ort
+        # region lebenspartner-ort
         # -- Ort INVALID
         try:
-            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-ort").get_attribute("class"), r"ng-invalid")
+            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-ort").get_attribute("class"),
+                                     r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field lebenspartner-ort empty but not invalid")
-        
+
         self.validate_element_by_id("lebenspartner-ort", ".", "valid")
         self.validate_element_by_id("lebenspartner-ort", "1", "valid")
         self.validate_element_by_id("lebenspartner-ort", "a", "valid")
         self.validate_element_by_id("lebenspartner-ort", u"bü", "valid")
         driver.find_element_by_id("lebenspartner-ort").clear()
-        
+
         try:
-            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-ort").get_attribute("class"), r"ng-invalid")
+            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-ort").get_attribute("class"),
+                                     r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("Required field lebenspartner-ort empty but not invalid")
 
         self.validate_element_by_id("lebenspartner-ort", u"TESTlebenspartner-ort", "valid")
-        #endregion
-
+        # endregion
 
     def tearDown(self):
         self.driver.quit()

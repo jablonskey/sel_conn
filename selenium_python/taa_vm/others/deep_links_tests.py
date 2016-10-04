@@ -1,11 +1,12 @@
 import os
+import unittest
 
 from selenium import webdriver
-import unittest
-from service import common_tasks
-from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
-from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
+from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
+
+from service import common_tasks
 
 
 class DeepLinksTests(unittest.TestCase, common_tasks.CommonTasks):

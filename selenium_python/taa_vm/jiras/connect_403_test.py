@@ -105,7 +105,7 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
         except AssertionError:
             self.verificationErrors.append("Antrag \ Antragsteller: \"" + driver.find_element_by_xpath(
                 self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH).text + "\" instead of \"nein\"")
-        #Lebens ja/nein
+        # Lebens ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
             (By.XPATH, self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
@@ -127,7 +127,7 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
         self.antragsteller_weiter_zusatzdaten()
         self.zusatzdaten_weiter_antrag()
 
-        #Antragsteller ja/nein
+        # Antragsteller ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
             (By.XPATH, self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
@@ -141,7 +141,7 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
         except AssertionError:
             self.verificationErrors.append("Antrag \ Antragsteller: \"" + driver.find_element_by_xpath(
                 self.ANTRAG_ANTRAGSTELLER_NEIN_PARAGRAPH).text + "\" instead of \"nein\"")
-        #Lebens ja/nein
+        # Lebens ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
             (By.XPATH, self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
@@ -163,7 +163,7 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
         self.antragsteller_weiter_zusatzdaten()
         self.zusatzdaten_weiter_antrag()
 
-        #Antragsteller ja/nein
+        # Antragsteller ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
             (By.XPATH, self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
@@ -177,7 +177,7 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
         except AssertionError:
             self.verificationErrors.append("Antrag \ Antragsteller: \"" + driver.find_element_by_xpath(
                 self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH).text + "\" instead of \"ja\"")
-        #Lebens ja/nein
+        # Lebens ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
             (By.XPATH, self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH)))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(

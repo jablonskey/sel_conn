@@ -165,7 +165,7 @@ class Helper(object):
 
     }
     ZIELGRUPPE_LANDWIRTE_POPUP_XPATH = "(/html/body/div[3]/div/div)"
-    ZIELGRUPPE_LANDWIRTE_BETRIEBSFLACHE_FORM_XPATH="(.//*[@id='betriebsflaeche'])"
+    ZIELGRUPPE_LANDWIRTE_BETRIEBSFLACHE_FORM_XPATH = "(.//*[@id='betriebsflaeche'])"
 
     PAGES_TABS_ELEMENTS_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/span/ul/li[*]/a)"
 
@@ -815,4 +815,5 @@ class Helper(object):
                          self.driver.find_element_by_xpath("(/html/body/div[3]/div/div/div[1]/h3)").text)
 
     def wait_for_landwirte_popup_hide(self):
-        WebDriverWait(self.driver, 4).until(EC.invisibility_of_element_located((By.XPATH, self.ZIELGRUPPE_LANDWIRTE_POPUP_XPATH)))
+        WebDriverWait(self.driver, 4).until(
+            EC.invisibility_of_element_located((By.XPATH, self.ZIELGRUPPE_LANDWIRTE_POPUP_XPATH)))

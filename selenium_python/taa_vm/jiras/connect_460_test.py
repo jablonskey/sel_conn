@@ -2,11 +2,12 @@
 import os
 import unittest
 
+from nose.plugins.attrib import attr
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
 from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
-from nose.plugins.attrib import attr
+
 from service import common_tasks
 
 
@@ -58,7 +59,8 @@ class Connect460Test(unittest.TestCase, common_tasks.CommonTasks):
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
         driver.switch_to.window(driver.window_handles[-1])
 
-        WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div)")))
+        WebDriverWait(driver, 60).until(
+            EC.presence_of_element_located((By.XPATH, "(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div)")))
 
         text_divs_on_document = driver.find_elements_by_xpath("(/html/body/div[1]/div[2]/div[4]/div/div[1]/div[2]/div)")
         for text in text_divs_on_document:
@@ -74,4 +76,3 @@ class Connect460Test(unittest.TestCase, common_tasks.CommonTasks):
 
 if __name__ == "__main__":
     unittest.main()
-

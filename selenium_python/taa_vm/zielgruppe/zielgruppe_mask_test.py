@@ -353,7 +353,6 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
         WebDriverWait(driver, 4).until(
             EC.visibility_of_element_located((By.XPATH, self.ZIELGRUPPE_LANDWIRTE_BETRIEBSFLACHE_FORM_XPATH)))
 
-
     def test_berechnungshilfe_popup(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)

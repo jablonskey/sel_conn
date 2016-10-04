@@ -8,10 +8,7 @@ from service.common_tasks import CommonTasks
 
 
 class NeuesAngebotTest(unittest.TestCase, CommonTasks):
-
-
     def setUp(self):
-
 
         if os.environ.has_key("SELENIUM_BROWSER"):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
@@ -46,7 +43,6 @@ class NeuesAngebotTest(unittest.TestCase, CommonTasks):
         self.neues_angebot_helper(button_to_click="abbrechen")
         self.zusatzdaten_weiter_antrag()
         self.neues_angebot_helper(button_to_click="abbrechen")
-
 
     def tearDown(self):
         self.driver.quit()

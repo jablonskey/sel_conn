@@ -8,10 +8,7 @@ from service.common_tasks import CommonTasks
 
 
 class LoginRefreshTests(unittest.TestCase, CommonTasks):
-
-
     def setUp(self):
-
 
         if os.environ.has_key("SELENIUM_BROWSER"):
             if os.environ['SELENIUM_BROWSER'] == "chrome":

@@ -75,7 +75,8 @@ class Connect534Test(unittest.TestCase, common_tasks.CommonTasks):
 
         try:
             self.assertEqual(Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[
-                                 int(driver.find_element_by_id("lebenspartner-berufsgruppe").get_attribute("value"))].text,
+                                 int(driver.find_element_by_id("lebenspartner-berufsgruppe").get_attribute(
+                                     "value"))].text,
                              "Sonstige Berufsgruppe")
         except AssertionError as e:
             self.verificationErrors.append(

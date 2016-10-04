@@ -11,10 +11,7 @@ from service.common_tasks import CommonTasks
 
 
 class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
-
-
     def setUp(self):
-
 
         if os.environ.has_key("SELENIUM_BROWSER"):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
@@ -51,7 +48,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, self.ERGANZUNGEN_HEADER_XPATH), u"Ergänzungen"))
 
-        self.documents_popup_generate_document((u"Kurzangebot", ))
+        self.documents_popup_generate_document((u"Kurzangebot",))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
 
@@ -87,7 +84,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
 
         self.tarifdaten_weiter_antrastellerdaten()
 
-        self.documents_popup_generate_document((u"Kurzangebot", ))
+        self.documents_popup_generate_document((u"Kurzangebot",))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
         document_tab = driver.window_handles[-1]
@@ -124,7 +121,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.antragsteller_fill_data()
         self.antragsteller_weiter_zusatzdaten()
         driver.find_element_by_xpath("//input[@placeholder=\"Kennzeichen\"]").send_keys("kenn123")
-        self.documents_popup_generate_document((u"Kurzangebot", ))
+        self.documents_popup_generate_document((u"Kurzangebot",))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
         driver.switch_to.window(driver.window_handles[-1])
@@ -155,10 +152,11 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.antragsteller_weiter_zusatzdaten()
 
         driver.find_element_by_xpath("//input[@placeholder=\"Kennzeichen\"]").send_keys("kenn123")
-        self.check_and_click_element_by_xpath("(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div[2]/form/div/div[1]/div[2]/label/input)")
+        self.check_and_click_element_by_xpath(
+            "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div[2]/form/div/div[1]/div[2]/label/input)")
         self.zusatzdaten_weiter_antrag()
 
-        self.documents_popup_generate_document((u"Kurzangebot", ))
+        self.documents_popup_generate_document((u"Kurzangebot",))
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
         document_tab = driver.window_handles[-1]

@@ -2,16 +2,14 @@
 import os
 import unittest
 
+from nose.plugins.attrib import attr
 from selenium import webdriver
 
 from service.common_tasks import CommonTasks
 
 
 class VermittlerLoginTest(unittest.TestCase, CommonTasks):
-
-
     def setUp(self):
-
 
         if os.environ.has_key("SELENIUM_BROWSER"):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
@@ -31,12 +29,12 @@ class VermittlerLoginTest(unittest.TestCase, CommonTasks):
         self.verificationErrors = []
         self.accept_next_alert = True
 
+    @attr('basic')
     def test_login_to_taa(self):
 
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
         self.open_taa_vm()
-
 
     def tearDown(self):
         self.driver.quit()

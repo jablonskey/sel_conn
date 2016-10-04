@@ -50,8 +50,6 @@ class Connect794Test(unittest.TestCase, common_tasks.CommonTasks):
         self.antragsteller_check_default_zahlungsdaten()
         self.antragsteller_check_default_vorversicherung()
 
-
-
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)

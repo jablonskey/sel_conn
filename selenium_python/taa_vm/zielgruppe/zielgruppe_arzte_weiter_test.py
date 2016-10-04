@@ -44,7 +44,6 @@ class ZielgruppeArzteWeiterTest(unittest.TestCase, common_tasks.CommonTasks):
             self.verificationErrors.append("Arzte not selected")
         self.zielgruppe_weiter_tarifdaten()
 
-
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)

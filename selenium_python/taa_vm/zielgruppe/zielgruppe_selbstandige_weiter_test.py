@@ -37,16 +37,16 @@ class ZielgruppeSelbstandigeWeiterTest(unittest.TestCase, common_tasks.CommonTas
         self.zielgruppe_btrklasse_select_by_name("selbstandige", 10)
         self.zielgruppe_weiter_tarifdaten()
 
-        #TODO
+        # TODO
         # Check zielgruppe section on tarifdaten page
 
         self.tarifdaten_zuruck_zielgruppe()
         try:
-            self.assertTrue(driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["radio_xpath"]).is_selected())
+            self.assertTrue(driver.find_element_by_xpath(
+                self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["radio_xpath"]).is_selected())
         except AssertionError as e:
             self.verificationErrors.append("Selbstandige not selected")
         self.zielgruppe_weiter_tarifdaten()
-
 
     def tearDown(self):
         self.driver.quit()

@@ -46,12 +46,12 @@ class Connect409Test(unittest.TestCase, CommonTasks, Helper):
         self.zielgruppe_weiter_tarifdaten()
 
         WebDriverWait(self.driver, 10).until_not(
-                EC.text_to_be_present_in_element(
-                        (By.XPATH, self.TARIFDATEN_GESAMTBTR_LABEL_XPATH),
-                        u" jährlich:"))
+            EC.text_to_be_present_in_element(
+                (By.XPATH, self.TARIFDATEN_GESAMTBTR_LABEL_XPATH),
+                u" jährlich:"))
 
         WebDriverWait(self.driver, 10).until_not(
-                EC.text_to_be_present_in_element_value((By.XPATH, self.TARIFDATEN_GESAMTBTR_LABEL_XPATH), u"jährlich:"))
+            EC.text_to_be_present_in_element_value((By.XPATH, self.TARIFDATEN_GESAMTBTR_LABEL_XPATH), u"jährlich:"))
 
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
@@ -73,8 +73,8 @@ class Connect409Test(unittest.TestCase, CommonTasks, Helper):
             self.verificationErrors.append(str(e))
 
     def tearDown(self):
-            self.driver.quit()
-            self.assertEqual([], self.verificationErrors)
+        self.driver.quit()
+        self.assertEqual([], self.verificationErrors)
 
     if __name__ == "__main__":
         unittest.main()

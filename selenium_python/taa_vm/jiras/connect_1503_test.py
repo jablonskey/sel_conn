@@ -14,11 +14,11 @@ class Connect1503Test(unittest.TestCase, common_tasks.CommonTasks):
         self.driver = webdriver.Firefox(self.profile)
         self.driver.maximize_window()
 
-
         self.driver.implicitly_wait(2)
         self.base_url = "https://ctest.lodz.ks-software.com/"
         self.verificationErrors = []
         self.accept_next_alert = True
+
     @unittest.skip("default aktservice credentials issue")
     def test_login_aktservice_then_go_to_vermittler(self):
         driver = self.driver
@@ -26,12 +26,14 @@ class Connect1503Test(unittest.TestCase, common_tasks.CommonTasks):
         self.go_to_vermittler_login_page(self.base_url)
         self.driver.switch_to.frame(self.driver.find_element_by_tag_name("iframe"))
         self.assertNotEqual("Logout", driver.find_element_by_xpath(self.VERMITTLER_IFRAME_LOGOUT_XPATH))
+
     @unittest.skip("default aktservice credentials issue")
     def test_login_aktservice_then_go_to_admin(self):
         driver = self.driver
         self.login_to_aktservice(self.base_url)
         self.go_to_admin_panel_page(self.base_url)
         self.assertFalse(self.is_element_present(By.LINK_TEXT, "Logout"))
+
     @unittest.skip("default aktservice credentials issue")
     def test_login_aktservice_then_go_to_ses(self):
         driver = self.driver
@@ -94,7 +96,6 @@ class Connect1503Test(unittest.TestCase, common_tasks.CommonTasks):
         self.login_to_secure_email(self.base_url)
         self.go_to_aktservice_login_page(self.base_url)
         self.assertFalse(self.is_element_present(By.LINK_TEXT, "Logout"))
-
 
     def tearDown(self):
         self.driver.quit()

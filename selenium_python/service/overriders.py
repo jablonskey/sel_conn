@@ -1,13 +1,9 @@
 # -*- coding: utf-8 -*-
-from binascii import a2b_base64
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
-from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import Select
+
 from helpers import Helper
-import time, sys, re
+
 
 class SelectWithFooterSlide(Select):
     def __init__(self, webelement, driver):

@@ -87,9 +87,6 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
 
         self.validate_element_by_id("iban", "DE88300606010301156608", "valid")
 
-
-
-
         try:
             self.assertNotRegexpMatches(driver.find_element_by_id("bic").get_attribute("class"), r"ng-invalid")
         except AssertionError as e:
@@ -119,7 +116,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         self.driver.find_element_by_id("bic").send_keys("X")
         self.driver.find_element_by_id("bic").send_keys("X")
 
-        #self.check_and_click_element_by_id("iban")
+        # self.check_and_click_element_by_id("iban")
 
         try:
             WebDriverWait(driver, 5).until(EC.text_to_be_present_in_element_value((By.XPATH,
@@ -218,8 +215,8 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
 
         self.validate_element_by_id("kontoinhaber-name", u"TESTnameKontoInhaber", "valid")
 
-        #endregion
-        #region kontoinhaber-vorname
+        # endregion
+        # region kontoinhaber-vorname
         # -- Vorname INVALID
         try:
             self.assertRegexpMatches(driver.find_element_by_id("kontoinhaber-vorname").get_attribute("class"),
@@ -249,13 +246,11 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
 
         self.validate_element_by_id("kontoinhaber-vorname", "TESTvornameKontoInhaber", "valid")
 
-
-        #endregion
-        #region kontoinhaber-namenszusatz
+        # endregion
+        # region kontoinhaber-namenszusatz
         # -- Namenszusatz
 
         Select(driver.find_element_by_id("kontoinhaber-anrede")).select_by_visible_text("Firma o.A.")
-
 
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "kontoinhaber-namenszusatz")))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, "kontoinhaber-namenszusatz")))
@@ -282,7 +277,6 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
 
         Select(driver.find_element_by_id("kontoinhaber-anrede")).select_by_visible_text("Herr")
 
-
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "kontoinhaber-vorname")))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, "kontoinhaber-vorname")))
         WebDriverWait(driver, 10).until(EC.invisibility_of_element_located((By.ID, "kontoinhaber-namenszusatz")))
@@ -297,7 +291,6 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
             self.verificationErrors.append("field kontoinhaber-namenszusatz visibility")
 
         Select(driver.find_element_by_id("kontoinhaber-anrede")).select_by_visible_text("Firma")
-
 
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "kontoinhaber-namenszusatz")))
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, "kontoinhaber-namenszusatz")))
@@ -333,9 +326,8 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
 
         self.validate_element_by_id("kontoinhaber-namenszusatz", u"TESTnamenszusatzKontoInhaber", "valid")
 
-
-        #endregion
-        #region kontoinhaber-strasse
+        # endregion
+        # region kontoinhaber-strasse
         # -- Strasse INVALID
         try:
             self.assertRegexpMatches(driver.find_element_by_id("kontoinhaber-strasse").get_attribute("class"),
@@ -356,8 +348,8 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
             self.verificationErrors.append("Required field kontoinhaber-strasse empty but not invalid")
 
         self.validate_element_by_id("kontoinhaber-strasse", u"TESTstrasseKontoInhaber", "valid")
-        #endregion
-        #region kontoinhaber-hausnummer
+        # endregion
+        # region kontoinhaber-hausnummer
         # -- Hausnr INVALID
         try:
             self.assertNotRegexpMatches(driver.find_element_by_id("kontoinhaber-hausnummer").get_attribute("class"),
@@ -378,8 +370,8 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
             self.verificationErrors.append("Required field kontoinhaber-hausnummer empty but not invalid")
 
         self.validate_element_by_id("kontoinhaber-hausnummer", u"99KontoInhaber", "valid")
-        #endregion
-        #region kontoinhaber-plz
+        # endregion
+        # region kontoinhaber-plz
         # -- PLZ INVALID
         try:
             self.assertRegexpMatches(driver.find_element_by_id("kontoinhaber-plz").get_attribute("class"),
@@ -403,8 +395,8 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
             self.verificationErrors.append("Required field kontoinhaber-plz empty but not invalid")
 
         self.validate_element_by_id("kontoinhaber-plz", "45612", "valid")
-        #endregion
-        #region kontoinhaber-ort
+        # endregion
+        # region kontoinhaber-ort
         # -- Ort INVALID
         try:
             self.assertRegexpMatches(driver.find_element_by_id("kontoinhaber-ort").get_attribute("class"),
@@ -429,7 +421,6 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         self.antragsteller_fill_data_vorversicherung("nein")
 
         self.antragsteller_weiter_zusatzdaten()
-
 
     def tearDown(self):
         self.driver.quit()

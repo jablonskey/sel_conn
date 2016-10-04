@@ -6,6 +6,7 @@ from selenium import webdriver
 
 from service import common_tasks
 
+
 class ZielgruppeFamilienWeiterTest(unittest.TestCase, common_tasks.CommonTasks):
     def setUp(self):
 

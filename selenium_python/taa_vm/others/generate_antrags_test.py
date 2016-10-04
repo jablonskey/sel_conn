@@ -8,9 +8,7 @@ from service.common_tasks import CommonTasks
 
 
 class GenerateAntrags(unittest.TestCase, CommonTasks):
-
     def setUp(self):
-
 
         if os.environ.has_key("SELENIUM_BROWSER"):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
@@ -30,6 +28,7 @@ class GenerateAntrags(unittest.TestCase, CommonTasks):
         self.verificationErrors = []
         self.accept_next_alert = True
 
+    @unittest.skip("generates bazillion og antrags")
     def test_generate_antrags(self):
 
         driver = self.driver
