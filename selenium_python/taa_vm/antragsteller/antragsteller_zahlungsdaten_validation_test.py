@@ -51,6 +51,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         self.antragsteller_fill_data_antragstellerdaten()
         self.check_and_click_element_by_name("zahlungsart")
 
+        # region iban
         WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, "iban")))
         WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.ID, "iban")))
 
@@ -66,19 +67,23 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
             self.verificationErrors.append("Required field iban empty but not invalid")
 
         self.validate_element_by_id("iban", ".", "invalid")
-        self.validate_element_by_id("iban", "1111111111111111111", "invalid")
-        self.validate_element_by_id("iban", "1 11111111111111111", "invalid")
-        self.validate_element_by_id("iban", "DE 11111 11111 11111 111", "invalid")
+        self.validate_element_by_id("iban", "1111111111111111111", "invalid")  # 19 characters
+        self.validate_element_by_id("iban", "11111111111111111111", "invalid")  # 20 characters
+        self.validate_element_by_id("iban", "1 1111111111111111111", "invalid")  # 20 characters + space
+        self.validate_element_by_id("iban", "DE 11111 11111 11111 1111", "invalid")  # 19 characters
+        self.validate_element_by_id("iban", "1a21a21a21a21a21a21a21", "invalid")
+        self.validate_element_by_id("iban", "DE111111111111111111111", "invalid")  # 23 characters totally
 
         # -- IBAN VALID
 
-        self.validate_element_by_id("iban", "1 111111111111111111111", "valid")
-        self.validate_element_by_id("iban", "DE 11111 11111 11111 11111", "valid")
 
-        self.validate_element_by_id("iban", "1111111111111111111111", "valid")
+        self.validate_element_by_id("iban", "DE 11111 11111 11111 11111", "valid")
+        self.validate_element_by_id("iban", "DE11111111111111111111", "valid")
+        self.validate_element_by_id("iban", "DE     11111111111111111111", "valid")
+        self.validate_element_by_id("iban", "wE     11111111111111111111qqqqqqqqqqq", "valid")
         self.validate_element_by_id("iban", "aaaaaaaaaaaaaaaaaaaaaa", "valid")
         self.validate_element_by_id("iban", "AAAAAAAAAAAAAAAAAAAAAA", "valid")
-        self.validate_element_by_id("iban", "1a21a21a21a21a21a21a21", "valid")
+
         driver.find_element_by_id("iban").clear()
         try:
             self.assertRegexpMatches(driver.find_element_by_id("iban").get_attribute("class"), r"ng-invalid")
@@ -86,7 +91,9 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
             self.verificationErrors.append("Required field iban empty but not invalid")
 
         self.validate_element_by_id("iban", "DE88300606010301156608", "valid")
+        # endregion
 
+        # region bic
         try:
             self.assertNotRegexpMatches(driver.find_element_by_id("bic").get_attribute("class"), r"ng-invalid")
         except AssertionError as e:
@@ -117,7 +124,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         self.driver.find_element_by_id("bic").send_keys("X")
 
         # self.check_and_click_element_by_id("iban")
-
+        # endregion
         try:
             WebDriverWait(driver, 5).until(EC.text_to_be_present_in_element_value((By.XPATH,
                                                                                    "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[3]/div/div[2]/form[2]/div[1]/div[3]/input)"),

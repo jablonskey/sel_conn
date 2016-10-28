@@ -336,7 +336,6 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
 
         self.validate_element_by_id("ort", u"TESTort", "valid")
         # endregion
-
         # region taetigkeit
         # -- Taetigkeit INVALID
         try:
@@ -363,7 +362,6 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         self.assertEqual(u"nicht berufstätig",
                          Select(driver.find_element_by_id("taetigkeit")).options[2].text)
         # endregion
-
         # region berufsgruppe
         # -- Berufsgruppe INVALID
         try:
@@ -411,7 +409,7 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
 
         self.assertEqual(u"Sonstige Berufsgruppe",
                          Select(driver.find_element_by_id("berufsgruppe")).options[6].text)
-
+        #endregion
         # region geburtsdatum
         # -- Geburts INVALID
         try:
