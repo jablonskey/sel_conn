@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import unittest
 
 from selenium import webdriver
@@ -11,16 +12,24 @@ from service import common_tasks
 
 class Connect951Test(unittest.TestCase, common_tasks.CommonTasks):
     def setUp(self):
-        self.profile = webdriver.FirefoxProfile()
-        self.profile.native_events_enabled = False
-        self.driver = webdriver.Firefox(self.profile)
-        self.driver.maximize_window()
-
-        self.driver.implicitly_wait(2)
+        if os.environ.has_key("SELENIUM_BROWSER"):
+            if os.environ['SELENIUM_BROWSER'] == "chrome":
+                self.driver = webdriver.Chrome()
+            elif os.environ['SELENIUM_BROWSER'] == "ie":
+                self.driver = webdriver.Ie()
+            elif os.environ['SELENIUM_BROWSER'] == "firefox":
+                profile = webdriver.FirefoxProfile()
+                profile.native_events_enabled = False
+                self.driver = webdriver.Firefox(profile)
+        else:
+            profile = webdriver.FirefoxProfile()
+            profile.native_events_enabled = False
+            self.driver = webdriver.Firefox(profile)
+        self.driver.implicitly_wait(30)
         self.base_url = "https://ctest.lodz.ks-software.com/"
-        self.links_base_url = "https://vermittler.ks-auxilia.de/"
         self.verificationErrors = []
         self.accept_next_alert = True
+        self.links_base_url = "https://vermittler.ks-auxilia.de/"
 
     def test_connect951_logged_off(self):
         driver = self.driver
