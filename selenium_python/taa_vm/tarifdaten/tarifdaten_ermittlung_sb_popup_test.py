@@ -137,6 +137,7 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.zielgruppe_weiter_tarifdaten()
 
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURAFIRM")
+        self.tarifdaten_select_sb_for_produkt_from_rechtschutz(u"JURAFIRM", "1.000 EUR fallend")
         self.tarifdaten_ermittlung_alert_handler(None, "1000", 1)
         try:
             WebDriverWait(self.driver, 10).until_not(
