@@ -243,6 +243,7 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
         self.zielgruppe_btrklasse_select_by_name("selbstandige", "10", "15")
         self.zielgruppe_weiter_tarifdaten()
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURAFIRM")
+        self.tarifdaten_select_sb_for_produkt_from_rechtschutz(u"JURAFIRM", "1.000 EUR fallend")
         self.tarifdaten_ermittlung_alert_handler("ubernahmen", "1000", 1, "checked")
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURAFIRM")
         self.tarifdaten_ermittlung_alert_handler("ubernahmen", "1000", 2, "checked")
