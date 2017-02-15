@@ -122,6 +122,9 @@ class CommonTasks(Helper):
                                     user_with_taa_rights=True):
         self.go_to_vermittler_login_page(base_url)
 
+        self.driver.execute_script(
+            "document.getElementById('megadropdown-main-div').style.display = 'inline';")
+
         self.driver.find_element_by_id("username").clear()
         self.driver.find_element_by_id("username").send_keys(user)
         self.driver.find_element_by_id("password").clear()
