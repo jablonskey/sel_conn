@@ -266,7 +266,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
         self.driver.find_element_by_xpath(self.ZIELGRUPPE_ANON_VMNR_FORM_XPATH).send_keys(vmnr_number)
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten(hide_menu=False)
-        self.tarifdaten_weiter_antrastellerdaten(hide_menu=False)
+        self.tarifdaten_weiter_antrastellerdaten(hide_menu=True)
         self.antragsteller_fill_data()
         self.antragsteller_weiter_zusatzdaten(hide_menu=False)
         self.zusatzdaten_weiter_antrag(hide_menu=False)
