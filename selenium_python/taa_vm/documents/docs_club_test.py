@@ -54,7 +54,7 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[6])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[9])"),
 
                                              u"Club Highlights"))
 
@@ -83,7 +83,7 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[6])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[9])"),
 
                                              u"Club Highlights"))
 
@@ -115,7 +115,7 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[6])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[9])"),
 
                                              u"Club Highlights"))
         driver.close()
@@ -150,7 +150,7 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         driver.switch_to.window(document_tab)
 
         WebDriverWait(driver, 60).until(
-            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[6])"),
+            EC.text_to_be_present_in_element((By.XPATH, "(.//*[@id='pageContainer1']/xhtml:div[2]/xhtml:div[9])"),
 
                                              u"Club Highlights"))
         driver.close()
