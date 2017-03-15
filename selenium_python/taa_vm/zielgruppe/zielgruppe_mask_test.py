@@ -4,6 +4,7 @@ import sys
 import unittest
 
 from selenium import webdriver
+from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
@@ -20,7 +21,9 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
                 self.driver = webdriver.Chrome()
             elif os.environ['SELENIUM_BROWSER'] == "ie":
-                self.driver = webdriver.Ie()
+                caps = DesiredCapabilities.INTERNETEXPLORER
+                caps['ignoreZoomSetting'] = True
+                self.driver = webdriver.Ie(capabilities=caps)
             elif os.environ['SELENIUM_BROWSER'] == "firefox":
                 profile = webdriver.FirefoxProfile()
                 profile.native_events_enabled = False
@@ -48,7 +51,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
                 self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"]).get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
-                "Field anzahl-beschaeftigen-aerzte not refreshed / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Field anzahl-beschaeftigen-aerzte not refreshed / line %s" % sys.exc_info()[-1].tb_lineno)
         driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"]).clear()
         driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"]).send_keys("5")
 
@@ -60,7 +63,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
                 self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"]).get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
-                "Field anzahl-beschaeftigen-selbstaendige not refreshed / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Field anzahl-beschaeftigen-selbstaendige not refreshed / line %s" % sys.exc_info()[-1].tb_lineno)
         driver.find_element_by_xpath(
             self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"]).clear()
         driver.find_element_by_xpath(
@@ -74,7 +77,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
                 self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"]).get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
-                "Field honorareinnahmen not refreshed / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Field honorareinnahmen not refreshed / line %s" % sys.exc_info()[-1].tb_lineno)
         driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"]).clear()
         driver.find_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"]).send_keys(
             "5")
@@ -88,7 +91,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
             self.assertEqual("", driver.find_element_by_id("betriebsflaeche").get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
-                "Field betriebsflaeche not refreshed / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Field betriebsflaeche not refreshed / line %s" % sys.exc_info()[-1].tb_lineno)
 
     def test_landwirte_radios_clean_and_not_red_after_popup_angaben_andern(self):
         driver = self.driver
@@ -453,7 +456,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
                 self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"]).get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
-                "Field anzahl-beschaeftigen-selbstaendige not empty / line %d" % (sys.exc_info()[-1].tb_lineno))
+                "Field anzahl-beschaeftigen-selbstaendige not empty / line %d" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("singles")
         self.zielgruppe_btrklasse_select_by_name("arzte")
@@ -462,7 +465,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
                 self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"]).get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
-                "Field anzahl-beschaeftigen-aerzte not empty / line %d" % (sys.exc_info()[-1].tb_lineno))
+                "Field anzahl-beschaeftigen-aerzte not empty / line %d" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("steuerberater")
         try:
@@ -470,7 +473,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
                 self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"]).get_attribute("value"))
         except AssertionError:
             self.verificationErrors.append(
-                "Field honorareinnahmen not empty / line %d" % (sys.exc_info()[-1].tb_lineno))
+                "Field honorareinnahmen not empty / line %d" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("senioren")
 

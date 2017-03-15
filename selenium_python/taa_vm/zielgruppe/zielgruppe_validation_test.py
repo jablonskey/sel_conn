@@ -4,6 +4,7 @@ import sys
 import unittest
 
 from selenium import webdriver
+from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
 from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
@@ -19,7 +20,9 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             if os.environ['SELENIUM_BROWSER'] == "chrome":
                 self.driver = webdriver.Chrome()
             elif os.environ['SELENIUM_BROWSER'] == "ie":
-                self.driver = webdriver.Ie()
+                caps = DesiredCapabilities.INTERNETEXPLORER
+                caps['ignoreZoomSetting'] = True
+                self.driver = webdriver.Ie(capabilities=caps)
             elif os.environ['SELENIUM_BROWSER'] == "firefox":
                 profile = webdriver.FirefoxProfile()
                 profile.native_events_enabled = False
@@ -47,7 +50,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url, )
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
     def test_selbstandige_validation(self):
         driver = self.driver
@@ -61,7 +64,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST['selbstandige']["header_xpath"])
         try:
@@ -82,7 +85,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"], "*",
                                        "invalid")
@@ -91,7 +94,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"], ".",
                                        "invalid")
@@ -100,7 +103,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"],
                                        "-10", "invalid")
@@ -109,7 +112,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"],
                                        "10a", "invalid")
@@ -118,7 +121,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"],
                                        "10", "valid")
@@ -144,7 +147,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         WebDriverWait(self.driver, 4).until(EC.presence_of_element_located(
             (By.XPATH, self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"])))
@@ -163,42 +166,42 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"], "*", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"], ".", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"], "10-", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"], "-10", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"], "10a", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"], "10", "valid")
         self.zielgruppe_weiter_tarifdaten()
 
@@ -217,7 +220,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + self.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         WebDriverWait(self.driver, 4).until(EC.presence_of_element_located(
             (By.XPATH, self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"])))
@@ -240,7 +243,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             pass
         else:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], "*",
                                        "invalid")
         self.check_and_click_element_by_link_text("Weiter")
@@ -250,7 +253,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             pass
         else:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], ".",
                                        "invalid")
         self.check_and_click_element_by_link_text("Weiter")
@@ -260,7 +263,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             pass
         else:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], "10-",
                                        "invalid")
         self.check_and_click_element_by_link_text("Weiter")
@@ -270,7 +273,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             pass
         else:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], "-10",
                                        "invalid")
         self.check_and_click_element_by_link_text("Weiter")
@@ -280,7 +283,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             pass
         else:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], "10a",
                                        "invalid")
         self.check_and_click_element_by_link_text("Weiter")
@@ -290,7 +293,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             pass
         else:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form2_xpath"], "10",
                                        "valid")
         self.validate_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form1_xpath"], "10",
@@ -308,7 +311,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
     def test_landwirte_no_right_radios_selected_validation(self):
         driver = self.driver
@@ -322,7 +325,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
     def test_landwirte_no_left_radios_selected_validation(self):
         driver = self.driver
@@ -336,7 +339,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
     def test_landwirte_validation(self):
         driver = self.driver
@@ -357,7 +360,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.check_and_click_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST['landwirte']["form_xpath"])
         try:
@@ -374,35 +377,35 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_id("betriebsflaeche", "*", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_id("betriebsflaeche", ".", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_id("betriebsflaeche", "-10", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_id("betriebsflaeche", "10a", "invalid")
         self.check_and_click_element_by_link_text("Weiter")
         try:
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.validate_element_by_id("betriebsflaeche", "10", "valid")
         self.zielgruppe_weiter_tarifdaten()
 
@@ -418,7 +421,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
     def test_familien_after_landwirte_no_left_radios_checked(self):
         driver = self.driver
@@ -432,7 +435,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
@@ -449,7 +452,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
@@ -473,7 +476,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
@@ -498,7 +501,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
@@ -515,7 +518,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
@@ -534,7 +537,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.assertEqual(self.base_url + Helper.ZIELGRUPPE_PAGE_ADDRESS_COMPLETION, self.driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(
-                "Tarifdaten reached, validation did not work / line %s" % (sys.exc_info()[-1].tb_lineno))
+                "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()

@@ -5,6 +5,7 @@ import unittest
 from selenium import webdriver
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver import DesiredCapabilities
 
 from service import common_tasks
 from service.helpers import Helper
@@ -17,7 +18,9 @@ class Connect589Test(unittest.TestCase, common_tasks.CommonTasks, Helper):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
                 self.driver = webdriver.Chrome()
             elif os.environ['SELENIUM_BROWSER'] == "ie":
-                self.driver = webdriver.Ie()
+                caps = DesiredCapabilities.INTERNETEXPLORER
+                caps['ignoreZoomSetting'] = True
+                self.driver = webdriver.Ie(capabilities=caps)
             elif os.environ['SELENIUM_BROWSER'] == "firefox":
                 profile = webdriver.FirefoxProfile()
                 profile.native_events_enabled = False

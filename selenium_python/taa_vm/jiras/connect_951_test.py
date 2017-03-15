@@ -3,6 +3,7 @@ import os
 import unittest
 
 from selenium import webdriver
+from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
 from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
@@ -16,7 +17,9 @@ class Connect951Test(unittest.TestCase, common_tasks.CommonTasks):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
                 self.driver = webdriver.Chrome()
             elif os.environ['SELENIUM_BROWSER'] == "ie":
-                self.driver = webdriver.Ie()
+                caps = DesiredCapabilities.INTERNETEXPLORER
+                caps['ignoreZoomSetting'] = True
+                self.driver = webdriver.Ie(capabilities=caps)
             elif os.environ['SELENIUM_BROWSER'] == "firefox":
                 profile = webdriver.FirefoxProfile()
                 profile.native_events_enabled = False
@@ -40,7 +43,7 @@ class Connect951Test(unittest.TestCase, common_tasks.CommonTasks):
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, "(/html/body/div/div/h1)"), u"Ihr direkter Draht"))
         try:
-            self.assertEqual("%sservice/ihr-direkter-Draht/" % (self.links_base_url), driver.current_url)
+            self.assertEqual("%sservice/ihr-direkter-Draht/" % self.links_base_url, driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
@@ -53,7 +56,7 @@ class Connect951Test(unittest.TestCase, common_tasks.CommonTasks):
         WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element(
             (By.XPATH, "(/html/body/div/div/h1)"), u"BD Stuttgart"))
         try:
-            self.assertEqual("%sservice/ihr-kontakt-zu-uns/bezirksdirektionen/bd-stuttgart/" % (self.links_base_url),
+            self.assertEqual("%sservice/ihr-kontakt-zu-uns/bezirksdirektionen/bd-stuttgart/" % self.links_base_url,
                              driver.current_url)
         except AssertionError as e:
             self.verificationErrors.append(str(e))

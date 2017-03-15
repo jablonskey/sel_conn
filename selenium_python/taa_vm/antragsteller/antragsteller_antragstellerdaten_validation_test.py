@@ -4,6 +4,7 @@ import os
 import unittest
 
 from selenium import webdriver
+from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
 from selenium.webdriver.support.ui import Select
@@ -19,7 +20,9 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
             if os.environ['SELENIUM_BROWSER'] == "chrome":
                 self.driver = webdriver.Chrome()
             elif os.environ['SELENIUM_BROWSER'] == "ie":
-                self.driver = webdriver.Ie()
+                caps = DesiredCapabilities.INTERNETEXPLORER
+                caps['ignoreZoomSetting'] = True
+                self.driver = webdriver.Ie(capabilities=caps)
             elif os.environ['SELENIUM_BROWSER'] == "firefox":
                 profile = webdriver.FirefoxProfile()
                 profile.native_events_enabled = False
@@ -53,6 +56,7 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         self.tarifdaten_weiter_antrastellerdaten()
         # ### Antragstellerdaten ###
 
+        self.antragsteller_fill_data_lebenspartner(ja_nein="nein")
         self.antragsteller_fill_data_zahlungsdaten("uberweisung")
         self.antragsteller_fill_data_vorversicherung("nein")
 
@@ -409,7 +413,7 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
 
         self.assertEqual(u"Sonstige Berufsgruppe",
                          Select(driver.find_element_by_id("berufsgruppe")).options[6].text)
-        #endregion
+        # endregion
         # region geburtsdatum
         # -- Geburts INVALID
         try:

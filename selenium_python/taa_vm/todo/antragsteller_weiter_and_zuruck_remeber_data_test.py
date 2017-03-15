@@ -5,6 +5,7 @@ import unittest
 from selenium import webdriver
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver import DesiredCapabilities
 
 from service import common_tasks
 
@@ -16,7 +17,9 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
             if os.environ['SELENIUM_BROWSER'] == "chrome":
                 self.driver = webdriver.Chrome()
             elif os.environ['SELENIUM_BROWSER'] == "ie":
-                self.driver = webdriver.Ie()
+                caps = DesiredCapabilities.INTERNETEXPLORER
+                caps['ignoreZoomSetting'] = True
+                self.driver = webdriver.Ie(capabilities=caps)
             elif os.environ['SELENIUM_BROWSER'] == "firefox":
                 profile = webdriver.FirefoxProfile()
                 profile.native_events_enabled = False
@@ -64,8 +67,10 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
             return False
         return True
 
+    # noinspection PyDeprecation
     def is_alert_present(self):
         try:
+            # noinspection PyDeprecation
             self.driver.switch_to_alert()
         except NoAlertPresentException, e:
             return False

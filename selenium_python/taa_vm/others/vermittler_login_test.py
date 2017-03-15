@@ -4,6 +4,7 @@ import unittest
 
 from nose.plugins.attrib import attr
 from selenium import webdriver
+from selenium.webdriver import DesiredCapabilities
 
 from service.common_tasks import CommonTasks
 
@@ -15,7 +16,9 @@ class VermittlerLoginTest(unittest.TestCase, CommonTasks):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
                 self.driver = webdriver.Chrome()
             elif os.environ['SELENIUM_BROWSER'] == "ie":
-                self.driver = webdriver.Ie()
+                caps = DesiredCapabilities.INTERNETEXPLORER
+                caps['ignoreZoomSetting'] = True
+                self.driver = webdriver.Ie(capabilities=caps)
             elif os.environ['SELENIUM_BROWSER'] == "firefox":
                 profile = webdriver.FirefoxProfile()
                 profile.native_events_enabled = False

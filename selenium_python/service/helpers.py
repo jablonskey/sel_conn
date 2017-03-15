@@ -75,7 +75,7 @@ class Helper(object):
     ZIELGRUPPE_VMNR_COMBO_FORM_AFTER_CLICK_XPATH = "(.//*[@id='berechnen-fur']/div/span/span[2]/span)"
 
     ZIELGRUPPE_VMNR_COMBO_WARNING_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div/div[2]/div/p)"
-    ZIELGRUPPE_ANON_VMNR_FORM_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div/div/div/form/div/div/input)"
+    ZIELGRUPPE_ANON_VMNR_FORM_XPATH = "(.//*[@id='enter-vmnr'])"
 
     ZIELGRUPPE_BETRIEBSFLAECHE_FORM_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/form/div/div[2]/div[2]/div/input)"
     ZIELGRUPPE_ANZAHL_BESCHAEFTIGEN_SELBSTAENDIGE_FORM_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[3]/div/form/div/div[2]/div[2]/div[2]/input)"
@@ -374,7 +374,6 @@ class Helper(object):
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
             (By.XPATH, "(/html/body/div/div/div/div/div[1]/ng-include/h3)"), mnr_number))
 
-
     def check_if_on_aktservice_page(self):
         WebDriverWait(self.driver, 60).until(
             EC.visibility_of_element_located((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER)))
@@ -444,7 +443,7 @@ class Helper(object):
 
         WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[6]/a)")))
-        if (user_with_taa_rights):
+        if user_with_taa_rights:
             WebDriverWait(self.driver, 20).until(
                 EC.visibility_of_element_located((By.XPATH, "(.//*[@id='nav-main']/div/ul/li[6]/a)")))
             WebDriverWait(self.driver, 20).until(
@@ -622,6 +621,7 @@ class Helper(object):
             (By.XPATH, xpath)))
         self.highlight(self.driver.find_element_by_xpath(xpath))
         self.driver.find_element_by_xpath(xpath).click()
+
 
     def check_and_click_element_by_link_text(self, linktext):
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(

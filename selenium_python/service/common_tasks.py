@@ -134,7 +134,7 @@ class CommonTasks(Helper):
 
         WebDriverWait(self.driver, 20).until_not(EC.text_to_be_present_in_element(
             (By.XPATH, Helper.CURRENT_PAGE_MAIN_HEADER), "Login"))
-        if (main_page_after_login):
+        if main_page_after_login:
             self.check_if_on_vermittler_main_page(user_with_taa_rights=user_with_taa_rights)
         self.driver.implicitly_wait(2)
 
@@ -255,10 +255,7 @@ class CommonTasks(Helper):
                 EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div)")))
 
     def open_taa_vm(self):
-        """
 
-        :rtype: object
-        """
         self.driver.implicitly_wait(2)
         self.check_and_click_element_by_link_text("Rechner")
 
@@ -340,14 +337,14 @@ class CommonTasks(Helper):
                                      Helper.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["header_xpath"]).text)
             except AssertionError as e:
                 self.verificationErrors.append(str(e))
-            if anzahl != None:
+            if anzahl is not None:
                 self.check_and_click_element_by_xpath(
                     self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["anzahl_form_xpath"])
                 self.driver.find_element_by_xpath(
                     self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["anzahl_form_xpath"]).clear()
                 self.driver.find_element_by_xpath(
                     self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["anzahl_form_xpath"]).send_keys(anzahl)
-            if jahresbrutto != None:
+            if jahresbrutto is not None:
                 self.check_and_click_element_by_xpath(
                     self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["jahresbrutto_form_xpath"])
                 self.driver.find_element_by_xpath(
@@ -368,7 +365,7 @@ class CommonTasks(Helper):
             except AssertionError as e:
                 self.verificationErrors.append(str(e))
 
-            if anzahl != None:
+            if anzahl is not None:
                 self.check_and_click_element_by_xpath(
                     self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["form_xpath"])
                 self.driver.find_element_by_xpath(
@@ -387,7 +384,7 @@ class CommonTasks(Helper):
                                      Helper.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["header_xpath"]).text)
             except AssertionError as e:
                 self.verificationErrors.append(str(e))
-            if anzahl != None:
+            if anzahl is not None:
                 self.check_and_click_element_by_xpath(
                     self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["form_xpath"])
                 self.driver.find_element_by_xpath(
@@ -406,7 +403,7 @@ class CommonTasks(Helper):
                                      Helper.ZIELGRUPPE_BTRKLASSES_HELPER_LIST[btrklasse_name]["header_xpath"]).text)
             except AssertionError as e:
                 self.verificationErrors.append(str(e))
-            if anzahl != None:
+            if anzahl is not None:
                 self.check_and_click_element_by_name("isLandwirteMitglied")
                 self.check_and_click_element_by_xpath("(//input[@name='isLandwirteGewerbe'])[2]")
                 self.check_and_click_element_by_xpath(
@@ -523,7 +520,7 @@ class CommonTasks(Helper):
 
         return produkts_labels_list[list_position - 1].text
 
-        return produkt_name
+
 
     def tarifdaten_select_produkt_on_daten_erfassen_popup_by_name(self, produkt_name):
         produkt_label_list = self.driver.find_elements_by_xpath(
@@ -631,7 +628,7 @@ class CommonTasks(Helper):
             produkt_radios = self.driver.find_elements_by_xpath(
                 self.TARIFDATEN_PRODUKT_ELEMENTS_INPUTS_RECHTSCHUTZ_XPATH)
             for i in produkt_radios:
-                if (i.is_selected()):
+                if i.is_selected():
                     if ermittlung_type == "400":
                         try:
                             self.assertEqual(self.TARIFDATEN_SB_POPUP_SB_400[selected_radio_no - 1],
@@ -700,7 +697,7 @@ class CommonTasks(Helper):
                     "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/div/div[2]/table/tbody/tr[" + str(
                         row_no) + "]/td[2]/div/div)").text)
             except AssertionError as e:
-                self.verificationErrors.append(str(e), text + " not present in %s table" % (table_name))
+                self.verificationErrors.append(str(e), text + " not present in %s table" % table_name)
 
     def tarifdaten_check_price_in_produkt_table(self, text, table_name, row_no):
         if table_name == "rechtschutz":
@@ -712,7 +709,7 @@ class CommonTasks(Helper):
                 self.assertEqual(text, self.driver.find_element_by_xpath(
                     self.get_tarifdaten_produkt_table_price_elements_xpath(row_no)).text)
             except AssertionError as e:
-                self.verificationErrors.append(str(e), text + " not present in %s table" % (table_name))
+                self.verificationErrors.append(str(e), text + " not present in %s table" % table_name)
 
     def tarifdaten_select_zahlweise(self, zahlweise):
         gesambtr_text = self.driver.find_element_by_xpath(self.TARIFDATEN_GESAMTBTR_LABEL_XPATH).text
@@ -1081,13 +1078,7 @@ class CommonTasks(Helper):
 
     def antragsteller_check_default_lebenspartner(self):
         self.assertTrue(self.driver.find_element_by_xpath(
-            self.ANTRAGSTELLER_LEBENSPARTNER_J_N_HELPER["nein"]["radio_xpath"]).is_selected())
-
-        self.assertFalse(self.driver.find_element_by_id("lebenspartner-anrede").is_displayed())
-
-        self.assertFalse(self.driver.find_element_by_id("lebenspartner-strasse").is_displayed())
-
-        self.check_and_click_element_by_name("eheLebensPartner")
+            self.ANTRAGSTELLER_LEBENSPARTNER_J_N_HELPER["ja"]["radio_xpath"]).is_selected())
 
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.ID, "lebenspartner-anrede")))

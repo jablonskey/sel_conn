@@ -4,6 +4,7 @@ import unittest
 
 from nose.plugins.attrib import attr
 from selenium import webdriver
+from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
 from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
@@ -19,7 +20,9 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
                 self.driver = webdriver.Chrome()
             elif os.environ['SELENIUM_BROWSER'] == "ie":
-                self.driver = webdriver.Ie()
+                caps = DesiredCapabilities.INTERNETEXPLORER
+                caps['ignoreZoomSetting'] = True
+                self.driver = webdriver.Ie(capabilities=caps)
             elif os.environ['SELENIUM_BROWSER'] == "firefox":
                 profile = webdriver.FirefoxProfile()
                 profile.native_events_enabled = False
@@ -105,6 +108,7 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
         self.tarifdaten_weiter_antrastellerdaten()
         self.antragsteller_fill_data()
+        self.antragsteller_fill_data_lebenspartner(ja_nein="nein")
         self.antragsteller_weiter_zusatzdaten()
 
         driver.find_element_by_xpath("//input[@placeholder=\"Kennzeichen\"]").send_keys("kenn123")
@@ -136,6 +140,7 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
         self.tarifdaten_weiter_antrastellerdaten()
         self.antragsteller_fill_data()
+        self.antragsteller_fill_data_lebenspartner(ja_nein="nein")
         self.antragsteller_weiter_zusatzdaten()
 
         driver.find_element_by_xpath("//input[@placeholder=\"Kennzeichen\"]").send_keys("kenn123")
@@ -143,7 +148,7 @@ class DocsClubTests(unittest.TestCase, CommonTasks):
             "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div[2]/form/div/div[1]/div[2]/label/input)")
         self.zusatzdaten_weiter_antrag()
 
-        self.documents_popup_generate_document((u"Club Highlights"))
+        self.documents_popup_generate_document(u"Club Highlights")
 
         WebDriverWait(driver, 10).until_not(self.no_more_than_one_window_open)
         document_tab = driver.window_handles[-1]

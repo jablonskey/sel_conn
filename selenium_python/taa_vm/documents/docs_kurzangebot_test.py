@@ -4,6 +4,7 @@ import unittest
 
 from nose.plugins.attrib import attr
 from selenium import webdriver
+from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
 from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
@@ -19,7 +20,9 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
             if os.environ['SELENIUM_BROWSER'] == "chrome":
                 self.driver = webdriver.Chrome()
             elif os.environ['SELENIUM_BROWSER'] == "ie":
-                self.driver = webdriver.Ie()
+                caps = DesiredCapabilities.INTERNETEXPLORER
+                caps['ignoreZoomSetting'] = True
+                self.driver = webdriver.Ie(capabilities=caps)
             elif os.environ['SELENIUM_BROWSER'] == "firefox":
                 profile = webdriver.FirefoxProfile()
                 profile.native_events_enabled = False
@@ -121,6 +124,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
 
         self.tarifdaten_weiter_antrastellerdaten()
         self.antragsteller_fill_data()
+        self.antragsteller_fill_data_lebenspartner(ja_nein="nein")
         self.antragsteller_weiter_zusatzdaten()
         driver.find_element_by_xpath("//input[@placeholder=\"Kennzeichen\"]").send_keys("kenn123")
         self.documents_popup_generate_document((u"Kurzangebot",))
