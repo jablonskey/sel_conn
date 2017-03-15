@@ -155,6 +155,7 @@ class DocsKurzangebotTests(unittest.TestCase, CommonTasks):
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
         self.tarifdaten_weiter_antrastellerdaten()
         self.antragsteller_fill_data()
+        self.antragsteller_fill_data_lebenspartner(ja_nein="nein")
         self.antragsteller_weiter_zusatzdaten()
 
         driver.find_element_by_xpath("//input[@placeholder=\"Kennzeichen\"]").send_keys("kenn123")
