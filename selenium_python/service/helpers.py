@@ -41,8 +41,8 @@ class Helper(object):
     ERGEBNIS_OPTIONEN_SPEICHERN_UNTER_LINK_XPATH = "(//ergebnis-optionen/div/a[2])"
 
     VERMITTLER_LOGIN_BUTTON_XPATH = "(/html/body/div/div/div/section/div/div[2]/form/button)"
-    VERMITTLER_IFRAME_LOGIN_XPATH = "(/html/body/div/div[1]/ul[2]/li/a)"
-    VERMITTLER_IFRAME_LOGOUT_XPATH = "(/html/body/div[1]/div[1]/ul[1]/li[2]/a)"
+    VERMITTLER_IFRAME_ANMELDEN_XPATH = "(.//*[@id='login'])"
+    VERMITTLER_IFRAME_ABMELDEN_XPATH = "(.//*[@id='logout'])"
 
     ADMIN_LOGIN_BUTTON_XPATH = "(/html/body/div/div/div/section/div/div[2]/form/button)"
     ADMIN_LOGOUT_LINK_XPATH = "(/html/body/header/div/div/div[2]/ul/li/a)"

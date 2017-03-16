@@ -5,9 +5,12 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC  # available since 2.26.0
+from selenium.webdriver.support.ui import WebDriverWait  # available since 2.4.0
+
 
 from service import common_tasks
-
+from service.helpers import Helper
 
 class Connect1503Test(unittest.TestCase, common_tasks.CommonTasks):
     def setUp(self):
@@ -37,7 +40,10 @@ class Connect1503Test(unittest.TestCase, common_tasks.CommonTasks):
         self.login_to_aktservice(self.base_url)
         self.go_to_vermittler_login_page(self.base_url)
         self.driver.switch_to.frame(self.driver.find_element_by_tag_name("iframe"))
-        self.assertNotEqual("Logout", driver.find_element_by_xpath(self.VERMITTLER_IFRAME_LOGOUT_XPATH))
+        WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, Helper.VERMITTLER_IFRAME_ANMELDEN_XPATH)))
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Helper.VERMITTLER_IFRAME_ANMELDEN_XPATH)))
 
     @unittest.skip("default aktservice credentials issue")
     def test_login_aktservice_then_go_to_admin(self):
@@ -58,7 +64,10 @@ class Connect1503Test(unittest.TestCase, common_tasks.CommonTasks):
         self.login_to_admin_panel(self.base_url)
         self.go_to_vermittler_login_page(self.base_url)
         self.driver.switch_to.frame(self.driver.find_element_by_tag_name("iframe"))
-        self.assertNotEqual("Logout", driver.find_element_by_xpath(self.VERMITTLER_IFRAME_LOGOUT_XPATH))
+        WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, Helper.VERMITTLER_IFRAME_ANMELDEN_XPATH)))
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Helper.VERMITTLER_IFRAME_ANMELDEN_XPATH)))
 
     def test_login_admin_then_go_to_aktservice(self):
         driver = self.driver
@@ -95,7 +104,10 @@ class Connect1503Test(unittest.TestCase, common_tasks.CommonTasks):
         self.login_to_secure_email(self.base_url)
         self.go_to_vermittler_login_page(self.base_url)
         self.driver.switch_to.frame(self.driver.find_element_by_tag_name("iframe"))
-        self.assertNotEqual("Logout", driver.find_element_by_xpath(self.VERMITTLER_IFRAME_LOGOUT_XPATH))
+        WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, Helper.VERMITTLER_IFRAME_ANMELDEN_XPATH)))
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Helper.VERMITTLER_IFRAME_ANMELDEN_XPATH)))
 
     def test_login_ses_then_go_to_admin(self):
         driver = self.driver
