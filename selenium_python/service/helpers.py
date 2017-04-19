@@ -330,7 +330,7 @@ class Helper(object):
             EC.text_to_be_present_in_element((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER),
                                              "Benutzerverwaltung"))
         WebDriverWait(self.driver, 20).until_not(
-            EC.presence_of_element_located((By.XPATH, self.ADMIN_SPINNER_XPATH)))
+            EC.visibility_of_element_located((By.XPATH, self.ADMIN_SPINNER_XPATH)))
 
     def check_if_on_vermittler_login_page(self, user_with_taa_rights=True, anonymus_info_visible=False):
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
