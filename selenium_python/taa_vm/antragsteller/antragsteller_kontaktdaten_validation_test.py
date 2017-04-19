@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
+import sys
 import unittest
+from datetime import datetime
 
 from selenium import webdriver
 from selenium.webdriver import DesiredCapabilities
@@ -294,6 +296,12 @@ class AntragstellerKontaktdatenValidationTest(unittest.TestCase, common_tasks.Co
             self.verificationErrors.append(str(e))
 
     def tearDown(self):
+        if sys.exc_info()[0]:
+            now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S-%f')
+            test_method_name = self._testMethodName
+            self.driver.save_screenshot('%s_%s_screenshot.png' % (now, test_method_name))
+        super(self.__class__, self).tearDown()
+
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 

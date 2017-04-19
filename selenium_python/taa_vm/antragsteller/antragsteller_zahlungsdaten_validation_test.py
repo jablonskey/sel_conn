@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
+import sys
 import unittest
+from datetime import datetime
 
 from selenium import webdriver
 from selenium.webdriver import DesiredCapabilities
@@ -71,12 +73,18 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
             self.verificationErrors.append("Required field iban empty but not invalid")
 
         self.enter_text_and_check_validation_in_element_by_id("iban", ".", desired_validation="invalid")
-        self.enter_text_and_check_validation_in_element_by_id("iban", "1111111111111111111", desired_validation="invalid")  # 19 characters
-        self.enter_text_and_check_validation_in_element_by_id("iban", "11111111111111111111", desired_validation="invalid")  # 20 characters
-        self.enter_text_and_check_validation_in_element_by_id("iban", "1 1111111111111111111", desired_validation="invalid")  # 20 characters + space
-        self.enter_text_and_check_validation_in_element_by_id("iban", "DE 11111 11111 11111 1111", desired_validation="invalid")  # 19 characters
-        self.enter_text_and_check_validation_in_element_by_id("iban", "1a21a21a21a21a21a21a21", desired_validation="invalid")
-        self.enter_text_and_check_validation_in_element_by_id("iban", "DE111111111111111111111", desired_validation="invalid")  # 23 characters totally
+        self.enter_text_and_check_validation_in_element_by_id("iban", "1111111111111111111",
+                                                              desired_validation="invalid")  # 19 characters
+        self.enter_text_and_check_validation_in_element_by_id("iban", "11111111111111111111",
+                                                              desired_validation="invalid")  # 20 characters
+        self.enter_text_and_check_validation_in_element_by_id("iban", "1 1111111111111111111",
+                                                              desired_validation="invalid")  # 20 characters + space
+        self.enter_text_and_check_validation_in_element_by_id("iban", "DE 11111 11111 11111 1111",
+                                                              desired_validation="invalid")  # 19 characters
+        self.enter_text_and_check_validation_in_element_by_id("iban", "1a21a21a21a21a21a21a21",
+                                                              desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("iban", "DE111111111111111111111",
+                                                              desired_validation="invalid")  # 23 characters totally
 
         # -- IBAN VALID
 
@@ -255,7 +263,8 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-vorname empty but not invalid")
 
-        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", "TESTvornameKontoInhaber", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", "TESTvornameKontoInhaber",
+                                                              "valid")
 
         # endregion
         # region kontoinhaber-namenszusatz
@@ -335,7 +344,8 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("NOT Required field kontoinhaber-namenszusatz empty but invalid")
 
-        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-namenszusatz", u"TESTnamenszusatzKontoInhaber", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-namenszusatz",
+                                                              u"TESTnamenszusatzKontoInhaber", "valid")
 
         # endregion
         # region kontoinhaber-strasse
@@ -358,7 +368,8 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-strasse empty but not invalid")
 
-        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-strasse", u"TESTstrasseKontoInhaber", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-strasse", u"TESTstrasseKontoInhaber",
+                                                              "valid")
         # endregion
         # region kontoinhaber-hausnummer
         # -- Hausnr INVALID
@@ -393,7 +404,8 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", ".", desired_validation="invalid")
         self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", "1", desired_validation="invalid")
         self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", "12345", "valid")
-        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", "123456", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", "123456",
+                                                              desired_validation="invalid")
         self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", "1234a", desired_validation="invalid")
         self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", "a", desired_validation="invalid")
         self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", u"bü", desired_validation="invalid")
@@ -434,8 +446,13 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         self.antragsteller_weiter_zusatzdaten()
 
     def tearDown(self):
+        if sys.exc_info()[0]:
+            now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S-%f')
+            test_method_name = self._testMethodName
+            self.driver.save_screenshot('%s_%s_screenshot.png' % (now, test_method_name))
+        super(self.__class__, self).tearDown()
+
         self.driver.quit()
-        # print self.verificationErrors
         self.assertEqual([], self.verificationErrors)
 
 

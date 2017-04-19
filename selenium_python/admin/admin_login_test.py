@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
 import unittest
+import sys
 
+from datetime import datetime
 from nose.plugins.attrib import attr
 from selenium import webdriver
 from selenium.webdriver import DesiredCapabilities
@@ -38,6 +40,12 @@ class AdminLoginTest(unittest.TestCase, common_tasks.CommonTasks):
         self.login_to_admin_panel(self.base_url)
 
     def tearDown(self):
+        if sys.exc_info()[0]:
+            now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S-%f')
+            test_method_name = self._testMethodName
+            self.driver.save_screenshot('%s_%s_screenshot.png' % (now, test_method_name))
+        super(self.__class__, self).tearDown()
+
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 

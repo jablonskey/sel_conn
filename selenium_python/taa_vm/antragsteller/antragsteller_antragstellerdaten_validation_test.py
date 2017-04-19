@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import datetime
 import os
+import sys
 import unittest
+from datetime import datetime
 
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
@@ -143,12 +145,14 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
             str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "valid")
-        self.enter_text_and_check_validation_in_element_by_id("geburtsdatum", "31.09.2013", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("geburtsdatum", "31.09.2013",
+                                                              desired_validation="invalid")
         self.enter_text_and_check_validation_in_element_by_id("geburtsdatum", "30.09.2013", "valid")
 
         self.validate_date_field_by_id_not_refreshing("geburtsdatum")
 
-        self.enter_text_and_check_validation_in_element_by_id("geburtsdatum", "29.02.2013", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("geburtsdatum", "29.02.2013",
+                                                              desired_validation="invalid")
         self.enter_text_and_check_validation_in_element_by_id("geburtsdatum", "28.02.2013", "valid")
         self.enter_text_and_check_validation_in_element_by_id("geburtsdatum", "29.02.2012", "valid")
         self.enter_text_and_check_validation_in_element_by_id("geburtsdatum", "01.01.2014", "valid")
@@ -463,6 +467,12 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
             self.verificationErrors.append(err_msg)
 
     def tearDown(self):
+        if sys.exc_info()[0]:
+            now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S-%f')
+            test_method_name = self._testMethodName
+            self.driver.save_screenshot('%s_%s_screenshot.png' % (now, test_method_name))
+        super(self.__class__, self).tearDown()
+
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
         for e in self.verificationErrors: print e

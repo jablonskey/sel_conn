@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import datetime
 import os
+import sys
 import unittest
 
 from selenium import webdriver
@@ -411,6 +412,12 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         # endregion
 
     def tearDown(self):
+        if sys.exc_info()[0]:
+            now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S-%f')
+            test_method_name = self._testMethodName
+            self.driver.save_screenshot('%s_%s_screenshot.png' % (now, test_method_name))
+        super(self.__class__, self).tearDown()
+
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
