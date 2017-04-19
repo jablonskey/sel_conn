@@ -37,7 +37,7 @@ class Connect589Test(unittest.TestCase, common_tasks.CommonTasks, Helper):
     def test_connect589(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name(u"familien")
         self.zielgruppe_weiter_tarifdaten()
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")

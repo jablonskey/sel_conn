@@ -41,7 +41,7 @@ class Connect465Test(unittest.TestCase, CommonTasks):
         self.login_to_connect_vermittler(self.base_url)
 
         # region vermittler main page
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name('familien')
         self.zielgruppe_weiter_tarifdaten()
 
@@ -81,7 +81,7 @@ class Connect465Test(unittest.TestCase, CommonTasks):
                                                       self.PRODUKTAUSWAHL_ELEMENTS_LABEL_XPATH)]
 
         self.antragsteller_fill_data()
-        self.antragsteller_fill_data_lebenspartner(ja_nein="nein")
+        self.antragsteller_fill_data_lebenspartner(selected_radiobutton="nein")
         self.antragsteller_weiter_zusatzdaten()
 
         zusatzdaten_produktauswahl_list = [l.text for l in

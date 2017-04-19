@@ -43,7 +43,7 @@ class GenerateLangangebots(unittest.TestCase, CommonTasks):
 
         main_window = driver.current_window_handle
 
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()

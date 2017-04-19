@@ -38,7 +38,7 @@ class ZielgruppeLandwirteTest(unittest.TestCase, common_tasks.CommonTasks, Helpe
     def test_zielgruppe_landwirte(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
 
         landwirte_anzahl = 10
 

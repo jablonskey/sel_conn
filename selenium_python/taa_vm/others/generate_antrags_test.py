@@ -37,7 +37,7 @@ class GenerateAntrags(unittest.TestCase, CommonTasks):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
         main_window = driver.current_window_handle
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.driver.implicitly_wait(2)
 
         for x in range(10000):

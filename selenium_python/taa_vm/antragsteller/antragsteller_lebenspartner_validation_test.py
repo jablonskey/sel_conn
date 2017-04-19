@@ -41,7 +41,7 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         self.login_to_connect_vermittler(self.base_url)
 
         # region vermittler main page
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
         self.tarifdaten_weiter_antrastellerdaten()
@@ -156,17 +156,17 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError:
             self.verificationErrors.append("Required field lebenspartner-name empty but not invalid")
 
-        self.validate_element_by_id("lebenspartner-name", ".", "valid")
-        self.validate_element_by_id("lebenspartner-name", "a", "valid")
-        self.validate_element_by_id("lebenspartner-name", "-", "valid")
-        self.validate_element_by_id("lebenspartner-name", "ab123", "valid")
-        self.validate_element_by_id("lebenspartner-name", "ab-.", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-name", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-name", "a", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-name", "-", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-name", "ab123", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-name", "ab-.", "valid")
 
-        self.validate_element_by_id("lebenspartner-name", "a-", "valid")
-        self.validate_element_by_id("lebenspartner-name", "A-", "valid")
-        self.validate_element_by_id("lebenspartner-name", "a b", "valid")
-        self.validate_element_by_id("lebenspartner-name", u"Bü", "valid")
-        self.validate_element_by_id("lebenspartner-name", u"bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-name", "a-", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-name", "A-", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-name", "a b", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-name", u"Bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-name", u"bü", "valid")
         driver.find_element_by_id("lebenspartner-name").clear()
 
         try:
@@ -175,7 +175,7 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError:
             self.verificationErrors.append("Required field lebenspartner-name empty but not invalid")
 
-        self.validate_element_by_id("lebenspartner-name", u"TESTNameLeben", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-name", u"TESTNameLeben", "valid")
 
         # endregion
         # region lebenspartner-vorname
@@ -186,16 +186,16 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError:
             self.verificationErrors.append("Required field lebenspartner-vorname empty but not invalid")
 
-        self.validate_element_by_id("lebenspartner-vorname", ".", "valid")
-        self.validate_element_by_id("lebenspartner-vorname", "a", "valid")
-        self.validate_element_by_id("lebenspartner-vorname", "-", "valid")
-        self.validate_element_by_id("lebenspartner-vorname", u"bü", "valid")
-        self.validate_element_by_id("lebenspartner-vorname", "ab123", "valid")
-        self.validate_element_by_id("lebenspartner-vorname", "Ab123", "valid")
-        self.validate_element_by_id("lebenspartner-vorname", "ab-", "valid")
-        self.validate_element_by_id("lebenspartner-vorname", "a b", "valid")
-        self.validate_element_by_id("lebenspartner-vorname", u"Bü", "valid")
-        self.validate_element_by_id("lebenspartner-vorname", "A-", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-vorname", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-vorname", "a", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-vorname", "-", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-vorname", u"bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-vorname", "ab123", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-vorname", "Ab123", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-vorname", "ab-", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-vorname", "a b", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-vorname", u"Bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-vorname", "A-", "valid")
         driver.find_element_by_id("lebenspartner-vorname").clear()
 
         try:
@@ -204,7 +204,7 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError:
             self.verificationErrors.append("Required field lebenspartner-vorname empty but not invalid")
 
-        self.validate_element_by_id("lebenspartner-vorname", "TESTvornameLeben", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-vorname", "TESTvornameLeben", "valid")
 
         # endregion
         # region lebenspartner-geburtsdatum
@@ -215,25 +215,27 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
-        self.validate_element_by_id("geburtsdatum", "xxxxxxxxx", "notaccepted")
-        self.validate_element_by_id("geburtsdatum", "xx.xx.xxxx", "notaccepted")
-        self.validate_element_by_id("lebenspartner-geburtsdatum", "%s.%s.%s" % (
+        self.enter_text_and_check_validation_in_element_by_id("geburtsdatum", "xxxxxxxxx", "notaccepted")
+        self.enter_text_and_check_validation_in_element_by_id("geburtsdatum", "xx.xx.xxxx", "notaccepted")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-geburtsdatum", "%s.%s.%s" % (
             str((datetime.datetime.today() + datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() + datetime.timedelta(days=1)).month).zfill(2),
-            str((datetime.datetime.today() + datetime.timedelta(days=1)).year).zfill(2)), "invalid")
-        self.validate_element_by_id("lebenspartner-geburtsdatum", "%s.%s.%s" % (
+            str((datetime.datetime.today() + datetime.timedelta(days=1)).year).zfill(2)), desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-geburtsdatum", "%s.%s.%s" % (
             str(datetime.datetime.now().day).zfill(2), str(datetime.datetime.now().month).zfill(2),
             str(datetime.datetime.now().year).zfill(2)), "valid")
-        self.validate_element_by_id("lebenspartner-geburtsdatum", "%s.%s.%s" % (
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-geburtsdatum", "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "valid")
-        self.validate_element_by_id("lebenspartner-geburtsdatum", "31.09.2013", "invalid")
-        self.validate_element_by_id("lebenspartner-geburtsdatum", "30.09.2013", "valid")
-        self.validate_element_by_id("lebenspartner-geburtsdatum", "29.02.2013", "invalid")
-        self.validate_element_by_id("lebenspartner-geburtsdatum", "28.02.2013", "valid")
-        self.validate_element_by_id("lebenspartner-geburtsdatum", "29.02.2012", "valid")
-        self.validate_element_by_id("lebenspartner-geburtsdatum", "01.01.2014", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-geburtsdatum", "31.09.2013",
+                                                              desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-geburtsdatum", "30.09.2013", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-geburtsdatum", "29.02.2013",
+                                                              desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-geburtsdatum", "28.02.2013", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-geburtsdatum", "29.02.2012", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-geburtsdatum", "01.01.2014", "valid")
         self.validate_date_field_by_id_not_refreshing("lebenspartner-geburtsdatum")
         # endregion
         # region lebenspartner-taetigkeit
@@ -322,10 +324,10 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError:
             self.verificationErrors.append("Required field lebenspartner-strasse empty but not invalid")
 
-        self.validate_element_by_id("lebenspartner-strasse", ".", "valid")
-        self.validate_element_by_id("lebenspartner-strasse", "1", "valid")
-        self.validate_element_by_id("lebenspartner-strasse", "a", "valid")
-        self.validate_element_by_id("lebenspartner-strasse", u"bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-strasse", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-strasse", "1", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-strasse", "a", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-strasse", u"bü", "valid")
         driver.find_element_by_id("lebenspartner-strasse").clear()
 
         try:
@@ -334,7 +336,7 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field lebenspartner-strasse empty but not invalid")
 
-        self.validate_element_by_id("lebenspartner-strasse", u"TESTstrasseLeben", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-strasse", u"TESTstrasseLeben", "valid")
         # endregion
         # region lebenspartner-hausnummer
         # -- Hausnr INVALID
@@ -344,10 +346,10 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field lebenspartner-hausnummer empty but not invalid")
 
-        self.validate_element_by_id("lebenspartner-hausnummer", ".", "valid")
-        self.validate_element_by_id("lebenspartner-hausnummer", "1", "valid")
-        self.validate_element_by_id("lebenspartner-hausnummer", "a", "valid")
-        self.validate_element_by_id("lebenspartner-hausnummer", u"bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-hausnummer", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-hausnummer", "1", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-hausnummer", "a", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-hausnummer", u"bü", "valid")
         driver.find_element_by_id("lebenspartner-hausnummer").clear()
 
         try:
@@ -356,7 +358,7 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("field lebenspartner-hausnummer")
 
-        self.validate_element_by_id("lebenspartner-hausnummer", u"69TESTleben", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-hausnummer", u"69TESTleben", "valid")
         # endregion
         # region lebenspartner-plz
         # -- PLZ INVALID
@@ -366,13 +368,15 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field lebenspartner-plz empty but not invalid")
 
-        self.validate_element_by_id("lebenspartner-plz", ".", "invalid")
-        self.validate_element_by_id("lebenspartner-plz", "1", "invalid")
-        self.validate_element_by_id("lebenspartner-plz", "12345", "valid")
-        self.validate_element_by_id("lebenspartner-plz", "123456", "invalid")
-        self.validate_element_by_id("lebenspartner-plz", "1234a", "invalid")
-        self.validate_element_by_id("lebenspartner-plz", "a", "invalid")
-        self.validate_element_by_id("lebenspartner-plz", u"bü", "invalid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", ".", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", "1", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", "12345", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", "123456",
+                                                              desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", "1234a",
+                                                              desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", "a", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", u"bü", desired_validation="invalid")
         driver.find_element_by_id("lebenspartner-plz").clear()
 
         try:
@@ -381,7 +385,7 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field lebenspartner-plz empty but not invalid")
 
-        self.validate_element_by_id("lebenspartner-plz", "98765", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", "98765", "valid")
         # endregion
         # region lebenspartner-ort
         # -- Ort INVALID
@@ -391,10 +395,10 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field lebenspartner-ort empty but not invalid")
 
-        self.validate_element_by_id("lebenspartner-ort", ".", "valid")
-        self.validate_element_by_id("lebenspartner-ort", "1", "valid")
-        self.validate_element_by_id("lebenspartner-ort", "a", "valid")
-        self.validate_element_by_id("lebenspartner-ort", u"bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-ort", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-ort", "1", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-ort", "a", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-ort", u"bü", "valid")
         driver.find_element_by_id("lebenspartner-ort").clear()
 
         try:
@@ -403,7 +407,7 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field lebenspartner-ort empty but not invalid")
 
-        self.validate_element_by_id("lebenspartner-ort", u"TESTlebenspartner-ort", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-ort", u"TESTlebenspartner-ort", "valid")
         # endregion
 
     def tearDown(self):

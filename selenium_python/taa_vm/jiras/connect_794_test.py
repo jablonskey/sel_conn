@@ -34,14 +34,14 @@ class Connect794Test(unittest.TestCase, common_tasks.CommonTasks):
     def test_connect794(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
         self.tarifdaten_weiter_antrastellerdaten()
         self.antragsteller_fill_data()
-        self.antragsteller_fill_data_lebenspartner(ja_nein="nein")
+        self.antragsteller_fill_data_lebenspartner(selected_radiobutton="nein")
         self.antragsteller_weiter_zusatzdaten()
 
         self.neues_angebot_helper(button_to_click="ok")

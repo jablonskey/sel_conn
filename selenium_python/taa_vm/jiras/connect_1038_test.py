@@ -33,7 +33,7 @@ class Connect1038Test(unittest.TestCase, common_tasks.CommonTasks):
     def test_connect1038(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
 
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("landwirte", 7)

@@ -55,7 +55,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
         self.login_to_connect_vermittler(self.base_url)
 
         # region vermittler main page
-        self.open_taa_vm()
+        self.go_to_rechner()
 
         # endregion
 
@@ -74,7 +74,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
         except AssertionError as e:
             self.verificationErrors.append("Field versicherungsscheinnummer required but not invalid if empty")
 
-        self.validate_element_by_id("versicherungsscheinnummer", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("versicherungsscheinnummer", ".", "valid")
         self.driver.find_element_by_id("versicherungsscheinnummer").clear()
 
         try:
@@ -83,7 +83,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
         except AssertionError as e:
             self.verificationErrors.append("Field versicherungsscheinnummer required but not invalid if empty")
 
-        self.validate_element_by_id("versicherungsscheinnummer", "vers1", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("versicherungsscheinnummer", "vers1", "valid")
         # endregion
         # region Gekündigt durch
         try:
@@ -133,31 +133,31 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
         except AssertionError as e:
             self.verificationErrors.append("field beginn invalid, empty but not required")
 
-        self.validate_element_by_id("beginn", "xxxxxxxxx", "notaccepted")
-        self.validate_element_by_id("beginn", "xx.xx.xxxx", "notaccepted")
-        self.validate_element_by_id("beginn", "%s.%s.%s" % (
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "xxxxxxxxx", "notaccepted")
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "xx.xx.xxxx", "notaccepted")
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "%s.%s.%s" % (
             str((datetime.datetime.today() + datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() + datetime.timedelta(days=1)).month).zfill(2),
-            str((datetime.datetime.today() + datetime.timedelta(days=1)).year).zfill(2)), "invalid")
-        self.validate_element_by_id("beginn", "%s.%s.%s" % (
+            str((datetime.datetime.today() + datetime.timedelta(days=1)).year).zfill(2)), desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "%s.%s.%s" % (
             str(datetime.datetime.now().day).zfill(2), str(datetime.datetime.now().month).zfill(2),
-            str(datetime.datetime.now().year).zfill(2)), "invalid")
-        self.validate_element_by_id("beginn", "%s.%s.%s" % (
+            str(datetime.datetime.now().year).zfill(2)), desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "valid")
-        self.validate_element_by_id("beginn", "31.09.2013", "invalid")
-        self.validate_element_by_id("beginn", "30.09.2013", "valid")
-        self.validate_element_by_id("beginn", "29.02.2013", "invalid")
-        self.validate_element_by_id("beginn", "28.02.2013", "valid")
-        self.validate_element_by_id("beginn", "29.02.2012", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "31.09.2013", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "30.09.2013", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "29.02.2013", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "28.02.2013", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "29.02.2012", "valid")
         self.driver.find_element_by_name("beginn").clear()
 
         try:
             self.assertNotRegexpMatches(driver.find_element_by_name("beginn").get_attribute("class"), r"ng-invalid")
         except AssertionError as e:
             self.verificationErrors.append("field beginn invalid, empty but not required")
-        self.validate_element_by_id("beginn", "01.01.2014", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "01.01.2014", "valid")
         # endregion
         # region Ende
 
@@ -166,42 +166,42 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
         except AssertionError as e:
             self.verificationErrors.append("field ende invalid, empty but not required")
 
-        self.validate_element_by_id("ende", "xxxxxxxxx", "notaccepted")
-        self.validate_element_by_id("ende", "xx.xx.xxxx", "notaccepted")
-        self.validate_element_by_id("ende", "%s.%s.%s" % (
+        self.enter_text_and_check_validation_in_element_by_id("ende", "xxxxxxxxx", "notaccepted")
+        self.enter_text_and_check_validation_in_element_by_id("ende", "xx.xx.xxxx", "notaccepted")
+        self.enter_text_and_check_validation_in_element_by_id("ende", "%s.%s.%s" % (
             str((datetime.datetime.today() + datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() + datetime.timedelta(days=1)).month).zfill(2),
             str((datetime.datetime.today() + datetime.timedelta(days=1)).year).zfill(2)), "valid")
 
-        self.validate_element_by_id("ende", "31.09.2013", "invalid")
-        self.validate_element_by_id("ende", "30.09.2013", "invalid")
-        self.validate_element_by_id("ende", "29.02.2013", "invalid")
-        self.validate_element_by_id("ende", "28.02.2013", "invalid")
-        self.validate_element_by_id("ende", "01.01.2014", "invalid")
+        self.enter_text_and_check_validation_in_element_by_id("ende", "31.09.2013", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("ende", "30.09.2013", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("ende", "29.02.2013", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("ende", "28.02.2013", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("ende", "01.01.2014", desired_validation="invalid")
 
-        self.validate_element_by_id("beginn", "%s.%s.%s" % (
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
-            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "invalid")
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), desired_validation="invalid")
 
-        self.validate_element_by_id("ende", "%s.%s.%s" % (
+        self.enter_text_and_check_validation_in_element_by_id("ende", "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
-            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "invalid")
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), desired_validation="invalid")
 
-        self.validate_element_by_id("ende", "%s.%s.%s" % (
+        self.enter_text_and_check_validation_in_element_by_id("ende", "%s.%s.%s" % (
             str(datetime.datetime.now().day).zfill(2), str(datetime.datetime.now().month).zfill(2),
             str(datetime.datetime.now().year).zfill(2)), "valid")
 
-        self.validate_element_by_id("ende", "%s.%s.%s" % (
+        self.enter_text_and_check_validation_in_element_by_id("ende", "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=2)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=2)).month).zfill(2),
-            str((datetime.datetime.today() - datetime.timedelta(days=2)).year).zfill(2)), "invalid")
+            str((datetime.datetime.today() - datetime.timedelta(days=2)).year).zfill(2)), desired_validation="invalid")
 
-        self.validate_element_by_id("beginn", "01.06.2014", "valid")
-        self.validate_element_by_id("ende", "01.05.2014", "invalid")
-        self.validate_element_by_id("ende", "01.06.2014", "invalid")
-        self.validate_element_by_id("ende", "01.07.2014", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("beginn", "01.06.2014", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("ende", "01.05.2014", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("ende", "01.06.2014", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("ende", "01.07.2014", "valid")
         self.driver.find_element_by_name("ende").clear()
 
         try:
@@ -219,7 +219,7 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
         except AssertionError as e:
             self.verificationErrors.append("field versicherungsumfang invalid, empty but not required")
 
-        self.validate_element_by_id("versicherungsumfang", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("versicherungsumfang", ".", "valid")
         self.driver.find_element_by_id("versicherungsumfang").clear()
 
         try:
@@ -257,25 +257,27 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
             self.verificationErrors.append("field beginn invalid, empty but not required")
 
         # region dates validation
-        self.validate_element_by_xpath(beginn2_xpath, "xxxxxxxxx", "notaccepted")
-        self.validate_element_by_xpath(beginn2_xpath, "xx.xx.xxxx", "notaccepted")
-        self.validate_element_by_xpath(beginn2_xpath, "%s.%s.%s" % (
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "xxxxxxxxx", "notaccepted")
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "xx.xx.xxxx", "notaccepted")
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "%s.%s.%s" % (
             str((datetime.datetime.today() + datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() + datetime.timedelta(days=1)).month).zfill(2),
-            str((datetime.datetime.today() + datetime.timedelta(days=1)).year).zfill(2)), "invalid")
-        self.validate_element_by_xpath(beginn2_xpath, "%s.%s.%s" % (
+            str((datetime.datetime.today() + datetime.timedelta(days=1)).year).zfill(2)), desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "%s.%s.%s" % (
             str(datetime.datetime.now().day).zfill(2), str(datetime.datetime.now().month).zfill(2),
-            str(datetime.datetime.now().year).zfill(2)), "invalid")
-        self.validate_element_by_xpath(beginn2_xpath, "%s.%s.%s" % (
+            str(datetime.datetime.now().year).zfill(2)), desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "valid")
-        self.validate_element_by_xpath(beginn2_xpath, "31.09.2013", "invalid")
-        self.validate_element_by_xpath(beginn2_xpath, "30.09.2013", "valid")
-        self.validate_element_by_xpath(beginn2_xpath, "29.02.2013", "invalid")
-        self.validate_element_by_xpath(beginn2_xpath, "28.02.2013", "valid")
-        self.validate_element_by_xpath(beginn2_xpath, "29.02.2012", "valid")
-        self.validate_element_by_xpath(beginn2_xpath, "01.01.2014", "valid")
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "31.09.2013",
+                                                                 desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "30.09.2013", "valid")
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "29.02.2013",
+                                                                 desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "28.02.2013", "valid")
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "29.02.2012", "valid")
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "01.01.2014", "valid")
         # endregion
         # endregion
         # region Ende
@@ -288,39 +290,46 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
             self.verificationErrors.append("field ende2 invalid, empty but not required")
 
         # region dates validation
-        self.validate_element_by_xpath(ende2_xpath, "xxxxxxxxx", "notaccepted")
-        self.validate_element_by_xpath(ende2_xpath, "xx.xx.xxxx", "notaccepted")
-        self.validate_element_by_xpath(ende2_xpath, "%s.%s.%s" % (
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "xxxxxxxxx", "notaccepted")
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "xx.xx.xxxx", "notaccepted")
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "%s.%s.%s" % (
             str((datetime.datetime.today() + datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() + datetime.timedelta(days=1)).month).zfill(2),
             str((datetime.datetime.today() + datetime.timedelta(days=1)).year).zfill(2)), "valid")
 
-        self.validate_element_by_xpath(ende2_xpath, "31.09.2013", "invalid")
-        self.validate_element_by_xpath(ende2_xpath, "30.09.2013", "invalid")
-        self.validate_element_by_xpath(ende2_xpath, "29.02.2013", "invalid")
-        self.validate_element_by_xpath(ende2_xpath, "28.02.2013", "invalid")
-        self.validate_element_by_xpath(ende2_xpath, "01.01.2014", "invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "31.09.2013",
+                                                                 desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "30.09.2013",
+                                                                 desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "29.02.2013",
+                                                                 desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "28.02.2013",
+                                                                 desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "01.01.2014",
+                                                                 desired_validation="invalid")
 
-        self.validate_element_by_xpath(beginn2_xpath, "%s.%s.%s" % (
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
-            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "invalid")
-        self.validate_element_by_xpath(ende2_xpath, "%s.%s.%s" % (
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=1)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=1)).month).zfill(2),
-            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), "invalid")
-        self.validate_element_by_xpath(ende2_xpath, "%s.%s.%s" % (
+            str((datetime.datetime.today() - datetime.timedelta(days=1)).year).zfill(2)), desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "%s.%s.%s" % (
             str(datetime.datetime.now().day).zfill(2), str(datetime.datetime.now().month).zfill(2),
             str(datetime.datetime.now().year).zfill(2)), "valid")
-        self.validate_element_by_xpath(ende2_xpath, "%s.%s.%s" % (
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "%s.%s.%s" % (
             str((datetime.datetime.today() - datetime.timedelta(days=2)).day).zfill(2),
             str((datetime.datetime.today() - datetime.timedelta(days=2)).month).zfill(2),
-            str((datetime.datetime.today() - datetime.timedelta(days=2)).year).zfill(2)), "invalid")
+            str((datetime.datetime.today() - datetime.timedelta(days=2)).year).zfill(2)), desired_validation="invalid")
 
-        self.validate_element_by_xpath(beginn2_xpath, "01.06.2014", "valid")
-        self.validate_element_by_xpath(ende2_xpath, "01.05.2014", "invalid")
-        self.validate_element_by_xpath(ende2_xpath, "01.06.2014", "invalid")
-        self.validate_element_by_xpath(ende2_xpath, "01.07.2014", "valid")
+        self.enter_text_and_check_validation_in_element_by_xpath(beginn2_xpath, "01.06.2014", "valid")
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "01.05.2014",
+                                                                 desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "01.06.2014",
+                                                                 desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_xpath(ende2_xpath, "01.07.2014", "valid")
         # endregion
         # endregion
 

@@ -38,7 +38,7 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
     def test_400_popup_behavior(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
@@ -118,7 +118,7 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
     def test_400_check_sb_combo_with_chosen_option(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
@@ -134,7 +134,7 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
     def test_1000_popup_behavior(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("selbstandige", "10", "15")
         self.zielgruppe_weiter_tarifdaten()
@@ -242,7 +242,7 @@ class TarifdatenEmittlungSbPopupTest(unittest.TestCase, CommonTasks, Helper):
     def test_1000_check_sb_combo_with_chosen_option(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("selbstandige", "10", "15")
         self.zielgruppe_weiter_tarifdaten()

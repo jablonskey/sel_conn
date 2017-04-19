@@ -254,7 +254,7 @@ class CommonTasks(Helper):
             WebDriverWait(self.driver, 10).until_not(
                 EC.visibility_of_element_located((By.XPATH, "(/html/body/div[3]/div/div)")))
 
-    def open_taa_vm(self):
+    def go_to_rechner(self):
 
         self.driver.implicitly_wait(2)
         self.check_and_click_element_by_link_text("Rechner")
@@ -852,11 +852,11 @@ class CommonTasks(Helper):
         self.driver.find_element_by_id("email").clear()
         self.driver.find_element_by_id("email").send_keys(u"email@domain.de")
 
-    def antragsteller_fill_data_lebenspartner(self, ja_nein="ja", anschrift="nein",
+    def antragsteller_fill_data_lebenspartner(self, selected_radiobutton="ja", anschrift="nein",
                                               taetigkeit="nichtselbständig",
                                               berufsgruppe="Berufs-/Lizenzsportler / -trainer"):
 
-        if ja_nein == "ja":
+        if selected_radiobutton == "ja":
             self.check_and_click_element_by_xpath(self.ANTRAGSTELLER_LEBENSPARTNER_J_N_HELPER["ja"]["label_xpath"])
             WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "lebenspartner-anrede")))
             WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, "lebenspartner-anrede")))
@@ -873,12 +873,12 @@ class CommonTasks(Helper):
             Select(self.driver.find_element_by_id("lebenspartner-berufsgruppe")).select_by_visible_text(berufsgruppe)
             self.driver.find_element_by_id("lebenspartner-geburtsdatum").send_keys("22.04.1985")
             self.antragsteller_fill_data_lebenspartner_anschrift(anschrift)
-        elif ja_nein == "nein":
+        elif selected_radiobutton == "nein":
             self.check_and_click_element_by_xpath(
                 self.ANTRAGSTELLER_LEBENSPARTNER_J_N_HELPER["nein"]["label_xpath"])
 
-    def antragsteller_fill_data_lebenspartner_anschrift(self, ja_nein="ja"):
-        if ja_nein == "ja":
+    def antragsteller_fill_data_lebenspartner_anschrift(self, selected_radiobutton="ja"):
+        if selected_radiobutton == "ja":
             self.check_and_click_element_by_xpath(
                 self.ANTRAGSTELLER_LEBENSPARTNER_ABWEICHENDE_ANSCHRIFT_J_N_HELPER["ja"]["label_xpath"])
             WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.ID, "lebenspartner-strasse")))
@@ -891,7 +891,7 @@ class CommonTasks(Helper):
             self.driver.find_element_by_id("lebenspartner-plz").send_keys(u"54321")
             self.driver.find_element_by_id("lebenspartner-ort").clear()
             self.driver.find_element_by_id("lebenspartner-ort").send_keys(u"LebensOrtTEST")
-        elif ja_nein == "nein":
+        elif selected_radiobutton == "nein":
             self.check_and_click_element_by_xpath(
                 self.ANTRAGSTELLER_LEBENSPARTNER_ABWEICHENDE_ANSCHRIFT_J_N_HELPER["nein"]["label_xpath"])
 
@@ -910,8 +910,8 @@ class CommonTasks(Helper):
             self.check_and_click_element_by_xpath(
                 self.ANTRAGSTELLER_ZAHLUNGSDATEN_ZAHLUNGSART_HELPER["uberweisung"]["radio_xpath"])
 
-    def antragsteller_fill_data_vorversicherung(self, ja_nein="nein"):
-        if ja_nein == "ja":
+    def antragsteller_fill_data_vorversicherung(self, selected_radiobutton="nein"):
+        if selected_radiobutton == "ja":
             self.check_and_click_element_by_name("vorverischerung")
 
             WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.ID, "gesellschaft")))
@@ -929,7 +929,7 @@ class CommonTasks(Helper):
             self.driver.find_element_by_id("versicherungsnehmer").send_keys(u"787878")
             self.driver.find_element_by_id("versicherungsumfang").send_keys(u"TESTumfang")
 
-        elif ja_nein == "nein":
+        elif selected_radiobutton == "nein":
             self.check_and_click_element_by_xpath(
                 self.ANTRAGSTELLER_VORVERSICHERUNG_J_N_HELPER["nein"]["radio_xpath"])
 

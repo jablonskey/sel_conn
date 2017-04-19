@@ -36,7 +36,7 @@ class AntragstellerKontaktdatenValidationTest(unittest.TestCase, common_tasks.Co
         self.login_to_connect_vermittler(self.base_url)
 
         # region vermittler main page
-        self.open_taa_vm()
+        self.go_to_rechner()
 
         # endregion
 

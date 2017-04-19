@@ -40,7 +40,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         self.login_to_connect_vermittler(self.base_url)
 
         # region vermittler main page
-        self.open_taa_vm()
+        self.go_to_rechner()
 
         # endregion
 
@@ -52,7 +52,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
 
         # XXX Zahlungsdaten XXX
         self.antragsteller_fill_data_antragstellerdaten()
-        self.antragsteller_fill_data_lebenspartner(ja_nein="nein")
+        self.antragsteller_fill_data_lebenspartner(selected_radiobutton="nein")
         self.check_and_click_element_by_name("zahlungsart")
 
         # region iban
@@ -70,23 +70,23 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field iban empty but not invalid")
 
-        self.validate_element_by_id("iban", ".", "invalid")
-        self.validate_element_by_id("iban", "1111111111111111111", "invalid")  # 19 characters
-        self.validate_element_by_id("iban", "11111111111111111111", "invalid")  # 20 characters
-        self.validate_element_by_id("iban", "1 1111111111111111111", "invalid")  # 20 characters + space
-        self.validate_element_by_id("iban", "DE 11111 11111 11111 1111", "invalid")  # 19 characters
-        self.validate_element_by_id("iban", "1a21a21a21a21a21a21a21", "invalid")
-        self.validate_element_by_id("iban", "DE111111111111111111111", "invalid")  # 23 characters totally
+        self.enter_text_and_check_validation_in_element_by_id("iban", ".", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("iban", "1111111111111111111", desired_validation="invalid")  # 19 characters
+        self.enter_text_and_check_validation_in_element_by_id("iban", "11111111111111111111", desired_validation="invalid")  # 20 characters
+        self.enter_text_and_check_validation_in_element_by_id("iban", "1 1111111111111111111", desired_validation="invalid")  # 20 characters + space
+        self.enter_text_and_check_validation_in_element_by_id("iban", "DE 11111 11111 11111 1111", desired_validation="invalid")  # 19 characters
+        self.enter_text_and_check_validation_in_element_by_id("iban", "1a21a21a21a21a21a21a21", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("iban", "DE111111111111111111111", desired_validation="invalid")  # 23 characters totally
 
         # -- IBAN VALID
 
 
-        self.validate_element_by_id("iban", "DE 11111 11111 11111 11111", "valid")
-        self.validate_element_by_id("iban", "DE11111111111111111111", "valid")
-        self.validate_element_by_id("iban", "DE     11111111111111111111", "valid")
-        self.validate_element_by_id("iban", "wE     11111111111111111111qqqqqqqqqqq", "valid")
-        self.validate_element_by_id("iban", "aaaaaaaaaaaaaaaaaaaaaa", "valid")
-        self.validate_element_by_id("iban", "AAAAAAAAAAAAAAAAAAAAAA", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("iban", "DE 11111 11111 11111 11111", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("iban", "DE11111111111111111111", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("iban", "DE     11111111111111111111", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("iban", "wE     11111111111111111111qqqqqqqqqqq", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("iban", "aaaaaaaaaaaaaaaaaaaaaa", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("iban", "AAAAAAAAAAAAAAAAAAAAAA", "valid")
 
         driver.find_element_by_id("iban").clear()
         try:
@@ -94,7 +94,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field iban empty but not invalid")
 
-        self.validate_element_by_id("iban", "DE88300606010301156608", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("iban", "DE88300606010301156608", "valid")
         # endregion
 
         # region bic
@@ -103,17 +103,17 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Not required field bic empty but not valid")
 
-        self.validate_element_by_id("bic", ".", "invalid")
-        self.validate_element_by_id("bic", "1111111", "invalid")
-        self.validate_element_by_id("bic", "111111111111", "invalid")
-        self.validate_element_by_id("bic", "1a11111", "invalid")
-        self.validate_element_by_id("bic", "1 11111111", "invalid")
+        self.enter_text_and_check_validation_in_element_by_id("bic", ".", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("bic", "1111111", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("bic", "111111111111", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("bic", "1a11111", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("bic", "1 11111111", desired_validation="invalid")
 
         # -- BIC VALID
 
-        self.validate_element_by_id("bic", "11111111", "valid")
-        self.validate_element_by_id("bic", "aaaaaaaaa", "valid")
-        self.validate_element_by_id("bic", "AAAAAAAAA", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("bic", "11111111", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("bic", "aaaaaaaaa", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("bic", "AAAAAAAAA", "valid")
         self.driver.find_element_by_id("bic").clear()
         self.driver.find_element_by_id("bic").send_keys("D")
         self.driver.find_element_by_id("bic").send_keys("A")
@@ -205,17 +205,17 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-name empty but not invalid")
 
-        self.validate_element_by_id("kontoinhaber-name", ".", "valid")
-        self.validate_element_by_id("kontoinhaber-name", "a", "valid")
-        self.validate_element_by_id("kontoinhaber-name", "-", "valid")
-        self.validate_element_by_id("kontoinhaber-name", "ab123", "valid")
-        self.validate_element_by_id("kontoinhaber-name", "ab-.", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-name", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-name", "a", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-name", "-", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-name", "ab123", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-name", "ab-.", "valid")
 
-        self.validate_element_by_id("kontoinhaber-name", "a-", "valid")
-        self.validate_element_by_id("kontoinhaber-name", "A-", "valid")
-        self.validate_element_by_id("kontoinhaber-name", "a b", "valid")
-        self.validate_element_by_id("kontoinhaber-name", u"Bü", "valid")
-        self.validate_element_by_id("kontoinhaber-name", u"bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-name", "a-", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-name", "A-", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-name", "a b", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-name", u"Bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-name", u"bü", "valid")
         driver.find_element_by_id("kontoinhaber-name").clear()
 
         try:
@@ -224,7 +224,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-name empty but not invalid")
 
-        self.validate_element_by_id("kontoinhaber-name", u"TESTnameKontoInhaber", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-name", u"TESTnameKontoInhaber", "valid")
 
         # endregion
         # region kontoinhaber-vorname
@@ -235,18 +235,18 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-vorname empty but not invalid")
 
-        self.validate_element_by_id("kontoinhaber-vorname", ".", "valid")
-        self.validate_element_by_id("kontoinhaber-vorname", "a", "valid")
-        self.validate_element_by_id("kontoinhaber-vorname", "-", "valid")
-        self.validate_element_by_id("kontoinhaber-vorname", u"bü", "valid")
-        self.validate_element_by_id("kontoinhaber-vorname", "ab123", "valid")
-        self.validate_element_by_id("kontoinhaber-vorname", "Ab123", "valid")
-        self.validate_element_by_id("kontoinhaber-vorname", "ab-", "valid")
-        self.validate_element_by_id("kontoinhaber-vorname", "a b", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", "a", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", "-", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", u"bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", "ab123", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", "Ab123", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", "ab-", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", "a b", "valid")
 
         # -- Vorname VALID
-        self.validate_element_by_id("kontoinhaber-vorname", u"Bü", "valid")
-        self.validate_element_by_id("kontoinhaber-vorname", "A-", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", u"Bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", "A-", "valid")
         driver.find_element_by_id("kontoinhaber-vorname").clear()
 
         try:
@@ -255,7 +255,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-vorname empty but not invalid")
 
-        self.validate_element_by_id("kontoinhaber-vorname", "TESTvornameKontoInhaber", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-vorname", "TESTvornameKontoInhaber", "valid")
 
         # endregion
         # region kontoinhaber-namenszusatz
@@ -323,10 +323,10 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("NOT Required field kontoinhaber-namenszusatz empty but invalid")
 
-        self.validate_element_by_id("kontoinhaber-namenszusatz", ".", "valid")
-        self.validate_element_by_id("kontoinhaber-namenszusatz", "1", "valid")
-        self.validate_element_by_id("kontoinhaber-namenszusatz", "a", "valid")
-        self.validate_element_by_id("kontoinhaber-namenszusatz", u"bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-namenszusatz", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-namenszusatz", "1", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-namenszusatz", "a", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-namenszusatz", u"bü", "valid")
         driver.find_element_by_id("kontoinhaber-namenszusatz").clear()
 
         try:
@@ -335,7 +335,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("NOT Required field kontoinhaber-namenszusatz empty but invalid")
 
-        self.validate_element_by_id("kontoinhaber-namenszusatz", u"TESTnamenszusatzKontoInhaber", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-namenszusatz", u"TESTnamenszusatzKontoInhaber", "valid")
 
         # endregion
         # region kontoinhaber-strasse
@@ -346,10 +346,10 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-strasse empty but not invalid")
 
-        self.validate_element_by_id("kontoinhaber-strasse", ".", "valid")
-        self.validate_element_by_id("kontoinhaber-strasse", "1", "valid")
-        self.validate_element_by_id("kontoinhaber-strasse", "a", "valid")
-        self.validate_element_by_id("kontoinhaber-strasse", u"bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-strasse", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-strasse", "1", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-strasse", "a", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-strasse", u"bü", "valid")
         driver.find_element_by_id("kontoinhaber-strasse").clear()
 
         try:
@@ -358,7 +358,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-strasse empty but not invalid")
 
-        self.validate_element_by_id("kontoinhaber-strasse", u"TESTstrasseKontoInhaber", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-strasse", u"TESTstrasseKontoInhaber", "valid")
         # endregion
         # region kontoinhaber-hausnummer
         # -- Hausnr INVALID
@@ -368,10 +368,10 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-hausnummer empty but not invalid")
 
-        self.validate_element_by_id("kontoinhaber-hausnummer", ".", "valid")
-        self.validate_element_by_id("kontoinhaber-hausnummer", "1", "valid")
-        self.validate_element_by_id("kontoinhaber-hausnummer", "a", "valid")
-        self.validate_element_by_id("kontoinhaber-hausnummer", u"bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-hausnummer", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-hausnummer", "1", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-hausnummer", "a", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-hausnummer", u"bü", "valid")
         driver.find_element_by_id("kontoinhaber-hausnummer").clear()
 
         try:
@@ -380,7 +380,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-hausnummer empty but not invalid")
 
-        self.validate_element_by_id("kontoinhaber-hausnummer", u"99KontoInhaber", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-hausnummer", u"99KontoInhaber", "valid")
         # endregion
         # region kontoinhaber-plz
         # -- PLZ INVALID
@@ -390,13 +390,13 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-plz empty but not invalid")
 
-        self.validate_element_by_id("kontoinhaber-plz", ".", "invalid")
-        self.validate_element_by_id("kontoinhaber-plz", "1", "invalid")
-        self.validate_element_by_id("kontoinhaber-plz", "12345", "valid")
-        self.validate_element_by_id("kontoinhaber-plz", "123456", "invalid")
-        self.validate_element_by_id("kontoinhaber-plz", "1234a", "invalid")
-        self.validate_element_by_id("kontoinhaber-plz", "a", "invalid")
-        self.validate_element_by_id("kontoinhaber-plz", u"bü", "invalid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", ".", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", "1", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", "12345", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", "123456", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", "1234a", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", "a", desired_validation="invalid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", u"bü", desired_validation="invalid")
         driver.find_element_by_id("kontoinhaber-plz").clear()
 
         try:
@@ -405,7 +405,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-plz empty but not invalid")
 
-        self.validate_element_by_id("kontoinhaber-plz", "45612", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-plz", "45612", "valid")
         # endregion
         # region kontoinhaber-ort
         # -- Ort INVALID
@@ -415,10 +415,10 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-ort empty but not invalid")
 
-        self.validate_element_by_id("kontoinhaber-ort", ".", "valid")
-        self.validate_element_by_id("kontoinhaber-ort", "1", "valid")
-        self.validate_element_by_id("kontoinhaber-ort", "a", "valid")
-        self.validate_element_by_id("kontoinhaber-ort", u"bü", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-ort", ".", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-ort", "1", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-ort", "a", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-ort", u"bü", "valid")
         driver.find_element_by_id("kontoinhaber-ort").clear()
 
         try:
@@ -427,7 +427,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError as e:
             self.verificationErrors.append("Required field kontoinhaber-ort empty but not invalid")
 
-        self.validate_element_by_id("kontoinhaber-ort", u"TESTortKontoInhaber", "valid")
+        self.enter_text_and_check_validation_in_element_by_id("kontoinhaber-ort", u"TESTortKontoInhaber", "valid")
 
         self.antragsteller_fill_data_vorversicherung("nein")
 

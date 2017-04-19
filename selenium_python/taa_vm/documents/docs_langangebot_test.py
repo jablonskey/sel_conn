@@ -42,7 +42,7 @@ class DocsLangangebotTests(unittest.TestCase, CommonTasks):
 
         self.login_to_connect_vermittler(self.base_url)
         main_window = driver.current_window_handle
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
@@ -50,7 +50,7 @@ class DocsLangangebotTests(unittest.TestCase, CommonTasks):
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
         self.tarifdaten_weiter_antrastellerdaten()
         self.antragsteller_fill_data()
-        self.antragsteller_fill_data_lebenspartner(ja_nein="nein")
+        self.antragsteller_fill_data_lebenspartner(selected_radiobutton="nein")
         self.antragsteller_weiter_zusatzdaten()
 
         driver.find_element_by_xpath("//input[@placeholder=\"Kennzeichen\"]").send_keys("kenn123")

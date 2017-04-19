@@ -34,7 +34,7 @@ class ZielgruppeBeamteWeiterTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_zielgruppe_beamte_weiter(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
 
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("beamte")

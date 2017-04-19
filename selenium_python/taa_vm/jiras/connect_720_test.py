@@ -37,7 +37,7 @@ class Connect720Test(unittest.TestCase, common_tasks.CommonTasks):
         self.Maxdiff = None
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
 
         self.zielgruppe_btrklasse_select_by_name("selbstandige")
 

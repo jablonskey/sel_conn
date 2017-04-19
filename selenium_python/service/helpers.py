@@ -56,6 +56,7 @@ class Helper(object):
     SECURE_EMAIL_LOGIN_BUTTON_XPATH = "(/html/body/div/div/div/section/div/div[2]/form/button)"
 
     ADMIN_BENUTZER_ANLEGEN_BUTTON_XPATH = "(/html/body/div/div/div/section/div/div[2]/div[1]/a)"
+
     BENUTZER_ANLEGEN_BENUTZERROLLE_COMBO_XPATH = "(/html/body/div/div/div/section/div/div[2]/form/div[1]/div/div/table/tbody/tr/td[2]/select"
 
     FOOTER_SPAN_XPATH = "(/html/body/span)"
@@ -168,6 +169,10 @@ class Helper(object):
     ZIELGRUPPE_LANDWIRTE_BETRIEBSFLACHE_FORM_XPATH = "(.//*[@id='betriebsflaeche'])"
 
     PAGES_TABS_ELEMENTS_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div/span/ul/li[*]/a)"
+
+    ADMIN_SPINNER_XPATH = "(/html/body/div/div/div/section/div/div[2]/div[2]/table/div[*][contains(@class,\"cg-busy-animation\")])"
+
+    NEUEDOKUMENTE_SPINNER_XPATH = "(/html/body/div[1]/div/div/section/div/div[2]/div[2]/div[2]/div[*][contains(@class,\"cg-busy-animation\")])"
 
     TARIFDATEN_SPINNER_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[4]/div[last()][@class=\"cg-busy cg-busy-animation ng-scope\"])"
 
@@ -324,23 +329,8 @@ class Helper(object):
         WebDriverWait(self.driver, 60).until(
             EC.text_to_be_present_in_element((By.XPATH, self.CURRENT_PAGE_MAIN_HEADER),
                                              "Benutzerverwaltung"))
-
-        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
-            (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
-        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
-            (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
-
-        WebDriverWait(self.driver, 60).until(
-            EC.presence_of_element_located(
-                (By.XPATH, "(/html/body/div[1]/div/div/section/div/div[2]/div[2]/table/tbody/tr[10]/td[1])")))
-        WebDriverWait(self.driver, 60).until(
-            EC.visibility_of_element_located(
-                (By.XPATH, "(html/body/div[1]/div/div/section/div/div[2]/div[2]/table/tbody/tr[10]/td[1])")))
-
-        WebDriverWait(self.driver, 60).until(EC.presence_of_element_located(
-            (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
-        WebDriverWait(self.driver, 60).until(EC.visibility_of_element_located(
-            (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
+        WebDriverWait(self.driver, 20).until_not(
+            EC.presence_of_element_located((By.XPATH, self.ADMIN_SPINNER_XPATH)))
 
     def check_if_on_vermittler_login_page(self, user_with_taa_rights=True, anonymus_info_visible=False):
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
@@ -360,11 +350,13 @@ class Helper(object):
                 EC.visibility_of_element_located((By.LINK_TEXT, "Rechner ohne Anmeldung")))
 
     def check_if_on_vermittler_main_page(self, user_with_taa_rights=True):
-        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
-            (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
-        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
-            (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
-        self.check_vermittler_menu_links(user_with_taa_rights=user_with_taa_rights)
+        WebDriverWait(self.driver, 20).until_not(
+            EC.presence_of_element_located((By.XPATH, self.NEUEDOKUMENTE_SPINNER_XPATH)))
+        # WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
+        #     (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
+        # WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
+        #     (By.XPATH, Helper.NEUE_DOKUMENTE_PAGINATION_XPATH)))
+        # self.check_vermittler_menu_links(user_with_taa_rights=user_with_taa_rights)
 
     def check_if_on_kundensuche_page(self):
         WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
@@ -491,8 +483,6 @@ class Helper(object):
                 erganzungen_no)
 
     def tarifdaten_wait_for_price_reload(self):
-        # WebDriverWait(self.driver, 20).until_not(
-        #     EC.presence_of_element_located((By.XPATH, self.TARIFDATEN_SPINNER_XPATH)))
         WebDriverWait(self.driver, 20).until_not(
             EC.presence_of_element_located((By.XPATH, self.TARIFDATEN_SPINNER_XPATH)))
 
@@ -622,7 +612,6 @@ class Helper(object):
         self.highlight(self.driver.find_element_by_xpath(xpath))
         self.driver.find_element_by_xpath(xpath).click()
 
-
     def check_and_click_element_by_link_text(self, linktext):
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(
             (By.LINK_TEXT, linktext)))
@@ -654,17 +643,17 @@ class Helper(object):
         self.highlight(self.driver.find_element_by_name(name))
         self.driver.find_element_by_name(name).click()
 
-    def validate_element_by_id(self, id, entered_text, validation):
+    def enter_text_and_check_validation_in_element_by_id(self, id, entered_text, desired_validation):
         self.driver.find_element_by_id(id).clear()
         self.driver.find_element_by_id(id).send_keys(entered_text)
 
-        if validation == 'invalid':
+        if desired_validation == 'invalid':
             try:
                 self.assertRegexpMatches(self.driver.find_element_by_id(id).get_attribute("class"),
                                          r"ng-invalid")
             except AssertionError as e:
                 self.verificationErrors.append(
-                    "Field " + id + " not " + validation + " after " + entered_text + " entered / line %s" % (
+                    "Field " + id + " not " + desired_validation + " after " + entered_text + " entered / line %s" % (
                         sys.exc_info()[-1].tb_lineno))
                 # TODO Add border-color check for invalidated fields.
                 # try:
@@ -672,15 +661,15 @@ class Helper(object):
                 # except AssertionError:
                 # self.verificationErrors.append(
                 # "Field %s border-color:%s / line %d" % (id, self.driver.find_element_by_id(id).value_of_css_property("border-color"), sys.exc_info()[-1].tb_lineno))
-        elif validation == 'valid':
+        elif desired_validation == 'valid':
             try:
                 self.assertNotRegexpMatches(self.driver.find_element_by_id(id).get_attribute("class"),
                                             r"ng-invalid")
             except AssertionError as e:
                 self.verificationErrors.append(
-                    "Field " + id + " not " + validation + " after " + entered_text + " entered / line %s" % (
+                    "Field " + id + " not " + desired_validation + " after " + entered_text + " entered / line %s" % (
                         sys.exc_info()[-1].tb_lineno))
-        elif validation == 'notaccepted':
+        elif desired_validation == 'notaccepted':
             try:
                 self.assertNotEqual(self.driver.find_element_by_id(id).text,
                                     entered_text)
@@ -690,20 +679,20 @@ class Helper(object):
                         sys.exc_info()[-1].tb_lineno))
                 # self.highlight(self.driver.find_element_by_id(id))
 
-    def validate_element_by_xpath(self, xpath, entered_text, validation):
+    def enter_text_and_check_validation_in_element_by_xpath(self, xpath, entered_text, desired_validation):
         element = self.driver.find_element_by_xpath(xpath)
 
         element.clear()
         element.send_keys(entered_text)
 
-        if validation == 'invalid':
+        if desired_validation == 'invalid':
             try:
                 self.assertRegexpMatches(element.get_attribute("class"),
                                          r"ng-invalid")
             except AssertionError as e:
                 self.verificationErrors.append(
                     "Field " + element.get_attribute(
-                        "id") + " not " + validation + " after " + entered_text + " entered / line %s" % (
+                        "id") + " not " + desired_validation + " after " + entered_text + " entered / line %s" % (
                         sys.exc_info()[-1].tb_lineno))
                 # TODO Add border-color check for invalidated fields.
                 # try:
@@ -711,16 +700,16 @@ class Helper(object):
                 # except AssertionError:
                 # self.verificationErrors.append(
                 # "Field %s border-color:%s / line %d" % (id, self.driver.find_element_by_id(id).value_of_css_property("border-color"), sys.exc_info()[-1].tb_lineno))
-        elif validation == 'valid':
+        elif desired_validation == 'valid':
             try:
                 self.assertNotRegexpMatches(element.get_attribute("class"),
                                             r"ng-invalid")
             except AssertionError as e:
                 self.verificationErrors.append(
                     "Field " + element.get_attribute(
-                        "id") + " not " + validation + " after " + entered_text + " entered / line %s" % (
+                        "id") + " not " + desired_validation + " after " + entered_text + " entered / line %s" % (
                         sys.exc_info()[-1].tb_lineno))
-        elif validation == 'notaccepted':
+        elif desired_validation == 'notaccepted':
             try:
                 self.assertNotEqual(element.text,
                                     entered_text)
@@ -732,9 +721,7 @@ class Helper(object):
                 # self.highlight(self.driver.find_element_by_id(id))
 
     def validate_date_field_by_id_not_refreshing(self, id):
-        self.validate_element_by_id(id, "31.09.2013", "invalid")
-
-        # self.check_and_click_element_by_id(id)
+        self.enter_text_and_check_validation_in_element_by_id(id, "31.09.2013", desired_validation="invalid")
 
         self.driver.find_element_by_id(id).send_keys(Keys.ARROW_LEFT)
         self.driver.find_element_by_id(id).send_keys(Keys.ARROW_LEFT)
@@ -744,6 +731,7 @@ class Helper(object):
         self.driver.find_element_by_id(id).send_keys(Keys.ARROW_LEFT)
         self.driver.find_element_by_id(id).send_keys("\b")
         self.driver.find_element_by_id(id).send_keys("0")
+
         try:
             self.assertNotRegexpMatches(self.driver.find_element_by_id(id).get_attribute("class"), r"ng-invalid")
         except AssertionError as e:
@@ -751,7 +739,7 @@ class Helper(object):
                 "Field " + id + " not valid after 30.09.2013 entered // field not refreshing / / line %s" % (
                     sys.exc_info()[-1].tb_lineno))
 
-        self.validate_element_by_id(id, "31.09.2013", "invalid")
+        self.enter_text_and_check_validation_in_element_by_id(id, "31.09.2013", desired_validation="invalid")
         self.driver.find_element_by_id(id).send_keys("\b\b\b\b\b\b\b")
         self.driver.find_element_by_id(id).send_keys("0092013")
         try:

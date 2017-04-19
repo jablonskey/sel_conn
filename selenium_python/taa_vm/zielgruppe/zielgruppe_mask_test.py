@@ -40,7 +40,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_anzahls_refreshing(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name("selbstandige", 10)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
@@ -96,7 +96,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_landwirte_radios_clean_and_not_red_after_popup_angaben_andern(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name("landwirte")
         # -- JA JA
         self.check_and_click_element_by_name("isLandwirteMitglied")
@@ -134,7 +134,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_landwirte_radios_clean_and_not_red_after_popup_angaben_andern_after_form_not_valid(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name("landwirte")
 
         self.check_and_click_element_by_name("isLandwirteMitglied")
@@ -180,7 +180,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_landwirte_popup_dismiss_disabled(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name("landwirte")
 
         self.assertFalse(driver.find_element_by_name("isLandwirteMitglied").is_selected())
@@ -223,7 +223,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
     def landwirte_popup_test(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name("landwirte")
 
         self.assertFalse(driver.find_element_by_xpath(
@@ -359,7 +359,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_berechnungshilfe_popup(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
 
         self.zielgruppe_btrklasse_select_by_name("selbstandige")
 
@@ -446,7 +446,7 @@ class ZielgruppeMaskTest(unittest.TestCase, common_tasks.CommonTasks):
     def test_zielgruppe_mask(self):
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
 
         # -- Familien
         self.zielgruppe_btrklasse_select_by_name("familien")

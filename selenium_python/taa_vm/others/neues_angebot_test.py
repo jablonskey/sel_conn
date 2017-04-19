@@ -35,14 +35,14 @@ class NeuesAngebotTest(unittest.TestCase, CommonTasks):
 
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_weiter_tarifdaten()
         self.neues_angebot_helper(button_to_click="abbrechen")
         self.tarifdaten_weiter_antrastellerdaten()
         self.neues_angebot_helper(button_to_click="abbrechen")
         self.antragsteller_fill_data()
-        self.antragsteller_fill_data_lebenspartner(ja_nein="nein")
+        self.antragsteller_fill_data_lebenspartner(selected_radiobutton="nein")
         self.antragsteller_weiter_zusatzdaten()
         self.neues_angebot_helper(button_to_click="abbrechen")
         self.zusatzdaten_weiter_antrag()

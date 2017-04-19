@@ -37,7 +37,7 @@ class VermittlerLoginTest(unittest.TestCase, CommonTasks):
 
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
-        self.open_taa_vm()
+        self.go_to_rechner()
 
     def tearDown(self):
         self.driver.quit()
