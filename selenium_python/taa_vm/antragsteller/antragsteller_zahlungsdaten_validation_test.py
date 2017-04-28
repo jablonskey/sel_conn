@@ -174,10 +174,12 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
                          Select(driver.find_element_by_id("kontoinhaber-titel")).options[0].text)
         self.assertEqual(u"Dr.",
                          Select(driver.find_element_by_id("kontoinhaber-titel")).options[1].text)
-        self.assertEqual(u"Prof.",
+        self.assertEqual(u"Dr. med.",
                          Select(driver.find_element_by_id("kontoinhaber-titel")).options[2].text)
-        self.assertEqual(u"Prof. Dr.",
+        self.assertEqual(u"Prof.",
                          Select(driver.find_element_by_id("kontoinhaber-titel")).options[3].text)
+        self.assertEqual(u"Prof. Dr.",
+                         Select(driver.find_element_by_id("kontoinhaber-titel")).options[4].text)
 
         Select(driver.find_element_by_id("kontoinhaber-titel")).select_by_index(1)
 
@@ -192,10 +194,12 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
                          Select(driver.find_element_by_id("kontoinhaber-titel")).options[0].text)
         self.assertEqual(u"Dr.",
                          Select(driver.find_element_by_id("kontoinhaber-titel")).options[1].text)
-        self.assertEqual(u"Prof.",
+        self.assertEqual(u"Dr. med.",
                          Select(driver.find_element_by_id("kontoinhaber-titel")).options[2].text)
-        self.assertEqual(u"Prof. Dr.",
+        self.assertEqual(u"Prof.",
                          Select(driver.find_element_by_id("kontoinhaber-titel")).options[3].text)
+        self.assertEqual(u"Prof. Dr.",
+                         Select(driver.find_element_by_id("kontoinhaber-titel")).options[4].text)
         # endregion
         # region kontoinhaber-name
         # -- Name INVALID

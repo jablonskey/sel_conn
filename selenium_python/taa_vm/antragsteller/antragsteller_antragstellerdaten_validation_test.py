@@ -394,10 +394,12 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
                          Select(driver.find_element_by_id("titel")).options[0].text)
         self.assertEqual(u"Dr.",
                          Select(driver.find_element_by_id("titel")).options[1].text)
-        self.assertEqual(u"Prof.",
+        self.assertEqual(u"Dr. med.",
                          Select(driver.find_element_by_id("titel")).options[2].text)
-        self.assertEqual(u"Prof. Dr.",
+        self.assertEqual(u"Prof.",
                          Select(driver.find_element_by_id("titel")).options[3].text)
+        self.assertEqual(u"Prof. Dr.",
+                         Select(driver.find_element_by_id("titel")).options[4].text)
 
     def check_if_titel_form_state_is_valid(self, driver,
                                            err_msg="Field TITEL has incorrect NG-INVALID state"):

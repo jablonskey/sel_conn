@@ -102,15 +102,17 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError:
             self.verificationErrors.append("field lebenspartner-titel")
 
-        self.assertTrue(4, len(Select(driver.find_element_by_id("lebenspartner-titel")).options))
+        self.assertTrue(5, len(Select(driver.find_element_by_id("lebenspartner-titel")).options))
         self.assertEqual("",
                          Select(driver.find_element_by_id("lebenspartner-titel")).options[0].text)
         self.assertEqual(u"Dr.",
                          Select(driver.find_element_by_id("lebenspartner-titel")).options[1].text)
-        self.assertEqual(u"Prof.",
+        self.assertEqual(u"Dr. med.",
                          Select(driver.find_element_by_id("lebenspartner-titel")).options[2].text)
-        self.assertEqual(u"Prof. Dr.",
+        self.assertEqual(u"Prof.",
                          Select(driver.find_element_by_id("lebenspartner-titel")).options[3].text)
+        self.assertEqual(u"Prof. Dr.",
+                         Select(driver.find_element_by_id("lebenspartner-titel")).options[4].text)
 
         Select(driver.find_element_by_id("lebenspartner-titel")).select_by_visible_text("Dr.")
 
@@ -120,15 +122,17 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError:
             self.verificationErrors.append("field lebenspartner-titel")
 
-        self.assertTrue(4, len(Select(driver.find_element_by_id("lebenspartner-titel")).options))
+        self.assertTrue(5, len(Select(driver.find_element_by_id("lebenspartner-titel")).options))
         self.assertEqual("",
                          Select(driver.find_element_by_id("lebenspartner-titel")).options[0].text)
         self.assertEqual(u"Dr.",
                          Select(driver.find_element_by_id("lebenspartner-titel")).options[1].text)
-        self.assertEqual(u"Prof.",
+        self.assertEqual(u"Dr. med.",
                          Select(driver.find_element_by_id("lebenspartner-titel")).options[2].text)
-        self.assertEqual(u"Prof. Dr.",
+        self.assertEqual(u"Prof.",
                          Select(driver.find_element_by_id("lebenspartner-titel")).options[3].text)
+        self.assertEqual(u"Prof. Dr.",
+                         Select(driver.find_element_by_id("lebenspartner-titel")).options[4].text)
 
         Select(driver.find_element_by_id("lebenspartner-titel")).select_by_visible_text("")
 
@@ -138,15 +142,17 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         except AssertionError:
             self.verificationErrors.append("field lebenspartner-titel")
 
-        self.assertTrue(4, len(Select(driver.find_element_by_id("lebenspartner-titel")).options))
+        self.assertTrue(5, len(Select(driver.find_element_by_id("lebenspartner-titel")).options))
         self.assertEqual("",
                          Select(driver.find_element_by_id("lebenspartner-titel")).options[0].text)
         self.assertEqual(u"Dr.",
                          Select(driver.find_element_by_id("lebenspartner-titel")).options[1].text)
-        self.assertEqual(u"Prof.",
+        self.assertEqual(u"Dr. med.",
                          Select(driver.find_element_by_id("lebenspartner-titel")).options[2].text)
-        self.assertEqual(u"Prof. Dr.",
+        self.assertEqual(u"Prof.",
                          Select(driver.find_element_by_id("lebenspartner-titel")).options[3].text)
+        self.assertEqual(u"Prof. Dr.",
+                         Select(driver.find_element_by_id("lebenspartner-titel")).options[4].text)
         # endregion
         # region lebenspartner-name
         # -- Name INVALID
