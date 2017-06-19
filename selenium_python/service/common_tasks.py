@@ -520,8 +520,6 @@ class CommonTasks(Helper):
 
         return produkts_labels_list[list_position - 1].text
 
-
-
     def tarifdaten_select_produkt_on_daten_erfassen_popup_by_name(self, produkt_name):
         produkt_label_list = self.driver.find_elements_by_xpath(
             Helper.ERGANZUNGEN_POPUP_PRODUKT_LABELS_XPATH)
@@ -1152,56 +1150,6 @@ class CommonTasks(Helper):
             self.verificationErrors.append(str(e) + " lebenspartner-berufsgruppe combo: %s instead of %s" % (
                 Select(self.driver.find_element_by_id("lebenspartner-berufsgruppe")).first_selected_option.text,
                 ""))
-
-        self.assertTrue(self.driver.find_element_by_xpath(
-            self.ANTRAGSTELLER_LEBENSPARTNER_ABWEICHENDE_ANSCHRIFT_J_N_HELPER["nein"][
-                "radio_xpath"]).is_selected())
-
-        self.check_and_click_element_by_xpath(
-            self.ANTRAGSTELLER_LEBENSPARTNER_ABWEICHENDE_ANSCHRIFT_J_N_HELPER["ja"]["radio_xpath"])
-
-        WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.ID, "lebenspartner-strasse")))
-        WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located((By.ID, "lebenspartner-strasse")))
-
-        try:
-            self.assertTrue(self.driver.find_element_by_id("lebenspartner-hausnummer").is_displayed())
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))
-        try:
-            self.assertEqual(u"", self.driver.find_element_by_id("lebenspartner-hausnummer").text)
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))
-
-        try:
-            self.assertTrue(self.driver.find_element_by_id("lebenspartner-plz").is_displayed())
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))
-        try:
-            self.assertEqual(u"", self.driver.find_element_by_id("lebenspartner-plz").text)
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))
-
-        try:
-            self.assertTrue(self.driver.find_element_by_id("lebenspartner-ort").is_displayed())
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))
-        try:
-            self.assertEqual(u"", self.driver.find_element_by_id("lebenspartner-ort").text)
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))
-
-        self.driver.find_element_by_xpath(
-            self.ANTRAGSTELLER_LEBENSPARTNER_ABWEICHENDE_ANSCHRIFT_J_N_HELPER["nein"]["radio_xpath"]).click()
-
-        WebDriverWait(self.driver, 10).until_not(
-            EC.visibility_of_element_located((By.ID, "lebenspartner-strasse")))
-
-        self.check_and_click_element_by_xpath(self.ANTRAGSTELLER_LEBENSPARTNER_J_N_HELPER["nein"]["radio_xpath"])
-
-        WebDriverWait(self.driver, 10).until_not(
-            EC.visibility_of_element_located((By.ID, "lebenspartner-anrede")))
 
     def antragsteller_check_default_zahlungsdaten(self):
         try:

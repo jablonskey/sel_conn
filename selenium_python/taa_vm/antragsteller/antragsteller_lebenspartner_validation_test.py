@@ -49,9 +49,6 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         self.check_and_click_element_by_name("eheLebensPartner")
         WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, "lebenspartner-anrede")))
         WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.ID, "lebenspartner-anrede")))
-        self.check_and_click_element_by_name("abwAnschrift")
-        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, "lebenspartner-strasse")))
-        WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.ID, "lebenspartner-strasse")))
 
         # region lebenspartner-anrede
 
@@ -322,99 +319,7 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         self.assertEqual(u"Sonstige Berufsgruppe",
                          Select(driver.find_element_by_id("lebenspartner-berufsgruppe")).options[6].text)
         # endregion
-        # region lebenspartner-strasse
-        # -- Strasse INVALID
-        try:
-            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-strasse").get_attribute("class"),
-                                     r"ng-invalid")
-        except AssertionError:
-            self.verificationErrors.append("Required field lebenspartner-strasse empty but not invalid")
 
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-strasse", ".", "valid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-strasse", "1", "valid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-strasse", "a", "valid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-strasse", u"bü", "valid")
-        driver.find_element_by_id("lebenspartner-strasse").clear()
-
-        try:
-            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-strasse").get_attribute("class"),
-                                     r"ng-invalid")
-        except AssertionError as e:
-            self.verificationErrors.append("Required field lebenspartner-strasse empty but not invalid")
-
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-strasse", u"TESTstrasseLeben", "valid")
-        # endregion
-        # region lebenspartner-hausnummer
-        # -- Hausnr INVALID
-        try:
-            self.assertNotRegexpMatches(driver.find_element_by_id("lebenspartner-hausnummer").get_attribute("class"),
-                                        r"ng-invalid")
-        except AssertionError as e:
-            self.verificationErrors.append("Required field lebenspartner-hausnummer empty but not invalid")
-
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-hausnummer", ".", "valid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-hausnummer", "1", "valid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-hausnummer", "a", "valid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-hausnummer", u"bü", "valid")
-        driver.find_element_by_id("lebenspartner-hausnummer").clear()
-
-        try:
-            self.assertNotRegexpMatches(driver.find_element_by_id("lebenspartner-hausnummer").get_attribute("class"),
-                                        r"ng-invalid")
-        except AssertionError as e:
-            self.verificationErrors.append("field lebenspartner-hausnummer")
-
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-hausnummer", u"69TESTleben", "valid")
-        # endregion
-        # region lebenspartner-plz
-        # -- PLZ INVALID
-        try:
-            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-plz").get_attribute("class"),
-                                     r"ng-invalid")
-        except AssertionError as e:
-            self.verificationErrors.append("Required field lebenspartner-plz empty but not invalid")
-
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", ".", desired_validation="invalid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", "1", desired_validation="invalid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", "12345", "valid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", "123456",
-                                                              desired_validation="invalid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", "1234a",
-                                                              desired_validation="invalid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", "a", desired_validation="invalid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", u"bü", desired_validation="invalid")
-        driver.find_element_by_id("lebenspartner-plz").clear()
-
-        try:
-            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-plz").get_attribute("class"),
-                                     r"ng-invalid")
-        except AssertionError as e:
-            self.verificationErrors.append("Required field lebenspartner-plz empty but not invalid")
-
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-plz", "98765", "valid")
-        # endregion
-        # region lebenspartner-ort
-        # -- Ort INVALID
-        try:
-            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-ort").get_attribute("class"),
-                                     r"ng-invalid")
-        except AssertionError as e:
-            self.verificationErrors.append("Required field lebenspartner-ort empty but not invalid")
-
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-ort", ".", "valid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-ort", "1", "valid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-ort", "a", "valid")
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-ort", u"bü", "valid")
-        driver.find_element_by_id("lebenspartner-ort").clear()
-
-        try:
-            self.assertRegexpMatches(driver.find_element_by_id("lebenspartner-ort").get_attribute("class"),
-                                     r"ng-invalid")
-        except AssertionError as e:
-            self.verificationErrors.append("Required field lebenspartner-ort empty but not invalid")
-
-        self.enter_text_and_check_validation_in_element_by_id("lebenspartner-ort", u"TESTlebenspartner-ort", "valid")
-        # endregion
 
     def tearDown(self):
         self.driver.quit()

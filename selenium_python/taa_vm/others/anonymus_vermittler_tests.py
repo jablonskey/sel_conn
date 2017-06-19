@@ -334,7 +334,7 @@ class AnonymusVermittlerTest(unittest.TestCase, common_tasks.CommonTasks):
 
         try:
             self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_WARNING_XPATH).text,
-                             "Die von Ihnen erfasste Vermittler-Nummer ist nicht korrekt.")
+                             u"Die von Ihnen eingegebene VMNR stimmt nicht mit der für diesen Account hinterlegten VMNR überein.")
         except AssertionError as e:
             self.verificationErrors.append("NO or WRONG warning under VMNR combo")
 
