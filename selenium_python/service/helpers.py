@@ -45,7 +45,7 @@ class Helper(object):
     VERMITTLER_IFRAME_ABMELDEN_XPATH = "(.//*[@id='logout'])"
 
     ADMIN_LOGIN_BUTTON_XPATH = "(/html/body/div/div/div/section/div/div[2]/form/button)"
-    ADMIN_LOGOUT_LINK_XPATH = "(/html/body/header/div/div/div[2]/ul/li/a)"
+    ADMIN_LOGOUT_LINK_XPATH = "(.//*[@id='mobilNav']/li/a)"
 
     AKTSERVICE_LOGIN_BUTTON_XPATH = "(/html/body/div/div/div/section/div/div[2]/form/button)"
     AKTSERVICE_LOGOUT_LINK_XPATH = "(/html/body/header/div/div/div[2]/ul/li/a)"
