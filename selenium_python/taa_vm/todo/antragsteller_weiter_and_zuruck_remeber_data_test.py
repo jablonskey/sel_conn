@@ -52,7 +52,6 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         # ### Antragstellerdaten ###
         self.antragsteller_fill_data_antragstellerdaten()
         self.antragsteller_fill_data_lebenspartner()
-        self.antragsteller_fill_data_lebenspartner_anschrift()
         self.antragsteller_fill_data_zahlungsdaten("nein")
         self.antragsteller_fill_data_vorversicherung("nein")
         self.antragsteller_weiter_zusatzdaten()

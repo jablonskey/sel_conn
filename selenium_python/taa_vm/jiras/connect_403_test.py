@@ -51,7 +51,6 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
         # ### Antragstellerdaten ###
         self.antragsteller_fill_data_antragstellerdaten()
         self.antragsteller_fill_data_lebenspartner()
-        self.antragsteller_fill_data_lebenspartner_anschrift()
         self.antragsteller_fill_data_zahlungsdaten("uberweisung")
         self.antragsteller_fill_data_vorversicherung("nein")
         self.antragsteller_weiter_zusatzdaten()

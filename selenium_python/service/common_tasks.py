@@ -870,28 +870,10 @@ class CommonTasks(Helper):
             Select(self.driver.find_element_by_id("lebenspartner-taetigkeit")).select_by_visible_text(taetigkeit)
             Select(self.driver.find_element_by_id("lebenspartner-berufsgruppe")).select_by_visible_text(berufsgruppe)
             self.driver.find_element_by_id("lebenspartner-geburtsdatum").send_keys("22.04.1985")
-            self.antragsteller_fill_data_lebenspartner_anschrift(anschrift)
+
         elif selected_radiobutton == "nein":
             self.check_and_click_element_by_xpath(
                 self.ANTRAGSTELLER_LEBENSPARTNER_J_N_HELPER["nein"]["label_xpath"])
-
-    def antragsteller_fill_data_lebenspartner_anschrift(self, selected_radiobutton="ja"):
-        if selected_radiobutton == "ja":
-            self.check_and_click_element_by_xpath(
-                self.ANTRAGSTELLER_LEBENSPARTNER_ABWEICHENDE_ANSCHRIFT_J_N_HELPER["ja"]["label_xpath"])
-            WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.ID, "lebenspartner-strasse")))
-            WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, "lebenspartner-strasse")))
-            self.driver.find_element_by_id("lebenspartner-strasse").clear()
-            self.driver.find_element_by_id("lebenspartner-strasse").send_keys(u"LebensStrasseTEST")
-            self.driver.find_element_by_id("lebenspartner-hausnummer").clear()
-            self.driver.find_element_by_id("lebenspartner-hausnummer").send_keys(u"69a")
-            self.driver.find_element_by_id("lebenspartner-plz").clear()
-            self.driver.find_element_by_id("lebenspartner-plz").send_keys(u"54321")
-            self.driver.find_element_by_id("lebenspartner-ort").clear()
-            self.driver.find_element_by_id("lebenspartner-ort").send_keys(u"LebensOrtTEST")
-        elif selected_radiobutton == "nein":
-            self.check_and_click_element_by_xpath(
-                self.ANTRAGSTELLER_LEBENSPARTNER_ABWEICHENDE_ANSCHRIFT_J_N_HELPER["nein"]["label_xpath"])
 
     def antragsteller_fill_data_zahlungsdaten(self, zahlungsart="lastschrift", iban="DE88300606010301156608", bic=None):
         if zahlungsart == "lastschrift":
