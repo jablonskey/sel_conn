@@ -75,7 +75,7 @@ class Helper(object):
     ZIELGRUPPE_VMNR_COMBO_FORM_CLICK_XPATH = "(.//*[@id='berechnen-fur']/input[1])"
     ZIELGRUPPE_VMNR_COMBO_FORM_AFTER_CLICK_XPATH = "(.//*[@id='berechnen-fur']/div/span/span[2]/span)"
 
-    ZIELGRUPPE_VMNR_COMBO_WARNING_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div/div[2]/div/p)"
+    ZIELGRUPPE_VMNR_COMBO_WARNING_XPATH = "(.//*[@id='rechner-section']/div/div[2]/div/div[1]/div/div/div/div[2]/div/p)"
     ZIELGRUPPE_ANON_VMNR_FORM_XPATH = "(.//*[@id='enter-vmnr'])"
 
     ZIELGRUPPE_BETRIEBSFLAECHE_FORM_XPATH = "(/html/body/div/div/div/section/div/div[2]/div/div[5]/div/form/div/div[2]/div[2]/div/input)"
