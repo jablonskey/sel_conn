@@ -43,8 +43,8 @@ class AntragstellerKontaktdatenValidationTest(unittest.TestCase, common_tasks.Co
         # region zielgruppe page
 
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
-        self.tarifdaten_weiter_antrastellerdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
+        self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
         # ### Kontaktdaten ###
         # -- Telefon INVALID
         try:

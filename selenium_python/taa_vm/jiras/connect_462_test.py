@@ -43,7 +43,7 @@ class Connect462Test(unittest.TestCase, CommonTasks):
         # region vermittler main page
         self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name('familien')
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
@@ -75,16 +75,16 @@ class Connect462Test(unittest.TestCase, CommonTasks):
         driver.find_elements_by_name("intItem")[0].send_keys("10")
         self.tarifdaten_erganzungen_popup_ok_click()
 
-        self.tarifdaten_weiter_antrastellerdaten()
+        self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
 
         produktauswahl_list = [l.text for l in
                                driver.find_elements_by_xpath(self.PRODUKTAUSWAHL_ELEMENTS_LABEL_XPATH)]
 
-        self.antragsteller_zuruck_tarifdaten()
+        self.click_zuruck_on_antragsteller_go_tarifdaten()
 
         self.tarifdaten_select_produkt_from_rechtschutz("Privat- und Verkehrs-RS")
 
-        self.tarifdaten_weiter_antrastellerdaten()
+        self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
 
         produktauswahl_list_2 = [l.text for l in
                                  driver.find_elements_by_xpath(self.PRODUKTAUSWAHL_ELEMENTS_LABEL_XPATH)]

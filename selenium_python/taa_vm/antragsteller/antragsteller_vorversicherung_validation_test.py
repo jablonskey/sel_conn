@@ -61,8 +61,8 @@ class AntragstellerVorversicherungValidationTest(unittest.TestCase, CommonTasks)
 
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
-        self.tarifdaten_weiter_antrastellerdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
+        self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
         # ### Antragstellerdaten ###
 
         self.assertTrue(driver.find_element_by_name("vorversicherung").is_selected())

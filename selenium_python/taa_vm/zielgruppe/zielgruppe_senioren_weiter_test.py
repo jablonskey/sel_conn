@@ -38,12 +38,12 @@ class ZielgruppeSeniorenWeiterTest(unittest.TestCase, common_tasks.CommonTasks):
 
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("senioren")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
         # TODO
         # Check zielgruppe section on tarifdaten
 
-        self.tarifdaten_zuruck_zielgruppe()
+        self.click_zuruck_on_tarifdaten_go_to_zielgruppe()
 
         try:
             self.assertTrue(driver.find_element_by_xpath(

@@ -39,7 +39,7 @@ class Connect589Test(unittest.TestCase, common_tasks.CommonTasks, Helper):
         self.login_to_connect_vermittler(self.base_url)
         self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name(u"familien")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.tarifdaten_select_produkt_from_rechtschutz(u"JURPRIVAT")
         self.tarifdaten_select_produkt_from_erganzungen_by_name("Kleinunternehmer-Inkasso-RS")

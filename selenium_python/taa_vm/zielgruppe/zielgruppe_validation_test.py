@@ -125,7 +125,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
 
         self.enter_text_and_check_validation_in_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["selbstandige"]["anzahl_form_xpath"],
                                        "10", "valid")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def test_arzte_validation(self):
         driver = self.driver
@@ -203,7 +203,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.verificationErrors.append(
                 "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.enter_text_and_check_validation_in_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["arzte"]["form_xpath"], "10", "valid")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def test_steuerberater_validation(self):
         driver = self.driver
@@ -298,7 +298,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
                                        "valid")
         self.enter_text_and_check_validation_in_element_by_xpath(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["steuerberater"]["form1_xpath"], "10",
                                        "valid")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def test_landwirte_no_radios_selected_validation(self):
         driver = self.driver
@@ -407,7 +407,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
             self.verificationErrors.append(
                 "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
         self.enter_text_and_check_validation_in_element_by_id("betriebsflaeche", "10", "valid")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def test_familien_after_landwirte_no_radios_checked(self):
         driver = self.driver
@@ -438,7 +438,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
                 "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def test_familien_after_landwirte_no_right_radios_checked(self):
         driver = self.driver
@@ -455,7 +455,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
                 "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def test_familien_after_landwirte(self):
         driver = self.driver
@@ -479,7 +479,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
                 "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def test_familien_after_landwirte_form_not_valid(self):
         driver = self.driver
@@ -504,7 +504,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
                 "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def test_familien_after_selbstandige(self):
         driver = self.driver
@@ -521,7 +521,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
                 "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def test_familien_after_selbstandige_anzahl_not_valid(self):
         driver = self.driver
@@ -540,7 +540,7 @@ class ZielgruppeValidationTest(unittest.TestCase, common_tasks.CommonTasks, Help
                 "Tarifdaten reached, validation did not work / line %s" % sys.exc_info()[-1].tb_lineno)
 
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def tearDown(self):
         self.driver.quit()

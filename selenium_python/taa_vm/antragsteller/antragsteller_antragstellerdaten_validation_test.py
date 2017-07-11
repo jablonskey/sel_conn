@@ -47,8 +47,8 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         self.login_to_connect_vermittler(self.base_url)
         self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name(btrklasse_name="familien")
-        self.zielgruppe_weiter_tarifdaten()
-        self.tarifdaten_weiter_antrastellerdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
+        self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
         self.antragsteller_fill_data_lebenspartner(selected_radiobutton="nein")
         self.antragsteller_fill_data_zahlungsdaten(zahlungsart="uberweisung")
         self.antragsteller_fill_data_vorversicherung(selected_radiobutton="nein")
@@ -154,7 +154,7 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
         self.enter_text_and_check_validation_in_element_by_id("geburtsdatum", "01.01.2014", "valid")
         # endregion
 
-        self.antragsteller_weiter_zusatzdaten()
+        self.click_weiter_on_antragsteller_go_to_zusatzdaten()
 
     def check_if_geburtsdatum_field_state_is_invalid(self, driver, err_msg="Combobox TAETIGKEIT"
                                                                            " has incorrect VALID state"):

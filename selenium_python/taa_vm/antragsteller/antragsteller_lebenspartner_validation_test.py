@@ -43,8 +43,8 @@ class AntragstellerLebenspartnerValidationTest(unittest.TestCase, common_tasks.C
         # region vermittler main page
         self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
-        self.tarifdaten_weiter_antrastellerdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
+        self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
         # ### Lebensdaten ###
         self.check_and_click_element_by_name("eheLebensPartner")
         WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, "lebenspartner-anrede")))

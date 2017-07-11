@@ -806,3 +806,62 @@ class Helper(object):
     def wait_for_landwirte_popup_hide(self):
         WebDriverWait(self.driver, 4).until(
             EC.invisibility_of_element_located((By.XPATH, self.ZIELGRUPPE_LANDWIRTE_POPUP_XPATH)))
+
+    def check_if_on_antragsteller_page(self):
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
+            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])")),
+            "Antragstellerdaten page not reached")
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
+            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/div/div[1])")))
+        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])"),
+            u"Produktauswahl"))
+        self.assertEqual(self.base_url + "ng/#/taa//antragsteller", self.driver.current_url)
+
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(
+            (By.XPATH, self.ANTRAGSTELLERDATEN_SECTION_HEADER_XPATH)))
+        self.assertEqual("Antragstellerdaten", self.driver.find_element_by_xpath(
+            self.ANTRAGSTELLERDATEN_SECTION_HEADER_XPATH).text)
+
+    def check_if_on_zusatzdaten_page(self):
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
+            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])")),
+            "Zusatzdaten page not reached")
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
+            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])")))
+        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[1]/div/div/div[1])"),
+            u"Produktauswahl"))
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
+            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/h4)")),
+            "Zusatzdaten page not reached")
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
+            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/h4)")))
+        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+            (By.XPATH, "(/html/body/div/div/div/section/div/div[2]/div/div[2]/div[1]/h4)"),
+            u"Vertragsbeginn"))
+        self.assertEqual(self.base_url + "ng/#/taa//zusatzdaten", self.driver.current_url)
+
+    def check_if_on_antrag_page(self):
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
+            (By.XPATH, self.ANTRAG_ZUSATZDATEN_HEADER)),
+            "Antrag page not reached")
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
+            (By.XPATH, self.ANTRAG_ZUSATZDATEN_HEADER)))
+        WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element(
+            (By.XPATH, self.ANTRAG_ZUSATZDATEN_HEADER),
+            u"Zusatzdaten"))
+        self.assertEqual(self.base_url + "ng/#/taa//antrag", self.driver.current_url)
+
+    def check_if_on_tarifdaten_page(self):
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(
+            (By.XPATH, "(.//*[@id='rechner-section']/div/div[2]/div/div[1]/div/div/div[1]/h4)")))
+        self.assertEqual("Zielgruppe", self.driver.find_element_by_xpath(
+            "(.//*[@id='rechner-section']/div/div[2]/div/div[1]/div/div/div[1]/h4)").text)
+        self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)
+
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.NAME, "rechtschutz")))
+        WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.NAME, "rechtschutz")))
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.NAME, "schutzbrief")))
+        WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.NAME, "schutzbrief")))
+        self.assertEqual(self.base_url + "ng/#/taa//tarifdaten", self.driver.current_url)

@@ -46,16 +46,16 @@ class AntragstellerAntragstellerdatenValidationTest(unittest.TestCase, common_ta
 
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
-        self.tarifdaten_weiter_antrastellerdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
+        self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
 
         # ### Antragstellerdaten ###
         self.antragsteller_fill_data_antragstellerdaten()
         self.antragsteller_fill_data_lebenspartner()
         self.antragsteller_fill_data_zahlungsdaten("nein")
         self.antragsteller_fill_data_vorversicherung("nein")
-        self.antragsteller_weiter_zusatzdaten()
-        self.zusatzdaten_zuruck_antrastellerdaten()
+        self.click_weiter_on_antragsteller_go_to_zusatzdaten()
+        self.click_zuruck_on_zusatzdaten_and_go_to_antragstellerdaten()
 
         self.antragsteller_fill_data_antragstellerdaten()
 

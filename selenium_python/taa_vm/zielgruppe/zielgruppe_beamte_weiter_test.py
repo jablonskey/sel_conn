@@ -38,7 +38,7 @@ class ZielgruppeBeamteWeiterTest(unittest.TestCase, common_tasks.CommonTasks):
 
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("beamte")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def tearDown(self):
         self.driver.quit()

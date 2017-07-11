@@ -42,12 +42,12 @@ class GenerateAntrags(unittest.TestCase, CommonTasks):
 
         for x in range(10000):
             self.zielgruppe_btrklasse_select_by_name("familien")
-            self.zielgruppe_weiter_tarifdaten()
-            self.tarifdaten_weiter_antrastellerdaten()
+            self.click_weiter_on_zielgruppe_go_to_tarifdaten()
+            self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
             self.antragsteller_fill_data()
-            self.antragsteller_weiter_zusatzdaten()
+            self.click_weiter_on_antragsteller_go_to_zusatzdaten()
 
-            self.zusatzdaten_weiter_antrag()
+            self.click_weiter_on_zusatzdaten_go_to_antrag()
             self.check_and_click_element_by_link_text("Antrag senden")
             self.check_if_on_bestatigung_page()
             self.check_and_click_element_by_link_text("Neues Angebot")

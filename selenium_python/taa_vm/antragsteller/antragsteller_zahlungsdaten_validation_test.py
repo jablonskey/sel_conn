@@ -39,15 +39,14 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
         driver = self.driver
         self.login_to_connect_vermittler(self.base_url)
 
-        # region vermittler main page
         self.go_to_rechner()
 
-        # endregion
+
 
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
-        self.tarifdaten_weiter_antrastellerdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
+        self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
         # ### Antragstellerdaten ###
 
         # XXX Zahlungsdaten XXX
@@ -435,7 +434,7 @@ class AntragstellerZahlungsdatenValidationTest(unittest.TestCase, common_tasks.C
 
         self.antragsteller_fill_data_vorversicherung("nein")
 
-        self.antragsteller_weiter_zusatzdaten()
+        self.click_weiter_on_antragsteller_go_to_zusatzdaten()
 
     def tearDown(self):
         self.driver.quit()

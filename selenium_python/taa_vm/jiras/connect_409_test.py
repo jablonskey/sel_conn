@@ -46,7 +46,7 @@ class Connect409Test(unittest.TestCase, CommonTasks, Helper):
 
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
         WebDriverWait(self.driver, 10).until_not(
             EC.text_to_be_present_in_element(

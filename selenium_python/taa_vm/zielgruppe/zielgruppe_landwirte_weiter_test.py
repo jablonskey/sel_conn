@@ -165,9 +165,9 @@ class ZielgruppeLandwirteTest(unittest.TestCase, common_tasks.CommonTasks, Helpe
         WebDriverWait(driver, 4).until(EC.visibility_of_element_located((By.ID, "betriebsflaeche")),
                                        "Field betriebsflaeche not visible")
 
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
-        self.tarifdaten_zuruck_zielgruppe()
+        self.click_zuruck_on_tarifdaten_go_to_zielgruppe()
 
         try:
             self.assertTrue(driver.find_element_by_xpath(

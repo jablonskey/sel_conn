@@ -48,9 +48,9 @@ class Connect460Test(unittest.TestCase, common_tasks.CommonTasks):
         # region zielgruppe page
 
         self.zielgruppe_btrklasse_select_by_name(u"familien")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
         self.tarifdaten_select_produkt_from_mitgliedschaft(u"KS-Mitgliedschaft für die Familie")
-        self.tarifdaten_weiter_antrastellerdaten()
+        self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
 
         try:
             self.assertEqual(len(driver.find_elements_by_xpath(self.PRODUKTAUSWAHL_ELEMENTS_LABEL_XPATH)), 1)

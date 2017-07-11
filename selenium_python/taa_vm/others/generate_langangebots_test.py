@@ -46,17 +46,17 @@ class GenerateLangangebots(unittest.TestCase, CommonTasks):
         self.go_to_rechner()
         self.driver.implicitly_wait(2)
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
-        self.tarifdaten_weiter_antrastellerdaten()
+        self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
         self.antragsteller_fill_data()
-        self.antragsteller_weiter_zusatzdaten()
+        self.click_weiter_on_antragsteller_go_to_zusatzdaten()
 
         driver.find_element_by_xpath("//input[@placeholder=\"Kennzeichen\"]").send_keys("kenn123")
         self.check_and_click_element_by_xpath(
             "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div[2]/form/div/div[1]/div[2]/label/input)")
-        self.zusatzdaten_weiter_antrag()
+        self.click_weiter_on_zusatzdaten_go_to_antrag()
 
         for x in range(100000):
             self.documents_popup_generate_document((u"Langangebot",))

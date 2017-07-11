@@ -37,13 +37,13 @@ class Connect1038Test(unittest.TestCase, common_tasks.CommonTasks):
 
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("landwirte", 7)
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
-        self.tarifdaten_zuruck_zielgruppe()
+        self.click_zuruck_on_tarifdaten_go_to_zielgruppe()
         self.zielgruppe_btrklasse_select_by_name("arzte", 10)
 
-        self.zielgruppe_weiter_tarifdaten()
-        self.tarifdaten_zuruck_zielgruppe()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
+        self.click_zuruck_on_tarifdaten_go_to_zielgruppe()
         try:
             self.assertNotEqual(self.ZIELGRUPPE_BTRKLASSES_HELPER_LIST["landwirte"]["header_text"],
                                 self.driver.find_element_by_xpath(

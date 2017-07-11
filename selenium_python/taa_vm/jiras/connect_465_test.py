@@ -43,7 +43,7 @@ class Connect465Test(unittest.TestCase, CommonTasks):
         # region vermittler main page
         self.go_to_rechner()
         self.zielgruppe_btrklasse_select_by_name('familien')
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
         self.tarifdaten_select_sb_for_produkt_from_rechtschutz(produkt_name="JURPRIVAT", sb="250 EUR")
         self.tarifdaten_select_produkt_from_rechtschutz("JURPRIVAT")
@@ -74,7 +74,7 @@ class Connect465Test(unittest.TestCase, CommonTasks):
         driver.find_elements_by_name("intItem")[0].send_keys("10")
         self.tarifdaten_erganzungen_popup_ok_click()
 
-        self.tarifdaten_weiter_antrastellerdaten()
+        self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
 
         antragstellerdaten_produktauswahl_list = [l.text for l in
                                                   driver.find_elements_by_xpath(
@@ -82,7 +82,7 @@ class Connect465Test(unittest.TestCase, CommonTasks):
 
         self.antragsteller_fill_data()
         self.antragsteller_fill_data_lebenspartner(selected_radiobutton="nein")
-        self.antragsteller_weiter_zusatzdaten()
+        self.click_weiter_on_antragsteller_go_to_zusatzdaten()
 
         zusatzdaten_produktauswahl_list = [l.text for l in
                                            driver.find_elements_by_xpath(self.PRODUKTAUSWAHL_ELEMENTS_LABEL_XPATH)]
@@ -92,7 +92,7 @@ class Connect465Test(unittest.TestCase, CommonTasks):
         self.check_and_click_element_by_xpath(
             "(/html/body/div/div/div/section/div/div[2]/div/form/div/div[2]/div[2]/form/div/div[1]/div[2]/label/input)")
 
-        self.zusatzdaten_weiter_antrag()
+        self.click_weiter_on_zusatzdaten_go_to_antrag()
 
         antrag_produktauswahl_list = [l.text for l in
                                       driver.find_elements_by_xpath(self.PRODUKTAUSWAHL_ELEMENTS_LABEL_XPATH)]

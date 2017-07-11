@@ -41,8 +41,8 @@ class ZielgruppeVmnrComboTest(unittest.TestCase, common_tasks.CommonTasks):
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("familien")
         self.zielgruppe_enter_vmnr(vmnr_number)
-        self.zielgruppe_weiter_tarifdaten()
-        self.tarifdaten_zuruck_zielgruppe()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
+        self.click_zuruck_on_tarifdaten_go_to_zielgruppe()
 
         try:
             self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_FORM_AFTER_CLICK_XPATH).text,
@@ -50,8 +50,8 @@ class ZielgruppeVmnrComboTest(unittest.TestCase, common_tasks.CommonTasks):
         except AssertionError as e:
             self.verificationErrors.append("VMNR combo empty")
 
-        self.zielgruppe_weiter_tarifdaten()
-        self.tarifdaten_zuruck_zielgruppe()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
+        self.click_zuruck_on_tarifdaten_go_to_zielgruppe()
 
         try:
             self.assertEqual(self.driver.find_element_by_xpath(self.ZIELGRUPPE_VMNR_COMBO_FORM_AFTER_CLICK_XPATH).text,
@@ -59,7 +59,7 @@ class ZielgruppeVmnrComboTest(unittest.TestCase, common_tasks.CommonTasks):
         except AssertionError as e:
             self.verificationErrors.append("VMNR combo empty")
 
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def tearDown(self):
         self.driver.quit()

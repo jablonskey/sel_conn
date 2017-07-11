@@ -39,13 +39,13 @@ class ZielgruppeArzteWeiterTest(unittest.TestCase, common_tasks.CommonTasks):
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("arzte", 10)
 
-        self.zielgruppe_weiter_tarifdaten()
-        self.tarifdaten_zuruck_zielgruppe()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
+        self.click_zuruck_on_tarifdaten_go_to_zielgruppe()
         try:
             self.assertTrue(driver.find_element_by_xpath("(//input[@name='zielgruppe'])[6]").is_selected())
         except AssertionError as e:
             self.verificationErrors.append("Arzte not selected")
-        self.zielgruppe_weiter_tarifdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
 
     def tearDown(self):
         self.driver.quit()

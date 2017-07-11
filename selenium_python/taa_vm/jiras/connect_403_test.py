@@ -45,16 +45,16 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
 
         # region zielgruppe page
         self.zielgruppe_btrklasse_select_by_name("familien")
-        self.zielgruppe_weiter_tarifdaten()
-        self.tarifdaten_weiter_antrastellerdaten()
+        self.click_weiter_on_zielgruppe_go_to_tarifdaten()
+        self.click_weiter_on_tarifdaten_go_to_antragstellerdaten()
 
         # ### Antragstellerdaten ###
         self.antragsteller_fill_data_antragstellerdaten()
         self.antragsteller_fill_data_lebenspartner()
         self.antragsteller_fill_data_zahlungsdaten("uberweisung")
         self.antragsteller_fill_data_vorversicherung("nein")
-        self.antragsteller_weiter_zusatzdaten()
-        self.zusatzdaten_weiter_antrag()
+        self.click_weiter_on_antragsteller_go_to_zusatzdaten()
+        self.click_weiter_on_zusatzdaten_go_to_antrag()
 
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
             (By.XPATH, self.ANTRAG_ANTRAGSTELLER_JA_PARAGRAPH)))
@@ -86,12 +86,12 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
             self.verificationErrors.append("Antrag \ Lebenspartner: \"" + driver.find_element_by_xpath(
                 self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH).text + "\" instead of \"ja\"")
 
-        self.antrag_zuruck_zusatzdaten()
-        self.zusatzdaten_zuruck_antrastellerdaten()
+        self.click_zuruck_on_antrag_and_go_to_zusatzdaten()
+        self.click_zuruck_on_zusatzdaten_and_go_to_antragstellerdaten()
         self.antragsteller_fill_data_antragstellerdaten(berufsgruppe="Sonstige Berufsgruppe")
         self.antragsteller_fill_data_lebenspartner()
-        self.antragsteller_weiter_zusatzdaten()
-        self.zusatzdaten_weiter_antrag()
+        self.click_weiter_on_antragsteller_go_to_zusatzdaten()
+        self.click_weiter_on_zusatzdaten_go_to_antrag()
 
         # Antragsteller ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
@@ -122,12 +122,12 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
             self.verificationErrors.append("Antrag \ Lebenspartner: \"" + driver.find_element_by_xpath(
                 self.ANTRAG_LEBENSPARTNER_JA_PARAGRAPH).text + "\" instead of \"ja\"")
 
-        self.antrag_zuruck_zusatzdaten()
-        self.zusatzdaten_zuruck_antrastellerdaten()
+        self.click_zuruck_on_antrag_and_go_to_zusatzdaten()
+        self.click_zuruck_on_zusatzdaten_and_go_to_antragstellerdaten()
         self.antragsteller_fill_data_antragstellerdaten(berufsgruppe="Sonstige Berufsgruppe")
         self.antragsteller_fill_data_lebenspartner(berufsgruppe="Sonstige Berufsgruppe")
-        self.antragsteller_weiter_zusatzdaten()
-        self.zusatzdaten_weiter_antrag()
+        self.click_weiter_on_antragsteller_go_to_zusatzdaten()
+        self.click_weiter_on_zusatzdaten_go_to_antrag()
 
         # Antragsteller ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
@@ -158,12 +158,12 @@ class Connect403Test(unittest.TestCase, common_tasks.CommonTasks):
             self.verificationErrors.append("Antrag \ Lebenspartner: \"" + driver.find_element_by_xpath(
                 self.ANTRAG_LEBENSPARTNER_NEIN_PARAGRAPH).text + "\" instead of \"nein\"")
 
-        self.antrag_zuruck_zusatzdaten()
-        self.zusatzdaten_zuruck_antrastellerdaten()
+        self.click_zuruck_on_antrag_and_go_to_zusatzdaten()
+        self.click_zuruck_on_zusatzdaten_and_go_to_antragstellerdaten()
         self.antragsteller_fill_data_antragstellerdaten()
         self.antragsteller_fill_data_lebenspartner(berufsgruppe="Sonstige Berufsgruppe")
-        self.antragsteller_weiter_zusatzdaten()
-        self.zusatzdaten_weiter_antrag()
+        self.click_weiter_on_antragsteller_go_to_zusatzdaten()
+        self.click_weiter_on_zusatzdaten_go_to_antrag()
 
         # Antragsteller ja/nein
         WebDriverWait(driver, 10).until(EC.presence_of_element_located(
